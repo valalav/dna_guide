@@ -51,6 +51,7 @@
 ![Корень человечества 3](../assets/yfull/yfull_root_3.jpg)
 ![Корень человечества 2](../assets/yfull/yfull_root_2.jpg)
 ![Корень человечества 1](../assets/yfull/yfull_root_1.jpg)
+![Глубокая ветвь](../assets/yfull/yfull_root_5.jpg)
 
 Сверху вы видите длинную цепочку названий:
 `Home > A0-T > ... > GHIJK > G > G-P287 > ... > G-L1264`
