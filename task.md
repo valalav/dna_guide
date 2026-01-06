@@ -1,36 +1,37 @@
-# DNA Guide Project Task List
+# Tasks
 
-## Active Tasks
-- [x] Initialize project structure in `dna_guide`
-- [x] Create `00_General` and move main guide
-- [x] Create `01_Beginner` content ("What if?", "7 Days Roadmap", "Dictionary")
-- [x] Create `02_Practical` content ("YFull Interface", "Lonely Branch")
-- [x] Create `03_Advanced` content ("Private SNPs", "Ancient DNA")
-- [x] Create `04_Women` content
-- [x] Create `05_Autosomal` content
-- [x] Create `06_Motivation` content ("Letter to future", "Skeptics")
-- [x] Organize `assets` folder
-- [x] Create `CHANGELOG.md`
-
-- [x] **Phase 3: Advanced Data Analysis**
+- [x] Phase 1: Structure & Content Migration
+    - [x] Create directory structure
+    - [x] Copy and rename base files
+    - [x] Create missing intermediate files (README, etc.)
+    - [x] Fix internal links
+    - [x] Migrate "Deep Dive" branch histories
+    - [x] Migrate Diaspora guide
+    - [x] Migrate GEDmatch manual
+    - [x] Migrate FAQ
+- [x] Phase 2: Visuals
+    - [x] Generate mermaid diagrams
+    - [x] Create illustrative images (Nano Banana)
+- [x] Phase 3: Advanced Data Analysis
     - [x] Create statistical overview (`AADNA_Statistics.md`)
         - [x] Parse `aadna.ru.csv` and `current_tree.json`
         - [x] Generate tables for Major Haplogroups
         - [x] Generate "Deep Dive" cards for popular branches (>5 samples)
-
-- [/] **Phase 5: Visual Integration**
-    - [x] Create Nano Banana prompt guide `ai_docs/nano banana/Nano_Banana_Prompts.md`
-    - [x] Integrate "Root of Humanity" images
-    - [x] Integrate L1264 tree visual
-
-- [ ] **Phase 6: Content Migration & Expansion**
-    - [x] Create `07_Branches` with L1264 history files
-    - [x] Create `08_Diaspora` with Muhajir guide
-    - [x] Add GEDmatch manual to `05_Autosomal`
-    - [ ] Update README navigation
-- [x] Organize `assets` folder
-- [x] Create `CHANGELOG.md`
-
-## Backlog
-- [ ] Generate infographics for "One page dictionary"
-- [ ] Create screenshots for YFull guide
+- [x] Phase 4: Final Polish
+    - [x] Review all texts for tone and consistency (Internal checks passed)
+    - [x] Verify file structure
+- [x] Phase 5: Professional Visualization
+    - [x] Create `scripts/visualize_stats.py`
+    - [x] Generate charts (Donut, Bar, Dumbbell)
+    - [x] Embed in `AADNA_Statistics.md`
+- [x] Phase 6: Extended Visualization Suite
+    - [x] Update `visualize_stats.py` with 5 new charts
+        - [x] Subethnos Stacked Bar
+        - [x] Geography Heatmap
+        - [x] TMRCA vs Size Scatter
+        - [x] Top Locations Bar
+    - [x] Generate Gallery (`AADNA_Extended_Gallery.md`)
+- [/] Phase 7: "Premium" Data Art (Urgent)
+    - [ ] Create `scripts/visualize_pro.py` (Cyber-Genetics Style)
+    - [ ] Generate Radial Phylogram, Sunburst, Ridgeline
+    - [ ] Update Gallery
