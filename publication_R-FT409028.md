@@ -16,12 +16,8 @@
 
 
 ## Справочная информация
-- [00_Haplogroup_Reference.md](10_Haplogroups\00_Haplogroup_Reference.md) (Relates to R)
-- [03_FT9681.md](10_Haplogroups\G2\03_FT9681.md) (Relates to F)
-- [03_J2a_SK1313.md](10_Haplogroups\J\03_J2a_SK1313.md) (Relates to K)
 - [00_R_Overview.md](10_Haplogroups\R\00_R_Overview.md) (Relates to R)
 - [01_R1b.md](10_Haplogroups\R\01_R1b.md) (Relates to R1b)
-- [02_R1a_Z93.md](10_Haplogroups\R\02_R1a_Z93.md) (Relates to R1)
 - [03_R1b_L584.md](10_Haplogroups\R\03_R1b_L584.md) (Relates to R1b)
 
 
@@ -46,12 +42,8 @@
 
 
 ## Справочная информация
-- [00_Haplogroup_Reference.md](10_Haplogroups\00_Haplogroup_Reference.md) (Relates to R)
-- [03_FT9681.md](10_Haplogroups\G2\03_FT9681.md) (Relates to F)
-- [03_J2a_SK1313.md](10_Haplogroups\J\03_J2a_SK1313.md) (Relates to K)
 - [00_R_Overview.md](10_Haplogroups\R\00_R_Overview.md) (Relates to R)
 - [01_R1b.md](10_Haplogroups\R\01_R1b.md) (Relates to R1b)
-- [02_R1a_Z93.md](10_Haplogroups\R\02_R1a_Z93.md) (Relates to R1)
 - [03_R1b_L584.md](10_Haplogroups\R\03_R1b_L584.md) (Relates to R1b)
 
 

@@ -238,24 +238,49 @@ def parse_sheet_data(csv_text, target_id, descendants):
 
     return matches
 
+import re
+
+# ... existing imports ...
+
+# (Assuming imports are at top, but I can't easily inject import at top with this single replace if I am targeting find_related_docs down below.
+# I will use multi_replace to add import at top AND change function.)
+
 def find_related_docs(target_id, lineage):
-    """Find documentation files related to the branch or its ancestors."""
+    """
+    Find documentation files related to the branch or its ancestors.
+    Uses strict regex matching (word boundaries / separators) to avoid partial matches
+    e.g. 'F' matching 'FT9681'.
+    """
     related_files = []
     
     # Search terms: specific branch ID, and parent IDs (reversed order for relevance)
     # Filter out empty strings
     search_terms = [t for t in ([target_id] + lineage[::-1]) if t]
     
+    # cache regexes
+    # We want to match: (start or separator) + term + (end or separator)
+    # Separators: _ - . space
+    term_regexes = []
+    for term in search_terms:
+        # Escape term just in case
+        safe_term = re.escape(term)
+        # Pattern: look for term surrounded by non-alphanumeric or boundaries
+        # But commonly in filenames: 00_R_Overview.md -> matches 'R'
+        # 03_FT9681.md -> matching 'F'? 'FT' starts with F.
+        # We want strict token matching.
+        # Let's define separators as [_\-\.]
+        # usage: re.search(pattern, filename, re.IGNORECASE)
+        pattern = r'(?:^|[\._\-])' + safe_term + r'(?:$|[\._\-])'
+        term_regexes.append((term, re.compile(pattern, re.IGNORECASE)))
+    
     # We explicitly look into 10_Haplogroups
     # Walk directory
     for root, dirs, files in os.walk(DOCS_DIR):
         for file in files:
             if file.endswith(".md"):
-                # Check if filename contains any of the search terms
-                for term in search_terms:
-                    # simplistic check: term in filename
-                    # e.g. "G-L1264" in "00_G-L1264_Overview.md"
-                    if term in file:
+                # Check if filename contains any of the search terms strings strictly
+                for term, regex in term_regexes:
+                    if regex.search(file):
                         path = os.path.join(root, file)
                         related_files.append((term, path))
                         break # Found a match for this file

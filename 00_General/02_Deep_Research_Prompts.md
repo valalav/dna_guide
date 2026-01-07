@@ -1324,6 +1324,237 @@ EXPECTED OUTPUT FORMAT:
 
 ---
 
+## 🔬 Фаза 6: Специальные Исследования
+
+### Приоритетная Матрица (Фаза 6)
+
+| # | Тема | Приоритет | Статус |
+|---|------|-----------|--------|
+| 14.1 | Греческие Колонии | 🟡 Средний | 🆕 Новый |
+| 14.2 | Шапсугский Феномен | 🔴 Высокий | 🆕 Новый |
+| 14.3 | Дагестанские Границы | 🟡 Средний | 🆕 Новый |
+
+---
+
+### 14.1. Греческие Колонии — Средиземноморский След на Кавказе
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a genetic analysis of Greek colonial impact on the Circassian coast.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Genetic legacy of Greek, Roman, and Byzantine colonies on the Northwest Caucasus coast
+
+CONTEXT:
+The Northwest Caucasus coast hosted numerous Greek colonies from ~600 BCE to ~400 CE:
+
+| Colony | Modern Location | Period | Notes |
+|--------|-----------------|--------|-------|
+| Dioscurias | Sukhumi | 6th c BCE - 1st c CE | Major port |
+| Pitiunt | Pitsunda | 4th c BCE - 6th c CE | Fortress |
+| Phanagoria | Taman | 6th c BCE - 10th c CE | Bosporan capital |
+| Gorgippia | Anapa | 5th c BCE - 3rd c CE | Greek polis |
+| Hermonassa | Taman | 6th c BCE | Colony |
+
+QUESTIONS:
+1. **Mediterranean Haplogroups:**
+   - E1b1b (E-M35) frequencies in coastal populations?
+   - J2a Mediterranean subclades?
+   - T1a presence?
+   - Any Greek-specific SNPs identified?
+
+2. **Comparison Coastal vs Inland:**
+   - Do Shapsugs/Natukhai (coastal) differ from Kabardians (inland)?
+   - Higher Mediterranean admixture on the coast?
+   - Quantify: % difference in autosomal "Mediterranean" component?
+
+3. **Ancient DNA from Colonies:**
+   - Any aDNA from Phanagoria, Gorgippia?
+   - Comparison with Greek colonial DNA from Crimea?
+   - Bosporan Kingdom samples?
+
+4. **Genetic Trace of Byzantium:**
+   - Dioscurias was Byzantine fortress until 6th c CE
+   - Any Byzantine genetic signature in Abkhaz?
+
+5. **Jewish Component:**
+   - Phanagoria had Jewish community (archaeological evidence)
+   - Any genetic trace in modern populations?
+
+EXPECTED OUTPUT FORMAT:
+1. Y-DNA frequency comparison: coastal vs inland Circassians
+2. Autosomal Mediterranean component analysis
+3. List of aDNA samples from Black Sea colonies
+4. Historical scenario of colonial integration
+5. Assessment: how much Greek DNA remains?
+6. Full reference list with DOIs
+```
+
+---
+
+### 14.2. Шапсугский Феномен — Экстремальный Founder Effect
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a genetic analysis of the extreme founder effect in Shapsugs.
+Focus on publications from 2015-2025 and FTDNA data.
+Provide full citations with DOI links.
+
+TOPIC: Why do Shapsugs have up to 81% G2a? Extreme founder effect analysis
+
+CONTEXT:
+The Shapsugs are a Western Circassian subgroup with extraordinary genetic homogeneity:
+
+| Population | G2a Frequency | Other |
+|------------|---------------|-------|
+| Shapsugs | **81%** | Minimal diversity |
+| Western Circassians | 60-70% | Some diversity |
+| Kabardians | 40-50% | More diverse |
+| Abkhaz | 50-60% | Moderate |
+
+This level of homogeneity is UNUSUAL even for Circassians.
+
+QUESTIONS:
+1. **Which G2a Subclade?**
+   - Is it one specific terminal SNP?
+   - Or multiple G2a branches?
+   - G-P303 (YY1215) specifically?
+   - TMRCA of the dominant lineage?
+
+2. **Bottleneck Analysis:**
+   - When did the bottleneck occur?
+   - Was it 4.2ky event, Medieval period, or 19th century?
+   - Effective population size (Ne) estimates?
+
+3. **Geographic Isolation:**
+   - Did mountain valleys create genetic islands?
+   - Comparison between coastal Shapsugs and mountain Shapsugs?
+
+4. **ROH Analysis:**
+   - Runs of Homozygosity in Shapsugs?
+   - Comparison with other populations?
+   - Evidence of inbreeding?
+
+5. **Medical Implications:**
+   - Known founder mutations?
+   - Genetic disease prevalence?
+   - Recommendations for genetic screening?
+
+6. **STR Diversity:**
+   - YSTR diversity comparison with other Circassians?
+   - Evidence of recent expansion vs ancient bottleneck?
+
+KEY DATA TO GATHER:
+| Parameter | Expected Finding |
+|-----------|------------------|
+| Dominant SNP | G-P303 or subclade? |
+| TMRCA | ~2000-4000 years? |
+| ROH level | Higher than outbred populations |
+| Ne | Very low (founder effect) |
+
+SOURCES TO CHECK:
+- FTDNA Circassian projects
+- Balanovsky et al. studies
+- ROH analyses in Caucasus populations
+- Genetic disease studies in Adygea
+
+EXPECTED OUTPUT FORMAT:
+1. G2a subclade breakdown for Shapsugs
+2. TMRCA and bottleneck timing estimate
+3. ROH comparison with other populations
+4. Ne (effective population size) estimate
+5. Medical genetics implications
+6. Full reference list with DOIs
+```
+
+---
+
+### 14.3. Дагестанские Границы — Генетический Барьер NWC vs NEC
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comparative genetic analysis of the NWC-NEC boundary.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Genetic boundary between Northwest and Northeast Caucasian speakers
+
+CONTEXT:
+The Caucasus hosts two unrelated language families:
+- Northwest Caucasian (NWC): Circassians, Abkhaz, Ubykh
+- Northeast Caucasian (NEC): Chechens, Ingush, Avars, Dargins, Lezgins
+
+Do the linguistic families correspond to genetic boundaries?
+
+KNOWN Y-DNA PATTERNS:
+| Population | Dominant Y-DNA | J1 | J2 | G2a | R1a |
+|------------|----------------|----|----|-----|-----|
+| Circassians | **G2a** | 5% | 15% | 50% | 10% |
+| Abkhaz | **G2a** | 5% | 10% | 60% | 5% |
+| Chechens | **J1** + J2 | 30% | 25% | 5% | 5% |
+| Ingush | **J2** | 20% | 35% | 5% | 5% |
+| Avars | **J1** | 40%+ | 20% | <5% | 15% |
+
+QUESTIONS:
+1. **Genetic Distance:**
+   - Fst between Circassians and Chechens?
+   - Is it greater than between Circassians and Georgians?
+   - PCA visualization of the boundary?
+
+2. **Boundary Location:**
+   - Where exactly is the genetic boundary?
+   - Does it match the linguistic divide?
+   - Any transitional populations (Balkars?)
+
+3. **IBD Sharing:**
+   - Do NWC speakers share IBD segments with NEC speakers?
+   - Or is there no recent common ancestry?
+
+4. **J1 Distribution:**
+   - J1-Z1842 is "NEC signature"
+   - Its presence in Adyghe (5%) = ancient substrate or recent admixture?
+   - Direction of gene flow?
+
+5. **G2a Boundary:**
+   - Does G2a "stop" at the NWC/NEC border?
+   - Any G2a in Dagestan?
+   - Chechens have ~5% G2a — which subclades?
+
+6. **Origins:**
+   - Were NWC and NEC speakers always separate?
+   - Or did they differentiate from common Caucasus population?
+   - When did the genetic divide form?
+
+COMPARATIVE TABLE TO FILL:
+| Metric | NWC (Circassians) | NEC (Chechens) |
+|--------|-------------------|-----------------|
+| Dominant Y-DNA | G2a (~50%) | J1+J2 (~55%) |
+| CHG proportion | ~60-70% | ~?% |
+| Steppe | ~15-20% | ~?% |
+| Fst distance | - | ? |
+
+SOURCES TO CHECK:
+- Balanovsky on Caucasus Y-DNA
+- Yunusbayev et al. (2012)
+- Kushniarevich et al. on genetic structure
+- Lazaridis et al. (2022) on Southern Arc
+
+EXPECTED OUTPUT FORMAT:
+1. Y-DNA frequency comparison table
+2. Autosomal component comparison
+3. Fst/genetic distance matrix
+4. PCA visualization description
+5. IBD analysis if available
+6. Historical scenario: when did divide form?
+7. Full reference list with DOIs
+```
+
+---
+
 ### 12.1. Абхазы vs Адыги — Генетические Различия Родственных Народов
 
 > Скопируй весь блок ниже:
