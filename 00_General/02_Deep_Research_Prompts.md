@@ -1709,6 +1709,105 @@ of Circassian diaspora worldwide.
 
 ---
 
+## 🔬 Фаза 8: Детализация Субкладов
+
+### Приоритетная Матрица (Фаза 8)
+
+| # | Тема | Приоритет | Статус |
+|---|------|-----------|--------|
+| 18.1 | J-PH1795 и подветви | 🔴 Высокий | 🆕 Новый |
+
+---
+
+### 18.1. J-PH1795 — Детальный Анализ Кавказских Ветвей
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive analysis of haplogroup J-PH1795 and its downstream subclades 
+where Adygo-Abkhaz samples are present.
+Focus on YFull tree data, published studies, and FTDNA projects.
+Provide full citations with DOI links where available.
+
+TOPIC: Detailed phylogenetic and demographic analysis of J-PH1795 with focus on Caucasus samples
+
+CONTEXT FROM YFULL TREE:
+J-PH1795 is a branch of J2a2a (J-L581):
+- **Parent haplogroup:** J-Y164552
+- **Defining SNPs:** BY128998, PH3085, PH1984 +75 SNPs
+- **TMRCA (Formation):** ~7600 ybp
+- **TMRCA (Diversification):** ~2000 ybp
+
+IDENTIFIED CIRCASSIAN/ABKHAZ SAMPLES ON YFULL:
+| Sample ID | Location | Ethnicity | Subclade |
+|-----------|----------|-----------|----------|
+| YF078875 | GEO [GE-AB] | Abkhaz (abk) | J-FT147742 |
+| YF143372 | RUS [RU-KB] | Adyghe (ady) | J-BY114993 |
+| YF081111 | RUS [RU-KB] | Unknown | J-BY114993 |
+| YF072143 | RUS [RU-KB] | Karachay (krc) | J-BY114993 |
+| YF070826 | RUS [RU-KB] | Kabardian (kbd) | J-PH2466 |
+
+KEY SUBCLADES TO ANALYZE:
+1. **J-FT147742** (formed 1550 ybp, TMRCA 1450 ybp)
+   - Includes: Abkhaz (YF078875), Oman, China, Kazakhstan
+   - Question: Connection between Abkhaz and Omani samples?
+
+2. **J-BY114993** (formed 1950 ybp, TMRCA 1950 ybp)
+   - Ancient samples: RISE602 (RU-AL, ancient)
+   - Modern: Multiple RU-KB (Kabardino-Balkaria), China
+   - Contains Adyghe and Karachay samples
+   - Key question: Is RISE602 linked to proto-Circassians?
+
+3. **J-PH2466** (formed 1950 ybp, TMRCA 1550 ybp)
+   - Includes: China (Shaanxi), Kabardian (YF070826), Uyghur (HGDP)
+   - Silk Road connection?
+
+QUESTIONS:
+1. **Phylogenetic Structure:**
+   - What is the relationship between J-FT147742, J-BY114993, J-PH2466?
+   - Which subclade is most specifically Caucasian?
+   - Are there "purely Caucasian" downstream SNPs?
+
+2. **Ancient DNA:**
+   - RISE602 and RISE504 appear in this branch - what cultures?
+   - Any Bronze Age Caucasus samples?
+   - Connection to Koban/Maykop?
+
+3. **Distribution Pattern:**
+   - Why are Caucasus samples mixed with China/Oman?
+   - Ancient trade routes (Silk Road)?
+   - Or parallel lineages from a common Central Asian ancestor?
+
+4. **TMRCA Analysis:**
+   - J-BY114993 TMRCA ~1950 ybp = ~0 CE / start of Common Era
+   - Historical event correlations?
+   - Roman-Parthian trade? Sarmatian expansion?
+
+5. **Comparison with Other J2 on Caucasus:**
+   - How does J-PH1795 compare to J-M67, J-SK1313?
+   - Is J-PH1795 "autochthonous" or "intrusive"?
+   - Frequency estimates in Adyghe/Abkhaz populations?
+
+SOURCES TO CHECK:
+- YFull tree: https://www.yfull.com/tree/J-PH1795/
+- FTDNA J2 Project haplogroup pages
+- Reich Lab aDNA (RISE samples)
+- Wang et al. (2019) Caucasus Bronze Age
+- Lazaridis et al. Southern Arc
+
+EXPECTED OUTPUT FORMAT:
+1. Complete phylogenetic tree from J-PH1795 to terminal Caucasian subclades
+2. TMRCA table for all relevant branches
+3. Distribution map description (Caucasus + non-Caucasus)
+4. Ancient DNA context (RISE602, RISE504)
+5. Historical scenario: When and how did J-PH1795 reach the Caucasus?
+6. Comparison with other J2 subclades on the Caucasus
+7. Frequency estimates if available
+8. Full reference list with DOIs
+```
+
+---
+
 ### 17.1. Меотская Древняя ДНК — Синды, Керкеты, Тореаты
 
 > Скопируй весь блок ниже:

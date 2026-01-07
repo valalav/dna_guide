@@ -412,8 +412,13 @@ def find_related_docs(target_id, lineage):
     
     # We explicitly look into 10_Haplogroups
     # Walk directory
+    excluded_docs = ["00_R_Overview.md"]
+    
     for root, dirs, files in os.walk(DOCS_DIR):
         for file in files:
+            if file in excluded_docs:
+                continue
+                
             if file.endswith(".md"):
                 # Check if filename contains any of the search terms strings strictly
                 for term, regex in term_regexes:

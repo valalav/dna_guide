@@ -13,7 +13,6 @@
 ## Справочная информация
 
 ### Y-ДНК (Ветки)
-- [00_R_Overview.md](10_Haplogroups\R\00_R_Overview.md) (Relates to R)
 - [01_R1b.md](10_Haplogroups\R\01_R1b.md) (Relates to R1b)
 - [03_R1b_L584.md](10_Haplogroups\R\03_R1b_L584.md) (Relates to R1b)
 
