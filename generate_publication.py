@@ -424,27 +424,17 @@ def find_related_docs(target_id, lineage):
     
     return related_files
     
-def generate_markdown(record, lineage_path, branch_node, related_docs):
-    """Generate markdown content."""
-    # Priority: Фамилия -> Name -> Kit Number -> Unknown
-    surname = record.get('Фамилия') or record.get('Name')
-    if not surname or surname.strip() == '':
-        surname = record.get('Kit Number') or 'Unknown'
-        
-    subethnos = record.get('Субэтнос', 'Unknown')
-    location = record.get('Населенный пункт') or record.get('Lacation') or 'Unknown'
-        
-    history = record.get('История', '')
+def generate_branch_report(branch_name, records, lineage_path, branch_node, related_docs, neighbor_context="", ancestor_note=""):
+    """Generate consolidated markdown content for the branch."""
     
     # Metadata from JSON
     tmrca = branch_node.get('tmrca', 'Unknown')
-    
-    formatted_lineage = " >> ".join(lineage_path)
+    formatted_lineage = " > ".join(lineage_path)
     
     # Docs section
     docs_section = "## Справочная информация\n\n"
     
-    # 1. Dynamic Haplogroup Refs (First, as requested)
+    # 1. Dynamic Haplogroup Refs
     if related_docs:
         docs_section += "### Y-ДНК (Ветки)\n"
         seen_paths = set()
@@ -454,27 +444,145 @@ def generate_markdown(record, lineage_path, branch_node, related_docs):
                 seen_paths.add(path)
         docs_section += "\n"
                 
-    # 2. Standard Project Refs (Separate sections)
+    # 2. Standard Project Refs
     docs_section += "### Аутосомный портрет\n"
     docs_section += "- [01_Autosomal_Guide.md](05_Autosomal\\01_Autosomal_Guide.md) (Справочник по аутосомам)\n\n"
     
     docs_section += "### Митохондриальная ДНК\n"
-    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n"
+    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n\n"
     
-    template = f"""# {surname}
+    docs_section += "### Древняя ДНК\n"
+    docs_section += "- [03_Ancient_DNA_Table.md](00_General\\03_Ancient_DNA_Table.md) (Таблица древних образцов)\n"
+    
+    # History - Consolidate unique histories
+    unique_histories = []
+    seen_hist = set()
+    for rec in records:
+        h = rec.get('История', '').strip()
+        if h and h not in seen_hist:
+            unique_histories.append(h)
+            seen_hist.add(h)
+    
+    history_section = ""
+    if unique_histories:
+        history_section = "## История\n" + "\n\n".join(unique_histories) + "\n"
 
-**Фамилия:** {record.get('Фамилия') or 'Not specified'}
-**Kit Number:** {record.get('Kit Number') or 'Unknown'}
-**Субэтнос:** {subethnos}
-**Населенный пункт:** {location}
+    # Samples Table
+    samples_section = ""
+    if records:
+        samples_section = "## Список представителей\n\n"
+        samples_section += "| Фамилия | Имя | Kit | Субэтнос | Населенный пункт |\n"
+        samples_section += "|---|---|---|---|---|\n"
+        
+        for rec in records:
+            surname = rec.get('Фамилия') or ''
+            name = rec.get('Name') or ''
+            kit = rec.get('Kit Number') or ''
+            subethnos = rec.get('Субэтнос') or ''
+            loc = rec.get('Населенный пункт') or rec.get('Lacation') or ''
+            
+            # Clean pipes for Markdown table safety
+            safe_cols = [c.replace('|', '/') for c in [surname, name, kit, subethnos, loc]]
+            samples_section += f"| {safe_cols[0]} | {safe_cols[1]} | {safe_cols[2]} | {safe_cols[3]} | {safe_cols[4]} |\n"
+    else:
+        samples_section = "## Образцы\nВ текущей базе данных образцов для этой ветки не найдено.\n\n"
 
-**Гаплогруппа:** {formatted_lineage}
+    # External Links (Move above samples)
+    links_section = f"""## Внешние ссылки
+- [YFull Tree](https://www.yfull.com/tree/{branch_node.get('id', '')}/)
+- [Проект AADNA](https://aadna.ru/)"""
+
+    # User explicitly requests these fields to be present at the top, even if empty/template
+    # "Фамилия:", "Kit Number:", "Субэтнос:", "Населенный пункт:"
+    
+    template = f"""{ancestor_note}# Гаплогруппа {branch_name}
+
+**Фамилия:** 
+**Kit Number:** 
+**Субэтнос:** 
+**Населенный пункт:** 
+
 **Возраст ветки (TMRCA):** {tmrca} лет
+**Путь:** {formatted_lineage}
 
-## История
-{history}
+{history_section}
 
 {docs_section}
+
+{neighbor_context}
+
+{links_section}
+
+{samples_section}
+"""
+    return template
+    
+    # 1. Dynamic Haplogroup Refs
+    if related_docs:
+        docs_section += "### Y-ДНК (Ветки)\n"
+        seen_paths = set()
+        for term, path in related_docs:
+            if path not in seen_paths:
+                docs_section += f"- [{os.path.basename(path)}]({path}) (Relates to {term})\n"
+                seen_paths.add(path)
+        docs_section += "\n"
+                
+    # 2. Standard Project Refs
+    docs_section += "### Аутосомный портрет\n"
+    docs_section += "- [01_Autosomal_Guide.md](05_Autosomal\\01_Autosomal_Guide.md) (Справочник по аутосомам)\n\n"
+    
+    docs_section += "### Митохондриальная ДНК\n"
+    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n\n"
+    
+    docs_section += "### Древняя ДНК\n"
+    docs_section += "- [03_Ancient_DNA_Table.md](00_General\\03_Ancient_DNA_Table.md) (Таблица древних образцов)\n"
+    
+    # History - Consolidate unique histories
+    unique_histories = []
+    seen_hist = set()
+    for rec in records:
+        h = rec.get('История', '').strip()
+        if h and h not in seen_hist:
+            unique_histories.append(h)
+            seen_hist.add(h)
+    
+    history_section = ""
+    if unique_histories:
+        history_section = "## История\n" + "\n\n".join(unique_histories) + "\n"
+
+    # Samples Table
+    samples_section = ""
+    if records:
+        samples_section = "## Список представителей\n\n"
+        samples_section += "| Фамилия | Имя | Kit | Субэтнос | Населенный пункт |\n"
+        samples_section += "|---|---|---|---|---|\n"
+        
+        for rec in records:
+            surname = rec.get('Фамилия') or ''
+            name = rec.get('Name') or ''
+            kit = rec.get('Kit Number') or ''
+            subethnos = rec.get('Субэтнос') or ''
+            loc = rec.get('Населенный пункт') or rec.get('Lacation') or ''
+            
+            # Clean pipes for Markdown table safety
+            safe_cols = [c.replace('|', '/') for c in [surname, name, kit, subethnos, loc]]
+            samples_section += f"| {safe_cols[0]} | {safe_cols[1]} | {safe_cols[2]} | {safe_cols[3]} | {safe_cols[4]} |\n"
+    else:
+        samples_section = "## Образцы\nВ текущей базе данных образцов для этой ветки не найдено.\n\n"
+
+
+    template = f"""{ancestor_note}# Гаплогруппа {branch_name}
+
+**Возраст ветки (TMRCA):** {tmrca} лет
+**Путь:** {formatted_lineage}
+
+{history_section}
+
+{docs_section}
+
+{samples_section}
+
+{neighbor_context}
 
 ## Внешние ссылки
 - [YFull Tree](https://www.yfull.com/tree/{branch_node.get('id', '')}/)
@@ -482,11 +590,7 @@ def generate_markdown(record, lineage_path, branch_node, related_docs):
 """
     return template
 
-def main():
-    parser = argparse.ArgumentParser(description='Generate publication from DNA data.')
-    parser.add_argument('--branch', required=True, help='Target haplogroup branch (e.g., R-FT409028)')
-    parser.add_argument('--output', help='Output file path')
-    
+
 def main():
     parser = argparse.ArgumentParser(description='Generate publication from DNA data.')
     parser.add_argument('--branch', required=True, help='Target haplogroup branch (e.g., R-FT409028)')
@@ -545,10 +649,16 @@ def main():
              neighbor_context += f"В смежных ветвях (под {parent_id}) найдены следующие образцы:\n\n"
              for m in found_neighbors:
                  # Just a summary line
-                 s_name = m.get('Фамилия') or m.get('Name') or m.get('Kit Number')
-                 s_branch = m.get('_BranchContext')
-                 s_subethnos = m.get('Субэтнос', 'Unknown')
-                 neighbor_context += f"- **{s_branch}**: {s_name} ({s_subethnos})\n"
+                 s_name = m.get('Фамилия') or m.get('Name') or m.get('Kit Number') or ''
+                 s_branch = m.get('_BranchContext') or ''
+                 s_subethnos = m.get('Субэтнос') or ''
+                 
+                 # Format: - Branch: Name (Subethnos)
+                 # Avoid empty parens
+                 line = f"- **{s_branch}**: {s_name}"
+                 if s_subethnos:
+                     line += f" ({s_subethnos})"
+                 neighbor_context += line + "\n"
 
     # Fallback to ancestors if no direct matches
     if not matches:
@@ -585,60 +695,47 @@ def main():
     
     # 5. Generate Content
     full_content = ""
+    ancestor_note = ""
     if matches:
         # Add a note if using ancestor data
         if match_source_branch != branch:
-            full_content += f"> [!NOTE]\n> Прямых образцов для **{branch}** не найдено. Показаны образцы для ближайшей ветви **{match_source_branch}**.\n\n"
-            
-        for record in matches:
-            full_content += generate_markdown(record, lineage, node, related_docs)
-            full_content += "\n---\n\n"
+             ancestor_note = f"> [!NOTE]\n> Прямых образцов для **{branch}** не найдено. Показаны образцы для ближайшей ветви **{match_source_branch}**.\n\n"
         
-        if neighbor_context:
-            full_content += f"{neighbor_context}\n"
+        full_content = generate_branch_report(
+            branch_name=branch, 
+            records=matches, 
+            lineage_path=lineage, 
+            branch_node=node,
+            related_docs=related_docs,
+            neighbor_context=neighbor_context,
+            ancestor_note=ancestor_note
+        )
             
     else:
         print("No matching records found policy. Generating summary publication.")
-        # Minimal template for branch with no samples
-        docs_section = ""
-        if related_docs:
-            docs_section = "## Справочная информация\n"
-            seen_paths = set()
-            for term, path in related_docs:
-                if path not in seen_paths:
-                    docs_section += f"- [{os.path.basename(path)}]({path}) (Relates to {term})\n"
-                    seen_paths.add(path)
-        
-        full_content = f"""# Haplogroup {branch}
-
-**Гаплогруппа:** {" >> ".join(lineage)}
-**Возраст ветки (TMRCA):** {node.get('tmrca', 'Unknown')} лет
-
-## Образцы
-В текущей базе данных образцов для этой ветки не найдено.
-
-{neighbor_context}
-
-{docs_section}
-
-## Внешние ссылки
-- [YFull Tree](https://www.yfull.com/tree/{node.get('id', '')}/)
-- [Проект AADNA](https://aadna.ru/)
-"""
+        full_content = generate_branch_report(
+            branch_name=branch, 
+            records=[], 
+            lineage_path=lineage, 
+            branch_node=node,
+            related_docs=related_docs,
+            neighbor_context=neighbor_context
+        )
 
     output_file = args.output if args.output else f"publication_{branch}.md"
+    write_path = os.path.abspath(output_file)
+    print(f"Writing to: {write_path}")
     
-    abs_path = os.path.abspath(output_file)
-    print(f"Writing to: {abs_path}")
-    
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(full_content)
-        
-    print(f"Successfully generated {output_file}")
-    if os.path.exists(output_file):
-        print("File verification: Exists.")
-    else:
-        print("File verification: DOES NOT EXIST.")
+    try:
+        with open(write_path, "w", encoding='utf-8') as f:
+            f.write(full_content)
+        print(f"Successfully generated {os.path.basename(output_file)}")
+        if os.path.exists(write_path):
+            print("File verification: Exists.")
+        else:
+            print("File verification: FAILED (path not found after write)")
+    except Exception as e:
+        print(f"Error writing output file: {e}")
 
 if __name__ == "__main__":
     main()
