@@ -106,6 +106,7 @@ CRITERIA: Only peer-reviewed or preprint with lab confirmation
 
 | Тема | Вопрос | Почему важно |
 |------|--------|--------------|
+| **R-FT409028 / L584** | Кабардинец + Армянин + Турок в одной ветви? | Редкая линия у адыгов |
 | J2a/G2a shift | Когда J2a уступила G2a в NW Caucasus? | Демографическая история |
 | Koban → Ossetian | Больше образцов G2a1a? | Преемственность |
 | Hattic hypothesis | Новые лингвистические данные? | J2a-M67 связь |
@@ -543,6 +544,7 @@ Provide confidence level for each finding.
 | **10.1 Y513104 Komi** | 🆕 Новый вопрос |
 | **10.2 AU78077 Авары** | 🆕 Новый вопрос |
 | **10.3 J2a/G2a парадокс** | 🆕 Новый вопрос |
+| **10.4 R-FT409028 / L584** | 🆕 Новый вопрос |
 
 ---
 
@@ -679,6 +681,65 @@ FORMAT:
 - Chronological table of Y-haplogroups 4000 BCE → present
 - PCA plot showing continuity vs replacement
 - Map of J2a vs G2a distribution over time
+```
+
+### 10.4. R-FT409028 / L584 — Кабардинец в Редкой Ветви (ДЕТАЛЬНО)
+
+```
+CONTEXT:
+R-L584 is a subclade of R1b-Z2103 (Yamnaya). It is found in the Caucasus but 
+is NOT the dominant R1b line among Circassians (that would be Z2103 > CTS9219).
+
+The specific branch R-FT409028 shows an unusual geographic pattern on YFull:
+- Path: R-M269 > L23 > Z2103 > M12149 > Y13369 > L584 > FT145519 > FTA62508 > 
+        Y18781 > PH4150 > PH2731 > Y182162 > F1114 > Y166565 > BY135679 > 
+        BY35053 > Y183887 > Y225017 > FT405338 > **FT409028**
+
+YFull data for R-FT409028:
+- Formed: 1950 ybp (~75 CE)
+- TMRCA: 1900 ybp (~125 CE)
+- Samples:
+  1. id:YF143329 - RUS [RU-KB] - **Kabardian** (Кабардинец)
+  2. id:YF084347 - ARM - **Armenian**
+  3. id:SRS8752855 - TUR - **Turkish**
+
+QUESTIONS:
+1. What is the origin of R-L584 on the Caucasus?
+   - Is it Yamnaya/Catacomb continuation?
+   - Or later medieval migration?
+
+2. The TMRCA of ~125 CE suggests Roman era coalescence:
+   - What historical events could unite Kabardian, Armenian, Turkish ancestors?
+   - Pontus? Roman frontier? Silk Road trade?
+
+3. Why is L584 rare among Circassians while Z2103 > CTS9219 is more common?
+   - Different migration waves?
+   - Social stratification?
+
+4. Are there ancient DNA samples with R-L584 from:
+   - Catacomb culture?
+   - Koban culture?
+   - Alan/Saltovo-Mayaki period?
+
+5. What is the frequency of L584 vs other Z2103 subclades in:
+   - Kabardians
+   - Balkars
+   - Ossetians
+   - Armenians
+   - Eastern Anatolia Turks
+
+SOURCES:
+- YFull tree: https://www.yfull.com/tree/R-FT409028/
+- YFull tree: https://www.yfull.com/tree/R-L584/
+- FTDNA R-Z2103 project
+- Armenian DNA Project
+- aadna.ru CSV data for R1b
+
+FORMAT:
+- Phylogenetic tree showing L584 position within Z2103
+- Table of all L584 samples with geographic origin
+- Timeline: When did L584 arrive in Caucasus?
+- Map showing Roman-era trade routes connecting Armenia-Pontus-Caucasus
 ```
 
 ---
