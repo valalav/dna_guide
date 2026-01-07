@@ -143,23 +143,21 @@ def parse_sheet_data(csv_text, target_id, descendants):
     Robustly handles newlines in fields.
     """
     matches = []
-    valid_haplogroups = {target_id} | descendants
     
-    # Pre-process lines to handle potential issues
-    # Google Sheets TSV sometimes puts newlines in cells without quotes? Or maybe typical CSV issues.
-    # We will try standard parsing first, if that fails, maybe we can try to recover.
-    # But usually DictReader is fine if the format is correct. 
-    # If "new-line character seen in unquoted field" occurs, it means there's a \n inside a column that isn't quoted.
+    # Normalize valid haplogroups (original, and stripped prefixes)
+    # E.g. "R-FT409028" -> "FT409028"
+    valid_ids = set()
+    for vid in ({target_id} | descendants):
+        valid_ids.add(vid)
+        if '-' in vid:
+            valid_ids.add(vid.split('-')[-1])
+            
+    # print(f"DEBUG: Valid IDs for matching: {len(valid_ids)}") # Too verbose if big tree
+    
+    # ... (rest of parsing logic, utilizing valid_ids checks)
+    # Re-implementing the matching loop part slightly to use valid_ids
     
     try:
-        # csv.reader might be strict. Let's try manual split if csv fails, 
-        # or just set strict=False if checking? No, strict param doesn't help with structure.
-        # We'll stick to standard first, but with a potential pre-cleaning if needed.
-        # Actually, for TSV, we can just split by tab if we assume no tabs in fields. 
-        # But fields *can* have tabs if quoted. 
-        # Let's try `csv.DictReader` with `quoting=csv.QUOTE_MINIMAL` (default) but maybe `QUOTE_NONE` is better if no quotes used?
-        # Google Sheets TSV usually doesn't quote unless needed.
-        
         f = io.StringIO(csv_text)
         reader = csv.DictReader(f, delimiter='\t')
         
@@ -175,14 +173,23 @@ def parse_sheet_data(csv_text, target_id, descendants):
             
             is_match = False
             
+            # Helper to check match
+            def check_val(val):
+                if not val: return False
+                v = val.strip()
+                if v in valid_ids: return True
+                # Maybe check if v endswith any valid suffix?
+                # Risk of false positives (e.g. '28' matches 'FT28'). strict equality against set is better.
+                return False
+
             # Exact terminal match
-            if terminal in valid_haplogroups:
+            if check_val(terminal):
                 is_match = True
             
             # Hierarchy match
             if not is_match:
                 for col in h_cols:
-                    if col and col.strip() == target_id:
+                    if check_val(col):
                         is_match = True
                         break
             
@@ -190,43 +197,39 @@ def parse_sheet_data(csv_text, target_id, descendants):
                 matches.append(row)
                 
     except csv.Error as e:
+        # ... (Same fallback logic potentially needed, but standard DictReader is mostly fine now)
+        # Implementing the fallback logic again briefly inside this function replacement?
+        # The tool requires replacing the whole block if I change the function start.
+        # I'll just keep the structure for csv.Error same as before but update matching logic inside fallback too.
+        
         print(f"Standard CSV Parsing Error: {e}")
         print("Attempting fallback parsing (line-by-line split)...")
-        # Fallback: simpler split by tab. 
-        # Warning: This breaks if fields contain tabs.
         
         lines = csv_text.splitlines()
         if not lines:
             return []
             
         header = lines[0].split('\t')
-        # Map headers to indices
         try:
             idx_hap = header.index('Haplogroup')
-            # Try to find loose matches for hierarchy columns
             idx_gg = [i for i, h in enumerate(header) if h.startswith('Гг')]
         except ValueError:
-            print("Headers missing in fallback mode.")
             return []
             
         for line in lines[1:]:
             parts = line.split('\t')
-            if len(parts) != len(header):
-                # Length mismatch - skip or try to salvage? 
-                # often mismatch is due to newlines. Skipping for now to avoid garbage.
-                continue
+            if len(parts) != len(header): continue
                 
             row_dict = dict(zip(header, parts))
             
-            # Re-run match logic
             terminal = row_dict.get('Haplogroup', '').strip()
             is_match = False
-            if terminal in valid_haplogroups:
+            if check_val(terminal):
                 is_match = True
             
             if not is_match:
                 for idx in idx_gg:
-                    if idx < len(parts) and parts[idx].strip() == target_id:
+                    if idx < len(parts) and check_val(parts[idx]):
                         is_match = True
                         break
             
@@ -258,22 +261,22 @@ def find_related_docs(target_id, lineage):
                         break # Found a match for this file
     
     return related_files
-
+    
 def generate_markdown(record, lineage_path, branch_node, related_docs):
     """Generate markdown content."""
-    surname = record.get('Фамилия', 'Unknown')
+    # Priority: Фамилия -> Name -> Kit Number -> Unknown
+    surname = record.get('Фамилия') or record.get('Name')
+    if not surname or surname.strip() == '':
+        surname = record.get('Kit Number') or 'Unknown'
+        
     subethnos = record.get('Субэтнос', 'Unknown')
-    location = record.get('Населенный пункт', 'Unknown')
-    if location == 'Unknown': 
-        location = record.get('Lacation', 'Unknown') # Handle typo
+    location = record.get('Населенный пункт') or record.get('Lacation') or 'Unknown'
         
     history = record.get('История', '')
     
     # Metadata from JSON
     tmrca = branch_node.get('tmrca', 'Unknown')
     
-    # Format lineage: A -> ... -> Target
-    # lineage_path is a list of IDs.
     formatted_lineage = " >> ".join(lineage_path)
     
     # Docs section
@@ -283,14 +286,14 @@ def generate_markdown(record, lineage_path, branch_node, related_docs):
         seen_paths = set()
         for term, path in related_docs:
             if path not in seen_paths:
-                # Relative link logic or just listing it
-                # Assuming simple list for now
                 docs_section += f"- [{os.path.basename(path)}]({path}) (Relates to {term})\n"
                 seen_paths.add(path)
     
     template = f"""# {surname}
 
-**Фамилия:** {surname}
+**Фамилия:** {record.get('Фамилия') or 'Not specified'}
+**Имя:** {record.get('Name') or 'Not specified'}
+**Kit Number:** {record.get('Kit Number') or 'Unknown'}
 **Субэтнос:** {subethnos}
 **Населенный пункт:** {location}
 
@@ -384,10 +387,6 @@ def main():
             full_content += f"> [!NOTE]\n> Прямых образцов для **{branch}** не найдено. Показаны образцы для ближайшей ветви **{match_source_branch}**.\n\n"
             
         for record in matches:
-            # DEBUG
-            print(f"DEBUG RECORD KEYS: {list(record.keys())}")
-            print(f"DEBUG RECORD VALUES: {list(record.values())}")
-            
             full_content += generate_markdown(record, lineage, node, related_docs)
             full_content += "\n---\n\n"
     else:
