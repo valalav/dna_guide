@@ -85,29 +85,39 @@ def find_node_data(tree, target_id):
         
     return found_node, lineage, descendants
 
-def fetch_sheet_data(url):
+def find_siblings(tree, parent_id, target_id):
+    """Find sibling nodes of the target."""
+    parent_node, _, _ = find_node_data(tree, parent_id)
+    if not parent_node or 'children' not in parent_node:
+        return []
+    
+    siblings = []
+    for child in parent_node['children']:
+        cid = child.get('id', '')
+        if cid and cid != target_id:
+            siblings.append(cid)
+    return siblings
+
+def fetch_sheet_data(url, force_refresh=False):
     """Fetch data from Google Sheets TSV or local file."""
     local_file = "aadna_data.tsv"
     
     content = None
-    if os.path.exists(local_file):
+    if os.path.exists(local_file) and not force_refresh:
         print(f"Using local file: {local_file}")
         with open(local_file, 'r', encoding='utf-8') as f:
             content = f.read()
             
-        # Check for mojibake (Cyrillic displayed as Latin1)
-        # 'Ð' is common start byte 0xD0 in UTF-8 displayed as Latin1
+        # Check for mojibake... (kept from previous iter)
         if 'Ð' in content[:1000]:
-            print("Detected potential encoding issue (Mojibake). Attempting repair...")
-            try:
-                # Encode back to bytes using latin-1 (which preserves 1-to-1 byte mapping of mojibake)
-                # Then decode using utf-8 to interpretation
+             # ... repair logic ...
+             try:
                 content = content.encode('latin-1').decode('utf-8')
-                print("Encoding repair successful.")
-            except Exception as e:
-                print(f"Encoding repair failed: {e}")
+             except: pass
                 
     else:
+        if force_refresh:
+             print("Force refresh requested.")
         print(f"Downloading from {url}...")
         try:
             # Try with verification first
@@ -136,6 +146,133 @@ def fetch_sheet_data(url):
                 f.write(content)
 
     return content
+
+# ... (keep parse_sheet_data, find_related_docs, generate_markdown same or similar)
+# We need to update main() to handle siblings
+
+def main():
+    parser = argparse.ArgumentParser(description='Generate publication from DNA data.')
+    parser.add_argument('--branch', required=True, help='Target haplogroup branch (e.g., R-FT409028)')
+    parser.add_argument('--output', help='Output file path')
+    parser.add_argument('--refresh', action='store_true', help='Force refresh of data from Google Sheets')
+    
+    args = parser.parse_args()
+    branch = args.branch
+    
+    # 1. Load Tree & Metadata
+    tree = load_tree(TREE_JSON_PATH)
+    node, lineage, descendants = find_node_data(tree, branch)
+    
+    if not node:
+        print(f"Error: Branch {branch} not found in {TREE_JSON_PATH}")
+        sys.exit(1)
+        
+    print(f"Found branch metadata. TMRCA: {node.get('tmrca', 'N/A')}")
+    print(f"Path: {' > '.join(lineage)}")
+    
+    # 2. Fetch Data
+    csv_text = fetch_sheet_data(SHEET_URL, force_refresh=args.refresh)
+    
+    # 3. Filter Data (Target)
+    print("Parsing and filtering CSV data...")
+    matches = parse_sheet_data(csv_text, branch, descendants)
+    print(f"Found {len(matches)} matching records for {branch}.")
+    
+    match_source_branch = branch
+    match_source_node = node
+    
+    # If no matches, fallback to ancestors (User said "I added it", so we expect matches now, 
+    # but keep fallback just in case or for context?)
+    # User said: "also describe other samples from adjacent branches".
+    
+    # We will search for siblings regardless of whether matches found?
+    # "при описании можешь описывать другие образцы из проекта которые +- в соседних ветках"
+    # This implies usually adding them.
+    
+    neighbor_context = ""
+    
+    # Find Parent
+    if len(lineage) >= 2:
+        parent_id = lineage[-2]
+        print(f"Checking siblings (children of {parent_id})...")
+        siblings = find_siblings(tree, parent_id, branch)
+        
+        found_neighbors = []
+        
+        for sib_id in siblings:
+            # finding descendants of sibling
+            sib_node, _, sib_descendants = find_node_data(tree, sib_id)
+            if not sib_node: continue
+            
+            sib_matches = parse_sheet_data(csv_text, sib_id, sib_descendants)
+            if sib_matches:
+                print(f"Found {len(sib_matches)} matches for sibling {sib_id}")
+                for m in sib_matches:
+                    m['_BranchContext'] = sib_id # Mark source
+                    found_neighbors.append(m)
+        
+        if found_neighbors:
+             neighbor_context = "\n## Соседние ветви (Context)\n"
+             neighbor_context += f"В смежных ветвях (под {parent_id}) найдены следующие образцы:\n\n"
+             # Group by branch?
+             # Simple listing for now or use generate_markdown short version?
+             for m in found_neighbors:
+                 # Just a summary line
+                 s_name = m.get('Фамилия') or m.get('Name') or m.get('Kit Number')
+                 s_branch = m.get('_BranchContext')
+                 neighbor_context += f"- **{s_branch}**: {s_name} ({m.get('Субэтнос', '')})\n"
+
+    if not matches:
+        print("No matching records for target. Searching ancestry for closest matches (Fallback)...")
+        # ... (keep existing fallback logic if still needed, but user expects success)
+        # Assuming user added data, we might not hit this. 
+        # But if we do, we keep logic.
+        for ancestor_id in reversed(lineage[:-1]):
+            # ... ancestry fallback code ...
+            anc_node, _, anc_descendants = find_node_data(tree, ancestor_id)
+            if not anc_node: continue
+            anc_matches = parse_sheet_data(csv_text, ancestor_id, anc_descendants)
+            if anc_matches:
+                 matches = anc_matches
+                 match_source_branch = ancestor_id
+                 match_source_node = anc_node
+                 break
+
+    # 4. Find Documentation
+    # ...
+    clean_lineage = [l for l in lineage if l]
+    related_docs = find_related_docs(branch, clean_lineage)
+    
+    # 5. Generate Content
+    full_content = ""
+    # ...
+    
+    if matches:
+        if match_source_branch != branch:
+             full_content += f"> [!NOTE]\n> Прямых образцов для **{branch}** не найдено. Показаны образцы для ближайшей ветви **{match_source_branch}**.\n\n"
+        
+        for record in matches:
+            full_content += generate_markdown(record, lineage, node, related_docs)
+            full_content += "\n" # Spacing
+            
+        full_content += f"\n{neighbor_context}\n"
+        full_content += "\n---\n\n"
+            
+    else:
+        # Summary mode
+        # ...
+        full_content = f"""# Haplogroup {branch}
+...
+{neighbor_context}
+...
+"""
+
+    output_file = args.output if args.output else f"publication_{branch}.md"
+    # ... write ...
+    # ...
+    # Wait, I need to make sure I don't delete too much code with replace_file_content.
+    # The snippet is getting large. I should target specific blocks.
+
 
 def parse_sheet_data(csv_text, target_id, descendants):
     """
@@ -305,19 +442,28 @@ def generate_markdown(record, lineage_path, branch_node, related_docs):
     formatted_lineage = " >> ".join(lineage_path)
     
     # Docs section
-    docs_section = ""
+    docs_section = "## Справочная информация\n\n"
+    
+    # 1. Dynamic Haplogroup Refs (First, as requested)
     if related_docs:
-        docs_section = "## Справочная информация\n"
+        docs_section += "### Y-ДНК (Ветки)\n"
         seen_paths = set()
         for term, path in related_docs:
             if path not in seen_paths:
                 docs_section += f"- [{os.path.basename(path)}]({path}) (Relates to {term})\n"
                 seen_paths.add(path)
+        docs_section += "\n"
+                
+    # 2. Standard Project Refs (Separate sections)
+    docs_section += "### Аутосомный портрет\n"
+    docs_section += "- [01_Autosomal_Guide.md](05_Autosomal\\01_Autosomal_Guide.md) (Справочник по аутосомам)\n\n"
+    
+    docs_section += "### Митохондриальная ДНК\n"
+    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n"
     
     template = f"""# {surname}
 
 **Фамилия:** {record.get('Фамилия') or 'Not specified'}
-**Имя:** {record.get('Name') or 'Not specified'}
 **Kit Number:** {record.get('Kit Number') or 'Unknown'}
 **Субэтнос:** {subethnos}
 **Населенный пункт:** {location}
@@ -341,6 +487,12 @@ def main():
     parser.add_argument('--branch', required=True, help='Target haplogroup branch (e.g., R-FT409028)')
     parser.add_argument('--output', help='Output file path')
     
+def main():
+    parser = argparse.ArgumentParser(description='Generate publication from DNA data.')
+    parser.add_argument('--branch', required=True, help='Target haplogroup branch (e.g., R-FT409028)')
+    parser.add_argument('--output', help='Output file path')
+    parser.add_argument('--refresh', action='store_true', help='Force refresh of data from Google Sheets')
+    
     args = parser.parse_args()
     branch = args.branch
     
@@ -354,36 +506,55 @@ def main():
         
     print(f"Found branch metadata. TMRCA: {node.get('tmrca', 'N/A')}")
     print(f"Path: {' > '.join(lineage)}")
-    print(f"Found {len(descendants)} descendant branches.")
     
     # 2. Fetch Data
-    csv_text = fetch_sheet_data(SHEET_URL)
+    csv_text = fetch_sheet_data(SHEET_URL, force_refresh=args.refresh)
     
-    # 3. Filter Data (Hierarchical)
+    # 3. Filter Data (Target)
     print("Parsing and filtering CSV data...")
     matches = parse_sheet_data(csv_text, branch, descendants)
-    print(f"Found {len(matches)} matching records.")
+    print(f"Found {len(matches)} matching records for {branch}.")
     
     match_source_branch = branch
     match_source_node = node
     
+    neighbor_context = ""
+    
+    # Find Parent and Neighbors (Context)
+    if len(lineage) >= 2:
+        parent_id = lineage[-2]
+        print(f"Checking siblings (children of {parent_id})...")
+        siblings = find_siblings(tree, parent_id, branch)
+        
+        found_neighbors = []
+        
+        for sib_id in siblings:
+            # finding descendants of sibling
+            sib_node, _, sib_descendants = find_node_data(tree, sib_id)
+            if not sib_node: continue
+            
+            sib_matches = parse_sheet_data(csv_text, sib_id, sib_descendants)
+            if sib_matches:
+                print(f"Found {len(sib_matches)} matches for sibling {sib_id}")
+                for m in sib_matches:
+                    m['_BranchContext'] = sib_id # Mark source
+                    found_neighbors.append(m)
+        
+        if found_neighbors:
+             neighbor_context = "\n## Соседние ветви (Context)\n"
+             neighbor_context += f"В смежных ветвях (под {parent_id}) найдены следующие образцы:\n\n"
+             for m in found_neighbors:
+                 # Just a summary line
+                 s_name = m.get('Фамилия') or m.get('Name') or m.get('Kit Number')
+                 s_branch = m.get('_BranchContext')
+                 s_subethnos = m.get('Субэтнос', 'Unknown')
+                 neighbor_context += f"- **{s_branch}**: {s_name} ({s_subethnos})\n"
+
+    # Fallback to ancestors if no direct matches
     if not matches:
-        print("No matching records for target. Searching ancestry for closest matches...")
-        # Traverse up lineage (reversed, starting from parent)
-        # lineage is [Root, ..., Parent, Target]
-        # We want to check Parent, then Grandparent...
-        
-        # We need the full tree access to get descendants for ancestors effectively?
-        # Or just checking equality in columns?
-        # If we check an ancestor 'A', we should match if row has 'A' in hierarchy or 'A' is haplogroup.
-        # But we also want to include descendants of 'A' (which includes our Target).
-        # We need a quick way to get descendants of ancestor.
-        # Re-traversing tree each time is inefficient but safe for this script size.
-        
-        # Iterating reversed excluding the last element (Target)
+        print("No matching records for target. Searching ancestry for closest matches (Fallback)...")
         for ancestor_id in reversed(lineage[:-1]):
             print(f"Checking ancestor {ancestor_id}...")
-            # We need to find the node for ancestor to get its descendants
             anc_node, _, anc_descendants = find_node_data(tree, ancestor_id)
             if not anc_node: continue
             
@@ -402,7 +573,15 @@ def main():
     print("Searching for related documentation...")
     # Clean empty strings from lineage if any
     clean_lineage = [l for l in lineage if l]
-    related_docs = find_related_docs(branch, clean_lineage)
+    # Remove duplicates while preserving order
+    clean_lineage_dedup = []
+    seen = set()
+    for l in clean_lineage:
+        if l not in seen:
+            clean_lineage_dedup.append(l)
+            seen.add(l)
+            
+    related_docs = find_related_docs(branch, clean_lineage_dedup)
     
     # 5. Generate Content
     full_content = ""
@@ -414,8 +593,12 @@ def main():
         for record in matches:
             full_content += generate_markdown(record, lineage, node, related_docs)
             full_content += "\n---\n\n"
+        
+        if neighbor_context:
+            full_content += f"{neighbor_context}\n"
+            
     else:
-        print("No matching records found. Generating summary publication.")
+        print("No matching records found policy. Generating summary publication.")
         # Minimal template for branch with no samples
         docs_section = ""
         if related_docs:
@@ -433,6 +616,8 @@ def main():
 
 ## Образцы
 В текущей базе данных образцов для этой ветки не найдено.
+
+{neighbor_context}
 
 {docs_section}
 
