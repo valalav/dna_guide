@@ -550,13 +550,21 @@ Provide confidence level for each finding.
 
 ## 🔄 Детальные Промпты для Новых Вопросов
 
-### 10.1. Y513104 — Волго-Уральская Загадка (ДЕТАЛЬНО)
+### 10.1. Y513104 — Волго-Уральская Загадка
+
+> Скопируй весь блок ниже:
 
 ```
+Please conduct a comprehensive literature review and genetic genealogy analysis.
+Focus on peer-reviewed publications from 2020-2025 and citizen science databases.
+Provide full citations in academic format with DOI links where available.
+
+TOPIC: G-Y513104 - A Northwest Caucasian lineage found among Uralic and Turkic peoples
+
 CONTEXT: 
-G-L1264 is the dominant Circassian/Abkhazian lineage in the Northwest Caucasus.
+G-L1264 is the dominant Circassian/Abkhazian Y-chromosome lineage in the Northwest Caucasus.
 However, the subclade G-Y513104 (path: L1264 > Z44222 > FT9681 > Z44239 > Y32924 > Y32606 > Y513104)
-has been found in:
+has been found in unusual locations:
 - Tatar DNA Project (Kit FTA27477)
 - Komi DNA Project (Arctic Russia)
 
@@ -573,28 +581,40 @@ QUESTIONS:
    - Medieval slave trade?
 4. Are there other "anomalous" G-L1264 samples far from the Caucasus?
 
-SOURCES:
+SOURCES TO CHECK:
 - Tatar DNA Project (FTDNA)
 - Komi DNA Project (FTDNA)
-- YFull tree G-Y513104
+- YFull tree: https://www.yfull.com/tree/G-Y513104/
 - Publications on Khazar genetics
 - Volga Bulgaria archaeological genetics
+- Allen Ancient DNA Resource (AADR)
 
-FORMAT: 
-- Timeline of migration
-- Map of possible routes
-- Table of all non-Caucasian G-L1264 samples
+EXPECTED OUTPUT FORMAT:
+1. Summary of findings (2-3 paragraphs)
+2. Timeline of migration (with dates)
+3. Table of all non-Caucasian G-L1264 samples
+4. Map description of possible routes
+5. Full reference list with DOIs
 ```
 
-### 10.2. AU78077 — G-L1264 в Аварах (ДЕТАЛЬНО)
+### 10.2. AU78077 — G-L1264 в Аварском Каганате
+
+> Скопируй весь блок ниже:
 
 ```
+Please conduct a comprehensive literature review on ancient DNA and migration period genetics.
+Focus on peer-reviewed publications from 2020-2025.
+Provide full citations in academic format with DOI links.
+
+TOPIC: Sample AU78077 - The first ancient G-L1264 found outside the Caucasus
+
 CONTEXT:
-Gerber et al. (2024) in Science Advances published Ancient genomes reveal 
-Avar-Hungarian transformations. Sample AU78077/MGS422 from Mödling-Goldene Stiege 
+Gerber et al. (2024) in Science Advances published "Ancient genomes reveal 
+Avar-Hungarian transformations". Sample AU78077/MGS422 from Mödling-Goldene Stiege 
 cemetery (Vienna Basin, Austria) dated to 7th-8th century CE was identified as G-L1264.
 
 The accompanying mtDNA was D4j11 (East Eurasian affinity), suggesting mixed heritage.
+This is the FIRST ancient DNA sample with G-L1264, but it was found in Europe, not Caucasus.
 
 QUESTIONS:
 1. What is the exact G-L1264 subclade of AU78077? 
@@ -606,7 +626,7 @@ QUESTIONS:
    - What percentage carried Caucasian lineages?
 
 3. What was the social status of AU78077?
-   - Burial goods?
+   - Burial goods description?
    - Grave location within cemetery?
    - Evidence of military equipment (Alan warrior hypothesis)?
 
@@ -615,26 +635,37 @@ QUESTIONS:
    - Or mixed Alanic-Avar parentage?
 
 5. Historical context:
-   - Alanic auxiliaries in Avar Khaganate are documented
+   - Alanic auxiliaries in Avar Khaganate are documented by Theophylact Simocatta
    - Can we identify the "Pseudo-Avar" (Varchonite) component genetically?
 
-SOURCES:
-- Gerber et al. (2024) Science Advances
-- Supplementary materials / Dataset S1
-- AADR annotation for AU78077
-- Theophylact Simocatta on Avars (historical)
+SOURCES TO CHECK:
+- Gerber et al. (2024) Science Advances - main paper and supplementary Dataset S1
+- Allen Ancient DNA Resource (AADR) annotation for AU78077
+- Theophylact Simocatta on Avars (historical primary source)
+- Publications on Alan genetics
+- YFull tree: https://www.yfull.com/tree/G-L1264/
 
-FORMAT:
-- Detailed sample profile table
-- Comparison with modern Caucasian G-L1264 carriers
-- Map of Alanic-Avar interaction zone
+EXPECTED OUTPUT FORMAT:
+1. Detailed sample profile table (date, location, Y-hg, mtDNA, burial context)
+2. Comparison with modern Caucasian G-L1264 carriers
+3. Map of Alanic-Avar interaction zone (550-800 CE)
+4. List of all Caucasian-origin samples in Avar cemeteries
+5. Full reference list with DOIs
 ```
 
-### 10.3. J2a/G2a Парадокс (ДЕТАЛЬНО)
+### 10.3. J2a/G2a Парадокс — Смена Доминирующей Линии
+
+> Скопируй весь блок ниже:
 
 ```
+Please conduct a comprehensive literature review on Caucasus ancient DNA and population dynamics.
+Focus on peer-reviewed publications from 2020-2025.
+Provide full citations in academic format with DOI links.
+
+TOPIC: The J2a to G2a shift in Northwest Caucasus - a demographic mystery
+
 CONTEXT:
-Archaeological and genetic data present a paradox:
+Archaeological and genetic data present a paradox in the Northwest Caucasus:
 - Ancient DNA from Dolmen culture (I2051, Marchenkova Gora, 1325 BCE): J2a
 - Ancient DNA from Novosvobodnaya (I6268, Klady, 3500 BCE): J2a
 - Modern Western Circassians (Shapsugs, Abzakhs): 70-80% G2a (specifically G-L1264)
@@ -644,19 +675,19 @@ why did the dominant Y-haplogroup shift from J2a to G2a?
 
 HYPOTHESES TO TEST:
 1. **4.2ky Climate Event Bottleneck** (~2200 BCE):
-   - Did climate crisis cause population collapse?
+   - Did climate crisis cause population collapse in the Caucasus?
    - Did G-L1264 clan survive while J2a clans perished?
-   - Archaeological evidence for settlement abandonment?
+   - Archaeological evidence for settlement abandonment around 2200 BCE?
 
 2. **Colchian Refugium**:
    - Was G2a concentrated in coastal/mountain Colchis?
    - Did G2a expand inland after J2a collapse?
-   - Linguistic correlation: Abkhaz (NWC) vs Kartvelian speakers?
+   - Linguistic correlation: Abkhaz (NWC) vs Kartvelian speakers and their Y-DNA?
 
 3. **Koban Culture Integration**:
-   - Koban culture (1200-400 BCE) shows G2a1a in ancient DNA
+   - Koban culture (1200-400 BCE) shows G2a1a in ancient DNA (sample Koban7)
    - Did Koban population replace/absorb Dolmen J2a?
-   - East-to-West migration pattern?
+   - Is there evidence for East-to-West migration pattern?
 
 4. **Social Selection**:
    - Did G2a lineages have reproductive advantage?
@@ -671,75 +702,87 @@ QUESTIONS:
 5. What is the autosomal difference (if any) between J2a-carrying Dolmen and 
    modern G2a-dominant Circassians?
 
-SOURCES:
-- Lazaridis et al. 2022, 2024
-- Wang et al. 2019
-- Koban culture publications (Russian)
-- AADR for all Caucasus Bronze Age samples
+SOURCES TO CHECK:
+- Lazaridis et al. 2022, 2024 (Cell, Nature)
+- Wang et al. 2019 (Nature)
+- Koban culture publications (Russian archaeological journals)
+- Allen Ancient DNA Resource (AADR) for all Caucasus Bronze Age samples
+- YFull trees: https://www.yfull.com/tree/G-L1264/ and https://www.yfull.com/tree/J-M67/
 
-FORMAT:
-- Chronological table of Y-haplogroups 4000 BCE → present
-- PCA plot showing continuity vs replacement
-- Map of J2a vs G2a distribution over time
+EXPECTED OUTPUT FORMAT:
+1. Summary of the paradox and most likely resolution
+2. Chronological table of Y-haplogroups 4000 BCE → present
+3. PCA description showing autosomal continuity vs Y-DNA replacement
+4. Map description of J2a vs G2a distribution over time
+5. Full reference list with DOIs
 ```
 
-### 10.4. R-FT409028 / L584 — Кабардинец в Редкой Ветви (ДЕТАЛЬНО)
+### 10.4. R-FT409028 / L584 — Кабардинец в Редкой Ветви
+
+> Скопируй весь блок ниже:
 
 ```
+Please conduct a comprehensive genetic genealogy analysis of a rare R1b branch.
+Focus on YFull data, FTDNA projects, and publications from 2020-2025.
+Provide full citations and links where available.
+
+TOPIC: R-FT409028 - A rare R1b-L584 subclade connecting Kabardians, Armenians, and Turks
+
 CONTEXT:
-R-L584 is a subclade of R1b-Z2103 (Yamnaya). It is found in the Caucasus but 
-is NOT the dominant R1b line among Circassians (that would be Z2103 > CTS9219).
+R-L584 is a subclade of R1b-Z2103 (Yamnaya-derived). It is found in the Caucasus but 
+is NOT the dominant R1b line among Circassians (that would be Z2103 > CTS9219 or FGC43622/Ankvab).
 
 The specific branch R-FT409028 shows an unusual geographic pattern on YFull:
-- Path: R-M269 > L23 > Z2103 > M12149 > Y13369 > L584 > FT145519 > FTA62508 > 
-        Y18781 > PH4150 > PH2731 > Y182162 > F1114 > Y166565 > BY135679 > 
-        BY35053 > Y183887 > Y225017 > FT405338 > **FT409028**
+- Phylogenetic path: R-M269 > L23 > Z2103 > M12149 > Y13369 > L584 > FT145519 > FTA62508 > 
+  Y18781 > PH4150 > PH2731 > Y182162 > F1114 > Y166565 > BY135679 > 
+  BY35053 > Y183887 > Y225017 > FT405338 > **FT409028**
 
 YFull data for R-FT409028:
 - Formed: 1950 ybp (~75 CE)
-- TMRCA: 1900 ybp (~125 CE)
+- TMRCA: 1900 ybp (~125 CE) - Roman Era!
 - Samples:
   1. id:YF143329 - RUS [RU-KB] - **Kabardian** (Кабардинец)
   2. id:YF084347 - ARM - **Armenian**
   3. id:SRS8752855 - TUR - **Turkish**
 
 QUESTIONS:
-1. What is the origin of R-L584 on the Caucasus?
-   - Is it Yamnaya/Catacomb continuation?
-   - Or later medieval migration?
+1. What is the origin of R-L584 in the Caucasus?
+   - Is it Yamnaya/Catacomb continuation (Bronze Age)?
+   - Or later migration (Iron Age/Medieval)?
 
-2. The TMRCA of ~125 CE suggests Roman era coalescence:
+2. The TMRCA of ~125 CE suggests Roman Era coalescence:
    - What historical events could unite Kabardian, Armenian, Turkish ancestors?
-   - Pontus? Roman frontier? Silk Road trade?
+   - Kingdom of Pontus? Roman frontier? Silk Road trade routes?
+   - Is there evidence of population movements in this period?
 
 3. Why is L584 rare among Circassians while Z2103 > CTS9219 is more common?
    - Different migration waves?
-   - Social stratification?
+   - Social stratification and founder effects?
 
 4. Are there ancient DNA samples with R-L584 from:
-   - Catacomb culture?
-   - Koban culture?
-   - Alan/Saltovo-Mayaki period?
+   - Catacomb culture (Bronze Age)?
+   - Koban culture (Iron Age)?
+   - Alan/Saltovo-Mayaki period (Early Medieval)?
 
 5. What is the frequency of L584 vs other Z2103 subclades in:
-   - Kabardians
-   - Balkars
-   - Ossetians
-   - Armenians
-   - Eastern Anatolia Turks
+   - Kabardians, Balkars, Ossetians
+   - Armenians, Eastern Anatolia Turks, Georgians
 
-SOURCES:
+SOURCES TO CHECK:
 - YFull tree: https://www.yfull.com/tree/R-FT409028/
 - YFull tree: https://www.yfull.com/tree/R-L584/
 - FTDNA R-Z2103 project
-- Armenian DNA Project
-- aadna.ru CSV data for R1b
+- Armenian DNA Project (FTDNA)
+- aadna.ru project data for R1b
+- Publications on Yamnaya/Catacomb ancient DNA
 
-FORMAT:
-- Phylogenetic tree showing L584 position within Z2103
-- Table of all L584 samples with geographic origin
-- Timeline: When did L584 arrive in Caucasus?
-- Map showing Roman-era trade routes connecting Armenia-Pontus-Caucasus
+EXPECTED OUTPUT FORMAT:
+1. Summary of most likely historical scenario
+2. Phylogenetic tree showing L584 position within Z2103
+3. Table of all L584 samples with geographic origin
+4. Timeline: When did L584 arrive in Caucasus?
+5. Map showing Roman-era trade routes connecting Armenia-Pontus-Caucasus
+6. Full reference list with links
 ```
 
 ---
