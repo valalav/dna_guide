@@ -642,6 +642,233 @@ for each row in filtered_table:
 
 ---
 
+## Publication Patterns & Templates
+
+Based on analysis of 20+ publications from aadna.ru (2020-2025), content varies significantly by test type, author, and time period.
+
+### Patterns by Test Type
+
+#### Y37 / Marker Tests (37 markers from YSEQ/FTDNA)
+
+**Structure:**
+```markdown
+# {Фамилия}
+
+{Исследовано 37 маркеров в YSEQ/FTDNA, выявлена гаплогруппа}
+
+**Фамилия:** {Фамилия} (оригинальная орфография)
+**Субэтнос:** {Субэтнос}
+**Населенный пункт:** {Населённый пункт}
+
+**Гаплогруппа:** {Мажорная} >> {Ветка1} >> {Ветка2}
+
+## История
+{Краткая родословная}
+
+## Тамга
+{Изображение если есть}
+
+## Полная линия:
+Adam > A0-T > ... > {Терминальная}
+```
+
+**Key characteristics:**
+- Full lineage code format from Adam
+- Brief history section
+- Tamga image when available
+- Tags: `Y37`, `YSEQ` or `FTDNA`, `{гаплогруппа}`, `НовыйДНКРезультат`
+- Author: usually CircassianDNA
+
+#### BigY (FTDNA next-gen sequencing)
+
+**Structure:**
+```markdown
+# {Фамилия}
+
+{Сделано BIG-Y в FTDNA, выявлен субклад}
+
+**Фамилия:** {Фамилия}
+**Субэтнос:** {Субэтнос}
+**Населенный пункт:** {Населённый пункт}
+
+**Гаплогруппа:** {Мажорная} >> {Ветка1} >> {Ветка2}
+
+## История
+{Родословная + исторический контекст}
+{Связь с древними культурами: Кобанская, Колхида и др.}
+
+{Благодарность спонсору если есть}
+```
+
+**Key characteristics:**
+- Full lineage code or `>>` format
+- Historical context with ancient DNA culture references
+- Sponsor acknowledgments (common)
+- Tags: `BigY`, `FTDNA`, `{гаплогруппа}`, `НовыйДНКРезультат`
+- Author: usually ABAZG
+
+#### WGS+ / Full Genome (DanteLabs, Genotek Complete)
+
+**Structure:**
+```markdown
+{Telegram_logo}
+
+# {Фамилия}
+
+**Фамилия:** {Фамилия}
+**Субэтнос:** {Субэтнос}
+**Населенный пункт:** {Населённый пункт}
+
+**Гаплогруппа:** {Полный путь через >>}
+
+## История
+{Подробная родословная с именами предков}
+
+## Полная линия:
+Adam > ... > {Терминальная}
+
+## Дополнительные секции:
+- Анализ mtDNA (материнская линия)
+- Совпадения с протестированными
+- География ветки
+- Возраст TMRCA
+```
+
+**Key characteristics:**
+- Telegram_logo prefix
+- Very detailed description
+- mtDNA analysis often included
+- YFull and AadNA links mentioned
+- Tags: `WGS`, `WGS+`, `ПолныйГеном`, `{гаплогруппа}`
+- Author: usually CircassianDNA
+
+### Comparison Table by Test Type
+
+| Parameter | Y37 | BigY | WGS+ |
+|-----------|-----|------|------|
+| **Full lineage format** | Code block | Code or `>>` | Code block |
+| **History section** | Brief genealogy | Genealogy + historical context | Detailed with names |
+| **Match analysis** | Rare | Often | Always |
+| **Ancient DNA refs** | Rare | Often (Koban, Colchian) | Always |
+| **Sponsor thanks** | Rare | Sometimes | Often |
+| **Telegram_logo** | No | No | Yes |
+| **"Полный геном" tag** | No | No | Yes |
+| **mtDNA analysis** | No | Rare | Often |
+
+### Patterns by Author
+
+#### CircassianDNA
+
+**Style characteristics:**
+- Conservative, standard structure
+- Full lineage from Adam in code format (for Y37)
+- "История" section for brief genealogy
+- Tamga images when available
+- Tags: `{гаплогруппа}, НовыйДНКРезультат`
+- Labels: Y37, YSEQ, гаплогруппа, субэтнос, фамилия
+- Haplogroup format:
+  - Y37: `{Major} >> {Branch} >> {Subclade}`
+  - BigY: `{Major} > {Branch} > {Subclade}`
+
+#### ABAZG
+
+**Style characteristics:**
+- More scientific approach
+- Telegram_logo for WGS/full genomes
+- Sponsor acknowledgments common
+- Full lineage from Adam in code format
+- Tags: `{гаплогруппа}, НовыйДНКРезультат`
+- Labels: BigY, FTDNA, WGS, ПолныйГеном
+- Ancient DNA culture references (Koban, Colchian, Maykop)
+
+### Evolution by Time Period
+
+#### 2020-2021 (Early publications)
+- Brief format
+- Fewer visual elements
+- Full lineage in code only (for Y37)
+- Clear structure: Surname → Subethnos → Location → Haplogroup → History
+
+#### 2022-2023 (Middle period)
+- "Полная линия" block emerges
+- More full-genome tests
+- More detailed historical references
+- Sponsor acknowledgments appear
+
+#### 2024-2025 (Current style)
+- Telegram_logo for WGS/full genomes
+- `>>` format for haplogroup paths
+- Deeper match analysis
+- More structured categories
+- Tags include: WGS, WGS+, ПолныйГеном
+- Rubrics: `НовыйДНКРезультат` + haplogroup category
+
+### Template Selection Guide
+
+When generating content, choose template based on:
+
+| If test is... | Use template... | Author style... |
+|---------------|-----------------|-----------------|
+| Y37, Y92354 (YSEQ) | Y37 / Marker Tests | CircassianDNA |
+| Y37, Y111 (FTDNA) | Y37 / Marker Tests | CircassianDNA |
+| BigY (FTDNA) | BigY | ABAZG |
+| WGS, WGS+ (Dante/Genotek) | WGS+ / Full Genome | CircassianDNA |
+| Генопоиск (Genotek) | Y37 / Marker Tests | CircassianDNA |
+| Family Finder (FF) | BigY (if Y-DNA also tested) | ABAZG |
+
+### Example Publication (Y37 format)
+
+```markdown
+# Баров
+
+Исследовано 37 маркеров в лаборатории YSEQ. Выявлена гаплогруппа G2a2.
+
+**Фамилия:** Баров
+**Субэтнос:** Кабардинец
+**Населенный пункт:** Инаркой
+
+**Гаплогруппа:** G2a2 >> L1264 >> Y32924
+
+## История
+Род происходит из аула Инаркой. Согласно преданиям, фамилия восходит к...
+
+## Тамга
+{Image}
+
+## Полная линия:
+Adam > A0-T > A1 > BT > CT > F > G > G2 > G2a > G2a2 > L1264 > Y32924
+```
+
+### Example Publication (WGS+ format)
+
+```markdown
+🧬
+
+# Маршан
+
+**Фамилия:** Маршан
+**Субэтнос:** Абхаз (Самурзаканец)
+**Населенный пункт:** Отап
+
+**Гаплогруппа:** G2a2 >> L1264 >> S9409 >> Y358517
+
+## История
+Маршан — княжеская фамилия Абхазии. Родоначальник жил в XVIII веке...
+[Detailed genealogy with ancestor names]
+
+## Полная линия:
+Adam > A0-T > ... > G-L1264 > S9409 > Y358517
+
+## Анализ совпадений
+На ветке Y358517 обнаружены совпадения с...
+[Detailed match analysis]
+
+## mtDNA (материнская линия)
+H1a1a1b3 — распространена в Западной Европе...
+```
+
+---
+
 ## Project Status
 
 Current version: 2.0.0 (2026-01-06)

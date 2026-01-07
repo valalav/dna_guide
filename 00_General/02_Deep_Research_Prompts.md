@@ -4,7 +4,118 @@
 > 
 > Акцент: научные публикации 2022-2025, peer-reviewed journals, древняя ДНК
 > 
-> **Последнее обновление: 2026-01-07** (После обработки 3 PDF)
+> **Последнее обновление: 2026-01-07** (После обработки 7 файлов)
+
+---
+
+## 📚 Библиотека Ссылок (Reference Library)
+
+### Ключевые Публикации
+
+| Год | Авторы | Название | Журнал | Ключевые данные |
+|-----|--------|----------|--------|-----------------|
+| 2015 | Jones et al. | Genetic heritage of Caucasian hunter-gatherers | *Nature Communications* | KK1 (Kotias Klde), CHG |
+| 2019 | Wang et al. | Ancient genomes reveal complex history of the Yamnaya | *Nature* | Майкоп, Ямная |
+| 2022 | Lazaridis et al. | Ancient genomes from the Aegean Bronze Age | *Cell* | PCA Кавказ |
+| 2024 | Gerber et al. | Avar-Hungarian genetic transformations | *Science Advances* | **AU78077 (G-L1264 в Аварах!)** |
+| 2024 | Lazaridis et al. | Genetic history of the South Caucasus | *Nature* | 219 индивидов |
+| 2025 | Reich, Pinhasi | CLV cline and Indo-Europeans | *Cell* | Ожидается |
+
+### Базы Данных
+
+| Ресурс | URL | Описание |
+|--------|-----|----------|
+| AADR | [reich.hms.harvard.edu/allen-ancient-dna-resource-aadr-downloadable-genotypes-present-day-and-ancient-dna-data](https://reich.hms.harvard.edu/allen-ancient-dna-resource-aadr-downloadable-genotypes-present-day-and-ancient-dna-data) | Allen Ancient DNA Resource v54+ |
+| YFull | [yfull.com/tree/](https://www.yfull.com/tree/) | Филогенетическое дерево + TMRCA |
+| FTDNA Discover | [discover.familytreedna.com](https://discover.familytreedna.com) | Big Y данные |
+| aadna.ru | [aadna.ru](https://aadna.ru) | Проект AADNA |
+| ENA | [ebi.ac.uk/ena](https://www.ebi.ac.uk/ena) | European Nucleotide Archive |
+
+### Архивированные Исследования
+
+| Дата | Файл | Статус |
+|------|------|--------|
+| 2026-01-07 | `00_General/archive/deep_research_report_part1-4.md` | ✅ Интегрировано |
+| 2026-01-07 | `import/archive/Ancient Caucasus DNA Haplogroup Study.pdf` | ✅ Интегрировано |
+| 2026-01-07 | `import/archive/Dolmen Culture Genetics and Adyghe Link.pdf` | ✅ Интегрировано |
+| 2026-01-07 | `import/archive/YFull G-L1264 Tree Updates.pdf` | ✅ Интегрировано |
+
+---
+
+## 🎯 Методология Исследования (Research Style Guide)
+
+### Структура Эффективного Промпта
+
+```
+[КОНТЕКСТ] — что мы уже знаем
+[ВОПРОС] — конкретный вопрос исследования
+[ИСТОЧНИКИ] — где искать (журналы, базы данных)
+[ФОРМАТ] — как представить результат (таблица, хронология, список)
+[КРИТЕРИИ] — что считать достоверным
+```
+
+### Пример Оптимального Промпта
+
+```
+CONTEXT: We have confirmed G-L1264 in Avar context (AU78077, 7th-8th century CE, 
+Gerber et al. 2024). The Avars conquered the Alans who dominated North Caucasus.
+
+QUESTION: Find all published ancient DNA samples with G-L1264 or parent clades 
+(G-P15, G-P303, G-L30) from:
+1. Migration Period (300-700 CE) contexts
+2. Avar Khaganate cemeteries (568-822 CE)
+3. Alan/Saltovo-Mayaki sites (4th-10th century CE)
+
+SOURCES: 
+- Science Advances (Gerber et al. 2024)
+- AADR v54.1
+- bioRxiv preprints 2023-2025
+
+FORMAT: Table with columns: Sample ID | Site | Date | Y-Hg | mtDNA | Culture | Reference
+
+CRITERIA: Only peer-reviewed or preprint with lab confirmation
+```
+
+### Что Работает Хорошо ✅
+
+1. **Конкретные Sample ID** — спрашивать о AU78077, I2051, KDC001
+2. **Датировки BCE/CE** — а не "Bronze Age"
+3. **Сравнительные вопросы** — "X vs Y" / "до и после"
+4. **Журналы по имени** — Nature, Science, Cell, PNAS
+
+### Что Работает Плохо ❌
+
+1. **Слишком общие вопросы** — "Tell me about Circassians"
+2. **Без временных рамок** — нужно "2020-2025"
+3. **Без источников** — указывать конкретные журналы
+4. **Без контекста** — давать то, что уже известо
+
+---
+
+## 🔬 Приоритетные Темы для Исследования
+
+### Высокий Приоритет 🔴
+
+| Тема | Вопрос | Почему важно |
+|------|--------|--------------|
+| AU78077 follow-up | Есть ли другие G-L1264 в Аварах? | Первый древний L1264! |
+| Y513104 mystery | Как L1264 попала к Коми и Татарам? | Хазарский вектор |
+| 4.2ky bottleneck | Археологические доказательства коллапса? | Объясняет L1264 founder |
+
+### Средний Приоритет 🟡
+
+| Тема | Вопрос | Почему важно |
+|------|--------|--------------|
+| J2a/G2a shift | Когда J2a уступила G2a в NW Caucasus? | Демографическая история |
+| Koban → Ossetian | Больше образцов G2a1a? | Преемственность |
+| Hattic hypothesis | Новые лингвистические данные? | J2a-M67 связь |
+
+### Низкий Приоритет 🟢
+
+| Тема | Вопрос | Почему важно |
+|------|--------|--------------|
+| R1a arrival | Точная дата прихода Z93 на Кавказ | Уже есть ~500 CE |
+| SK1313 subclades | Детализация ветвей | Для полноты |
 
 ---
 
@@ -435,5 +546,193 @@ Provide confidence level for each finding.
 
 ---
 
+## 🔄 Детальные Промпты для Новых Вопросов
+
+### 10.1. Y513104 — Волго-Уральская Загадка (ДЕТАЛЬНО)
+
+```
+CONTEXT: 
+G-L1264 is the dominant Circassian/Abkhazian lineage in the Northwest Caucasus.
+However, the subclade G-Y513104 (path: L1264 > Z44222 > FT9681 > Z44239 > Y32924 > Y32606 > Y513104)
+has been found in:
+- Tatar DNA Project (Kit FTA27477)
+- Komi DNA Project (Arctic Russia)
+
+This is geographically anomalous - Komi are Uralic speakers in sub-Arctic Russia,
+over 2000 km from the Caucasus.
+
+QUESTIONS:
+1. What is the TMRCA of G-Y513104? When did this branch separate from Caucasian relatives?
+2. Are there any published ancient DNA samples from Volga Bulgaria (7th-13th century) 
+   or Khazar Khaganate (7th-10th century) with G-L1264 or related clades?
+3. What migration vectors could explain Caucasian Y-DNA in the Komi Republic?
+   - Khazar trade routes along Volga river?
+   - Alanic mercenaries?
+   - Medieval slave trade?
+4. Are there other "anomalous" G-L1264 samples far from the Caucasus?
+
+SOURCES:
+- Tatar DNA Project (FTDNA)
+- Komi DNA Project (FTDNA)
+- YFull tree G-Y513104
+- Publications on Khazar genetics
+- Volga Bulgaria archaeological genetics
+
+FORMAT: 
+- Timeline of migration
+- Map of possible routes
+- Table of all non-Caucasian G-L1264 samples
+```
+
+### 10.2. AU78077 — G-L1264 в Аварах (ДЕТАЛЬНО)
+
+```
+CONTEXT:
+Gerber et al. (2024) in Science Advances published Ancient genomes reveal 
+Avar-Hungarian transformations. Sample AU78077/MGS422 from Mödling-Goldene Stiege 
+cemetery (Vienna Basin, Austria) dated to 7th-8th century CE was identified as G-L1264.
+
+The accompanying mtDNA was D4j11 (East Eurasian affinity), suggesting mixed heritage.
+
+QUESTIONS:
+1. What is the exact G-L1264 subclade of AU78077? 
+   - Is it FGC21495? Z44222? More specific?
+   - Can we link it to modern Circassian or Ossetian clusters?
+
+2. Are there other G-L1264 or related G2a samples in the Avar cemetery dataset?
+   - How many total males were sequenced?
+   - What percentage carried Caucasian lineages?
+
+3. What was the social status of AU78077?
+   - Burial goods?
+   - Grave location within cemetery?
+   - Evidence of military equipment (Alan warrior hypothesis)?
+
+4. The mtDNA D4j11 is East Eurasian:
+   - Does this indicate exogamy with Avar women?
+   - Or mixed Alanic-Avar parentage?
+
+5. Historical context:
+   - Alanic auxiliaries in Avar Khaganate are documented
+   - Can we identify the "Pseudo-Avar" (Varchonite) component genetically?
+
+SOURCES:
+- Gerber et al. (2024) Science Advances
+- Supplementary materials / Dataset S1
+- AADR annotation for AU78077
+- Theophylact Simocatta on Avars (historical)
+
+FORMAT:
+- Detailed sample profile table
+- Comparison with modern Caucasian G-L1264 carriers
+- Map of Alanic-Avar interaction zone
+```
+
+### 10.3. J2a/G2a Парадокс (ДЕТАЛЬНО)
+
+```
+CONTEXT:
+Archaeological and genetic data present a paradox:
+- Ancient DNA from Dolmen culture (I2051, Marchenkova Gora, 1325 BCE): J2a
+- Ancient DNA from Novosvobodnaya (I6268, Klady, 3500 BCE): J2a
+- Modern Western Circassians (Shapsugs, Abzakhs): 70-80% G2a (specifically G-L1264)
+
+If the Dolmen culture is ancestral to Circassians (confirmed by autosomal DNA continuity),
+why did the dominant Y-haplogroup shift from J2a to G2a?
+
+HYPOTHESES TO TEST:
+1. **4.2ky Climate Event Bottleneck** (~2200 BCE):
+   - Did climate crisis cause population collapse?
+   - Did G-L1264 clan survive while J2a clans perished?
+   - Archaeological evidence for settlement abandonment?
+
+2. **Colchian Refugium**:
+   - Was G2a concentrated in coastal/mountain Colchis?
+   - Did G2a expand inland after J2a collapse?
+   - Linguistic correlation: Abkhaz (NWC) vs Kartvelian speakers?
+
+3. **Koban Culture Integration**:
+   - Koban culture (1200-400 BCE) shows G2a1a in ancient DNA
+   - Did Koban population replace/absorb Dolmen J2a?
+   - East-to-West migration pattern?
+
+4. **Social Selection**:
+   - Did G2a lineages have reproductive advantage?
+   - Feudal/clan structure favoring certain patrilines?
+   - Polygyny among G2a elite?
+
+QUESTIONS:
+1. What is the full Y-haplogroup composition of all Dolmen/Novosvobodnaya male samples?
+2. Are there any G2a samples from Dolmen contexts (not just J2a)?
+3. When does G2a first appear in ancient DNA from NW Caucasus?
+4. Is there archaeological evidence for population discontinuity ~2200 BCE?
+5. What is the autosomal difference (if any) between J2a-carrying Dolmen and 
+   modern G2a-dominant Circassians?
+
+SOURCES:
+- Lazaridis et al. 2022, 2024
+- Wang et al. 2019
+- Koban culture publications (Russian)
+- AADR for all Caucasus Bronze Age samples
+
+FORMAT:
+- Chronological table of Y-haplogroups 4000 BCE → present
+- PCA plot showing continuity vs replacement
+- Map of J2a vs G2a distribution over time
+```
+
+---
+
+## 📋 Шаблон Отчёта После Исследования
+
+Когда получите результаты Deep Research, заполните этот шаблон:
+
+```markdown
+## Отчёт: [Тема]
+
+**Дата:** YYYY-MM-DD
+**Источник:** [Gemini/Perplexity/Claude]
+**Файл:** [путь к сохранённому отчёту]
+
+### Ключевые Находки
+1. ...
+2. ...
+
+### Новые Образцы
+| Sample ID | Site | Date | Y-Hg | Source |
+|-----------|------|------|------|--------|
+
+### Ссылки
+- [DOI links]
+
+### Что Интегрировать
+- [ ] Обновить файл: ...
+- [ ] Добавить в таблицу aDNA: ...
+
+### Новые Вопросы
+- ...
+
+### Статус
+- [ ] Интегрировано
+- [ ] Архивировано
+```
+
+---
+
+## 📆 Журнал Исследований
+
+| Дата | Тема | Источник | Статус | Файл |
+|------|------|----------|--------|------|
+| 2026-01-07 | G2a/J2a Parts 1-4 | User input | ✅ | archive/deep_research_report_part*.md |
+| 2026-01-07 | Ancient Caucasus DNA | PDF | ✅ | import/archive/*.pdf |
+| 2026-01-07 | Dolmen Culture | PDF | ✅ | import/archive/*.pdf |
+| 2026-01-07 | YFull L1264 Updates | PDF | ✅ | import/archive/*.pdf |
+| | Y513104 Komi | Pending | 🔄 | |
+| | AU78077 details | Pending | 🔄 | |
+| | J2a/G2a shift | Pending | 🔄 | |
+
+---
+
 *Создано: 2026-01-07*
-*Обновлено после обработки: Ancient Caucasus DNA, Dolmen Culture, YFull G-L1264*
+*Обновлено: После обработки 7 файлов исследований*
+*Следующее обновление: После получения результатов по новым промптам*
