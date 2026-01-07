@@ -94,11 +94,26 @@ def fetch_sheet_data(url):
         print(f"Using local file: {local_file}")
         with open(local_file, 'r', encoding='utf-8') as f:
             content = f.read()
+            
+        # Check for mojibake (Cyrillic displayed as Latin1)
+        # 'Ð' is common start byte 0xD0 in UTF-8 displayed as Latin1
+        if 'Ð' in content[:1000]:
+            print("Detected potential encoding issue (Mojibake). Attempting repair...")
+            try:
+                # Encode back to bytes using latin-1 (which preserves 1-to-1 byte mapping of mojibake)
+                # Then decode using utf-8 to interpretation
+                content = content.encode('latin-1').decode('utf-8')
+                print("Encoding repair successful.")
+            except Exception as e:
+                print(f"Encoding repair failed: {e}")
+                
     else:
         print(f"Downloading from {url}...")
         try:
             # Try with verification first
             response = requests.get(url)
+            # Check encoding if headers are wrong
+            response.encoding = 'utf-8'
             response.raise_for_status()
             content = response.text
         except Exception as e:
@@ -108,6 +123,7 @@ def fetch_sheet_data(url):
                 import urllib3
                 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
                 response = requests.get(url, verify=False)
+                response.encoding = 'utf-8'
                 response.raise_for_status()
                 content = response.text
             except Exception as e2:
@@ -320,19 +336,58 @@ def main():
     matches = parse_sheet_data(csv_text, branch, descendants)
     print(f"Found {len(matches)} matching records.")
     
+    match_source_branch = branch
+    match_source_node = node
+    
     if not matches:
-        print("No matching records found in CSV.")
-        # Continue to generation for summary
-
+        print("No matching records for target. Searching ancestry for closest matches...")
+        # Traverse up lineage (reversed, starting from parent)
+        # lineage is [Root, ..., Parent, Target]
+        # We want to check Parent, then Grandparent...
+        
+        # We need the full tree access to get descendants for ancestors effectively?
+        # Or just checking equality in columns?
+        # If we check an ancestor 'A', we should match if row has 'A' in hierarchy or 'A' is haplogroup.
+        # But we also want to include descendants of 'A' (which includes our Target).
+        # We need a quick way to get descendants of ancestor.
+        # Re-traversing tree each time is inefficient but safe for this script size.
+        
+        # Iterating reversed excluding the last element (Target)
+        for ancestor_id in reversed(lineage[:-1]):
+            print(f"Checking ancestor {ancestor_id}...")
+            # We need to find the node for ancestor to get its descendants
+            anc_node, _, anc_descendants = find_node_data(tree, ancestor_id)
+            if not anc_node: continue
+            
+            anc_matches = parse_sheet_data(csv_text, ancestor_id, anc_descendants)
+            if anc_matches:
+                print(f"Found {len(anc_matches)} matches for ancestor {ancestor_id}")
+                matches = anc_matches
+                match_source_branch = ancestor_id
+                match_source_node = anc_node
+                break
+                
+        if not matches:
+             print("No relevant ancestral matches found.")
 
     # 4. Find Documentation
     print("Searching for related documentation...")
-    related_docs = find_related_docs(branch, lineage)
+    # Clean empty strings from lineage if any
+    clean_lineage = [l for l in lineage if l]
+    related_docs = find_related_docs(branch, clean_lineage)
     
     # 5. Generate Content
     full_content = ""
     if matches:
+        # Add a note if using ancestor data
+        if match_source_branch != branch:
+            full_content += f"> [!NOTE]\n> Прямых образцов для **{branch}** не найдено. Показаны образцы для ближайшей ветви **{match_source_branch}**.\n\n"
+            
         for record in matches:
+            # DEBUG
+            print(f"DEBUG RECORD KEYS: {list(record.keys())}")
+            print(f"DEBUG RECORD VALUES: {list(record.values())}")
+            
             full_content += generate_markdown(record, lineage, node, related_docs)
             full_content += "\n---\n\n"
     else:
