@@ -992,6 +992,261 @@ EXPECTED OUTPUT FORMAT:
 | 12.1 | Абхазы vs Адыги | 🟡 Средний | ✅ Выполнено |
 | 12.2 | Генетика Княжеских Родов | 🟡 Средний | ✅ Выполнено |
 | 12.3 | Убыхское Наследие | 🟢 Низкий | ✅ Выполнено |
+---
+
+## 🔬 Фаза 5: Специализированные Темы
+
+### Приоритетная Матрица (Фаза 5)
+
+| # | Тема | Приоритет | Статус |
+|---|------|-----------|--------|
+| 13.1 | Черкесская Диаспора | 🟡 Средний | 🆕 Новый |
+| 13.2 | Сванский Угол | 🟡 Средний | 🆕 Новый |
+| 13.3 | Хронологический Синтез | 🔴 Высокий | 🆕 Новый |
+
+---
+
+### 13.1. Черкесская Диаспора — Генетика Мухаджиров
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive genetic analysis of the Circassian diaspora.
+Focus on publications from 2015-2025 and DNA project data.
+Provide full citations with DOI links.
+
+TOPIC: Genetics of the Circassian Diaspora (Muhajirs) - 160 years after the exile
+
+CONTEXT:
+In 1864, following the Russian conquest, ~90% of Circassians were exiled to the 
+Ottoman Empire. Today, the diaspora (~5-7 million) vastly outnumbers the homeland 
+population (~750,000 in Russia). Key diaspora locations:
+
+| Country | Population | Notes |
+|---------|------------|-------|
+| Turkey | 3-5 million | Largest community |
+| Jordan | ~100,000 | Amman guards tradition |
+| Syria | ~100,000 | War displacement |
+| Israel | ~4,000 | Kfar Kama, Rehaniya |
+| Kosovo | ~3,000 | 19th century settlement |
+
+QUESTIONS:
+1. **Genetic Preservation:**
+   - Has the diaspora maintained the homeland Y-DNA profile?
+   - G2a frequencies in Turkey vs Russia Circassians?
+   - Evidence of genetic drift in isolated communities?
+
+2. **Admixture Analysis:**
+   - Turkish admixture in Anatolian Circassians?
+   - Arab admixture in Jordanian community?
+   - Balkan admixture in Kosovar Circassians?
+   - Quantify: % of autosomal admixture per generation?
+
+3. **Founder Effects:**
+   - Did specific clans/tribes dominate certain diaspora regions?
+   - Evidence of bottleneck in small communities (Israel, Kosovo)?
+   - STR diversity comparison: diaspora vs homeland?
+
+4. **Community-Specific Studies:**
+   - Israeli Circassians (Kfar Kama): any published DNA studies?
+   - Jordanian Royal Guard Circassians?
+   - Turkish "Çerkes köyleri" genetic surveys?
+
+5. **mtDNA vs Y-DNA:**
+   - Is there evidence of female-line admixture (local wives)?
+   - Y-DNA preservation stronger than autosomal?
+
+6. **Inbreeding/Endogamy:**
+   - ROH (Runs of Homozygosity) in diaspora vs homeland?
+   - Cousin marriage frequencies in different communities?
+
+KEY DIASPORA COMMUNITIES:
+| Community | Country | Tribal Origin | Expected Profile |
+|-----------|---------|---------------|------------------|
+| Kfar Kama | Israel | Shapsug | G2a dominant |
+| Uzunyayla | Turkey | Mixed Adyghe | Diverse |
+| Amman | Jordan | Kabardian | G2a + R1a |
+| Prizren | Kosovo | Abzakh | G2a |
+
+SOURCES TO CHECK:
+- FTDNA Circassian Diaspora projects
+- Turkish genetic surveys
+- Jordanian/Israeli population studies
+- Balkan genetic studies
+- Yunusbayev et al. on Caucasus populations
+
+EXPECTED OUTPUT FORMAT:
+1. Y-DNA frequency comparison: homeland vs each diaspora community
+2. Admixture proportions table by country
+3. STR diversity metrics
+4. Assessment of genetic preservation
+5. Recommendations for future sampling
+6. Full reference list with DOIs
+```
+
+---
+
+### 13.2. Сванский Угол — G2a1a в Лингвистическом Изоляте
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive genetic analysis of the Svan population.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Svan genetics - the G2a1a paradox in a Kartvelian-speaking isolate
+
+CONTEXT:
+The Svans inhabit the highest valleys of the Greater Caucasus (Svaneti, Georgia).
+They speak Svan, the most divergent Kartvelian language (~3900 years divergence).
+Paradoxically, their Y-DNA profile resembles Ossetians (G2a1a), not other Kartvelians.
+
+KNOWN DATA:
+| Population | G2a1a | G2a2b | J2 | R1a |
+|------------|-------|-------|----|----|
+| Svans | ~70% | Low | ~15% | Low |
+| Ossetians | ~70% | Low | ~10% | ~15% |
+| Mingrelians | ~50%? | Mixed | ~20% | Low |
+| Circassians | Low | ~70% | ~15% | ~10% |
+
+THE PARADOX:
+- Svans speak Kartvelian (like Georgians, Mingrelians)
+- Svans have G2a1a (like Ossetians, Balkars)
+- Circassians speak NWC (unrelated) but are both linguistically and genetically distant
+
+QUESTIONS:
+1. **G2a1a Subclades:**
+   - Which specific G2a1a branches in Svans?
+   - Same as Ossetian G2a1a or different?
+   - TMRCA of Svan-specific branches?
+
+2. **Isolation Analysis:**
+   - ROH (Runs of Homozygosity) levels in Svans?
+   - Evidence of extreme founder effects?
+   - Effective population size (Ne) estimates?
+
+3. **Linguistic vs Genetic:**
+   - Did Svans adopt Kartvelian language from a different genetic population?
+   - Or did Kartvelian speakers acquire G2a1a through admixture?
+   - Timing of language shift (if any)?
+
+4. **Ancient DNA:**
+   - Any aDNA from Svaneti region?
+   - Koban samples: are they ancestral to Svans?
+   - Continuity from Bronze Age?
+
+5. **Autosomal Profile:**
+   - CHG proportion in Svans?
+   - Steppe admixture level?
+   - PCA position: closer to Georgians or Ossetians?
+
+6. **mtDNA:**
+   - Maternal lineages in Svans?
+   - Same as other Kartvelians or distinct?
+
+KEY COMPARATIVE QUESTION:
+Why do Svans (Kartvelian) and Ossetians (Iranian) share G2a1a,
+while Circassians (NWC) and Kartvelians are genetically distant
+despite geographic proximity?
+
+SOURCES TO CHECK:
+- Georgian biobank studies
+- Schurr et al. (2023) on Mingrelians
+- Ossetian genetic studies
+- Lazaridis et al. (2022) on Southern Arc
+- AADR database for Caucasus samples
+
+EXPECTED OUTPUT FORMAT:
+1. G2a1a subclade comparison: Svans vs Ossetians vs Koban
+2. ROH/IBD analysis if available
+3. Autosomal PCA position
+4. Historical scenario: how did G2a1a reach Svaneti?
+5. Language vs genetics: reconciliation model
+6. Full reference list with DOIs
+```
+
+---
+
+### 13.3. Хронологический Синтез — Полная База aDNA Кавказа
+
+> Скопируй весь блок ниже:
+
+```
+Please compile a comprehensive ancient DNA database for the Caucasus region.
+Focus on peer-reviewed publications from 2015-2025.
+Provide full citations with DOI links.
+
+TOPIC: Complete chronological synthesis of Caucasus Y-DNA from ancient samples
+
+CONTEXT:
+Multiple studies have published ancient DNA from the Caucasus, but data is scattered.
+We need a unified timeline showing Y-haplogroup evolution from Paleolithic to Medieval.
+
+TIMELINE GAP ANALYSIS:
+| Period | Approximate Date | Cultures | aDNA Status |
+|--------|------------------|----------|-------------|
+| Paleolithic | 15000-10000 BCE | CHG | ✅ Kotias, Satsurblia |
+| Mesolithic | 10000-6000 BCE | ? | ❌ Gap |
+| Neolithic | 6000-4000 BCE | Shulaveri-Shomu | ⚠️ Limited |
+| Chalcolithic | 4000-3000 BCE | Maykop, Novosvobodnaya | ✅ Good coverage |
+| Early Bronze | 3000-2000 BCE | Kura-Araxes | ⚠️ Limited |
+| Middle Bronze | 2000-1500 BCE | Dolmen, Trialeti | ⚠️ Some samples |
+| Late Bronze | 1500-1000 BCE | Late Dolmen | ✅ I2051 |
+| Iron Age | 1000 BCE - 0 CE | Koban, Scythian | ⚠️ Limited |
+| Classical | 0 - 500 CE | Meotian, Sarmatian | ⚠️ Limited |
+| Medieval | 500 - 1500 CE | Alan, Saltovo | ✅ Good coverage |
+
+QUESTIONS:
+1. **Complete Sample List:**
+   - List ALL published Y-haplogroup results from Caucasus aDNA
+   - Include: Sample ID, Site, Date, Culture, Y-Hg, mtDNA, Source
+
+2. **Culture-by-Culture Breakdown:**
+   a) CHG (Kotias, Satsurblia): What Y-DNA?
+   b) Maykop/Novosvobodnaya: J2a, G2a, L ratios?
+   c) Kura-Araxes: J1, J2, G proportions?
+   d) Dolmen culture: J2a-L283, other?
+   e) Koban culture: G2a1a confirmed, what else?
+   f) Saltovo-Mayaki: Full haplogroup spectrum?
+
+3. **Transition Points:**
+   - When does J2a decline and G2a rise?
+   - When does R1a/R1b appear in Caucasus?
+   - First evidence of Steppe admixture in aDNA?
+
+4. **Modern Continuity:**
+   - Which ancient samples match modern populations?
+   - Direct ancestral links (IBD) if detected?
+
+5. **Gaps and Future Priorities:**
+   - Which periods/regions need more sampling?
+   - Meotian aDNA: status?
+   - Abkhazian aDNA: any samples?
+
+REQUIRED OUTPUT FORMAT:
+Create a MASTER TABLE with columns:
+| Sample ID | Site | Country | Culture | Date (BCE/CE) | Y-Hg | Y-Subclade | mtDNA | Modern Match | Source |
+
+Sort by chronological order.
+
+SOURCES TO CHECK:
+- Wang et al. (2019) Nature
+- Lazaridis et al. (2022) Cell
+- Harney et al. - Koban samples
+- Gerber et al. (2024) - Avars
+- Andreeva et al. (2025) - Scythians
+- AADR database complete
+- Allen Ancient DNA Resource
+
+EXPECTED OUTPUT FORMAT:
+1. Master table of ALL Caucasus aDNA samples with Y-DNA
+2. Chronological summary by period
+3. Haplogroup frequency charts by culture
+4. Gap analysis with priorities
+5. Modern population matches
+6. Full reference list with DOIs
+```
 
 ---
 
