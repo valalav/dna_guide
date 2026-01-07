@@ -869,6 +869,125 @@ H1a1a1b3 — распространена в Западной Европе...
 
 ---
 
+## Automatic Publication Generation
+
+### Workflow for AI Agents
+
+When generating a publication for aadna.ru, follow this data source priority:
+
+```
+1. current_tree.json        → YFull tree: TMRCA, formed, path from Adam
+2. 10_Haplogroups/**/*.md    → Branch description, historical context
+3. YFull.com                 → Online verification, samples on branch
+4. Google Sheets             → Metadata (Фамилия, Субэтнос, История)
+5. 02_Deep_Research_Prompts.md → Create research task if description missing
+```
+
+### Finding Haplogroup Data in current_tree.json
+
+The JSON tree structure: each node has `id`, `tmrca`, `formed`, `snps`, `children`.
+
+**Search function (Python):**
+```python
+def find_haplogroup(tree, target_id):
+    if tree.get('id') == target_id or tree.get('name') == target_id:
+        return tree
+    if 'children' in tree:
+        for child in tree['children']:
+            result = find_haplogroup(child, target_id)
+            if result:
+                return result
+    return None
+```
+
+**Example output:**
+```
+R-FT409028: TMRCA=1900, Formed=1950, SNPs=['FT409028']
+```
+
+### Branch Description Mapping
+
+| Terminal SNP | Description File |
+|---------------|------------------|
+| G-L1264 | `10_Haplogroups/G2/02_G2a2_L1264.md` |
+| R-Z2103 | `10_Haplogroups/R/01_R1b.md` |
+| J2a-M67 | `10_Haplogroups/J/02_J2a_M67.md` |
+| J-SK1313 | `10_Haplogroups/J/03_J2a_SK1313.md` |
+
+### Three-Level Description Structure
+
+Every publication must describe the haplogroup at three levels:
+
+**Level 1: Upper levels (major migrations)**
+- R1b-M269 → Pontic-Caspian steppe
+- Z2103 → Eastern brother of L51, Yamnaya marker
+- Time: 3300-2600 BCE (Yamnaya), 2800-2200 BCE (Catacomb)
+
+**Level 2: Middle levels (younger branches)**
+- Z2103 > M12149 > Y13369 > L584
+- Connection to Anatolia, Armenian Highlands
+- Iranian/Hittite hypothesis
+
+**Level 3: Terminal branch (specific subethnos and clan)**
+- TMRCA: 1900 years ago (~125 CE, Roman Era)
+- Samples: Kabardian, Armenian, Turkish
+- Geographic range: Caucasus + Anatolia
+
+### If Branch Description is Missing
+
+Add a research task to `00_General/02_Deep_Research_Prompts.md`:
+
+```markdown
+### {New Section}: {Haplogroup} — {Brief Description}
+
+```
+Please conduct comprehensive genetic genealogy analysis.
+Focus on YFull data, FTDNA projects, publications 2020-2025.
+
+TOPIC: {Haplogroup} — {Context}
+
+CONTEXT:
+{What is already known}
+
+QUESTIONS:
+1. What is the origin?
+2. What is TMRCA and when did it arrive in Caucasus?
+3. What ancient DNA samples are associated?
+4. What is the frequency in Caucasian populations?
+
+SOURCES:
+- YFull: https://www.yfull.com/tree/{haplogroup}/
+- aadna.ru project data
+- Ancient DNA publications
+
+OUTPUT: Summary, phylogenetic position, samples table, timeline, references
+```
+```
+
+### Full Path from Adam (Reference)
+
+**R1b-Z2103 lineage:**
+```
+Adam > A0-T > A1 > A1b > BT > CT > F > G > H > I > J > K > HIJK > IJK > K > K2 > K2b >
+P-V1651 > P-M1254 > P-P337 > P-P284 > P-P226 > R > R-Y482 > R1 > R1b > R-L754 > R-L389 >
+R-P297 > R-M269 > R-L23 > R-Z2103 > ...
+```
+
+**G2a-L1264 lineage:**
+```
+Adam > A0-T > A1 > A1b > BT > CT > CF > F > G > G2 > G2a > G2a2 > L1264 > ...
+```
+
+### Publication Templates
+
+See `.agent/prompts/publication_generator.md` for:
+- Y37 / Marker tests template
+- BigY template
+- WGS+ / Full genome template
+- Quality checklist
+
+---
+
 ## Project Status
 
 Current version: 2.0.0 (2026-01-06)
