@@ -969,7 +969,282 @@ EXPECTED OUTPUT FORMAT:
 
 ---
 
-## 📋 Шаблон Отчёта После Исследования
+## � Фаза 2: Новые Исследовательские Направления
+
+### Приоритетная Матрица (Фаза 2)
+
+| # | Тема | Приоритет | Статус |
+|---|------|-----------|--------|
+| 11.1 | Меотийская aDNA | 🔴 Высокий | 🆕 Новый |
+| 11.2 | G2a1a vs G2a2b split | 🔴 Высокий | 🆕 Новый |
+| 11.3 | mtDNA Continuity | 🔴 Высокий | 🆕 Новый |
+| 11.4 | J1-Z1842 субклады | 🟡 Средний | 🆕 Новый |
+| 11.5 | Q1a на Кавказе | 🟡 Средний | 🆕 Новый |
+
+---
+
+### 11.1. Меотийская aDNA — Пропущенное Звено
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive search for ancient DNA from Meotian culture burials.
+Focus on archaeological publications and aDNA databases from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Ancient DNA from Meotians (Maeotae) - the missing link in Northwest Caucasus
+
+CONTEXT:
+The Meotians (Maeotae) were an ancient people inhabiting the Kuban River basin and 
+Sea of Azov coast from ~600 BCE to ~400 CE. They are considered the direct ancestors 
+of modern Adyghe (Circassians). However, there is a critical gap in ancient DNA:
+
+KNOWN aDNA TIMELINE:
+| Period | Culture | Y-DNA Known |
+|--------|---------|-------------|
+| 3500 BCE | Novosvobodnaya | J2a (I6268) ✅ |
+| 3300 BCE | Maykop | J2a (I6266, OSS002) ✅ |
+| 1325 BCE | Late Dolmen | J2a (I2051) ✅ |
+| 1200-400 BCE | Koban | G2a1a (Koban7, Koban9) ✅ |
+| **600 BCE - 400 CE** | **MEOTIAN** | **???** ❓ |
+| 700-900 CE | Saltovo-Mayaki | G2a, R1a, J2a ✅ |
+| Modern | Circassians | 70-80% G2a ✅ |
+
+THE GAP:
+There is an ~800-year gap in Y-DNA data between Koban (400 BCE) and Saltovo (700 CE).
+The Meotians occupy exactly this period. Did they carry J2a, G2a, or both?
+
+QUESTIONS:
+1. **Archaeological Sites:**
+   - What are the major excavated Meotian burial sites?
+   - Sites: Ust-Labinsk, Elizavetinskaya, Semibratnee, Tsemdolina?
+   - Any aDNA sequencing attempts?
+
+2. **Published aDNA:**
+   - Are there ANY Y-haplogroup results from Meotian contexts?
+   - If yes, what haplogroups?
+   - If no, why? (preservation, access, funding?)
+
+3. **Greek Colonial Context:**
+   - Meotians interacted heavily with Greek colonies (Panticapaeum, Phanagoria)
+   - Any aDNA from Bosporan Kingdom contexts that might include Meotians?
+   - Y-DNA from Greek colonial cemeteries in the Kuban?
+
+4. **Ethnic Composition:**
+   - Ancient sources describe Meotians as related to Sindoi and other "Maeotic" tribes
+   - Genetic distinction between Sindoi/Meotians and interior groups?
+   - Sarmatian admixture in Meotians?
+
+5. **mtDNA Evidence:**
+   - Even without Y-DNA, is there mtDNA from Meotian contexts?
+   - Can mtDNA show continuity to modern Circassians?
+
+KEY SITES TO SEARCH:
+| Site | Location | Period | Notes |
+|------|----------|--------|-------|
+| Ust-Labinsk kurgan | Kuban | 5th-3rd c. BCE | Rich Meotian burials |
+| Elizavetinskaya | Kuban delta | 4th c. BCE | Greek-Meotian contact |
+| Semibratnee | Kuban | 5th c. BCE | Elite burials |
+| Tsemdolina | Near Novorossiysk | 4th-2nd c. BCE | Meotian necropolis |
+
+SOURCES TO CHECK:
+- Russian Archaeological journals (Российская Археология)
+- Krasnodar Museum publications
+- AADR database for any Kuban Iron Age samples
+- Publications by Leskov, Marchenko on Meotian archaeology
+- aDNA studies from adjacent cultures (Scythians, Sarmatians)
+
+EXPECTED OUTPUT FORMAT:
+1. Summary of Meotian archaeology (key sites, chronology)
+2. Table of ALL aDNA results from Iron Age Kuban if any exist
+3. If no Y-DNA: analysis of why and prospects for future sampling
+4. mtDNA data if available
+5. Prediction: what Y-DNA would we expect in Meotians?
+6. Full reference list with DOIs
+```
+
+---
+
+### 11.2. G2a1a vs G2a2b — Две Разные Популяции G2a
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a phylogeographic analysis of the G2a split in the Caucasus.
+Focus on YFull tree data and publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Why is Koban G2a1a different from Circassian G2a2b/L1264?
+
+CONTEXT:
+Ancient DNA and modern distributions show two distinct G2a populations in the Caucasus:
+
+| Clade | TMRCA | Ancient DNA | Modern Distribution |
+|-------|-------|-------------|---------------------|
+| **G2a1a (Z6653/FGC1159)** | ~8000 BCE | Koban7, Koban9 (Iron Age) | Ossetians (70%), Balkars, Georgians |
+| **G2a2b (L1264)** | ~2200 BCE | AU78077 (7th c. CE Avar) | Circassians (70%), Abkhazians |
+
+THE PARADOX:
+- Koban culture (1200-400 BCE) is in central North Caucasus
+- Circassians descend from western Koban/Meotians
+- Yet Koban aDNA = G2a1a, Circassians = G2a2b
+
+Why are they different? Where is G2a2b in ancient DNA?
+
+HYPOTHESES:
+1. **Geographic Split:**
+   - G2a1a = Central Caucasus (Koban → Ossetians)
+   - G2a2b = Western Caucasus (Colchis → Circassians)
+   - Two refugia, independent expansions?
+
+2. **Chronological Split:**
+   - G2a1a is older (~8000 BCE)
+   - G2a2b/L1264 is younger (~2200 BCE), post-4.2ky founder effect?
+   - L1264 expanded AFTER Koban era samples?
+
+3. **Colchian Origin:**
+   - G2a2b originated in Colchis (humid Black Sea coast)
+   - Expanded into NW Caucasus after Dolmen collapse
+   - Never reached central Koban zone?
+
+QUESTIONS:
+1. **Phylogenetic Deep Dive:**
+   - What is the exact relationship: G2a1 vs G2a2?
+   - Common ancestor TMRCA?
+   - When did they split geographically?
+
+2. **Modern Distribution Map:**
+   - G2a1a frequencies in: Ossetians, Balkars, Karachays, Georgians, Svans
+   - G2a2b frequencies in: Adyghe, Abkhazians, Ubykh descendants
+   - Is there a clear geographic boundary?
+
+3. **Ancient DNA Search:**
+   - Are there ANY ancient G2a2b/L1264 samples from Caucasus (not Avar)?
+   - Any G2a from Colchian contexts (Western Georgia)?
+   - Any G2a from Dolmen culture?
+
+4. **Georgian/Mingrelian Diversity:**
+   - Reports show high G2a diversity in Mingrelians
+   - Are both G2a1a AND G2a2b present?
+   - Is Colchis the source for both clades?
+
+5. **Linguistic Correlation:**
+   - G2a1a → Ossetic/Kartvelian speakers?
+   - G2a2b → NWC (Abkhaz-Adyghe) speakers?
+   - Does the genetic split match the linguistic divide?
+
+KEY SUBCLADES TO ANALYZE:
+| Clade | Key SNPs | Modern Distribution |
+|-------|----------|---------------------|
+| G-Z6653 (G2a1a) | FGC1159, FGC1160 | Ossetia, Georgia |
+| G-L1264 (G2a2b) | FGC21495, Z44222 | Circassia, Abkhazia |
+| G-L293 | - | Ossetia (different from L1264!) |
+| G-P303 | - | Parent of L1264 |
+
+SOURCES TO CHECK:
+- YFull: https://www.yfull.com/tree/G-P15/
+- FTDNA G2a project
+- Koban aDNA publications (Harney et al.)
+- Georgian biobank studies
+- Publications on Ossetian genetics
+
+EXPECTED OUTPUT FORMAT:
+1. Phylogenetic tree showing G2a1 vs G2a2 relationship
+2. Split date (TMRCA of common ancestor)
+3. Geographic distribution map (textual description)
+4. Table of ancient G2a samples with precise subclades
+5. Hypothesis evaluation: which scenario best fits data?
+6. Full reference list with DOIs
+```
+
+---
+
+### 11.3. mtDNA Continuity — Материнские Линии от Дольменов к Современности
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive mtDNA analysis of Northwest Caucasus populations.
+Focus on publications from 2015-2025.
+Provide full citations with DOI links.
+
+TOPIC: Mitochondrial DNA continuity from Dolmen culture to modern Circassians
+
+CONTEXT:
+The Y-DNA shows a dramatic shift (J2a → G2a), but mtDNA should show CONTINUITY 
+if the "female line persistence" model is correct. Testing this hypothesis:
+
+Y-DNA SHIFT (known):
+- Dolmen/Maykop: J2a dominant
+- Modern Circassians: G2a dominant (70%)
+- Interpretation: Y-DNA replacement
+
+mtDNA PREDICTION:
+- If population was replaced: mtDNA should also change
+- If only Y-DNA replaced (elite dominance): mtDNA should show CONTINUITY
+
+QUESTIONS:
+1. **Ancient mtDNA Inventory:**
+   - List ALL mtDNA haplogroups from:
+     a) Maykop culture
+     b) Novosvobodnaya
+     c) Dolmen culture
+     d) Koban culture
+   - Create frequency table
+
+2. **Modern Circassian mtDNA:**
+   - Major haplogroups in Adyghe, Kabardians, Abkhazians?
+   - Common haplogroups: H, U5, T2, HV, etc.?
+   - Frequency comparison with ancient samples
+
+3. **Continuity Test:**
+   - Which specific mtDNA lineages appear in BOTH ancient and modern?
+   - Example: If H1a is in Dolmen AND modern Adyghe = continuity marker
+   - Statistical analysis of haplogroup overlap?
+
+4. **Contrast with Y-DNA:**
+   - mtDNA turnover % vs Y-DNA turnover %?
+   - Is mtDNA more stable (as predicted)?
+
+5. **East Asian Signal:**
+   - AU78077 (Avar G-L1264) had D4j11 (East Asian)
+   - Any East Asian mtDNA in modern Circassians?
+   - Evidence of Avar/Turkic maternal contribution?
+
+6. **Comparative Analysis:**
+   - Caucasus mtDNA vs European Neolithic?
+   - Caucasus mtDNA vs Steppe populations?
+   - Unique "Caucasian" mtDNA lineages?
+
+KEY mtDNA HAPLOGROUPS TO TRACK:
+| Haplogroup | Typical Association | Expected in Caucasus? |
+|------------|---------------------|----------------------|
+| H | European Neolithic | High in Caucasus |
+| U5 | European Hunter-Gatherer | Should persist |
+| T2 | Neolithic farmer | Present |
+| HV | West Asian | Expected |
+| X2 | Ancient Near East | Possible |
+| U4 | Eastern European | Steppe admixture? |
+
+SOURCES TO CHECK:
+- Wang et al. (2019) - Maykop mtDNA
+- Lazaridis et al. (2022) - Caucasus samples
+- Circassian genetic studies (Yunusbayev, Balanovsky)
+- Georgian biobank mtDNA data
+- AADR database mtDNA annotations
+
+EXPECTED OUTPUT FORMAT:
+1. Table: Ancient Caucasus mtDNA by culture (Maykop, Dolmen, Koban)
+2. Table: Modern Circassian mtDNA frequencies
+3. Venn diagram description: overlap between ancient and modern
+4. Statistical measure of continuity (if calculated in any study)
+5. Comparison: mtDNA stability vs Y-DNA turnover
+6. Full reference list with DOIs
+```
+
+---
+
+## �📋 Шаблон Отчёта После Исследования
 
 Когда получите результаты Deep Research, заполните этот шаблон:
 
