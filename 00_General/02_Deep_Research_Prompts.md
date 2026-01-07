@@ -313,30 +313,94 @@ EXPECTED OUTPUT FORMAT:
 
 ## 4. R1a-Z93 — Степная линия
 
-### 4.1. YP451/YP457 и средневековье
+### 4.1. YP451/YP457 — Тюркско-Аланское Наследие R1a-Z93
 
 > [!NOTE]
 > **✅ ЧАСТИЧНО ВЫПОЛНЕНО:**
 > - Салтово-Маяцкая: R1a подтверждено наряду с G2a, J2a
 > - Прямых образцов YP451/YP457 в древней ДНК нет
 
+> Скопируй весь блок ниже:
+
 ```
-Research on R1a-Z93 > Y934 > YP451 in Caucasus (2020-2025):
+Please conduct a comprehensive phylogeographic and historical analysis of R1a-Z93 
+subclades in the Caucasus, focusing on medieval steppe connections.
+Focus on peer-reviewed publications from 2018-2025.
+Provide full citations with DOI links.
 
-1. TMRCA estimates for:
-   - YP450 (~550 CE claimed)
-   - YP457 (Abkhaz-Balkar cluster)
-   - BY60213 (Kabardian nobility)
+TOPIC: R1a-Z93 > Y934 > YP451/YP457 — When and how did steppe R1a arrive in the Caucasus?
 
-2. Ancient DNA from:
-   - Alan burials (4th-9th century CE)
-   - Khazar Khaganate sites
-   - Saltovo-Mayaki culture
+CONTEXT:
+R1a-Z93 is the defining Y-haplogroup of the Indo-Iranian steppe migrations (Sintashta, 
+Andronovo, Scythians). It is NOT indigenous to the Caucasus. Yet today, specific 
+subclades of R1a-Z93 are found among Caucasian ethnic groups:
 
-3. Connection to Turkic Khaganate and Bulgars
-4. Distribution in modern Balkars vs Abkhaz vs Kabardians
+- **YP451 (TMRCA ~550 CE):** Found in Balkars, Karachays, Ossetians
+- **YP457:** An Abkhaz-Balkar specific cluster
+- **BY60213 (TMRCA ~500 CE):** Linked to Kabardian nobility (Tamby/Тамби family)
 
-Key question: When exactly did R1a-Z93 arrive in Caucasus?
+The timing (~500-600 CE) suggests arrival during the **Migration Period**, not the 
+Bronze Age Scythians. This coincides with:
+- Collapse of the Hunnic Empire (~453 CE)
+- Rise of the Turkic Khaganate (552 CE)
+- Avar conquest (568 CE)
+- Khazar Khaganate formation (~650 CE)
+
+QUESTIONS:
+1. **Phylogenetic Position:**
+   - What is the exact path: Z93 > Z94 > Z2124 > Y934 > YP451 > YP457?
+   - TMRCA of each node? (YFull, FTDNA)
+   - Which branch is BY60213? (parallel to YP457 or under it?)
+
+2. **Ancient DNA Search:**
+   - Are there any R1a-Z93 samples from:
+     a) Saltovo-Mayaki culture (8th-10th c. CE)?
+     b) Khazar burial sites (Don, Volga)?
+     c) Alan cemeteries (Kislovodsk basin, 4th-9th c.)?
+     d) Hunnic-period burials in the Caucasus?
+   - If yes, what subclades? Y934+? YP451+?
+
+3. **Turkic Connection:**
+   - YP451 is found in Tuvans, Yakuts, and other Siberian Turkic peoples
+   - Did it arrive to the Caucasus via:
+     a) Turkic Khaganate mercenaries?
+     b) Bulgar tribes?
+     c) Proto-Hungarian/Onogur groups?
+   - Or did Caucasian carriers migrate east (Alan diaspora)?
+
+4. **The Inal Legend:**
+   - Kabardian oral tradition names Inal (~XV c.) as founding prince
+   - BY60213 (TMRCA ~500 CE) is 1000 years OLDER than Inal
+   - How to reconcile genetic and oral history?
+   - Were pre-Inal carriers of BY60213 royal, or was there later adoption?
+
+5. **Modern Distribution:**
+   - Frequency of YP451 in: Balkars, Karachays, Ossetians, Kabardians, Abkhaz
+   - Compare with: Volga Tatars, Bashkirs, Chuvash
+   - Is there a "Steppe Corridor" signature (continuous cline vs discrete clusters)?
+
+KEY SAMPLES TO FIND:
+| Sample | Site | Period | Expected |
+|--------|------|--------|----------|
+| Saltovo-Mayaki males | Don basin | 8th-10th c. | R1a expected |
+| Kislovodsk Alans | N. Ossetia | 4th-9th c. | R1a? G2a? |
+| Khazar warriors | Volga | 7th-10th c. | Mixed package |
+
+SOURCES TO CHECK:
+- YFull: https://www.yfull.com/tree/R-YP451/
+- FTDNA R1a project
+- Unterländer et al. (2017) - Scythian aDNA
+- Damgaard et al. (2018) - Steppe aDNA
+- Publications on Alan genetics (Russian journals)
+- Khazar archaeological genetics
+
+EXPECTED OUTPUT FORMAT:
+1. Summary of YP451/YP457 phylogeny with TMRCA dates
+2. Table of all relevant ancient DNA samples with R1a from Caucasus/Steppe
+3. Map of YP451 distribution (modern + ancient if available)
+4. Historical scenario: most likely vector of R1a-Z93 arrival to Caucasus
+5. Resolution of Inal legend vs. genetic dating discrepancy
+6. Full reference list with DOIs
 ```
 
 ### 4.2. BY60213 и легенда об Инале
@@ -726,63 +790,113 @@ EXPECTED OUTPUT FORMAT:
 > Скопируй весь блок ниже:
 
 ```
-Please conduct a comprehensive literature review on Caucasus ancient DNA and population dynamics.
-Focus on peer-reviewed publications from 2020-2025.
+Please conduct a comprehensive interdisciplinary analysis of Y-DNA turnover in the 
+Northwest Caucasus, combining ancient DNA, archaeology, and demographic modeling.
+Focus on peer-reviewed publications from 2018-2025.
 Provide full citations in academic format with DOI links.
 
 TOPIC: The J2a to G2a shift in Northwest Caucasus - a demographic mystery
 
 CONTEXT:
-Archaeological and genetic data present a paradox in the Northwest Caucasus:
-- Ancient DNA from Dolmen culture (I2051, Marchenkova Gora, 1325 BCE): J2a
-- Ancient DNA from Novosvobodnaya (I6268, Klady, 3500 BCE): J2a
-- Modern Western Circassians (Shapsugs, Abzakhs): 70-80% G2a (specifically G-L1264)
+Archaeological and genetic data present a fundamental paradox in the Northwest Caucasus.
+The Y-chromosomal composition of the ancient population differs dramatically from 
+modern inhabitants, despite clear autosomal continuity:
 
-If the Dolmen culture is ancestral to Circassians (confirmed by autosomal DNA continuity),
-why did the dominant Y-haplogroup shift from J2a to G2a?
+ANCIENT DNA (3500-1300 BCE):
+| Sample | Site | Date | Y-Hg | Culture |
+|--------|------|------|------|---------|
+| I6268 | Klady | 3516-3370 BCE | **J2a-Z7671** | Novosvobodnaya |
+| I6266 | Maykop | ~3300 BCE | J2a | Maykop |
+| OSS002 | Unakozovskaya | ~3100 BCE | J2a-M410 | Late Maykop |
+| I2051 | Marchenkova Gora | ~1325 BCE | **J2a-L283** | Late Dolmen / Pre-Koban |
+| MK5001 | Maykop | Late Maykop | L (L1b2) | Late Maykop |
+
+MODERN Y-DNA (Western Circassians):
+- **Shapsugs:** 70-80% G2a (mostly G-L1264)
+- **Abzakhs:** 60-75% G2a
+- **Abkhazians:** 50-70% G2a
+- J2a: now only 5-15%!
+
+THE PARADOX:
+If autosomal DNA shows continuity (Lazaridis 2022 confirms Dolmen→Circassian), 
+why did the Y-chromosomal signature completely change from J2a to G2a?
 
 HYPOTHESES TO TEST:
-1. **4.2ky Climate Event Bottleneck** (~2200 BCE):
-   - Did climate crisis cause population collapse in the Caucasus?
-   - Did G-L1264 clan survive while J2a clans perished?
+1. **4.2 Kiloyear Bottleneck (~2200 BCE):**
+   - Global climate crisis (drought, aridification)
+   - Collapse of complex societies (Akkad, Egypt Old Kingdom, Maykop)
+   - Did J2a clans in open valleys perish while G2a in mountain refugia survived?
    - Archaeological evidence for settlement abandonment around 2200 BCE?
+   - CRITICAL: G-L1264 TMRCA = ~2200 BCE perfectly coincides with the event!
 
-2. **Colchian Refugium**:
-   - Was G2a concentrated in coastal/mountain Colchis?
-   - Did G2a expand inland after J2a collapse?
-   - Linguistic correlation: Abkhaz (NWC) vs Kartvelian speakers and their Y-DNA?
+2. **Colchian Refugium Hypothesis:**
+   - G2a concentrated in humid Black Sea coast (Colchis)?
+   - Post-crisis expansion from coast into depopulated interior?
+   - Linguistic test: Are NWC languages (Abkhaz-Adyghe) linked to Colchian origin?
+   - G2a subclades in Mingrelians/Svans vs Circassians?
 
-3. **Koban Culture Integration**:
-   - Koban culture (1200-400 BCE) shows G2a1a in ancient DNA (sample Koban7)
-   - Did Koban population replace/absorb Dolmen J2a?
-   - Is there evidence for East-to-West migration pattern?
+3. **Female Continuity / Y-DNA Replacement:**
+   - mtDNA haplogroups: H, U5, T2 show direct Dolmen→Circassian continuity
+   - Model: G2a males married into surviving J2a families
+   - Over generations, patrilocal drift eliminated J2a lineages
+   - Similar pattern to Bell Beaker replacement in Spain
 
-4. **Social Selection**:
-   - Did G2a lineages have reproductive advantage?
-   - Feudal/clan structure favoring certain patrilines?
-   - Polygyny among G2a elite?
+4. **Social Selection / Reproductive Skew:**
+   - Koban/Meotian cultures were stratified warrior societies
+   - Did G2a lineages become the new military aristocracy?
+   - Polygyny amplifying G2a at expense of other lineages?
+   - "Star burst" expansion pattern in G-L1264 phylogeny?
+
+KOBAN MISSING LINK:
+| Sample | Site | Date | Y-Hg | Significance |
+|--------|------|------|------|--------------|
+| Koban7 | Zayukovo-3 | Iron Age | **G-FGC1160** (G2a1a) | G2a in central Caucasus! |
+| Koban9 | Zayukovo-3 | Iron Age | **G-Z6554** (G2a1a) | Confirms G2a expansion |
+
+BUT: G2a1a (Koban samples) ≠ G2a2b/L1264 (Western Circassians)!
+This suggests multiple G2a populations in different regions.
 
 QUESTIONS:
-1. What is the full Y-haplogroup composition of all Dolmen/Novosvobodnaya male samples?
-2. Are there any G2a samples from Dolmen contexts (not just J2a)?
-3. When does G2a first appear in ancient DNA from NW Caucasus?
-4. Is there archaeological evidence for population discontinuity ~2200 BCE?
-5. What is the autosomal difference (if any) between J2a-carrying Dolmen and 
-   modern G2a-dominant Circassians?
+1. **Complete Y-DNA inventory:**
+   - List ALL Y-haplogroups from Dolmen/Novosvobodnaya/Maykop
+   - Are there ANY G2a samples from Dolmen contexts?
+   - First appearance of G2a in NW Caucasus ancient DNA?
 
-SOURCES TO CHECK:
-- Lazaridis et al. 2022, 2024 (Cell, Nature)
-- Wang et al. 2019 (Nature)
-- Koban culture publications (Russian archaeological journals)
-- Allen Ancient DNA Resource (AADR) for all Caucasus Bronze Age samples
-- YFull trees: https://www.yfull.com/tree/G-L1264/ and https://www.yfull.com/tree/J-M67/
+2. **Chronology of shift:**
+   - At what point (date range) does G2a emerge in ancient DNA?
+   - Gap between last J2a-dominant sample and first G2a-dominant sample?
+
+3. **Autosomal analysis:**
+   - PCA/ADMIXTURE of J2a-carrying ancients vs G2a-carrying moderns
+   - Any measurable autosomal differences?
+   - Evidence for external admixture with G2a arrival?
+
+4. **Meotian connection:**
+   - Meotians (ancestors of Adyghe) lived in Kuban, 600 BCE - 400 CE
+   - ANY ancient DNA from Meotian burials?
+   - Was Meotian population G2a or J2a?
+
+5. **Simulation/modeling:**
+   - Has anyone modeled the demographic scenario numerically?
+   - What bottleneck size + reproductive skew explains observed shift?
+
+KEY SOURCES TO CHECK:
+- Lazaridis et al. (2022) - Cell - Caucasus continuity
+- Wang et al. (2019) - Nature - Maykop genetics
+- Koban culture publications (Russian journals)
+- Gerber et al. (2024) - AU78077 G-L1264 in Avar context
+- Allen Ancient DNA Resource (AADR) - complete Caucasus dataset
+- Harney et al. (2021) - Koban samples
+- Reich lab supplementary datasets
 
 EXPECTED OUTPUT FORMAT:
-1. Summary of the paradox and most likely resolution
-2. Chronological table of Y-haplogroups 4000 BCE → present
-3. PCA description showing autosomal continuity vs Y-DNA replacement
-4. Map description of J2a vs G2a distribution over time
-5. Full reference list with DOIs
+1. Summary of paradox with most likely resolution (2-3 paragraphs)
+2. **Complete Y-hg chronology table** 4000 BCE → 500 CE
+3. PCA/ADMIXTURE description of autosomal continuity
+4. Schematic map of J2a vs G2a distribution over time (textual description)
+5. Demographic model parameters if any published
+6. Remaining unanswered questions
+7. Full reference list with DOIs
 ```
 
 ### 10.4. R-FT409028 / L584 — Кабардинец в Редкой Ветви
