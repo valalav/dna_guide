@@ -1333,6 +1333,8 @@ EXPECTED OUTPUT FORMAT:
 | 14.1 | Греческие Колонии | 🟡 Средний | ✅ Готово |
 | 14.2 | Шапсугский Феномен | 🔴 Высокий | ✅ Готово |
 | 14.3 | Дагестанские Границы | 🟡 Средний | 🆕 Новый |
+| 14.4 | Золотоордынское Влияние | 🔴 Высокий | 🆕 Новый |
+| 14.5 | Генетические Болезни Кавказа | 🟡 Средний | 🆕 Новый |
 
 ---
 
@@ -1551,6 +1553,145 @@ EXPECTED OUTPUT FORMAT:
 5. IBD analysis if available
 6. Historical scenario: when did divide form?
 7. Full reference list with DOIs
+```
+
+---
+
+### 14.4. Золотоордынское Влияние — Монгольский и Тюркский Генетический След
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a genetic analysis of Mongol and Turkic impact on Circassian populations.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Genetic legacy of the Golden Horde and Crimean Khanate on Northwest Caucasian populations
+
+CONTEXT:
+The Mongol invasion (1237-1240 CE) and subsequent Golden Horde period (~1240-1502 CE) 
+profoundly affected the political history of the North Caucasus:
+
+| Period | Event | Potential Genetic Impact |
+|--------|-------|--------------------------|
+| 1237-1240 | Mongol invasion | Possible bottleneck |
+| 1240-1380 | Golden Horde domination | Turkic/Mongol admixture? |
+| 1380-1502 | Horde fragmentation | Kabardian expansion |
+| 1502-1783 | Crimean Khanate influence | Tatar admixture? |
+
+QUESTIONS:
+1. **East Asian Markers:**
+   - Any C2-M217 (Mongolic marker) in Circassians?
+   - N1a (Uralic/Siberian) frequencies?
+   - Haplogroup Q frequencies?
+   - Any genomic segments of East Asian origin?
+
+2. **Turkic Markers:**
+   - R1a-Z93 "Steppe" subclade distribution?
+   - Comparison with Crimean Tatars, Balkars, Kumyks?
+   - Direction of gene flow: into or out of Circassians?
+
+3. **Population Bottleneck:**
+   - Evidence of ~1240 CE bottleneck in Circassian aDNA?
+   - TMRCA of major lineages — do any date to 1200-1400 CE?
+   - Ne estimates for post-Mongol period?
+
+4. **Kabardian Expansion:**
+   - Kabardians expanded eastward after Horde collapse
+   - Genetic evidence of founder effect in eastern Kabardian groups?
+   - Admixture with remnant Alans during expansion?
+
+5. **Crimean Khanate Period:**
+   - Circassian slaves (Mamluks) exported to Egypt
+   - Reverse gene flow from Crimea to Circassia?
+   - Genetic traces in modern Kabardians, Beslenei?
+
+KEY MARKERS TO CHECK:
+| Haplogroup | Association | Expected in Circassians? |
+|------------|-------------|--------------------------|
+| C2-M217 | Mongolic | Very low (<1%?) |
+| N1a | Ural-Siberian | Low |
+| Q-M242 | Central Asian | 1-5% |
+| R1a-Z93 | Turkic Steppe | 5-15% |
+
+SOURCES TO CHECK:
+- Yunusbayev et al. on Caucasus admixture
+- Zhivotovsky et al. on Mongol genetic legacy
+- Zhabagin et al. on steppe signatures
+- Ancient DNA from Golden Horde burials
+
+EXPECTED OUTPUT FORMAT:
+1. East Asian haplogroup frequencies in Circassians
+2. Autosomal East Asian / Turkic component estimates
+3. Timeline of admixture events
+4. Bottleneck evidence analysis
+5. Comparison: Circassians vs neighboring Turkic peoples
+6. Full reference list with DOIs
+```
+
+---
+
+### 14.5. Генетические Болезни Кавказа — Founder Mutations и Медицинская Генетика
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a medical genetics analysis of founder mutations in Caucasus populations.
+Focus on publications from 2015-2025 and medical genetics databases.
+Provide full citations with DOI links.
+
+TOPIC: Founder mutations and genetic disease prevalence in isolated Caucasian populations
+
+CONTEXT:
+Isolated populations with strong founder effects often harbor specific genetic diseases 
+at elevated frequencies. The Caucasus, with its extreme genetic isolation (especially 
+among Shapsugs, Abkhaz mountain communities), may have similar patterns.
+
+KNOWN FOUNDER EFFECTS:
+| Population | Key Lineage | Evidence |
+|------------|-------------|----------|
+| Shapsugs | G2a (81-86%) | Extreme bottleneck |
+| Ossetians | G2a1 (~70%) | Single lineage dominance |
+| Isolated Abkhaz | G2a | Mountain valley isolation |
+| Ingush | J2 (~35%) | Strong founder |
+
+QUESTIONS:
+1. **Known Founder Mutations:**
+   - Any documented founder mutations in Circassians?
+   - Comparison with Ashkenazi Jewish, Finnish founder mutations?
+   - ClinVar/OMIM entries for Caucasus populations?
+
+2. **Elevated Disease Frequencies:**
+   - Any rare diseases at elevated frequencies in Adygea, Abkhazia?
+   - Metabolic disorders (similar to Finnish disease heritage)?
+   - Neurological conditions?
+   - Hemoglobinopathies (Mediterranean connection)?
+
+3. **ROH and Homozygosity Burden:**
+   - Consequences of elevated ROH in Shapsugs?
+   - FROH (inbreeding coefficient) estimates?
+   - Correlation with recessive disease prevalence?
+
+4. **Consanguinity Patterns:**
+   - Documented consanguineous marriage rates?
+   - Clan endogamy effects?
+   - Pre-1864 vs post-deportation patterns?
+
+5. **Screening Recommendations:**
+   - Do genetic counselors recommend specific panels for Caucasus patients?
+   - Carrier screening for known mutations?
+   - Any regional genetic screening programs?
+
+EXPECTED OUTPUT FORMAT:
+1. List of known founder mutations in Caucasus populations
+2. Disease frequency comparison table
+3. ROH/FROH statistics by population
+4. Consanguinity prevalence data
+5. Medical/clinical recommendations
+6. Full reference list with DOIs
+
+NOTE: This research has practical medical implications for genetic counseling 
+of Circassian diaspora worldwide.
 ```
 
 ---
