@@ -223,22 +223,90 @@ Ancient DNA evidence for J-M67/CTS900 migration from Anatolia to Caucasus:
 ```
 -->
 
-### 3.2. Хаттский язык и генетика
+### 3.2. Хаттская Гипотеза — J2a-M67 и Анатолийский Субстрат
+
+> Скопируй весь блок ниже:
 
 ```
-Linguistic-genetic correlation studies for Hattic-Abkhaz-Adyghe hypothesis:
+Please conduct a comprehensive interdisciplinary review combining linguistics, 
+archaeology, and archaeogenetics on the Hattic-Caucasian connection hypothesis.
+Focus on peer-reviewed publications from 2015-2025.
+Provide full citations with DOI links.
 
-1. Recent publications on Hattic language (2020-2025)
-2. Genetic studies testing linguistic hypotheses:
-   - Dene-Caucasian macro-family
-   - Hattic-NWC connection (Ivanov, Diakonov, Ardzinba)
+TOPIC: The genetic and linguistic relationship between Hattians (pre-Hittite Anatolia) 
+and Northwest Caucasian peoples
 
-3. Population genetics of Eastern Anatolia vs NW Caucasus:
-   - Shared haplogroups
-   - Autosomal component analysis
-   - IBD (Identity-by-Descent) studies
+CONTEXT:
+The Hattians were the pre-Indo-European population of Central Anatolia, conquered by 
+the Indo-European Hittites around 1700 BCE. Their language (Hattic) is a language isolate, 
+but several scholars have proposed connections:
 
-Sources: Journal of Indo-European Studies, Linguistic Typology, Ancient Near Eastern Studies
+1. **Ivanov & Gamkrelidze (1984):** Proposed Hattic is related to Northwest Caucasian 
+   (Abkhaz-Adyghe languages)
+2. **Ardzinba (1979):** Noted structural parallels between Hattic and Abkhaz
+3. **Diakonov (1967):** Suggested Hattic as part of a wider "Sino-Caucasian" family
+
+Genetic evidence may now help resolve this question:
+- J2a-M67 (J-CTS6619) is found in both:
+  - **Arslantepe** (Eastern Anatolia, ~3400 BCE): J-PF5132, J-Z7675
+  - **Maykop-Novosvobodnaya** (Northwest Caucasus, ~3500 BCE): J-CTS6619, J-Z7671
+- This suggests a shared population substrate between Anatolia and the Caucasus 
+  in the Chalcolithic/Early Bronze Age
+
+QUESTIONS:
+1. **Linguistic Evidence (2015-2025):**
+   - Are there new publications on Hattic-NWC connections?
+   - What is the current scholarly consensus? (mainstream rejection or renewed interest?)
+   - Key parallels: pronouns, verb morphology, phonological inventory
+   - Criticism and rebuttals
+
+2. **Archaeological Evidence:**
+   - Material culture connections between Hattian settlements and Maykop?
+   - Shared metalworking traditions (arsenical bronze)?
+   - Trade routes connecting Central Anatolia to the Caucasus
+
+3. **Genetic Evidence (aDNA 2020-2025):**
+   - What are the Y-haplogroups from Hattusa (Boğazköy) and other Hattian sites?
+   - Is J2a-M67 (specifically CTS900, CTS6619, Z7671, Z7675) present?
+   - Autosomal comparison: are Hattians closer to Maykop or to Anatolian Neolithic?
+   - Any samples from pre-Hittite context in Central Anatolia?
+
+4. **The Kura-Araxes Factor:**
+   - Kura-Araxes culture (3400-2000 BCE) spread from South Caucasus to Eastern Anatolia
+   - Did they carry J2a-M67 into Anatolia?
+   - Or was J2a-M67 already there from Chalcolithic connections?
+
+5. **Testing the Hypothesis:**
+   - If Hattic ↔ NWC genetic, we expect:
+     a) Shared haplogroups (J2a-CTS6619 branch) in both populations
+     b) High autosomal affinity (PCA, ADMIXTURE) between pre-Hittite Anatolia and Maykop/NWC
+     c) IBD segments shared between modern Abkhaz/Adyghe and Central Anatolians
+   - Has this been tested? Results?
+
+KEY SAMPLES TO INVESTIGATE:
+| Sample | Site | Date | Expected Info |
+|--------|------|------|---------------|
+| Arslantepe 19 (ART019) | Arslantepe | ~3400 BCE | J-PF5132 confirmed |
+| Arslantepe 22 (ART022) | Arslantepe | ~3200 BCE | J-Z7675 confirmed |
+| I6268 (Klady) | Novosvobodnaya | ~3500 BCE | J-CTS6619 confirmed |
+| Hattusa samples? | Boğazköy | Pre-1700 BCE | Unknown - need search |
+| Alaca Höyük? | Alaca Höyük | ~2300 BCE | "Hattian" royal tombs |
+
+SOURCES TO CHECK:
+- Lazaridis et al. 2022, 2024 (Anatolia/Caucasus aDNA)
+- Wang et al. 2019 (Maykop genetics)
+- Kassian et al. (2010) - Hattic vocabulary analysis
+- Journal of Near Eastern Studies
+- Anatolian Studies
+- Kadmos journal
+
+EXPECTED OUTPUT FORMAT:
+1. Summary of current linguistic consensus on Hattic-NWC (2-3 paragraphs)
+2. Table of all Hattian-period ancient DNA samples with Y-haplogroups
+3. Comparison: Arslantepe/Maykop J2a vs Hattusa/Alaca Höyük (if data exists)
+4. Assessment: Does genetic evidence support or contradict linguistic hypothesis?
+5. Unanswered questions and future research directions
+6. Full reference list with DOIs
 ```
 
 ---
