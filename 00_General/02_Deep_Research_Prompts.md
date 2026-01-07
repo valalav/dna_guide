@@ -980,6 +980,7 @@ EXPECTED OUTPUT FORMAT:
 | 11.3 | mtDNA Continuity | 🔴 Высокий | ✅ Выполнено |
 | 11.4 | J1-Z1842 субклады | 🟡 Средний | 🆕 Новый |
 | 11.5 | Q1a на Кавказе | 🟡 Средний | 🆕 Новый |
+| 11.6 | Аутосомный профиль | 🟡 Средний | 🆕 Новый |
 
 ---
 
@@ -1244,7 +1245,238 @@ EXPECTED OUTPUT FORMAT:
 
 ---
 
-## �📋 Шаблон Отчёта После Исследования
+### 11.4. J1-Z1842 — Закавказский Древний Субстрат
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive phylogeographic analysis of J1-Z1842 in the Caucasus.
+Focus on publications from 2018-2025 and YFull data.
+Provide full citations with DOI links.
+
+TOPIC: J1-Z1842 - The ancient Transcaucasian layer in Adyghe genetics
+
+CONTEXT:
+J1 is the third most common Y-haplogroup among modern Circassians (~10-15%). 
+Unlike J2a (Maykop elite), J1 has different associations:
+
+- J1-Z1842 is linked to **Kura-Araxes culture** (3400-2000 BCE)
+- Found in both South and North Caucasus
+- Present in modern Adyghe, Abkhaz, Chechens, Georgians
+
+KEY PHYLOGENETIC DATA:
+| Subclade | TMRCA | Distribution |
+|----------|-------|--------------|
+| J1-Z1842 | ~4300 BCE | Pan-Caucasian |
+| J1-L136 | ~3000 BCE | Dagestan, Chechnya |
+| J1-FGC6064 | ~2000 BCE | Specific clans |
+
+QUESTIONS:
+1. **Phylogenetic Position:**
+   - Full path from J1-M267 to caucasian subclades
+   - TMRCA of Z1842 (YFull estimates)?
+   - Downstream clades specific to Circassians?
+
+2. **Ancient DNA:**
+   - Any J1-Z1842 in Kura-Araxes samples?
+   - J1 in Maykop? (contrast with J2a)
+   - J1 in Koban or Dolmen contexts?
+
+3. **Modern Distribution:**
+   - J1 frequency in: Adyghe, Kabardians, Abkhaz
+   - Comparison with: Chechens, Ingush, Dagestani
+   - Is J1 more "Northeast Caucasian" than "Northwest"?
+
+4. **Historical Interpretation:**
+   - Did J1 arrive with Kura-Araxes expansion?
+   - Or is it pre-Kura-Araxes indigenous?
+   - Relation to "Hurrian" substrate hypothesis?
+
+5. **Contrast with J2a:**
+   - J2a = Maykop elite (confirmed)
+   - J1 = different population layer?
+   - Geographic separation in ancient period?
+
+KEY SAMPLES TO FIND:
+| Culture | Period | Expected J1? |
+|---------|--------|--------------|
+| Kura-Araxes | 3400-2000 BCE | Likely |
+| Maykop | 3700-3000 BCE | Minority |
+| Koban | 1200-400 BCE | Possible |
+
+SOURCES TO CHECK:
+- YFull: https://www.yfull.com/tree/J-Z1842/
+- FTDNA J1 project
+- Kura-Araxes aDNA publications
+- Balanovsky et al. on Caucasus Y-DNA
+- Chechen/Ingush genetic studies
+
+EXPECTED OUTPUT FORMAT:
+1. J1-Z1842 phylogenetic tree with key subclades
+2. Ancient DNA table with all J1 samples from Caucasus
+3. Modern frequency map (textual description)
+4. Historical scenario: J1 arrival and persistence
+5. Comparison: J1 vs J2a geographic/temporal distribution
+6. Full reference list with DOIs
+```
+
+---
+
+### 11.5. Q1a — Тюркско-Гуннское Наследие
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive analysis of haplogroup Q in the North Caucasus.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Haplogroup Q in the Caucasus - Hunnic, Turkic, or earlier?
+
+CONTEXT:
+Haplogroup Q is found at notable frequencies in the North Caucasus, particularly 
+among Turkic-speaking groups (Balkars, Karachays: 10-20%) and at lower levels 
+in Circassians (~5%). Its origin is a subject of debate:
+
+COMPETING HYPOTHESES:
+1. **Hunnic arrival (370 CE):** Q arrived with the Huns
+2. **Turkic Khaganate (552+ CE):** Q came with Bulgar/Khazar migrations
+3. **Bronze Age presence:** Q was already in Caucasus from Yamnaya/Catacomb
+
+KEY DATA POINTS:
+| Group | Q frequency | Possible source |
+|-------|-------------|-----------------|
+| Balkars | 15-20% | Turkic? |
+| Karachays | 12-18% | Turkic? |
+| Kabardians | 3-5% | Admixture? |
+| Adyghe | 2-5% | Low frequency |
+
+Ancient sample:
+- Novozavedennoye-III: **Q1b** individual (~500 BCE, Scythian context)
+
+QUESTIONS:
+1. **Subclade Identification:**
+   - Which Q subclades are found in Caucasus?
+   - Q1a vs Q1b distribution?
+   - Specific SNPs (L54, M3, M242)?
+
+2. **Ancient DNA Timeline:**
+   - Q in Scythian samples (Novozavedennoye)?
+   - Q in Saltovo-Mayaki (Khazar period)?
+   - Q in Hunnic-period burials?
+
+3. **Turkic vs Pre-Turkic:**
+   - Do Caucasian Q lineages cluster with:
+     a) Siberian Turkic (Yakuts, Tuvans)?
+     b) Hunnic-period samples?
+     c) Bronze Age steppe (Yamnaya, Catacomb)?
+   - TMRCA analysis to date arrival?
+
+4. **Linguistic Correlation:**
+   - Q highest in Turkic speakers (Balkars, Karachays)
+   - Does this prove Turkic migration brought Q?
+   - Or did Turkic language spread to Q-carrying locals?
+
+5. **Geographic Pattern:**
+   - Q concentrated in central North Caucasus
+   - Low in coastal/western groups (Adyghe, Abkhaz)
+   - Does this reflect Turkic settlement pattern?
+
+KEY SOURCES TO CHECK:
+- Novozavedennoye excavation reports
+- Hunnic/Avar genetic studies
+- Saltovo-Mayaki aDNA
+- Balkar/Karachay genetic studies
+- Yunusbayev et al. on Turkic populations
+
+EXPECTED OUTPUT FORMAT:
+1. Q subclade distribution in Caucasus (table)
+2. Timeline of Q arrival based on aDNA
+3. Comparison with Central Asian/Siberian Q
+4. Most likely historical scenario
+5. Association with Turkic language spread
+6. Full reference list with DOIs
+```
+
+---
+
+### 11.6. Аутосомный Профиль — CHG, EHG, Анатолия
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive autosomal ancestry analysis of Northwest Caucasus.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Autosomal ancestry components in Circassians - CHG, EHG, and Anatolian
+
+CONTEXT:
+Modern Circassians show a unique autosomal profile that differs from their neighbors.
+Key ancestral components in the region:
+
+| Component | Full Name | Source Population |
+|-----------|-----------|-------------------|
+| **CHG** | Caucasus Hunter-Gatherer | Indigenous Caucasus (Kotias, Satsurblia) |
+| **EHG** | Eastern Hunter-Gatherer | Eastern Europe (Samara, Karelia) |
+| **Anatolia_N** | Anatolian Neolithic | Early farmers (Çatalhöyük) |
+| **Iran_N** | Iranian Neolithic | Zagros (Ganj Dareh) |
+| **Steppe_EMBA** | Steppe Early/Middle Bronze | Yamnaya-derived |
+
+The Northwest Caucasus shows HIGH CHG + moderate Anatolia_N + LOW Steppe compared
+to their Steppe neighbors, but more Steppe than South Caucasians.
+
+QUESTIONS:
+1. **Modern Circassian Profile:**
+   - What is the ADMIXTURE/qpAdm model for Adyghe?
+   - CHG vs Anatolia_N vs Steppe proportions?
+   - Comparison: Circassians vs Ossetians vs Georgians vs Armenians
+
+2. **Ancient Trajectory:**
+   - Maykop autosomal profile (Wang 2019)?
+   - Dolmen/Novosvobodnaya profile?
+   - Koban profile?
+   - How did it change over time?
+
+3. **Steppe Admixture:**
+   - When did Steppe_EMBA arrive in NW Caucasus?
+   - Proportion in ancient vs modern?
+   - Is it increasing or stable?
+
+4. **The "Maykop Enigma":**
+   - Maykop has CHG + Iran_N + low Steppe
+   - This is DIFFERENT from Yamnaya
+   - Did Maykop block Yamnaya expansion into Caucasus?
+
+5. **PCA Position:**
+   - Where do Circassians plot on West Eurasia PCA?
+   - Closest ancient populations?
+   - Drift from Bronze Age to modern?
+
+6. **Y-DNA vs Autosomal:**
+   - Y-DNA shows turnover (J2a→G2a)
+   - Autosomal shows continuity
+   - How to reconcile mathematically?
+
+KEY STUDIES TO CHECK:
+- Wang et al. (2019) Nature - Maykop
+- Lazaridis et al. (2022) Cell - Southern Arc
+- Ringbauer et al. (2024/2025) - Caucasus IBD
+- AADR modern Caucasus samples
+
+EXPECTED OUTPUT FORMAT:
+1. ADMIXTURE bar chart description for Circassians
+2. qpAdm model table (source populations, proportions, p-values)
+3. PCA position description
+4. Temporal trajectory: Maykop → Dolmen → Koban → Modern
+5. Comparison table: Circassians vs neighbors
+6. Resolution of Y-DNA turnover vs autosomal continuity
+7. Full reference list with DOIs
+```
+
+---
+
+## 📋 Шаблон Отчёта После Исследования
 
 Когда получите результаты Deep Research, заполните этот шаблон:
 
