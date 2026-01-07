@@ -3,6 +3,8 @@
 > Промпты для использования с AI research tools (Gemini Deep Research, Perplexity Pro, etc.)
 > 
 > Акцент: научные публикации 2022-2025, peer-reviewed journals, древняя ДНК
+> 
+> **Последнее обновление: 2026-01-07** (После обработки 3 PDF)
 
 ---
 
@@ -10,58 +12,51 @@
 
 ### 1.1. Древняя ДНК и Майкопская культура
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Январь 2026):**
+> - G-L1264 НЕ найдена в классическом Майкопе
+> - Найден AU78077 (G-L1264 в Аварском каганате, VII-VIII вв.)!
+> - I2051 (Марченкова Гора, J2a) — Дольмен был разнообразным
+> - 4.2ky Event hypothesis объясняет бутылочное горлышко
+
+<!--
 ```
 Find peer-reviewed ancient DNA studies (2020-2025) that analyzed Y-chromosome haplogroups from:
 1. Maykop culture burial sites (Maykop, Novosvobodnaya)
-2. Dolmen culture of Western Caucasus
-3. Colchian culture (Bronze Age Georgia)
-
-Specifically looking for:
-- Any samples with G2a2 or G-L1264 haplogroup
-- Dating and archaeological context
-- Comparison with modern Circassian/Abkhazian populations
-
-Key questions:
-- Has G-L1264 been found in any ancient DNA samples?
-- What G2a subclades were present in Maykop culture?
-- What is the genetic continuity between Bronze Age Caucasus and modern Adyghe-Abkhaz peoples?
-
-Prioritize: Nature, Science, Current Biology, PNAS, Cell Genomics, Molecular Biology and Evolution
+...
 ```
+-->
 
 ### 1.2. Филогенетика L1264
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Январь 2026):**
+> - TMRCA L1264: ~2200 BCE (FTDNA 2025, 95% CI: 2927-1619)
+> - Z31275: 850 CE (рекалибровка 2024, связь с Achba/Anchabadze)
+> - Y513104 найден у Коми и Татар (Хазарский/Волжский вектор)
+
+<!--
 ```
 Search for the latest YFull tree updates and phylogenetic studies on G-L1264 (2023-2025):
-
-1. Current TMRCA estimates for:
-   - L1264 / S11286
-   - FGC21495
-   - Y513104
-   - Z44222
-   - Z31275 (noble Abkhaz line)
-
-2. Any new subclades discovered under L1264
-3. STR mutation rate recalibrations affecting age estimates
-4. Geographic distribution studies using citizen science data (FTDNA, YFull)
-
-Compare with: current_tree.json data from YFull
+...
 ```
+-->
 
 ### 1.3. Дольменная культура
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Январь 2026):**
+> - I2051 (Марченкова Гора, 1325 BCE): J2a, 80% Куро-Аракс + 16% Ямная
+> - Kolikho dolmen: изотопный анализ, континентальная диета
+> - Shushuk: H1a mtDNA, переходный период
+> - PCA: Дольмен → Современные адыги = прямая линия
+
+<!--
 ```
 Research the genetic composition of Dolmen culture (Western Caucasus, 2500-1500 BCE):
-
-1. Has any ancient DNA been extracted from dolmen burials?
-2. What is the hypothesized relationship between dolmen builders and modern Circassians?
-3. Archaeological evidence for continuity between dolmen culture and historical Adyghe
-
-Sources to check:
-- Russian Archaeological journals (КСИА, РА)
-- Caucasus Archaeological Review
-- Recent excavation reports from Krasnodar region
+...
 ```
+-->
 
 ---
 
@@ -69,24 +64,17 @@ Sources to check:
 
 ### 2.1. Kotias Klde и древнейшие образцы
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Deep Research Parts 1-4):**
+> - KK1 подтверждён как J2a-Y12379 (Z8424/SK1313*)
+> - Реклассификации в 2023-2025 не было
+
+<!--
 ```
 Find all published ancient DNA samples classified as J2a-SK1313 or its parent clades (2015-2025):
-
-1. KK1 (Kotias Klde) - exact subclade assignment after reanalysis
-2. Any new Mesolithic/Neolithic samples from:
-   - Western Georgia (Imereti, Racha)
-   - Eastern Turkey (Erzurum, Kars)
-   - Armenian Highlands
-
-3. Updated CHG (Caucasian Hunter-Gatherer) genetic component analysis
-4. Relationship between SK1313 and Iranian Neolithic populations (Zagros farmers)
-
-Key papers to check:
-- Jones et al. 2015 (original Kotias analysis)
-- Lazaridis et al. 2016, 2022
-- Wang et al. 2019 (Caucasus ancient DNA)
-- Any 2023-2025 updates
+...
 ```
+-->
 
 ### 2.2. SK1313 у современных популяций
 
@@ -110,22 +98,18 @@ Population genetics studies on J2a-SK1313 distribution (2020-2025):
 
 ### 3.1. Арслантепе и Майкоп связь
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Deep Research Parts 1-4):**
+> - Arslantepe 22: J-Z7675, 3641-3191 BCE
+> - Arslantepe 19: J-PF5132 (второй образец M67!)
+> - I6268 (Klady): J-CTS6619 = генетически идентичен Арслантепе
+
+<!--
 ```
 Ancient DNA evidence for J-M67/CTS900 migration from Anatolia to Caucasus:
-
-1. Arslantepe samples (Malatya, Turkey) - full Y-haplogroup classification
-   - Arslantepe 22 (J-Z7675) - any reanalysis?
-   - Dating: 3641-3191 BCE
-
-2. Novosvobodnaya/Klady samples (Adygea):
-   - I6268 (J-CTS6619) - confirmation of Arslantepe connection
-   - Other J2a samples from the site
-
-3. Genetic evidence for elite migration vs cultural diffusion
-4. Comparison of autosomal DNA profiles
-
-Key question: Is there direct genetic evidence for Anatolian origin of Maykop elite?
+...
 ```
+-->
 
 ### 3.2. Хаттский язык и генетика
 
@@ -151,6 +135,11 @@ Sources: Journal of Indo-European Studies, Linguistic Typology, Ancient Near Eas
 
 ### 4.1. YP451/YP457 и средневековье
 
+> [!NOTE]
+> **✅ ЧАСТИЧНО ВЫПОЛНЕНО:**
+> - Салтово-Маяцкая: R1a подтверждено наряду с G2a, J2a
+> - Прямых образцов YP451/YP457 в древней ДНК нет
+
 ```
 Research on R1a-Z93 > Y934 > YP451 in Caucasus (2020-2025):
 
@@ -172,19 +161,17 @@ Key question: When exactly did R1a-Z93 arrive in Caucasus?
 
 ### 4.2. BY60213 и легенда об Инале
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Deep Research Parts 1-4):**
+> - Род Тамби (Tamby) генетически подтверждён как R1a-Z93 > BY60213
+> - TMRCA BY60213: ~500 CE
+
+<!--
 ```
 Genetic evidence for Kabardian princely lineages:
-
-1. Is BY60213 actually connected to historical Inal (legendary ancestor)?
-2. TMRCA of BY60213 and comparison with historical chronology
-3. Distribution among Kabardian noble families (pshi)
-4. Comparison with other Caucasian noble lineages (G-Z31275)
-
-Historical sources to cross-reference:
-- Nogma, Shora (19th century Circassian historian)
-- Russian colonial records
-- Genealogical studies of Circassian nobility
+...
 ```
+-->
 
 ---
 
@@ -192,40 +179,31 @@ Historical sources to cross-reference:
 
 ### 5.1. Древняя ДНК из степей
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Deep Research Parts 1-4):**
+> - R1b-Z2103 — определяющая линия Ямной культуры
+> - Lazaridis et al. (2025) подтверждает
+
+<!--
 ```
 Yamnaya culture Y-haplogroup analysis (latest studies 2022-2025):
-
-1. Comprehensive list of R1b-Z2103 samples:
-   - Yamnaya (Volga-Ural, Pontic steppe)
-   - Catacomb culture
-   - Afanasievo
-
-2. Z2103 subclades in ancient samples:
-   - CTS9219
-   - L584
-   - FGC43622 (Ankvab lineage?)
-
-3. Migration routes to Caucasus and Anatolia
-4. Connection to Hittites (linguistic hypothesis)
-
-Key papers: Haak et al. 2015, Mathieson et al. 2018, Patterson et al. 2022
+...
 ```
+-->
 
 ### 5.2. Род Анкваб
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Deep Research Parts 1-4):**
+> - Анкваб = R-FGC43622, ~2150 BCE
+> - Связь с Катакомбной культурой подтверждена
+
+<!--
 ```
 Research on Ankvab (Анкваб) noble family genetics:
-
-1. Published genetic studies on Ankvab family
-2. Subclade classification: R-FGC43622 confirmation
-3. TMRCA and comparison with Catacomb culture dates
-4. Other R1b-Z2103 lineages in Abkhazia
-
-Cross-reference with:
-- Abkhazian genealogical records
-- Historical documentation of Ankvab nobility
-- aadna.ru project data
+...
 ```
+-->
 
 ---
 
@@ -233,45 +211,31 @@ Cross-reference with:
 
 ### 6.1. J1-Z1842 и Куро-Аракс
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Deep Research Parts 3-4):**
+> - J1-Z1842 связана с Куро-Араксской культурой
+> - Формирование Z1842: ~4300 BCE (до расцвета культуры)
+
+<!--
 ```
 Ancient DNA from Kura-Araxes culture (3400-2000 BCE):
-
-1. Y-haplogroup composition:
-   - J1 subclades (Z1842, Z2217)
-   - J2a vs J2b presence
-   - G2a frequency
-
-2. Sites with published aDNA:
-   - Gegharot (Armenia)
-   - Kvatskhela (Georgia)
-   - Early Bronze Age Azerbaijan
-
-3. Genetic continuity to modern populations:
-   - Armenians, Georgians, Azerbaijanis
-   - Chechens, Ingush, Dagestan peoples
-   - Abkhaz-Adyghe connection
-
-Key question: Is J1-Z1842 a Kura-Araxes marker?
+...
 ```
+-->
 
 ### 6.2. J2b-L283 на Кавказе
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Deep Research Parts 3-4):**
+> - KDC001 (Кудахурт): ~1888 BCE, один из древнейших L283!
+> - Кавказ — транзит/рефугиум для J2b-L283
+
+<!--
 ```
 J2b-L283 ancient DNA and Caucasus transit hypothesis:
-
-1. All published ancient J2b samples (with dates and locations):
-   - AH2 (Abdul-Hosein, Iran, ~8000 BCE)
-   - NEO281 (Kotias Klde, ~7700 BCE) - confirm J2b?
-   - I4349 (Hajji Firuz, ~5800 BCE)
-   - KDC001 (Kudachurt, Kabarda, ~1800 BCE)
-   - I10206 (Crihana Veche, Moldova, Yamnaya!)
-
-2. Evidence for Caucasus transit route (vs Anatolian route)
-3. Relationship between Caucasian J2b and European L283
-4. Modern distribution on North Caucasus
-
-Key question: Was Caucasus a "refugium" for J2b-L283?
+...
 ```
+-->
 
 ---
 
@@ -279,25 +243,19 @@ Key question: Was Caucasus a "refugium" for J2b-L283?
 
 ### 7.1. Древняя ДНК Кобана
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (Deep Research Parts 3-4 + Dolmen PDF):**
+> - Koban7 (Заюково-3): G-FGC1160, ~400 BCE
+> - G2a1a = доминирующая линия Кобана
+> - Klin-Yar ID355: коррекция пола (женщина!)
+> - Связь Кобан → Аланы → Осетины подтверждена
+
+<!--
 ```
 Ancient DNA from Koban culture burials (1200-400 BCE):
-
-1. Published samples:
-   - Koban7 (Zaуuko-3) - G-FGC1160
-   - Klin-Yar III (Kislovodsk)
-   - Other Koban sites
-
-2. Y-haplogroup composition of Koban population
-3. Continuity with:
-   - Alans (4th-9th century CE)
-   - Modern Ossetians
-   - Modern Circassians
-
-4. DA190 (Saltovo-Mayaki, 687 CE) - G-FGC693 confirmation
-   - What was a Caucasian doing in Khazar territory?
-
-Key papers: Margaryan et al., Unterländer et al., recent Russian publications
+...
 ```
+-->
 
 ---
 
@@ -321,7 +279,17 @@ Compile comprehensive ancient DNA database for Caucasus region:
 3. Create table with: Sample ID, Site, Culture, Date, Y-hg, mtDNA, Reference
 ```
 
+> [!NOTE]
+> **✅ ЧАСТИЧНО ВЫПОЛНЕНО:** Создан файл `03_Ancient_DNA_Table.md` с 20+ образцами
+
 ### 8.2. Свежие публикации 2024-2025
+
+> [!NOTE]
+> **Отслеживаемые публикации:**
+> - Lazaridis et al. (Июнь 2024): 219 индивидов из Южного Кавказа
+> - Reich, Pinhasi (Февраль 2025): CLV cline
+> - Cell article (Август 2025): 5000 лет Южного Кавказа
+> - Gerber et al. (2024): Avar-Hungarian transformations (AU78077!)
 
 ```
 Search for Caucasus ancient DNA papers published in 2024-2025:
@@ -347,26 +315,74 @@ Keywords:
 
 ### 9.1. YFull и FTDNA
 
+> [!NOTE]
+> **✅ ВЫПОЛНЕНО (YFull G-L1264 Tree Updates.pdf):**
+> - TMRCA обновлены для L1264, FGC21495, Z44222
+> - Z31275: 850 CE (рекалибровка STR 2024)
+> - Y513104: Коми/Татарская аномалия (Хазарский вектор)
+> - AU78077: первый древний L1264 в Европе
+
+<!--
 ```
 Check latest phylogenetic tree updates (2024-2025):
+...
+```
+-->
 
-1. YFull tree version history for:
-   - G-L1264 and subclades
-   - J2a-SK1313
-   - J2a-M67 > CTS900
-   - R1a-Z93 > Y934 > YP451
-   - R1b-Z2103
+---
 
-2. FTDNA Big Y updates
-3. New SNPs discovered
-4. TMRCA recalculations
+## 10. НОВЫЕ ВОПРОСЫ (После обработки PDF)
 
-Note any changes from our current_tree.json data
+### 10.1. Y513104 — Волго-Уральская загадка
+
+```
+Research the presence of G-L1264 > Z44222 > Y513104 in:
+
+1. Tatar DNA Project (Kit FTA27477)
+2. Komi DNA Project
+3. Volga Bulgaria archaeological sites
+
+Key questions:
+- How did a Caucasian lineage reach sub-Arctic Komi Republic?
+- Was this via Khazar Khaganate (7th-10th century)?
+- What is the TMRCA of the Komi/Tatar Y513104 cluster?
+
+Migration vector hypothesis: Khazar trade routes along Volga river
+```
+
+### 10.2. G-L1264 у Аваров
+
+```
+Follow up on AU78077 / MGS422 finding (Gerber et al. 2024):
+
+1. Are there other G-L1264 samples in Avar cemetery data?
+2. What was the social status of G-L1264 carriers in Avar society?
+3. mtDNA D4j11 — does it indicate East Asian exogamy?
+
+Cross-reference with:
+- Alanic auxiliaries in Avar Khaganate
+- Documentary sources on "Pseudo-Avars" (Varchonites)
+```
+
+### 10.3. J2a/G2a Парадокс в Дольменах
+
+```
+Investigate the J2a/G2a shift from Dolmen to modern Circassians:
+
+Known data:
+- I2051 (Marchenkova Gora, 1325 BCE): J2a
+- Modern Shapsugs: 70-80% G2a
+
+Questions:
+1. What caused the demographic shift from J2a to G2a dominance?
+2. Was it the 4.2ky climate event bottleneck?
+3. Did G2a migrate from Colchian coast inland?
+4. When did the "founder effect" for G-L1264 occur?
 ```
 
 ---
 
-## 10. Использование промптов
+## 11. Использование промптов
 
 ### Для Gemini Deep Research:
 Копируйте промпт целиком, добавляя в начале:
@@ -393,5 +409,31 @@ Provide confidence level for each finding.
 
 ---
 
+## 📊 Статус выполнения
+
+| Секция | Статус |
+|--------|--------|
+| 1.1 G-L1264 в Майкопе | ✅ Выполнено |
+| 1.2 Филогенетика L1264 | ✅ Выполнено |
+| 1.3 Дольменная культура | ✅ Выполнено |
+| 2.1 Kotias Klde | ✅ Выполнено |
+| 2.2 SK1313 популяции | 🔄 В работе |
+| 3.1 Арслантепе-Майкоп | ✅ Выполнено |
+| 3.2 Хаттская гипотеза | 🔄 В работе |
+| 4.1 YP451/YP457 | ⚠️ Частично |
+| 4.2 BY60213 Инал | ✅ Выполнено |
+| 5.1 Z2103 Ямная | ✅ Выполнено |
+| 5.2 Анкваб | ✅ Выполнено |
+| 6.1 J1-Z1842 | ✅ Выполнено |
+| 6.2 J2b-L283 | ✅ Выполнено |
+| 7.1 G2a1 Кобан | ✅ Выполнено |
+| 8.1 Базы данных | ⚠️ Частично |
+| 9.1 YFull/FTDNA | ✅ Выполнено |
+| **10.1 Y513104 Komi** | 🆕 Новый вопрос |
+| **10.2 AU78077 Авары** | 🆕 Новый вопрос |
+| **10.3 J2a/G2a парадокс** | 🆕 Новый вопрос |
+
+---
+
 *Создано: 2026-01-07*
-*Источник: dna_guide haplogroup files*
+*Обновлено после обработки: Ancient Caucasus DNA, Dolmen Culture, YFull G-L1264*
