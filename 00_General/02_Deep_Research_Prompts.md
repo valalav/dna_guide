@@ -1696,6 +1696,278 @@ of Circassian diaspora worldwide.
 
 ---
 
+## 🔬 Фаза 7: Древняя ДНК — Расширенный Анализ
+
+### Приоритетная Матрица (Фаза 7)
+
+| # | Тема | Приоритет | Статус |
+|---|------|-----------|--------|
+| 17.1 | Меотская aDNA | 🔴 Высокий | 🆕 Новый |
+| 17.2 | Зихская aDNA | 🔴 Высокий | 🆕 Новый |
+| 17.3 | Скифы vs Черкесы | 🟡 Средний | 🆕 Новый |
+| 17.4 | Хазарский Каганат | 🟡 Средний | 🆕 Новый |
+
+---
+
+### 17.1. Меотская Древняя ДНК — Синды, Керкеты, Тореаты
+
+> Скопируй весь блок ниже:
+
+```
+Please search for ancient DNA studies from Meotian culture sites.
+Focus on publications from 2018-2025 and unpublished datasets.
+Provide full citations with DOI links.
+
+TOPIC: Ancient DNA from Meotian culture (Sindica, Kerkets, Toreats) — genetic precursors to Circassians?
+
+CONTEXT:
+The Maeotae (Меоты) were tribes inhabiting the eastern Black Sea coast and Kuban region 
+during the 1st millennium BCE to early 1st millennium CE:
+
+| Tribe | Location | Period | Archaeological Sites |
+|-------|----------|--------|---------------------|
+| Sindi (Синды) | Taman Peninsula | 6th c BCE - 1st c CE | Semibratnee, Gorgippia |
+| Kerketae (Керкеты) | Coastal | 5th c BCE - 2nd c CE | Raevskoe |
+| Toreatae (Тореаты) | Inland | 4th c BCE - 1st c CE | Various |
+| Dandarii (Дандарии) | Kuban | Same period | Ust-Labinsk |
+
+QUESTIONS:
+1. **Published aDNA Samples:**
+   - Any Y-DNA/mtDNA from Meotian burials?
+   - Which sites have been sampled?
+   - Are any samples in AADR/ENA databases?
+
+2. **Expected Genetic Profile:**
+   - If Meotae were proto-Circassians, expect high G2a
+   - If Greek-influenced, expect J2a, E1b1b
+   - If Scythian-influenced, expect R1a-Z93
+
+3. **Comparison with Modern Circassians:**
+   - Would Meotian aDNA cluster with modern Shapsugs/Natukhai?
+   - Or with Greeks/Sarmatians?
+
+4. **Archaeological Context:**
+   - Burial practices: kurgan vs flat grave
+   - Inventory: Greek imports vs local production
+   - Social structure implications
+
+5. **Gap Analysis:**
+   - Why is there little/no Meotian aDNA published?
+   - Which sites should be prioritized for sampling?
+
+KEY SITES TO CHECK:
+| Site | Region | Culture | aDNA Status? |
+|------|--------|---------|--------------|
+| Semibratnee Kurgan | Taman | Sindian | ? |
+| Elizavetinskaya | Kuban | Meotian | ? |
+| Ust-Labinsk | Kuban | Meotian | ? |
+| Gorgippia necropolis | Anapa | Greek-Sindian | ? |
+
+EXPECTED OUTPUT FORMAT:
+1. List of ALL published Meotian aDNA samples
+2. Summary of unpublished/ongoing projects
+3. Genetic profile if available
+4. Comparison with modern Circassians
+5. Recommendations for future sampling
+6. Full reference list with DOIs
+```
+
+---
+
+### 17.2. Зихская Древняя ДНК — Средневековые Предки Черкесов
+
+> Скопируй весь блок ниже:
+
+```
+Please search for ancient DNA from medieval Zygian/Kasogian sites.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Ancient DNA from medieval Zikhia and Kasog period (6th-15th century CE)
+
+CONTEXT:
+The Zygii (Зихи) and later Kasogs (Касоги) are the direct historical predecessors 
+of modern Circassians, documented by Byzantine, Arab, and Russian sources:
+
+| Period | Name in Sources | Location | Key Events |
+|--------|-----------------|----------|------------|
+| 1-6th c CE | Zygii | Coastal | Byzantine contacts |
+| 6-10th c CE | Zikhia | Coast + foothills | Christianization |
+| 10-13th c CE | Kasogs | Expanded | Contact with Rus' |
+| 13-15th c CE | Circassians | Expanded | Mongol period |
+
+QUESTIONS:
+1. **Published Medieval aDNA:**
+   - Any samples from Zygian/Kasog period?
+   - Christian cemetery aDNA from Alania-Zikhia border?
+   - Byzantine fortress garrisons?
+
+2. **Expected Profile:**
+   - Should see high G2a (L1264, P303)
+   - Lower diversity than Bronze Age (founder effect ongoing)
+   - Minimal steppe admixture if isolation maintained
+
+3. **Comparison:**
+   - Medieval Zygians vs Bronze Age Dolmen culture?
+   - Medieval Zygians vs modern Shapsugs?
+   - Evidence of continuity or disruption?
+
+4. **Critical Transition:**
+   - aDNA from Mongol invasion period (1237-1240)?
+   - Before/after genetic comparison?
+
+5. **Archaeological Sites:**
+   - Christian churches on the coast
+   - Medieval fortresses (Anakopia, Tsebelda)
+   - Burial grounds in Shapsugia
+
+SOURCES TO CHECK:
+- Korobov et al. on Alanic-Zygian border
+- Byzantine archaeological projects in Abkhazia
+- Medieval Adygea excavations
+
+EXPECTED OUTPUT FORMAT:
+1. List of ALL medieval Caucasus aDNA samples
+2. Genetic profile comparison by period
+3. Continuity evidence: Zygii → Circassians
+4. Mongol period impact assessment
+5. Full reference list with DOIs
+```
+
+---
+
+### 17.3. Скифы и Сарматы vs Черкесы — Степной Контакт
+
+> Скопируй весь блок ниже:
+
+```
+Please analyze the genetic relationship between Scythians/Sarmatians and Circassians.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Did Scythians and Sarmatians contribute to Circassian ancestry?
+
+CONTEXT:
+Scythian and Sarmatian cultures dominated the steppes north of the Caucasus:
+
+| Culture | Period | Core Region | Nearest to Circassians |
+|---------|--------|-------------|------------------------|
+| Scythians | 7th-3rd c BCE | Pontic Steppe | Kuban steppes |
+| Sarmatians | 4th c BCE-4th c CE | Volga-Don | Terek-Kuban |
+| Alans | 1st-13th c CE | North Caucasus | Direct neighbors |
+
+QUESTIONS:
+1. **Scythian-Circassian Contact:**
+   - Did Scythians penetrate into mountain valleys?
+   - Any G2a in Scythian samples?
+   - Any R1a-Z93 transfer to Circassians?
+
+2. **Sarmatian Influence:**
+   - Sarmatian aDNA profiles (typically R1a-Z93, R1b-Z2103, J2)
+   - Did Sarmatian women marry into Circassian tribes?
+   - mtDNA exchange evidence?
+
+3. **Physical Barrier:**
+   - Did mountains block steppe gene flow?
+   - Compare: Kuban steppe samples vs Kuban mountain samples
+
+4. **R1a-Z93 in Circassians:**
+   - Modern frequency: ~5-10%
+   - Is this Scythian/Sarmatian legacy?
+   - Or older Bronze Age Steppe component?
+
+5. **Autosomal Evidence:**
+   - Steppe ancestry in Circassians: how much?
+   - Bronze Age Steppe vs Iron Age Steppe?
+
+KEY SAMPLES TO ANALYZE:
+| Sample | Culture | Y-DNA | Relevance |
+|--------|---------|-------|-----------|
+| Scythian Ak-Alakha | Scythian | R1a | Steppe marker |
+| Sarmatian samples | Sarmatian | R1a-Z93, J2 | Comparison |
+| Circassian modern | - | G2a, R1a | Target |
+
+SOURCES TO CHECK:
+- Krzewińska et al. (2018) on Scythians
+- Unterländer et al. on Sarmatians
+- Wang et al. (2019) on Steppe Maykop
+
+EXPECTED OUTPUT FORMAT:
+1. Y-DNA comparison: Scythians vs Circassians
+2. Autosomal Steppe component quantification
+3. Timeline of potential admixture events
+4. Barrier effect assessment
+5. Full reference list with DOIs
+```
+
+---
+
+### 17.4. Хазарский Каганат — Кавказский Компонент
+
+> Скопируй весь блок ниже:
+
+```
+Please analyze the Caucasian genetic component in the Khazar Khaganate.
+Focus on publications from 2018-2025 and ancient DNA from Khazar sites.
+Provide full citations with DOI links.
+
+TOPIC: Caucasian (Circassian/Alanian) genetic component in the Khazar Khaganate
+
+CONTEXT:
+The Khazar Khaganate (650-969 CE) was a multi-ethnic empire north of the Caucasus.
+Sample DA190 from Salto-Mayaki culture shows Caucasian ancestry:
+
+| Sample | Site | Date | Y-DNA | Significance |
+|--------|------|------|-------|--------------|
+| DA190 | Belgorod | 687 CE | G-FGC693 | Caucasian in Khazaria! |
+| Other Khazar samples | Various | 7-10th c | Mixed | Diverse empire |
+
+QUESTIONS:
+1. **Caucasian Component in Khazars:**
+   - How many Khazar samples show G2a or J2?
+   - Was there a "Caucasian elite" in Khazaria?
+   - Or Caucasian slaves/mercenaries?
+
+2. **DA190 Analysis:**
+   - G-FGC693 is Caucasian subclade
+   - Where does it fit in modern Circassian tree?
+   - Was this person Circassian, Alanian, or other?
+
+3. **Direction of Gene Flow:**
+   - Khazar → Caucasus admixture?
+   - Caucasus → Khazar admixture?
+   - Both directions?
+
+4. **Trade and Military:**
+   - Alanian cavalry served Khazars
+   - Caucasian merchants in Atil/Samandar
+   - Genetic traces of these connections?
+
+5. **Post-Khazar Period:**
+   - Where did Caucasian-origin Khazars go?
+   - Return to Caucasus? Assimilate into Rus?
+
+SAMPLES TO CHECK:
+- All Salto-Mayaki culture aDNA
+- Atil excavation samples (if any)
+- Khazar fortress samples
+
+SOURCES TO CHECK:
+- Flegontov et al. on Medieval Khazars
+- Csáky et al. on Avar-Khazar transition
+- DA190 original publication
+
+EXPECTED OUTPUT FORMAT:
+1. List of ALL Khazar aDNA with Caucasian affinity
+2. G2a frequency in Khazar dataset
+3. Subclade analysis (which specific G2a/J2 branches?)
+4. Historical scenario reconstruction
+5. Comparison with modern Circassian/Ossetian lineages
+6. Full reference list with DOIs
+```
+
+---
+
 ### 12.1. Абхазы vs Адыги — Генетические Различия Родственных Народов
 
 > Скопируй весь блок ниже:
