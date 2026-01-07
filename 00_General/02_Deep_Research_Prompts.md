@@ -981,6 +981,245 @@ EXPECTED OUTPUT FORMAT:
 | 11.4 | J1-Z1842 субклады | 🟡 Средний | ✅ Выполнено |
 | 11.5 | Q1a на Кавказе | 🟡 Средний | ✅ Выполнено |
 | 11.6 | Аутосомный профиль | 🟡 Средний | ✅ Выполнено |
+---
+
+## 🔬 Фаза 4: Продвинутые Темы
+
+### Приоритетная Матрица (Фаза 4)
+
+| # | Тема | Приоритет | Статус |
+|---|------|-----------|--------|
+| 12.1 | Абхазы vs Адыги | 🟡 Средний | 🆕 Новый |
+| 12.2 | Генетика Княжеских Родов | 🟡 Средний | 🆕 Новый |
+| 12.3 | Убыхское Наследие | 🟢 Низкий | 🆕 Новый |
+
+---
+
+### 12.1. Абхазы vs Адыги — Генетические Различия Родственных Народов
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comparative genetic analysis of Abkhazians vs Circassians.
+Focus on publications from 2018-2025.
+Provide full citations with DOI links.
+
+TOPIC: Genetic differences between Abkhazians and Adyghe - linguistic cousins with distinct profiles
+
+CONTEXT:
+Abkhazians and Circassians (Adyghe) speak closely related Northwest Caucasian languages.
+Linguistically, they diverged ~3000-4000 years ago. But are they genetically similar?
+
+KNOWN DATA:
+| Population | G2a | J2 | R1a | Other |
+|------------|-----|----|----|-------|
+| Abkhazians | 56-70% | 10-15% | 5-8% | Low diversity |
+| Adyghe | 40-50% | 15-20% | 5-10% | Higher diversity |
+| Abazins | ~60% | ~15% | ~10% | Similar to Abkhaz |
+
+KEY DIFFERENCES TO INVESTIGATE:
+1. **G2a Subclade Composition:**
+   - Do Abkhaz and Adyghe have the SAME G2a subclades?
+   - Or did they branch before L1264 split?
+
+2. **J2a vs J2b:**
+   - J2a (Maykop) vs J2b-L283 (Dolmen/Koban)
+   - Different ratios in Abkhaz vs Adyghe?
+
+3. **Autosomal Differences:**
+   - CHG/ANF/Steppe proportions comparison
+   - PCA position: do they cluster together?
+
+4. **mtDNA Comparison:**
+   - Same maternal lineages or divergent?
+   - Evidence of geographic isolation?
+
+QUESTIONS:
+1. **Subclade Resolution:**
+   - Which G2a subclades in Abkhaz? (FGC21495, Z44222, other?)
+   - Which G2a subclades in Adyghe?
+   - When did they diverge?
+
+2. **Geographic Barrier:**
+   - Did Greater Caucasus range isolate Abkhaz from Adyghe?
+   - When did gene flow stop between groups?
+
+3. **Colchian Connection:**
+   - Abkhaz live in ancient Colchis region
+   - Are they genetically closer to Mingrelians than to Adyghe?
+
+4. **Greek Colonial Impact:**
+   - Abkhaz coast had Greek colonies (Dioscurias)
+   - Any Mediterranean admixture in Abkhaz absent in Adyghe?
+
+5. **Modern vs Ancient:**
+   - Any aDNA from Abkhazia specifically?
+   - How has the profile changed over time?
+
+SOURCES TO CHECK:
+- Yunusbayev et al. (2012) - Caucasus study
+- Balanovsky et al. - Russian genetic surveys
+- FTDNA G2a project by region
+- Georgian biobank (for Mingrelian comparison)
+
+EXPECTED OUTPUT FORMAT:
+1. Side-by-side Y-DNA frequency comparison
+2. G2a subclade breakdown for each group
+3. Autosomal comparison (PCA, ADMIXTURE)
+4. mtDNA comparison table
+5. Historical scenario: when/how did they diverge?
+6. Full reference list with DOIs
+```
+
+---
+
+### 12.2. Генетика Княжеских Родов — Молекулярная Генеалогия
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a genetic genealogy analysis of Caucasian noble families.
+Focus on Y-DNA studies and publications from 2015-2025.
+Provide full citations with DOI links.
+
+TOPIC: Genetic signatures of Caucasian noble clans - verifying oral traditions
+
+CONTEXT:
+Caucasian societies maintained strict clan (фамилия) structures for centuries.
+Oral traditions claim specific origins for noble families, but genetics can test these.
+
+KNOWN CASES:
+| Family | Claimed Origin | Y-DNA Result | Verified? |
+|--------|----------------|--------------|-----------|
+| Tamby (Тамби) | Inal dynasty | R1a-BY60213 | ✅ ~500 CE |
+| Ankvab (Анкваб) | Ancient Abkhaz | R1b-FGC43622 | ✅ ~2150 BCE |
+| Shogenov? | Kabardian | Unknown | ❓ |
+| Chachba? | Abkhaz kings | Unknown | ❓ |
+
+QUESTIONS:
+1. **Known Lineages:**
+   - Complete list of tested Caucasian noble families?
+   - Which haplogroups for each?
+   - Do multiple families share the same Y-DNA (common ancestor)?
+
+2. **Inal Dynasty Testing:**
+   - Tamby = BY60213 confirmed
+   - Other families claiming Inal descent: same haplogroup?
+   - Evidence for/against Inal as historical figure?
+
+3. **Abkhazian Nobility:**
+   - Chachba (Shervashidze) royal family Y-DNA?
+   - Marshania, Anchabadze, other princes?
+
+4. **TMRCA and Oral History:**
+   - Does genetic dating match historical claims?
+   - Examples of confirmed vs disproven genealogies?
+
+5. **Founder Effects:**
+   - Which clans show star-burst expansion (reproductive success)?
+   - Evidence of polygyny in elite lineages?
+
+6. **Cross-border Connections:**
+   - Georgian (Dadiani, Gurieli) vs Circassian nobility genetics?
+   - Alan-Ossetian nobility genetics?
+
+KEY FAMILIES TO INVESTIGATE:
+| Family | Ethnicity | Historical Role |
+|--------|-----------|-----------------|
+| Кабардинские князья | Kabardian | Inal lineage claim |
+| Chachba/Shervashidze | Abkhaz | Royal dynasty |
+| Marshania | Abkhaz | Feudal lords |
+| Digor aristocracy | Ossetian | Basiats caste |
+
+SOURCES TO CHECK:
+- FTDNA Circassian projects
+- Kabardino-Balkarian genetic studies
+- Russian anthropological journals
+- Family Trees DNA projects for Caucasus
+- Ossetian genealogy studies
+
+EXPECTED OUTPUT FORMAT:
+1. Table of tested noble families with Y-DNA results
+2. Phylogenetic tree of related noble lineages
+3. TMRCA comparison: genetic vs historical claims
+4. Map of noble family geographic origins
+5. Evaluation: which oral traditions are supported?
+6. Full reference list with DOIs
+```
+
+---
+
+### 12.3. Убыхское Наследие — Генетика Исчезнувшего Народа
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a genetic genealogy search for Ubykh descendants.
+Focus on publications from 2015-2025 and genetic databases.
+Provide full citations with DOI links.
+
+TOPIC: The genetic legacy of the Ubykh - an extinct NWC language, surviving genes
+
+CONTEXT:
+The Ubykh were a Northwest Caucasian people whose language went extinct in 1992 
+with the death of the last speaker, Tevfik Esenç. The Ubykh language was famous 
+for having the most consonants (81-84) of any known language.
+
+HISTORICAL BACKGROUND:
+- Original homeland: Black Sea coast between Sochi and Gagra
+- 1864: Almost entire population (~45,000) exiled to Ottoman Empire
+- Today: Descendants live in Turkey, Jordan, Israel
+- Language: extinct, but Y-DNA survives
+
+QUESTIONS:
+1. **Genetic Identity:**
+   - Have any Ubykh descendants been Y-DNA tested?
+   - What haplogroups do they carry?
+   - Do they differ from Adyghe/Abkhaz profiles?
+
+2. **Diaspora Genetics:**
+   - Ubykh diaspora in Turkey: any genetic studies?
+   - Comparison with Circassian diaspora in Turkey?
+
+3. **Pre-Exodus Profile:**
+   - Based on geographic position (between Abkhaz and Adyghe)
+   - Expected to be intermediate between two groups?
+   - Any unique lineages specific to Ubykh coast?
+
+4. **Historical Records:**
+   - Ubykh tribal structure (Shapsygh, Sahache, etc.)
+   - Any clan-specific genetic markers?
+
+5. **Modern Descendants:**
+   - Known Ubykh families in Turkey: Esenç, Güngör, others?
+   - Have they contributed to genetic projects?
+
+6. **Linguistic-Genetic Correlation:**
+   - Ubykh language was closest to Abkhaz
+   - Are Ubykh genetically closer to Abkhaz or Adyghe?
+
+KEY SEARCH TARGETS:
+| Group | Location | Notes |
+|-------|----------|-------|
+| Ubykh families | Turkey (Marmara) | Diaspora since 1864 |
+| Esenç family | Turkey | Last speaker's family |
+| Uzunyayla Circassians | Turkey | Mixed community |
+
+SOURCES TO CHECK:
+- FTDNA Circassian projects
+- Turkish genetic studies
+- Diaspora community genealogy projects
+- Linguistic anthropology papers on Ubykh
+- Ottoman exile records
+
+EXPECTED OUTPUT FORMAT:
+1. List of known Ubykh Y-DNA results (if any)
+2. Comparison with Abkhaz and Adyghe profiles
+3. Map of Ubykh diaspora settlements
+4. Assessment: is Ubykh genetic profile recoverable?
+5. Recommendations for future sampling
+6. Full reference list with DOIs
+```
 
 ---
 
