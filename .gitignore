@@ -2,6 +2,15 @@
 private/
 private/*
 
+# === AI CONTEXT (contains local config) ===
+GEMINI.md
+.agent/
+
+# === RAW DATA (contains personal info) ===
+aadna.ru.csv
+*.csv
+!import/archive/*.csv
+
 # === LOCAL FILES ===
 *.local
 *.local.*
@@ -11,7 +20,12 @@ private/*
 # === TEMP/CACHE ===
 *.tmp
 *.temp
+*.bak
 __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+
+# === IMPORT (raw PDFs, not needed in repo) ===
+import/*.pdf
+import/*.png
