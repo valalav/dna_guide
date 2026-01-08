@@ -1,6 +1,5 @@
-
-Глоссарий ДНК-генеалогии https://github.com/valalav/dna_guide/blob/main/01_Beginner/04_Dictionary.md
-Часто задаваемые вопросы (FAQ) https://github.com/valalav/dna_guide/blob/main/01_Beginner/06_FAQ.md
-Что если я узнаю то, чего не хотел знать? https://github.com/valalav/dna_guide/blob/main/01_Beginner/01_Fears_and_Myths.md
-Как объяснить тест родителям/бабушке за 5 минут https://github.com/valalav/dna_guide/blob/main/01_Beginner/02_How_To_Explain.md
-Мой результат — одинокая ветка. Что делать? https://github.com/valalav/dna_guide/blob/main/02_Practical/02_Lonely_Branch.md
+[Глоссарий ДНК-генеалогии](https://github.com/valalav/dna_guide/blob/main/01_Beginner/04_Dictionary.md)
+[Часто задаваемые вопросы (FAQ)](https://github.com/valalav/dna_guide/blob/main/01_Beginner/06_FAQ.md)
+[Что если я узнаю то, чего не хотел знать?](https://github.com/valalav/dna_guide/blob/main/01_Beginner/01_Fears_and_Myths.md)
+[Как объяснить тест родителям/бабушке за 5 минут](https://github.com/valalav/dna_guide/blob/main/01_Beginner/02_How_To_Explain.md)
+[Мой результат — одинокая ветка. Что делать?](https://github.com/valalav/dna_guide/blob/main/02_Practical/02_Lonely_Branch.md)
