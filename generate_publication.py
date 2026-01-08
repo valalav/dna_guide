@@ -6,6 +6,7 @@ import io
 import os
 import sys
 import glob
+import re
 
 # Configuration
 TREE_JSON_PATH = "current_tree.json"
@@ -147,137 +148,11 @@ def fetch_sheet_data(url, force_refresh=False):
 
     return content
 
-# ... (keep parse_sheet_data, find_related_docs, generate_markdown same or similar)
-# We need to update main() to handle siblings
-
-def main():
-    parser = argparse.ArgumentParser(description='Generate publication from DNA data.')
-    parser.add_argument('--branch', required=True, help='Target haplogroup branch (e.g., R-FT409028)')
-    parser.add_argument('--output', help='Output file path')
-    parser.add_argument('--refresh', action='store_true', help='Force refresh of data from Google Sheets')
-    
-    args = parser.parse_args()
-    branch = args.branch
-    
-    # 1. Load Tree & Metadata
-    tree = load_tree(TREE_JSON_PATH)
-    node, lineage, descendants = find_node_data(tree, branch)
-    
-    if not node:
-        print(f"Error: Branch {branch} not found in {TREE_JSON_PATH}")
-        sys.exit(1)
-        
-    print(f"Found branch metadata. TMRCA: {node.get('tmrca', 'N/A')}")
-    print(f"Path: {' > '.join(lineage)}")
-    
-    # 2. Fetch Data
-    csv_text = fetch_sheet_data(SHEET_URL, force_refresh=args.refresh)
-    
-    # 3. Filter Data (Target)
-    print("Parsing and filtering CSV data...")
-    matches = parse_sheet_data(csv_text, branch, descendants)
-    print(f"Found {len(matches)} matching records for {branch}.")
-    
-    match_source_branch = branch
-    match_source_node = node
-    
-    # If no matches, fallback to ancestors (User said "I added it", so we expect matches now, 
-    # but keep fallback just in case or for context?)
-    # User said: "also describe other samples from adjacent branches".
-    
-    # We will search for siblings regardless of whether matches found?
-    # "при описании можешь описывать другие образцы из проекта которые +- в соседних ветках"
-    # This implies usually adding them.
-    
-    neighbor_context = ""
-    
-    # Find Parent
-    if len(lineage) >= 2:
-        parent_id = lineage[-2]
-        print(f"Checking siblings (children of {parent_id})...")
-        siblings = find_siblings(tree, parent_id, branch)
-        
-        found_neighbors = []
-        
-        for sib_id in siblings:
-            # finding descendants of sibling
-            sib_node, _, sib_descendants = find_node_data(tree, sib_id)
-            if not sib_node: continue
-            
-            sib_matches = parse_sheet_data(csv_text, sib_id, sib_descendants)
-            if sib_matches:
-                print(f"Found {len(sib_matches)} matches for sibling {sib_id}")
-                for m in sib_matches:
-                    m['_BranchContext'] = sib_id # Mark source
-                    found_neighbors.append(m)
-        
-        if found_neighbors:
-             neighbor_context = "\n## Соседние ветви (Context)\n"
-             neighbor_context += f"В смежных ветвях (под {parent_id}) найдены следующие образцы:\n\n"
-             # Group by branch?
-             # Simple listing for now or use generate_markdown short version?
-             for m in found_neighbors:
-                 # Just a summary line
-                 s_name = m.get('Фамилия') or m.get('Name') or m.get('Kit Number')
-                 s_branch = m.get('_BranchContext')
-                 neighbor_context += f"- **{s_branch}**: {s_name} ({m.get('Субэтнос', '')})\n"
-
-    if not matches:
-        print("No matching records for target. Searching ancestry for closest matches (Fallback)...")
-        # ... (keep existing fallback logic if still needed, but user expects success)
-        # Assuming user added data, we might not hit this. 
-        # But if we do, we keep logic.
-        for ancestor_id in reversed(lineage[:-1]):
-            # ... ancestry fallback code ...
-            anc_node, _, anc_descendants = find_node_data(tree, ancestor_id)
-            if not anc_node: continue
-            anc_matches = parse_sheet_data(csv_text, ancestor_id, anc_descendants)
-            if anc_matches:
-                 matches = anc_matches
-                 match_source_branch = ancestor_id
-                 match_source_node = anc_node
-                 break
-
-    # 4. Find Documentation
-    # ...
-    clean_lineage = [l for l in lineage if l]
-    related_docs = find_related_docs(branch, clean_lineage)
-    
-    # 5. Generate Content
-    full_content = ""
-    # ...
-    
-    if matches:
-        if match_source_branch != branch:
-             full_content += f"> [!NOTE]\n> Прямых образцов для **{branch}** не найдено. Показаны образцы для ближайшей ветви **{match_source_branch}**.\n\n"
-        
-        for record in matches:
-            full_content += generate_markdown(record, lineage, node, related_docs)
-            full_content += "\n" # Spacing
-            
-        full_content += f"\n{neighbor_context}\n"
-        full_content += "\n---\n\n"
-            
-    else:
-        # Summary mode
-        # ...
-        full_content = f"""# Haplogroup {branch}
-...
-{neighbor_context}
-...
-"""
-
-    output_file = args.output if args.output else f"publication_{branch}.md"
-    # ... write ...
-    # ...
-    # Wait, I need to make sure I don't delete too much code with replace_file_content.
-    # The snippet is getting large. I should target specific blocks.
-
-
 def parse_sheet_data(csv_text, target_id, descendants):
     """
     Parse TSV data and find rows matching the target branch OR its descendants.
     Robustly handles newlines in fields.
+    OPTIMIZATION: Reads only first 23 columns, filters empty haplogroups.
     """
     matches = []
     
@@ -289,177 +164,291 @@ def parse_sheet_data(csv_text, target_id, descendants):
         if '-' in vid:
             valid_ids.add(vid.split('-')[-1])
             
-    # print(f"DEBUG: Valid IDs for matching: {len(valid_ids)}") # Too verbose if big tree
-    
-    # ... (rest of parsing logic, utilizing valid_ids checks)
-    # Re-implementing the matching loop part slightly to use valid_ids
-    
     try:
         f = io.StringIO(csv_text)
-        reader = csv.DictReader(f, delimiter='\t')
+        # Using strict reader first
+        reader = csv.reader(f, delimiter='\t')
         
+        try:
+            headers = next(reader)
+        except StopIteration:
+            return []
+            
+        # 1. OPTIMIZATION: SLICE COLUMNS (First 23)
+        MAX_COLS = 23
+        if len(headers) > MAX_COLS:
+            headers = headers[:MAX_COLS]
+            
+        # Identify relevant columns
+        haplo_idx = -1
+        gg_indices = []
+        for i, h in enumerate(headers):
+            h_low = h.lower()
+            if 'haplogroup' in h_low:
+                haplo_idx = i
+            elif 'гг' in h_low:
+                gg_indices.append(i)
+
+        # Helper to check match
+        def check_val(val):
+            if not val: return False
+            v = val.strip()
+            if v in valid_ids: return True
+            return False
+
         for row in reader:
-            # Check Terminal Haplogroup
-            terminal = (row.get('Haplogroup') or '').strip()
+            if not row: continue
             
-            # Check Hierarchy columns
-            h_cols = [
-                (row.get('Гг1') or ''), (row.get('Гг2') or ''), (row.get('Гг3') or ''),
-                (row.get('Гг4') or ''), (row.get('Гг5') or '')
-            ]
+            # 2. OPTIMIZATION: FILTER EMPTY HAPLOGROUP
+            if haplo_idx != -1:
+                if len(row) > haplo_idx:
+                    if not row[haplo_idx].strip():
+                        continue 
+                else:
+                    continue
+
+            # Slice row data
+            if len(row) > MAX_COLS:
+                row = row[:MAX_COLS]
             
+            # Convert to dict
+            record = {}
+            for i, val in enumerate(row):
+                 if i < len(headers):
+                     record[headers[i]] = val
+            
+            # Check Match
             is_match = False
             
-            # Helper to check match
-            def check_val(val):
-                if not val: return False
-                v = val.strip()
-                if v in valid_ids: return True
-                # Maybe check if v endswith any valid suffix?
-                # Risk of false positives (e.g. '28' matches 'FT28'). strict equality against set is better.
-                return False
-
-            # Exact terminal match
-            if check_val(terminal):
+            # Check Terminal
+            term_val = record.get('Haplogroup', '')
+            if check_val(term_val):
                 is_match = True
             
-            # Hierarchy match
+            # Check Hierarchy
             if not is_match:
-                for col in h_cols:
-                    if check_val(col):
+                for col_name in ['Гг1', 'Гг2', 'Гг3', 'Гг4', 'Гг5']:
+                    val = record.get(col_name)
+                    if val and check_val(val):
                         is_match = True
                         break
             
             if is_match:
-                matches.append(row)
-                
-    except csv.Error as e:
-        # ... (Same fallback logic potentially needed, but standard DictReader is mostly fine now)
-        # Implementing the fallback logic again briefly inside this function replacement?
-        # The tool requires replacing the whole block if I change the function start.
-        # I'll just keep the structure for csv.Error same as before but update matching logic inside fallback too.
-        
-        print(f"Standard CSV Parsing Error: {e}")
-        print("Attempting fallback parsing (line-by-line split)...")
+                matches.append(record)
+
+    except (csv.Error, Exception) as e:
+        # Fallback for "new-line character seen in unquoted field" etc.
+        # print(f"CSV Parsing Error ({e}). Switching to manual fallback parsing.")
         
         lines = csv_text.splitlines()
-        if not lines:
-            return []
+        if not lines: return []
+        
+        # Manual Header Parsing
+        headers = lines[0].split('\t')
+        MAX_COLS = 23
+        if len(headers) > MAX_COLS:
+            headers = headers[:MAX_COLS]
             
-        header = lines[0].split('\t')
-        try:
-            idx_hap = header.index('Haplogroup')
-            idx_gg = [i for i, h in enumerate(header) if h.startswith('Гг')]
-        except ValueError:
-            return []
-            
-        for line in lines[1:]:
-            parts = line.split('\t')
-            if len(parts) != len(header): continue
+        haplo_idx = -1
+        gg_indices = []
+        for i, h in enumerate(headers):
+            h_low = h.lower()
+            if 'haplogroup' in h_low:
+                haplo_idx = i
+            elif 'гг' in h_low:
+                gg_indices.append(i)
                 
-            row_dict = dict(zip(header, parts))
+        def check_val(val):
+            if not val: return False
+            v = val.strip()
+            if v in valid_ids: return True
+            return False
+
+        for line in lines[1:]:
+            if not line: continue
+            row = line.split('\t')
             
-            terminal = row_dict.get('Haplogroup', '').strip()
+            # Filter Empty Haplogroup
+            if haplo_idx != -1:
+                if len(row) > haplo_idx:
+                    if not row[haplo_idx].strip():
+                        continue
+                else:
+                    continue
+            
+            # Slice
+            if len(row) > MAX_COLS:
+                row = row[:MAX_COLS]
+                
+            # Dict
+            record = {}
+            for i, val in enumerate(row):
+                if i < len(headers):
+                    record[headers[i]] = val
+            
+            # Match Logic
             is_match = False
-            if check_val(terminal):
+            term_val = record.get('Haplogroup', '')
+            if check_val(term_val):
                 is_match = True
             
             if not is_match:
-                for idx in idx_gg:
-                    if idx < len(parts) and check_val(parts[idx]):
+                for col_name in ['Гг1', 'Гг2', 'Гг3', 'Гг4', 'Гг5']:
+                    val = record.get(col_name)
+                    if val and check_val(val):
                         is_match = True
                         break
             
             if is_match:
-                matches.append(row_dict)
-
+                matches.append(record)
+        
     return matches
-
-import re
-
-# ... existing imports ...
-
-# (Assuming imports are at top, but I can't easily inject import at top with this single replace if I am targeting find_related_docs down below.
-# I will use multi_replace to add import at top AND change function.)
 
 def find_related_docs(target_id, lineage):
     """
     Find documentation files related to the branch or its ancestors.
-    Uses strict regex matching (word boundaries / separators) to avoid partial matches
-    e.g. 'F' matching 'FT9681'.
+    Uses strict regex matching.
+    Implements SHADOWING: If a specific deep branch doc exists (e.g. R1b), 
+    suppress generic top-level docs (e.g. R Overview).
     """
-    related_files = []
-    
-    # Search terms: specific branch ID, and parent IDs (reversed order for relevance)
-    # Filter out empty strings
-    search_terms = [t for t in ([target_id] + lineage[::-1]) if t]
-    
-    # cache regexes
-    # We want to match: (start or separator) + term + (end or separator)
-    # Separators: _ - . space
-    term_regexes = []
-    for term in search_terms:
-        # Escape term just in case
-        safe_term = re.escape(term)
-        # Pattern: look for term surrounded by non-alphanumeric or boundaries
-        # But commonly in filenames: 00_R_Overview.md -> matches 'R'
-        # 03_FT9681.md -> matching 'F'? 'FT' starts with F.
-        # We want strict token matching.
-        # Let's define separators as [_\-\.]
-        # usage: re.search(pattern, filename, re.IGNORECASE)
-        pattern = r'(?:^|[\._\-])' + safe_term + r'(?:$|[\._\-])'
-        term_regexes.append((term, re.compile(pattern, re.IGNORECASE)))
-    
-    # We explicitly look into 10_Haplogroups
-    # Walk directory
-    excluded_docs = ["00_R_Overview.md"]
+    docs = []
+    all_md_files = []
     
     for root, dirs, files in os.walk(DOCS_DIR):
         for file in files:
-            if file in excluded_docs:
-                continue
-                
             if file.endswith(".md"):
-                # Check if filename contains any of the search terms strings strictly
-                for term, regex in term_regexes:
-                    if regex.search(file):
-                        path = os.path.join(root, file)
-                        related_files.append((term, path))
-                        break # Found a match for this file
+                all_md_files.append(os.path.join(root, file))
     
-    return related_files
+    raw_matches = []
     
+    # 1. Collect all raw matches
+    for item in lineage:
+        if not item: continue
+        # Normalize item for regex (escape + word boundaries)
+        esc_item = re.escape(item)
+        
+        # Pattern: exact match of the haplogroup ID in the filename
+        # e.g. "R1b" in "01_R1b.md" or "R1b_L23..."
+        # But we must avoid "R" matching "R1b" (handled by boundaries usually, or specific checks)
+        # To be safe for "R", we ensure it's distinct.
+        
+        pattern = re.compile(fr'(^|[\/\\_\-\s\.])({esc_item})($|[\/\\_\-\s\.])', re.IGNORECASE)
+        
+        for file_path in all_md_files:
+            filename = os.path.basename(file_path)
+            if pattern.search(filename):
+                raw_matches.append({
+                    'id': item,
+                    'path': file_path,
+                    'filename': filename,
+                    'lineage_index': lineage.index(item)
+                })
+
+    # 2. Filter / Shadowing Selection
+    # Logic: Group matches by ID.
+    # If we have matches for 'R1b' (or deeper), and also for 'R', we want to DROP 'R'.
+    
+    # Identify which lineage depths are covered.
+    covered_indices = {m['lineage_index'] for m in raw_matches}
+    
+    final_docs = []
+    seen_paths = set()
+    
+    # Sort matches by lineage index (deepest first? No, we iterate all)
+    # Actually, we want to KEEP the most specific ones.
+    
+    # Define "Top Level" IDs that are prone to being redundant
+    # (Single letters usually: R, G, J, I, E, N, Q, C...)
+    # Logic: If we have a match at index X, and there is a match at index Y (where Y < X),
+    # AND index Y corresponds to a "Basic/Overview" level, we might drop Y.
+    
+    # User Rule: "Separate R1a and R1b. For R1b - remove R. For R1a - remove R."
+    
+    matches_by_path = {m['path']: m for m in raw_matches}
+    unique_matches = list(matches_by_path.values())
+    
+    # Check if we have specific docs
+    max_depth_found = -1
+    if covered_indices:
+        max_depth_found = max(covered_indices)
+        
+    # Heuristic: If we have documentation for a node at index X, 
+    # suppress documentation for nodes at index < X-1 (Grandparents) or even Parents if they are "Overview".
+    # User specifically hates "R Overview" when "R1b" is there. Lineage: R -> R1 -> R1b. 
+    # indices: R=0, R1=1, R1b=2 (roughly).
+    
+    for m in unique_matches:
+        is_redundant = False
+        
+        # Shadowing Rule 1: 'Overview' suppression
+        # If the filename contains "Overview" (e.g. 00_R_Overview.md), 
+        # AND we have any OTHER doc that is NOT this one and is "deeper" or specific.
+        if "overview" in m['filename'].lower():
+            # Check if we have more specific docs (not overview, deeper index)
+            # or just ANY other specific doc for a sub-branch.
+            for other in unique_matches:
+                if other['path'] == m['path']: continue
+                if other['lineage_index'] > m['lineage_index']:
+                    is_redundant = True
+                    break
+                    
+        # Shadowing Rule 2: Single Letter Roots (e.g. "R") suppression
+        # If this doc matches a single-letter ID (e.g. "R"), and we have deeper docs.
+        if len(m['id']) == 1 and m['id'].isalpha():
+             for other in unique_matches:
+                if other['path'] == m['path']: continue
+                if other['lineage_index'] > m['lineage_index']:
+                    is_redundant = True
+                    break
+
+        if not is_redundant:
+            if m['path'] not in seen_paths:
+                final_docs.append(m)
+                seen_paths.add(m['path'])
+
+    # Sort final docs by lineage usage (or alphabet? Lineage is better context)
+    final_docs.sort(key=lambda x: x['lineage_index'])
+    
+    return final_docs
+
 def generate_branch_report(branch_name, records, lineage_path, branch_node, related_docs, neighbor_context="", ancestor_note=""):
-    """Generate consolidated markdown content for the branch."""
+    """
+    Generate consolidated markdown content for the branch.
+    Includes Metadata, History, Documentation, External Links, Neighbor Context, and Sample List.
+    """
+    tmrca = branch_node.get('tmrca', 'N/A')
     
-    # Metadata from JSON
-    tmrca = branch_node.get('tmrca', 'Unknown')
+    # Formatting lineage: > A > B > C
     formatted_lineage = " > ".join(lineage_path)
     
-    # Docs section
-    # Start with embedding the general info block
-    docs_section = "## Справочная информация\n\n"
-    docs_section += "![Справочная информация](00_General/00_inf.md)\n\n"
+    # Documentation Section
+    docs_section = "## Справочная информация\n\n![Справочная информация](00_General/00_inf.md)\n\n"
     
-    # 1. Dynamic Haplogroup Refs
-    if related_docs:
-        docs_section += "### Y-ДНК (Ветки)\n"
-        seen_paths = set()
-        for term, path in related_docs:
-            if path not in seen_paths:
-                docs_section += f"- [{os.path.basename(path)}]({path}) (Relates to {term})\n"
-                seen_paths.add(path)
-        docs_section += "\n"
-                
-    # 2. Standard Project Refs
+    # Categorize docs
+    y_dna_docs = []
+    other_docs = []
+    
+    for d in related_docs:
+        link = f"- [{d['filename']}]({d['path']}) (Relates to {d['id']})"
+        # Simplistic categorization
+        if "autosomal" in d['filename'].lower():
+             pass # Handled by static text?
+        elif "mt" in d['filename'].lower():
+             pass 
+        else:
+             y_dna_docs.append(link)
+             
+    if y_dna_docs:
+        docs_section += "### Y-ДНК (Ветки)\n" + "\n".join(y_dna_docs) + "\n\n"
+        
     docs_section += "### Аутосомный портрет\n"
     docs_section += "- [01_Autosomal_Guide.md](05_Autosomal\\01_Autosomal_Guide.md) (Справочник по аутосомам)\n\n"
-    
+
     docs_section += "### Митохондриальная ДНК\n"
-    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n"
+    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n\n"
     
-    # Ancient DNA section removed as per user request
-    
+    # Ancient DNA REMOVED per user request
+
     # History - Consolidate unique histories
     unique_histories = []
     seen_hist = set()
@@ -474,7 +463,6 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
         history_section = "## История\n" + "\n\n".join(unique_histories) + "\n"
 
     # Conditional Logic for Header and Samples Table
-    # Default: Empty header, show table
     h_surname = ""
     h_kit = ""
     h_subethnos = ""
@@ -517,7 +505,6 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
 - [Проект AADNA](https://aadna.ru/)"""
 
     # User explicit request: NO double empty lines. Only single empty line between sections.
-    # We must be very careful with f-string formatting.
     
     template = f"""{ancestor_note}# Гаплогруппа {branch_name}
 
@@ -544,90 +531,10 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
 {samples_section}"""
     
     # Post-processing to ensure exactly one empty line max
-    # Replace 3+ newlines with 2 newlines (which renders as 1 empty line in text editors usually)
-    # But user sees "double empty line" as 3 \n.
-    # We want content\n\ncontent.
-    
-    import re
-    # Collapse multiple blank lines into a single blank line
-    # \n\n\n -> \n\n
+    # Replace 3 or more newlines with 2 newlines
     template = re.sub(r'\n{3,}', '\n\n', template)
     
     return template
-    
-    # 1. Dynamic Haplogroup Refs
-    if related_docs:
-        docs_section += "### Y-ДНК (Ветки)\n"
-        seen_paths = set()
-        for term, path in related_docs:
-            if path not in seen_paths:
-                docs_section += f"- [{os.path.basename(path)}]({path}) (Relates to {term})\n"
-                seen_paths.add(path)
-        docs_section += "\n"
-                
-    # 2. Standard Project Refs
-    docs_section += "### Аутосомный портрет\n"
-    docs_section += "- [01_Autosomal_Guide.md](05_Autosomal\\01_Autosomal_Guide.md) (Справочник по аутосомам)\n\n"
-    
-    docs_section += "### Митохондриальная ДНК\n"
-    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n\n"
-    
-    docs_section += "### Древняя ДНК\n"
-    docs_section += "- [03_Ancient_DNA_Table.md](00_General\\03_Ancient_DNA_Table.md) (Таблица древних образцов)\n"
-    
-    # History - Consolidate unique histories
-    unique_histories = []
-    seen_hist = set()
-    for rec in records:
-        h = rec.get('История', '').strip()
-        if h and h not in seen_hist:
-            unique_histories.append(h)
-            seen_hist.add(h)
-    
-    history_section = ""
-    if unique_histories:
-        history_section = "## История\n" + "\n\n".join(unique_histories) + "\n"
-
-    # Samples Table
-    samples_section = ""
-    if records:
-        samples_section = "## Список представителей\n\n"
-        samples_section += "| Фамилия | Имя | Kit | Субэтнос | Населенный пункт |\n"
-        samples_section += "|---|---|---|---|---|\n"
-        
-        for rec in records:
-            surname = rec.get('Фамилия') or ''
-            name = rec.get('Name') or ''
-            kit = rec.get('Kit Number') or ''
-            subethnos = rec.get('Субэтнос') or ''
-            loc = rec.get('Населенный пункт') or rec.get('Lacation') or ''
-            
-            # Clean pipes for Markdown table safety
-            safe_cols = [c.replace('|', '/') for c in [surname, name, kit, subethnos, loc]]
-            samples_section += f"| {safe_cols[0]} | {safe_cols[1]} | {safe_cols[2]} | {safe_cols[3]} | {safe_cols[4]} |\n"
-    else:
-        samples_section = "## Образцы\nВ текущей базе данных образцов для этой ветки не найдено.\n\n"
-
-
-    template = f"""{ancestor_note}# Гаплогруппа {branch_name}
-
-**Возраст ветки (TMRCA):** {tmrca} лет
-**Путь:** {formatted_lineage}
-
-{history_section}
-
-{docs_section}
-
-{samples_section}
-
-{neighbor_context}
-
-## Внешние ссылки
-- [YFull Tree](https://www.yfull.com/tree/{branch_node.get('id', '')}/)
-- [Проект AADNA](https://aadna.ru/)
-"""
-    return template
-
 
 def main():
     parser = argparse.ArgumentParser(description='Generate publication from DNA data.')
@@ -692,7 +599,6 @@ def main():
                  s_subethnos = m.get('Субэтнос') or ''
                  
                  # Format: - Branch: Name (Subethnos)
-                 # Avoid empty parens
                  line = f"- **{s_branch}**: {s_name}"
                  if s_subethnos:
                      line += f" ({s_subethnos})"
@@ -719,9 +625,8 @@ def main():
 
     # 4. Find Documentation
     print("Searching for related documentation...")
-    # Clean empty strings from lineage if any
     clean_lineage = [l for l in lineage if l]
-    # Remove duplicates while preserving order
+    # Remove duplicates
     clean_lineage_dedup = []
     seen = set()
     for l in clean_lineage:
@@ -740,9 +645,9 @@ def main():
              ancestor_note = f"> [!NOTE]\n> Прямых образцов для **{branch}** не найдено. Показаны образцы для ближайшей ветви **{match_source_branch}**.\n\n"
         
         full_content = generate_branch_report(
-            branch_name=branch, 
-            records=matches, 
-            lineage_path=lineage, 
+            branch_name=branch,
+            records=matches,
+            lineage_path=lineage,
             branch_node=node,
             related_docs=related_docs,
             neighbor_context=neighbor_context,
@@ -752,14 +657,14 @@ def main():
     else:
         print("No matching records found policy. Generating summary publication.")
         full_content = generate_branch_report(
-            branch_name=branch, 
-            records=[], 
-            lineage_path=lineage, 
+            branch_name=branch,
+            records=[],
+            lineage_path=lineage,
             branch_node=node,
             related_docs=related_docs,
             neighbor_context=neighbor_context
         )
-
+    
     output_file = args.output if args.output else f"publication_{branch}.md"
     write_path = os.path.abspath(output_file)
     print(f"Writing to: {write_path}")
