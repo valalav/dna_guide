@@ -473,9 +473,25 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
     if unique_histories:
         history_section = "## История\n" + "\n\n".join(unique_histories) + "\n"
 
-    # Samples Table
+    # Conditional Logic for Header and Samples Table
+    # Default: Empty header, show table
+    h_surname = ""
+    h_kit = ""
+    h_subethnos = ""
+    h_location = ""
     samples_section = ""
-    if records:
+    
+    if len(records) == 1:
+        # Single Record: Fill header, suppress table
+        r = records[0]
+        h_surname = r.get('Фамилия') or r.get('Name') or ''
+        h_kit = r.get('Kit Number') or ''
+        h_subethnos = r.get('Субэтнос') or ''
+        h_location = r.get('Населенный пункт') or r.get('Lacation') or ''
+        # samples_section remains empty
+        
+    elif len(records) > 1:
+        # Multiple Records: Empty header, show table
         samples_section = "## Список представителей\n\n"
         samples_section += "| Фамилия | Имя | Kit | Субэтнос | Населенный пункт |\n"
         samples_section += "|---|---|---|---|---|\n"
@@ -490,7 +506,9 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
             # Clean pipes for Markdown table safety
             safe_cols = [c.replace('|', '/') for c in [surname, name, kit, subethnos, loc]]
             samples_section += f"| {safe_cols[0]} | {safe_cols[1]} | {safe_cols[2]} | {safe_cols[3]} | {safe_cols[4]} |\n"
+    
     else:
+        # No records
         samples_section = "## Образцы\nВ текущей базе данных образцов для этой ветки не найдено.\n\n"
 
     # External Links (Move above samples)
@@ -503,10 +521,10 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
     
     template = f"""{ancestor_note}# Гаплогруппа {branch_name}
 
-**Фамилия:** 
-**Kit Number:** 
-**Субэтнос:** 
-**Населенный пункт:** 
+**Фамилия:** {h_surname}
+**Kit Number:** {h_kit}
+**Субэтнос:** {h_subethnos}
+**Населенный пункт:** {h_location}
 
 ## Краткое резюме
 <!-- Вставьте сюда краткое описание ветки и её значимости -->
