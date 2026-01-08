@@ -1716,6 +1716,125 @@ of Circassian diaspora worldwide.
 | # | Тема | Приоритет | Статус |
 |---|------|-----------|--------|
 | 18.1 | J-PH1795 и подветви | 🔴 Высокий | 🆕 Новый |
+| 18.2 | C-BY154208 Монгольская ветвь | 🔴 Высокий | 🆕 Новый |
+
+---
+
+### 18.2. C-BY154208 — Монгольско-Маньчжурская Ветвь Гаплогруппы C
+
+> Скопируй весь блок ниже:
+
+```
+Please conduct a comprehensive analysis of haplogroup C-BY154208 and its relationship 
+to the larger C-F3796 branch. Focus ESPECIALLY on Chinese and Mongolian sources.
+Provide full citations with DOI links where available.
+
+TOPIC: Detailed phylogenetic analysis of C-BY154208 with focus on East Asian distribution 
+and potential Caucasus connections
+
+PHYLOGENETIC PATH:
+C-M217 > C-L1373 > C-F3447 > C-F1699 > C-F4032 > C-FGC16273 > C-M504 > C-F3618 > C-Y11121 > **C-BY154208**
+
+KEY DATA FROM MULTIPLE SOURCES:
+
+## YFull Data:
+- **C-BY154208:** TMRCA ~2400 ybp (YFull) / 2795 ybp (TheYTree)
+- **Defining SNPs:** BY154208 + 10 SNPs
+- **Downstream clades:**
+  - C-Y170660 (formed 2795 ybp, TMRCA 1790 ybp)
+  - C-Y170537 (formed 1790 ybp, TMRCA 1500 ybp)
+  - C-Y215105 (formed 1790 ybp, TMRCA 1355 ybp)
+  - C-Y205287 (formed 1355 ybp, TMRCA 1355 ybp)
+
+## TheYTree Samples:
+| Sample ID | Surname | Location | Ethnicity | mtDNA |
+|-----------|---------|----------|-----------|-------|
+| AU61939 | Dong | Liaocheng, Shandong, Xin County | Han Chinese | N9a10 |
+| AU61709 | Liu | Inner Mongolia, Horqin Right Front Banner | Han Chinese | F2a6 |
+| AU63754 | Su | Hebei, Baoding | Manchu | M8a2'3 |
+
+## 23mofang (Chinese Database) Data:
+- **C-BY154208:** Formed 3200 years ago, 17 relatives
+- **Downstream structure:**
+  - C-ZQ1012 (formed 1130 ybp)
+  - C-MF204213 (formed 2590 ybp, 17 relatives)
+    - C-MF380228
+    - C-MF204209 (formed 2080 ybp, 17 relatives)
+      - C-MF380202 (formed 800 ybp)
+      - C-MF204214 (formed 1730 ybp, 6 relatives)
+      - C-MF378936 (formed 1640 ybp, 8 relatives)
+
+## Key Samples from 23mofang:
+| Sample | Surname | Ethnicity | Location |
+|--------|---------|-----------|----------|
+| C-MF380220 | Yang | Han | Zhangdian District, Zibo, Shandong |
+| C-MF204210 | Liu | Han | Inner Mongolia, Xing'an League |
+| C-MF380199 | Dong | Han | Liaocheng, Shandong, Xin County |
+| C-MF442282 | Li | Han | Shanghai, Baoshan |
+| C-MF402594 | Su | **Manchu** | Hebei, Baoding |
+| **C-MF378954** | **Aisin Gioro** | **Manchu** | Jilin, Tonghua, Ji'an |
+| **C-MF380183** | **Ilgen Gioro** | **Manchu** | Heilongjiang, Harbin, Shuangcheng |
+
+CRITICAL OBSERVATION: 
+**Aisin Gioro (愛新覺羅)** — the imperial clan of the Qing Dynasty!
+**Ilgen Gioro** — a branch of the Manchu royal lineage!
+This suggests C-BY154208 may be connected to Manchu nobility.
+
+QUESTIONS:
+
+1. **Relationship to C-F3796:**
+   - What is the phylogenetic distance between BY154208 and F3796?
+   - Are they sister clades or nested?
+   - What is the TMRCA of their common ancestor?
+
+2. **Mongolic vs Manchu-Tungusic:**
+   - C-M217 is often called the "Mongolic marker"
+   - But samples show Han Chinese, Manchu, not Mongol ethnicity
+   - Is BY154208 specifically Manchu-Tungusic rather than Mongolic?
+
+3. **Qing Dynasty Connection:**
+   - Aisin Gioro samples in this clade!
+   - Is this the genetic lineage of the Qing emperors?
+   - Historical implications?
+
+4. **Shandong-Liaoning Corridor:**
+   - Multiple samples from Shandong (Dong, Yang, Liu)
+   - Is this Han assimilation of Manchu lineages?
+   - Or ancient migration pattern?
+
+5. **TMRCA Discrepancy:**
+   - YFull: ~2400 ybp
+   - TheYTree: ~2795 ybp  
+   - 23mofang: ~3200 ybp
+   - Which is most accurate? Why the difference?
+
+6. **Caucasus Connection (if any):**
+   - Is there ANY C-BY154208 in Caucasus databases?
+   - C-M217 is 14-18% in Nogais (steppe neighbors of Circassians)
+   - But <2% in Circassians themselves
+   - Could BY154208 represent post-Mongol introgression?
+
+SOURCES TO CHECK (prioritize Chinese):
+- 23mofang (魔方祖源): https://www.23mofang.com/ancestry/ytree/C-BY154208
+- TheYTree: https://www.theytree.com/tree/C-BY154208
+- YFull: https://www.yfull.com/tree/C-BY154208/
+- WeGene (微基因) haplogroup database
+- Chinese academic papers on C-M217 distribution
+- Manchu genetic studies (especially imperial lineage)
+- Zhabagin et al. on Mongol genetic legacy
+
+EXPECTED OUTPUT FORMAT:
+1. Complete phylogenetic tree from C-M217 to terminal BY154208 subclades
+2. TMRCA reconciliation across databases
+3. Ethnic distribution analysis (Manchu vs Han vs Mongol)
+4. Historical scenario: Qing Dynasty genetic legacy?
+5. Relationship to C-F3796 clarified
+6. Any Caucasus samples (AADNA relevance)
+7. Full reference list with DOIs (Chinese sources welcome!)
+
+NOTE: This haplogroup is important for understanding potential Mongol/Manchu 
+genetic traces in Caucasus populations, even if BY154208 itself is not present there.
+```
 
 ---
 
