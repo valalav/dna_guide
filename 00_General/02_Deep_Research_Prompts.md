@@ -1717,6 +1717,8 @@ of Circassian diaspora worldwide.
 |---|------|-----------|--------|
 | 18.1 | J-PH1795 и подветви | 🔴 Высокий | ✅ Готово |
 | 18.2 | C-BY154208 Монгольская ветвь | 🔴 Высокий | ✅ Готово |
+| 18.3 | C-BY154208 на Кавказе (Kerimov) | 🟡 Средний | 🆕 Новый |
+| 18.4 | mtDNA H47 (Кабардинская линия) | 🟡 Средний | 🆕 Новый |
 
 ---
 
@@ -1834,6 +1836,186 @@ EXPECTED OUTPUT FORMAT:
 
 NOTE: This haplogroup is important for understanding potential Mongol/Manchu 
 genetic traces in Caucasus populations, even if BY154208 itself is not present there.
+```
+
+---
+
+### 18.3. C-BY154208 на Кавказе — Кумыкский Вектор
+
+> 🆕 **НОВЫЙ ОБРАЗЕЦ!** YF143336 — первый C-BY154208 на Кавказе
+
+```
+Please conduct a detailed follow-up analysis of C-BY154208 presence in the Caucasus, 
+based on the discovery of sample YF143336. Focus on the Kumyk/Kipchak vector hypothesis.
+
+TOPIC: C-BY154208 in the Caucasus: The Kerimov Sample and Kumyk Connection
+
+NEW DISCOVERY DATA:
+| Parameter | Value |
+|-----------|-------|
+| **Kit ID** | YF143336 |
+| **Region** | Russia [RU-KB] — Kabardino-Balkaria |
+| **Ethnicity** | Kabardian (ady) |
+| **Surname** | **Kerimov** (Turkic/Arabic origin: كريم) |
+| **Location** | Verkhniy Kurp, Terek, Kabardey |
+| **Y-DNA** | C-BY154208* (terminal, TMRCA ~2400 ybp) |
+| **mtDNA** | H47 |
+| **Maternal ancestry** | Shkhagapsoeva → Tarchokova → Quezhiquey (Argudan), Lesken |
+
+HYPOTHESES TO INVESTIGATE:
+
+1. **Kumyk Origin Hypothesis:**
+   - Surname Kerimov is Turkic/Arabic, not Circassian
+   - Kumyks are a Turkic-speaking people of Dagestan
+   - Kumyks have substantial Mongol/Kipchak genetic substrate
+   - Could the ancestor have been Kumyk, later assimilated into Kabardian society?
+
+2. **Kipchak/Golden Horde Vector:**
+   - C-BY154208 is Manichurian/Eastern, but Golden Horde brought Eastern genes west
+   - Kipchak confederation included diverse lineages
+   - Could BY154208 have come via Crimean Khanate → Kabarda trade routes?
+
+3. **Nogai Intermediary:**
+   - Nogais have 14-18% C-M217
+   - Nogais interacted heavily with Kabardians (alliances, marriages)
+   - Could this be a Nogai lineage integrated into Kabardian nobility?
+
+4. **Recent Migration (19th-20th c.):**
+   - Verkhniy Kurp is a border region (Kabarda/Ossetia)
+   - Could this represent recent Kumyk/Dagestani migration?
+   - Russian Empire resettlements?
+
+QUESTIONS:
+
+1. **Phylogenetic Position:**
+   - Where exactly does YF143336 sit in the BY154208 tree?
+   - Is it on a Chinese branch or a separate Caucasian branch?
+   - What is TMRCA to Chinese samples?
+
+2. **Ethnic Matching:**
+   - Are there other Kerimov surnames in genetic databases?
+   - Do they cluster with Turkic or Circassian populations?
+   - Any Kumyk haplogroup studies available?
+
+3. **Chinese-Caucasus TMRCA:**
+   - If YF143336 shares a recent ancestor with Chinese samples, when did they diverge?
+   - Could this be a single-person founder effect (one Kumyk/Mongol ancestor)?
+
+4. **Maternal Line (mtDNA H47):**
+   - The mtDNA is H47, a European/West Asian haplogroup
+   - Maternal ancestry shows Circassian surnames (Shkhagapsoeva, Tarchokova)
+   - This confirms integration into Kabardian society through maternal line
+
+5. **Historical Context:**
+   - Were there documented Kumyk-Kabardian intermarriages?
+   - Any known cases of Kumyk clans settling in Kabardino-Balkaria?
+   - Trade/military relationships?
+
+SOURCES TO CHECK:
+- YFull mtree/ytree for YF143336 relatives
+- Kumyk genetic studies (Y-DNA distribution)
+- Dagestani population genetics
+- Kabardian-Kumyk historical relations
+- Russian Empire resettlement records
+- AADNA project database for Kumyk samples
+
+EXPECTED OUTPUT:
+1. Phylogenetic placement of YF143336 within BY154208 tree
+2. TMRCA analysis to Chinese samples
+3. Kumyk origin hypothesis evaluation
+4. Alternative scenarios (Kipchak, Nogai, recent migration)
+5. mtDNA H47 context (is it common in Circassians?)
+6. Historical scenario for BY154208 penetration to Caucasus
+7. Recommendations for further testing (relatives of Kerimov family)
+```
+
+---
+
+### 18.4. mtDNA H47 — Кабардинская Материнская Линия
+
+> Параллельный анализ митохондриальной ДНК образца YF143336
+
+```
+Please conduct a comprehensive analysis of mitochondrial haplogroup H47, with focus 
+on its presence in Caucasus populations, especially Kabardians.
+
+TOPIC: mtDNA Haplogroup H47 - Distribution and Caucasus Context
+
+SOURCE DATA:
+- YFull mtree: https://www.yfull.com/mtree/H47/
+
+SAMPLE CONTEXT (YF143336):
+| Parameter | Value |
+|-----------|-------|
+| **Kit ID** | YF143336 |
+| **Y-DNA** | C-BY154208 (Manchu-Tungusic) |
+| **mtDNA** | **H47** |
+| **Ethnicity** | Kabardian |
+| **Maternal Ancestry** | Shkhagapsoeva → Tarchokova → Quezhiquey (Argudan), Lesken |
+
+KEY OBSERVATION:
+The Y-DNA is Eastern (C-BY154208), but the mtDNA is H47 (European/West Asian).
+This asymmetry suggests:
+- Male ancestor of Eastern origin
+- Female ancestors of Caucasian/European origin
+- Integration into Kabardian society through maternal line
+
+QUESTIONS TO ANSWER:
+
+1. **H47 Phylogeny:**
+   - What is the full structure of H47 (subclades)?
+   - When did H47 form? TMRCA of major branches?
+   - Parent clade (H47 position within H)?
+
+2. **Geographic Distribution:**
+   - Where is H47 most common globally?
+   - Is it present in Caucasus populations?
+   - Frequency in:
+     - Circassians (Adyghe, Kabardians)
+     - Abkhazians
+     - Georgians
+     - Armenians
+     - Dagestani peoples
+     - Russians
+     - Near East
+
+3. **YFull Samples Analysis:**
+   - How many samples are in H47 on YFull?
+   - What are their ethnic/geographic origins?
+   - Are there other Kabardian/Circassian samples?
+   - Any clustering patterns?
+
+4. **Caucasus-Specific H47:**
+   - Is there a Caucasian-specific H47 subclade?
+   - TMRCA of any Caucasian cluster?
+   - Could H47 be a marker of ancient Caucasian ancestry?
+
+5. **Comparison with Other Kabardian mtDNA:**
+   - What are the most common mtDNA haplogroups in Kabardians?
+   - How does H47 compare in frequency?
+   - Is H47 typical or unusual for Kabardians?
+
+6. **Historical Interpretation:**
+   - If H47 is common in Caucasus, it supports local maternal integration
+   - If H47 is rare/absent, it may indicate external female lineage
+   - Connection to Tarchokova/Shkhagapsoeva family history?
+
+SOURCES TO CHECK:
+- YFull mtree H47: https://www.yfull.com/mtree/H47/
+- Behar et al. (2012) - Caucasus mtDNA study
+- Yunusbayev et al. (2012) - Caucasus genetic structure
+- Khusnutdinova et al. - Russian population mtDNA
+- MITOMAP database
+- GenBank for H47 sequences
+- PhyloTree.org for H phylogeny
+
+EXPECTED OUTPUT:
+1. Complete H47 phylogenetic tree with subclades
+2. TMRCA and geographic origin hypothesis
+3. Caucasus distribution analysis (frequency by population)
+4. Comparison with common Kabardian mtDNA haplogroups
+5. Interpretation for sample YF143336 (local vs external female ancestry)
+6. Full reference list with DOIs
 ```
 
 ---

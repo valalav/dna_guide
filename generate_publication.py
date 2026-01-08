@@ -437,7 +437,9 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
     formatted_lineage = " > ".join(lineage_path)
     
     # Docs section
+    # Start with embedding the general info block
     docs_section = "## Справочная информация\n\n"
+    docs_section += "![Справочная информация](00_General/00_inf.md)\n\n"
     
     # 1. Dynamic Haplogroup Refs
     if related_docs:
@@ -454,10 +456,9 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
     docs_section += "- [01_Autosomal_Guide.md](05_Autosomal\\01_Autosomal_Guide.md) (Справочник по аутосомам)\n\n"
     
     docs_section += "### Митохондриальная ДНК\n"
-    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n\n"
+    docs_section += "- [02_mtDNA_Guide.md](04_Women\\02_mtDNA_Guide.md) (Справочник по mtDNA)\n"
     
-    docs_section += "### Древняя ДНК\n"
-    docs_section += "- [03_Ancient_DNA_Table.md](00_General\\03_Ancient_DNA_Table.md) (Таблица древних образцов)\n"
+    # Ancient DNA section removed as per user request
     
     # History - Consolidate unique histories
     unique_histories = []
@@ -497,8 +498,8 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
 - [YFull Tree](https://www.yfull.com/tree/{branch_node.get('id', '')}/)
 - [Проект AADNA](https://aadna.ru/)"""
 
-    # User explicitly requests these fields to be present at the top, even if empty/template
-    # "Фамилия:", "Kit Number:", "Субэтнос:", "Населенный пункт:"
+    # User explicit request: NO double empty lines. Only single empty line between sections.
+    # We must be very careful with f-string formatting.
     
     template = f"""{ancestor_note}# Гаплогруппа {branch_name}
 
@@ -507,19 +508,33 @@ def generate_branch_report(branch_name, records, lineage_path, branch_node, rela
 **Субэтнос:** 
 **Населенный пункт:** 
 
+## Краткое резюме
+<!-- Вставьте сюда краткое описание ветки и её значимости -->
+
+![Общая инфо по WGS](00_General/00_wgs.md)
+
 **Возраст ветки (TMRCA):** {tmrca} лет
 **Путь:** {formatted_lineage}
 
+[Как читать YFull — экскурсия по интерфейсу](https://github.com/valalav/dna_guide/blob/main/02_Practical/01_YFull_Guide.md)
+
 {history_section}
-
 {docs_section}
-
 {neighbor_context}
-
 {links_section}
 
-{samples_section}
-"""
+{samples_section}"""
+    
+    # Post-processing to ensure exactly one empty line max
+    # Replace 3+ newlines with 2 newlines (which renders as 1 empty line in text editors usually)
+    # But user sees "double empty line" as 3 \n.
+    # We want content\n\ncontent.
+    
+    import re
+    # Collapse multiple blank lines into a single blank line
+    # \n\n\n -> \n\n
+    template = re.sub(r'\n{3,}', '\n\n', template)
+    
     return template
     
     # 1. Dynamic Haplogroup Refs
