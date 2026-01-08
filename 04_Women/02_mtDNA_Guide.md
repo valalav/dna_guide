@@ -375,13 +375,6 @@ L > L3 > N > R > HV > H > H1 > H1a > H1a1 > H1a1d
 - «Ancient DNA from the Caucasus» (Wang et al., 2019)
 - «Neolithic transition in the Caucasus» (различные авторы)
 
-### Проекты
-
-- AADNA (для женщин — mtDNA-секция)
-- FTDNA Caucasus Projects (mtDNA)
-
----
-
 ## Заключение
 
 mtDNA — это голос ваших прабабушек, звучащий сквозь тысячелетия. Она расскажет о женщинах вашего рода — тех, чьи имена забыты, но чья ДНК живёт в вас.
