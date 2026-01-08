@@ -1,0 +1,17 @@
+# === PRIVATE DATA (NEVER COMMIT) ===
+private/
+private/*
+
+# === LOCAL FILES ===
+*.local
+*.local.*
+.env
+.env.*
+
+# === TEMP/CACHE ===
+*.tmp
+*.temp
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
