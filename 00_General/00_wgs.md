@@ -4,4 +4,4 @@
 — анализ митохондриальной ДНК (материнская линия)
 — аутосомный тест (набор неполовых хромосом, накопленный человеком от ближайших предков по всем линиям)
 
-Я получил WGS. Как понять результат? https://github.com/valalav/dna_guide/blob/main/01_Beginner/05_Understanding_WGS.md
+Я получил WGS. Как понять результат? [05_Understanding_WGS.md](../01_Beginner/05_Understanding_WGS.md)
