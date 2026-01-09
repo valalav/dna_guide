@@ -114,19 +114,29 @@ details.dna-spoiler[open] summary {
 
 {% endif %}
 
-<h3>Аутосомный портрет</h3>
-<ul>
-<li><a href="https://github.com/valalav/dna_guide/blob/main/05_Autosomal/01_Autosomal_Guide.md">01_Autosomal_Guide.md</a> (Справочник по аутосомам)</li>
-</ul>
-
-<h3>Митохондриальная ДНК</h3>
-<ul>
-<li><a href="https://github.com/valalav/dna_guide/blob/main/04_Women/02_mtDNA_Guide.md">02_mtDNA_Guide.md</a> (Справочник по mtDNA)</li>
-</ul>
-
+<!-- Соседние ветви (Y-DNA context) -->
 {% if neighbor_context %}
 {{ neighbor_context }}
 {% endif %}
+
+<!-- Мито и Аутосомы (внизу, в спойлерах) -->
+<details class="dna-spoiler">
+<summary>🧬 Митохондриальная ДНК</summary>
+<div class="dna-spoiler-content">
+<ul>
+<li><a href="https://github.com/valalav/dna_guide/blob/main/04_Women/02_mtDNA_Guide.md">02_mtDNA_Guide.md</a> (Справочник по mtDNA)</li>
+</ul>
+</div>
+</details>
+
+<details class="dna-spoiler">
+<summary>📊 Аутосомный портрет</summary>
+<div class="dna-spoiler-content">
+<ul>
+<li><a href="https://github.com/valalav/dna_guide/blob/main/05_Autosomal/01_Autosomal_Guide.md">01_Autosomal_Guide.md</a> (Справочник по аутосомам)</li>
+</ul>
+</div>
+</details>
 
 <h2>Внешние ссылки</h2>
 <ul>
