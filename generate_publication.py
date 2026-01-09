@@ -243,7 +243,8 @@ def find_related_docs(target_id, lineage):
     raw_matches = []
     for item in lineage:
         if not item: continue
-        esc_item = re.escape(item)
+        # Make hyphens match both hyphens and underscores in filenames
+        esc_item = re.escape(item).replace(r'\-', '[-_]')
         pattern = re.compile(fr'(^|[\\/\\\\_\\-\\s\\.])({esc_item})($|[\\/\\\\_\\-\\s\\.])', re.IGNORECASE)
         for file_path in all_md_files:
             filename = os.path.basename(file_path)
