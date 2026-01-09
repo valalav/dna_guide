@@ -255,10 +255,14 @@ def find_related_docs(target_id, lineage):
                     'lineage_index': lineage.index(item)
                 })
 
-    # Shadowing Logic
+    # Shadowing Logic - keep most specific match (highest lineage_index)
     final_docs = []
     seen_paths = set()
-    matches_by_path = {m['path']: m for m in raw_matches}
+    matches_by_path = {}
+    for m in raw_matches:
+        path = m['path']
+        if path not in matches_by_path or m['lineage_index'] > matches_by_path[path]['lineage_index']:
+            matches_by_path[path] = m
     unique_matches = list(matches_by_path.values())
     
     for m in unique_matches:
