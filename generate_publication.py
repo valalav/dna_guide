@@ -381,11 +381,12 @@ def process_branch(branch, tree, csv_text, args, env):
                     m['_BranchContext'] = sib_id
                     found_neighbors.append(m)
         if found_neighbors:
-             neighbor_context = "\\n## Соседние ветви (Context)\\nВ смежных ветвях:\\n\\n"
+             neighbor_context = "\n<p>В смежных ветвях:</p>\n<ul>\n"
              for m in found_neighbors:
                  s_name = m.get('Фамилия') or m.get('Name') or m.get('Kit Number') or ''
                  s_branch = m.get('_BranchContext') or ''
-                 neighbor_context += f"- **{s_branch}**: {s_name}\\n"
+                 neighbor_context += f"<li><strong>{s_branch}</strong>: {s_name}</li>\n"
+             neighbor_context += "</ul>\n"
 
     # Fallback
     if not matches:
@@ -403,7 +404,7 @@ def process_branch(branch, tree, csv_text, args, env):
     
     ancestor_note = ""
     if match_source_branch != branch:
-        ancestor_note = f"> [!NOTE]\\n> Прямых образцов для **{branch}** не найдено. Показаны образцы для ближайшей ветви **{match_source_branch}**.\\n\\n"
+        ancestor_note = f"<div class='note'><strong>Примечание:</strong> Прямых образцов для <strong>{branch}</strong> не найдено. Показаны образцы для ближайшей ветви <strong>{match_source_branch}</strong>.</div>\n"
 
     context = generate_post_context(
         branch_name=branch,
