@@ -305,13 +305,22 @@ def generate_post_context(branch_name, records, lineage_path, branch_node, relat
     
     # Build lineage with TMRCA for each branch (for spoiler)
     lineage_with_tmrca = []
-    for branch_id in lineage_path:
+    lineage_timeline = []  # For visual timeline
+    for i, branch_id in enumerate(lineage_path):
         node, _, _ = find_node_data(tree, branch_id)
         branch_tmrca = node.get('tmrca', '') if node else ''
+        is_current = (i == len(lineage_path) - 1)
+        
         if branch_tmrca:
             lineage_with_tmrca.append(f"{branch_id} ({branch_tmrca})")
         else:
             lineage_with_tmrca.append(branch_id)
+        
+        lineage_timeline.append({
+            'id': branch_id,
+            'tmrca': branch_tmrca,
+            'is_current': is_current
+        })
     formatted_lineage_tmrca = " > ".join(lineage_with_tmrca)
     
     # Docs preparation
@@ -366,6 +375,7 @@ def generate_post_context(branch_name, records, lineage_path, branch_node, relat
         'tmrca': tmrca,
         'formatted_lineage': formatted_lineage,
         'formatted_lineage_tmrca': formatted_lineage_tmrca,
+        'lineage_timeline': lineage_timeline,
         'history_section': history_section,
         'y_dna_docs': y_dna_docs,
         'neighbor_context': neighbor_context,
