@@ -1,5 +1,69 @@
 <h1>Гаплогруппа {{ branch_name }}</h1>
 
+<style>
+/* Стили для спойлеров */
+details.dna-spoiler {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    overflow: hidden;
+}
+details.dna-spoiler summary {
+    list-style: none; /* Скрыть стандартный маркер Firefox */
+    padding: 12px 16px;
+    background-color: #f6f8fa;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+    outline: none;
+}
+details.dna-spoiler summary:hover {
+    background-color: #eef1f4;
+}
+details.dna-spoiler summary::-webkit-details-marker {
+    display: none; /* Скрыть маркер Chrome/Safari */
+}
+details.dna-spoiler summary::before {
+    content: '▶';
+    font-size: 10px;
+    margin-right: 12px;
+    display: inline-block;
+    transition: transform 0.2s;
+    color: #586069;
+}
+details.dna-spoiler[open] summary::before {
+    transform: rotate(90deg);
+}
+details.dna-spoiler[open] summary {
+    border-bottom: 1px solid #e1e4e8;
+    margin-bottom: 0;
+}
+.dna-spoiler-content {
+    padding: 20px;
+    background-color: #fff;
+}
+.dna-spoiler-content a {
+    color: #0366d6;
+    text-decoration: none;
+}
+.dna-spoiler-content a:hover {
+    text-decoration: underline;
+}
+/* Уменьшение заголовков внутри спойлеров */
+.dna-spoiler-content h1, 
+.dna-spoiler-content h2, 
+.dna-spoiler-content h3 {
+    font-size: 1.15em !important;
+    border-bottom: none !important;
+    margin-top: 1em !important;
+}
+</style>
+
 {{ ancestor_note }}
 
 <p><strong>Фамилия:</strong> {{ header.surname }}<br>
@@ -8,6 +72,8 @@
 <strong>Населенный пункт:</strong> {{ header.location }}</p>
 
 <h2>Краткое резюме</h2>
+
+<br>
 
 [github_md path="00_General/00_wgs.md"]
 
@@ -30,16 +96,16 @@
 
 {% for doc in y_dna_docs|reverse %}
 {% if loop.first %}
-<details open style="margin-bottom: 12px; border: 1px solid #ddd; border-radius: 4px; padding: 8px;">
-<summary style="cursor: pointer; font-weight: bold; color: #1976D2;">📍 {{ doc.id }} (ваша ветка)</summary>
-<div style="padding: 12px 0;">
+<details class="dna-spoiler" open>
+<summary style="color: #0366d6;">📍 {{ doc.id }} (ваша ветка)</summary>
+<div class="dna-spoiler-content">
 [github_md path="{{ doc.path | replace('\\', '/') }}"]
 </div>
 </details>
 {% else %}
-<details style="margin-bottom: 8px; border: 1px solid #eee; border-radius: 4px; padding: 8px;">
-<summary style="cursor: pointer; color: #666;">{{ doc.id }} (родительская ветка)</summary>
-<div style="padding: 12px 0;">
+<details class="dna-spoiler">
+<summary>📂 {{ doc.id }} (родительская ветка)</summary>
+<div class="dna-spoiler-content">
 [github_md path="{{ doc.path | replace('\\', '/') }}"]
 </div>
 </details>
