@@ -1,66 +1,87 @@
----
-date: 2020-11-11 11:11:00
-title: Гаплогруппа {{ branch_name }}
-tags: dna, test, {{ branch_name }}
----
+<h1>Гаплогруппа {{ branch_name }}</h1>
 
 {{ ancestor_note }}
-# Гаплогруппа {{ branch_name }}
 
-**Фамилия:** {{ header.surname }}
-**Kit Number:** {{ header.kit }}
-**Субэтнос:** {{ header.subethnos }}
-**Населенный пункт:** {{ header.location }}
+<p><strong>Фамилия:</strong> {{ header.surname }}<br>
+<strong>Kit Number:</strong> {{ header.kit }}<br>
+<strong>Субэтнос:</strong> {{ header.subethnos }}<br>
+<strong>Населенный пункт:</strong> {{ header.location }}</p>
 
-## Краткое резюме
-<!-- Вставьте сюда краткое описание ветки и её значимости -->
+<h2>Краткое резюме</h2>
 
-![Общая инфо по WGS](00_General/00_wgs.md)
+[github_md path="00_General/00_wgs.md"]
 
-**Возраст ветки (TMRCA):** {{ tmrca }} лет
-**Путь:** {{ formatted_lineage }}
+<p><strong>Возраст ветки (TMRCA):</strong> {{ tmrca }} лет<br>
+<strong>Путь:</strong> {{ formatted_lineage }}</p>
 
-[Как читать YFull — экскурсия по интерфейсу](https://github.com/valalav/dna_guide/blob/main/02_Practical/01_YFull_Guide.md)
+<p><a href="https://github.com/valalav/dna_guide/blob/main/02_Practical/01_YFull_Guide.md">Как читать YFull — экскурсия по интерфейсу</a></p>
 
 {% if history_section %}
-## История
-{{ history_section }}
+<h2>История</h2>
+<p>{{ history_section }}</p>
 {% endif %}
 
-## Справочная информация
+<h2>Справочная информация</h2>
 
-![Справочная информация](00_General/00_inf.md)
+[github_md path="00_General/00_inf.md"]
 
 {% if y_dna_docs %}
-### Y-ДНК (Ветки)
-{% for doc in y_dna_docs %}
-- [{{ doc.filename }}]({{ doc.path }}) (Relates to {{ doc.id }})
+<h3>Y-ДНК (Ветки)</h3>
+
+{% for doc in y_dna_docs|reverse %}
+{% if loop.first %}
+<details open style="margin-bottom: 12px; border: 1px solid #ddd; border-radius: 4px; padding: 8px;">
+<summary style="cursor: pointer; font-weight: bold; color: #1976D2;">📍 {{ doc.id }} (ваша ветка)</summary>
+<div style="padding: 12px 0;">
+[github_md path="{{ doc.path | replace('\\', '/') }}"]
+</div>
+</details>
+{% else %}
+<details style="margin-bottom: 8px; border: 1px solid #eee; border-radius: 4px; padding: 8px;">
+<summary style="cursor: pointer; color: #666;">{{ doc.id }} (родительская ветка)</summary>
+<div style="padding: 12px 0;">
+[github_md path="{{ doc.path | replace('\\', '/') }}"]
+</div>
+</details>
+{% endif %}
 {% endfor %}
+
 {% endif %}
 
-### Аутосомный портрет
-- [01_Autosomal_Guide.md](05_Autosomal/01_Autosomal_Guide.md) (Справочник по аутосомам)
+<h3>Аутосомный портрет</h3>
+<ul>
+<li><a href="https://github.com/valalav/dna_guide/blob/main/05_Autosomal/01_Autosomal_Guide.md">01_Autosomal_Guide.md</a> (Справочник по аутосомам)</li>
+</ul>
 
-### Митохондриальная ДНК
-- [02_mtDNA_Guide.md](04_Women/02_mtDNA_Guide.md) (Справочник по mtDNA)
+<h3>Митохондриальная ДНК</h3>
+<ul>
+<li><a href="https://github.com/valalav/dna_guide/blob/main/04_Women/02_mtDNA_Guide.md">02_mtDNA_Guide.md</a> (Справочник по mtDNA)</li>
+</ul>
 
 {% if neighbor_context %}
 {{ neighbor_context }}
 {% endif %}
 
-## Внешние ссылки
-- [YFull Tree](https://www.yfull.com/tree/{{ branch_id }}/)
-- [Проект AADNA](https://aadna.ru/)
+<h2>Внешние ссылки</h2>
+<ul>
+<li><a href="https://www.yfull.com/tree/{{ branch_id }}/">YFull Tree</a></li>
+<li><a href="https://aadna.ru/">Проект AADNA</a></li>
+</ul>
 
 {% if records_count > 0 %}
-## Список представителей
+<h2>Список представителей</h2>
 
-| Фамилия | Имя | Kit | Субэтнос | Населенный пункт |
-|---|---|---|---|---|
+<table>
+<thead>
+<tr><th>Фамилия</th><th>Имя</th><th>Kit</th><th>Субэтнос</th><th>Населенный пункт</th></tr>
+</thead>
+<tbody>
 {% for rec in records %}
-| {{ rec.surname }} | {{ rec.name }} | {{ rec.kit }} | {{ rec.subethnos }} | {{ rec.location }} |
+<tr><td>{{ rec.surname }}</td><td>{{ rec.name }}</td><td>{{ rec.kit }}</td><td>{{ rec.subethnos }}</td><td>{{ rec.location }}</td></tr>
 {% endfor %}
+</tbody>
+</table>
 {% else %}
-## Образцы
-В текущей базе данных образцов для этой ветки не найдено.
+<h2>Образцы</h2>
+<p>В текущей базе данных образцов для этой ветки не найдено.</p>
 {% endif %}

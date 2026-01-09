@@ -4,4 +4,8 @@
 <p>— <strong>анализ митохондриальной ДНК</strong> (материнская линия)</p>
 <p>— <strong>аутосомный тест</strong> (набор неполовых хромосом, накопленный человеком от ближайших предков по всем линиям)</p>
 
-<p>Я получил WGS. Как понять результат? <a href="https://github.com/valalav/dna_guide/blob/main/01_Beginner/05_Understanding_WGS.md">05_Understanding_WGS.md</a></p>
+<div style="background-color: #e7f3ff; border-left: 4px solid #2196F3; padding: 12px 16px; margin: 16px 0; border-radius: 4px;">
+<p style="margin: 0;"><strong>📘 Хотите разобраться в результатах?</strong></p>
+<p style="margin: 8px 0 0 0;"><a href="https://github.com/valalav/dna_guide/blob/main/01_Beginner/05_Understanding_WGS.md" style="color: #1976D2; font-weight: bold;">Я получил WGS. Как понять результат? →</a></p>
+</div>
+
