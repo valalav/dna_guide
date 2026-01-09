@@ -296,10 +296,23 @@ def log_publication(branch, filename, status):
             writer.writerow(['Branch', 'Filename', 'Date', 'Status'])
         writer.writerow([branch, filename, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), status])
 
-def generate_post_context(branch_name, records, lineage_path, branch_node, related_docs, neighbor_context="", ancestor_note=""):
+def generate_post_context(branch_name, records, lineage_path, branch_node, related_docs, tree, neighbor_context="", ancestor_note=""):
     """Prepare context for Jinja2 template."""
     tmrca = branch_node.get('tmrca', 'N/A')
+    
+    # Simple lineage path
     formatted_lineage = " > ".join(lineage_path)
+    
+    # Build lineage with TMRCA for each branch (for spoiler)
+    lineage_with_tmrca = []
+    for branch_id in lineage_path:
+        node, _, _ = find_node_data(tree, branch_id)
+        branch_tmrca = node.get('tmrca', '') if node else ''
+        if branch_tmrca:
+            lineage_with_tmrca.append(f"{branch_id} ({branch_tmrca})")
+        else:
+            lineage_with_tmrca.append(branch_id)
+    formatted_lineage_tmrca = " > ".join(lineage_with_tmrca)
     
     # Docs preparation
     y_dna_docs = []
@@ -352,6 +365,7 @@ def generate_post_context(branch_name, records, lineage_path, branch_node, relat
         'header': header,
         'tmrca': tmrca,
         'formatted_lineage': formatted_lineage,
+        'formatted_lineage_tmrca': formatted_lineage_tmrca,
         'history_section': history_section,
         'y_dna_docs': y_dna_docs,
         'neighbor_context': neighbor_context,
@@ -417,6 +431,7 @@ def process_branch(branch, tree, csv_text, args, env):
         lineage_path=lineage,
         branch_node=node,
         related_docs=related_docs,
+        tree=tree,
         neighbor_context=neighbor_context,
         ancestor_note=ancestor_note
     )

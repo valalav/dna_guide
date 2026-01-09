@@ -72,12 +72,21 @@ details.dna-spoiler[open] summary {
 
 <h2>Краткое резюме</h2>
 
+<p>&nbsp;</p>
+
 <br>
 
 [github_md path="00_General/00_wgs.md"]
 
 <p><strong>Возраст ветки (TMRCA):</strong> {{ tmrca }} лет<br>
 <strong>Путь:</strong> {{ formatted_lineage }}</p>
+
+<details class="dna-spoiler">
+<summary>⏱️ Путь с датировками TMRCA</summary>
+<div class="dna-spoiler-content">
+<p>{{ formatted_lineage_tmrca }}</p>
+</div>
+</details>
 
 <p><a href="https://github.com/valalav/dna_guide/blob/main/02_Practical/01_YFull_Guide.md">Как читать YFull — экскурсия по интерфейсу</a></p>
 
