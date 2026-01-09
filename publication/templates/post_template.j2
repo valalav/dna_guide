@@ -70,17 +70,11 @@ details.dna-spoiler[open] summary {
     border-radius: 12px;
     overflow: hidden;
 }
-.tmrca-timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    right: 20px;
-    top: 50%;
-    height: 3px;
-    background: linear-gradient(90deg, #94a3b8, #667eea, #22c55e);
-    transform: rotate(8deg);
-    z-index: 0;
+    margin: 15px 0;
+    /* Clean background */
+    background: transparent;
 }
+/* Removed misaligned background line */
 .tmrca-item {
     position: relative;
     padding: 6px 12px;
@@ -173,7 +167,8 @@ details.dna-spoiler[open] summary {
 <div class="dna-spoiler-content">
 <div class="tmrca-timeline">
 {% for item in lineage_timeline %}
-<div class="tmrca-item{% if item.is_current %} current{% endif %}{% if item.is_major %} major{% endif %}" style="margin-left: {{ item.position }}px;">
+{# Scale position to max 70% to prevent overflow #}
+<div class="tmrca-item{% if item.is_current %} current{% endif %}{% if item.is_major %} major{% endif %}" style="margin-left: {{ (item.position * 0.7) | int }}%;">
     <span class="tmrca-branch">{{ item.id }}</span>
     {% if item.tmrca_formatted %}<span class="tmrca-years">~{{ item.tmrca_formatted }}</span>{% endif %}
     {% if item.is_major %}<span class="tmrca-label">🟠 мажорная</span>{% endif %}

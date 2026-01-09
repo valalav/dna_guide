@@ -70,17 +70,11 @@ details.dna-spoiler[open] summary {
     border-radius: 12px;
     overflow: hidden;
 }
-.tmrca-timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    right: 20px;
-    top: 50%;
-    height: 3px;
-    background: linear-gradient(90deg, #94a3b8, #667eea, #22c55e);
-    transform: rotate(8deg);
-    z-index: 0;
+    margin: 15px 0;
+    /* Clean background */
+    background: transparent;
 }
+/* Removed misaligned background line */
 .tmrca-item {
     position: relative;
     padding: 6px 12px;
@@ -173,112 +167,128 @@ details.dna-spoiler[open] summary {
 <div class="dna-spoiler-content">
 <div class="tmrca-timeline">
 
-<div class="tmrca-item" style="margin-left: 0px;">
+
+<div class="tmrca-item" style="margin-left: 0%;">
     <span class="tmrca-branch"></span>
     
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 0px;">
+
+<div class="tmrca-item" style="margin-left: 0%;">
     <span class="tmrca-branch">A0-T</span>
     <span class="tmrca-years">~161 300</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 0px;">
+
+<div class="tmrca-item" style="margin-left: 0%;">
     <span class="tmrca-branch">A1</span>
     <span class="tmrca-years">~133 400</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 0px;">
+
+<div class="tmrca-item" style="margin-left: 0%;">
     <span class="tmrca-branch">A1b</span>
     <span class="tmrca-years">~130 700</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 0px;">
+
+<div class="tmrca-item" style="margin-left: 0%;">
     <span class="tmrca-branch">BT</span>
     <span class="tmrca-years">~88 000</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 0px;">
+
+<div class="tmrca-item" style="margin-left: 0%;">
     <span class="tmrca-branch">CT</span>
     <span class="tmrca-years">~68 500</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 0px;">
+
+<div class="tmrca-item" style="margin-left: 0%;">
     <span class="tmrca-branch">CF</span>
     <span class="tmrca-years">~65 900</span>
     
     
 </div>
 
-<div class="tmrca-item major" style="margin-left: 0px;">
+
+<div class="tmrca-item major" style="margin-left: 0%;">
     <span class="tmrca-branch">C</span>
     <span class="tmrca-years">~48 800</span>
     <span class="tmrca-label">🟠 мажорная</span>
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 31px;">
+
+<div class="tmrca-item" style="margin-left: 21%;">
     <span class="tmrca-branch">C-M217</span>
     <span class="tmrca-years">~34 000</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 70px;">
+
+<div class="tmrca-item" style="margin-left: 49%;">
     <span class="tmrca-branch">C-L1373</span>
     <span class="tmrca-years">~16 100</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 70px;">
+
+<div class="tmrca-item" style="margin-left: 49%;">
     <span class="tmrca-branch">C-F3447</span>
     <span class="tmrca-years">~16 100</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 74px;">
+
+<div class="tmrca-item" style="margin-left: 51%;">
     <span class="tmrca-branch">C-F1699</span>
     <span class="tmrca-years">~14 200</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 90px;">
+
+<div class="tmrca-item" style="margin-left: 62%;">
     <span class="tmrca-branch">C-M504</span>
     <span class="tmrca-years">~7 000</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 97px;">
+
+<div class="tmrca-item" style="margin-left: 67%;">
     <span class="tmrca-branch">C-Y4464</span>
     <span class="tmrca-years">~3 400</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 98px;">
+
+<div class="tmrca-item" style="margin-left: 68%;">
     <span class="tmrca-branch">C-Y11121</span>
     <span class="tmrca-years">~2 900</span>
     
     
 </div>
 
-<div class="tmrca-item current" style="margin-left: 100px;">
+
+<div class="tmrca-item current" style="margin-left: 70%;">
     <span class="tmrca-branch">C-BY154208</span>
     <span class="tmrca-years">~2 400</span>
     
