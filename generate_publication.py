@@ -303,38 +303,77 @@ def generate_post_context(branch_name, records, lineage_path, branch_node, relat
     # Simple lineage path
     formatted_lineage = " > ".join(lineage_path)
     
-    # Build lineage with TMRCA for each branch (for spoiler)
+    # Build TMRCA index from tree for fast lookup (instead of calling find_node_data in loop)
+    def build_tmrca_index(node, idx=None):
+        if idx is None:
+            idx = {}
+        nid = node.get('id', '')
+        if nid:
+            idx[nid] = node.get('tmrca', 0)
+        for child in node.get('children', []):
+            build_tmrca_index(child, idx)
+        return idx
+    
+    tmrca_index = {}
+    if isinstance(tree, list):
+        for root in tree:
+            build_tmrca_index(root, tmrca_index)
+    else:
+        build_tmrca_index(tree, tmrca_index)
+    
+    # Build lineage with TMRCA for each branch
     lineage_with_tmrca = []
-    lineage_timeline = []  # For visual timeline
+    lineage_timeline_raw = []
     total_items = len(lineage_path)
+    major_index = -1
+    major_tmrca = 0
+    current_tmrca = 0
+    
     for i, branch_id in enumerate(lineage_path):
-        node, _, _ = find_node_data(tree, branch_id)
-        branch_tmrca = node.get('tmrca', '') if node else ''
-        is_current = (i == total_items - 1)
-        # Check if major haplogroup (single letter like C, A, G, etc.)
-        is_major = len(branch_id) == 1 and branch_id.isalpha()
-        # Calculate position for diagonal layout (0% = top-left, 100% = bottom-right)
-        position_percent = int((i / max(total_items - 1, 1)) * 100)
+        branch_tmrca = 0
+        try:
+            branch_tmrca = int(tmrca_index.get(branch_id, 0))
+        except:
+            pass
         
-        # Format TMRCA with thousand separators
-        tmrca_formatted = ''
+        is_current = (i == total_items - 1)
+        is_major = len(branch_id) == 1 and branch_id.isalpha()
+        
+        if is_major and major_index == -1:
+            major_index = i
+            major_tmrca = branch_tmrca
+        if is_current:
+            current_tmrca = branch_tmrca
+        
+        tmrca_formatted = f"{branch_tmrca:,}".replace(',', ' ') if branch_tmrca else ''
         if branch_tmrca:
-            try:
-                tmrca_formatted = f"{int(branch_tmrca):,}".replace(',', ' ')
-            except:
-                tmrca_formatted = str(branch_tmrca)
             lineage_with_tmrca.append(f"{branch_id} ({branch_tmrca})")
         else:
             lineage_with_tmrca.append(branch_id)
         
-        lineage_timeline.append({
+        lineage_timeline_raw.append({
             'id': branch_id,
             'tmrca': branch_tmrca,
             'tmrca_formatted': tmrca_formatted,
             'is_current': is_current,
             'is_major': is_major,
-            'position': position_percent
+            'index': i
         })
+    
+    # Calculate positions based on TMRCA from major haplogroup
+    lineage_timeline = []
+    tmrca_range = major_tmrca - current_tmrca if major_tmrca > current_tmrca else 1
+    
+    for item in lineage_timeline_raw:
+        position = 0
+        if item['index'] >= major_index and major_index >= 0:
+            if tmrca_range > 0 and item['tmrca'] > 0:
+                time_from_major = major_tmrca - item['tmrca']
+                position = int((time_from_major / tmrca_range) * 100)
+                position = max(0, min(100, position))
+        item['position'] = position
+        lineage_timeline.append(item)
+    
     formatted_lineage_tmrca = " > ".join(lineage_with_tmrca)
     
     # Docs preparation

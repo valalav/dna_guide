@@ -1,63 +1,399 @@
----
-date: 2020-11-11 11:11:00
-title: Гаплогруппа C-BY154208
-tags: dna, test, C-BY154208
----
+<h1>Гаплогруппа C-BY154208</h1>
+
+<style>
+/* Стили для спойлеров */
+details.dna-spoiler {
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    background-color: #fff;
+    overflow: hidden;
+}
+details.dna-spoiler summary {
+    list-style: none;
+    padding: 12px 16px;
+    background-color: #f6f8fa;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+    outline: none;
+}
+details.dna-spoiler summary:hover {
+    background-color: #eef1f4;
+}
+details.dna-spoiler summary::-webkit-details-marker {
+    display: none;
+}
+details.dna-spoiler summary::before {
+    content: '▶';
+    font-size: 10px;
+    margin-right: 12px;
+    display: inline-block;
+    transition: transform 0.2s;
+    color: #586069;
+}
+details.dna-spoiler[open] summary::before {
+    transform: rotate(90deg);
+}
+details.dna-spoiler[open] summary {
+    border-bottom: 1px solid #e1e4e8;
+    margin-bottom: 0;
+}
+.dna-spoiler-content {
+    padding: 20px;
+    background-color: #fff;
+}
+.dna-spoiler-content a {
+    color: #0366d6;
+    text-decoration: none;
+}
+.dna-spoiler-content a:hover {
+    text-decoration: underline;
+}
+.dna-spoiler-content h1, 
+.dna-spoiler-content h2, 
+.dna-spoiler-content h3 {
+    font-size: 1.15em !important;
+    border-bottom: none !important;
+    margin-top: 1em !important;
+}
+/* Timeline styles - diagonal layout */
+.tmrca-timeline {
+    position: relative;
+    padding: 20px 10px;
+    margin: 15px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.tmrca-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, #94a3b8, #667eea, #22c55e);
+    transform: rotate(8deg);
+    z-index: 0;
+}
+.tmrca-item {
+    position: relative;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+.tmrca-item:hover {
+    transform: translateX(5px);
+}
+.tmrca-item::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #667eea;
+    flex-shrink: 0;
+}
+.tmrca-item.major::before {
+    background: #f59e0b;
+    box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+    width: 14px;
+    height: 14px;
+}
+.tmrca-item.current::before {
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+    width: 14px;
+    height: 14px;
+}
+.tmrca-branch {
+    font-weight: 600;
+    color: #1f2937;
+    min-width: 100px;
+}
+.tmrca-item.major .tmrca-branch {
+    color: #d97706;
+    font-size: 1.1em;
+}
+.tmrca-item.current .tmrca-branch {
+    color: #22c55e;
+}
+.tmrca-years {
+    color: #6b7280;
+    font-size: 0.85em;
+    font-family: monospace;
+}
+.tmrca-label {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    margin-left: auto;
+}
+.tmrca-item.major .tmrca-label {
+    background: #fef3c7;
+    color: #92400e;
+}
+.tmrca-item.current .tmrca-label {
+    background: #dcfce7;
+    color: #166534;
+}
+</style>
 
 
-# Гаплогруппа C-BY154208
 
-**Фамилия:** Керимов
-**Kit Number:** YF143336
-**Субэтнос:** Кабардинец*
-**Населенный пункт:** Нижний Курп
+<p><strong>Фамилия:</strong> Керимов<br>
+<strong>Kit Number:</strong> YF143336<br>
+<strong>Субэтнос:</strong> Кабардинец*<br>
+<strong>Населенный пункт:</strong> Нижний Курп</p>
 
-## Краткое резюме
-<!-- Вставьте сюда краткое описание ветки и её значимости -->
+<h2>Краткое резюме</h2>
 
-![Общая инфо по WGS](00_General/00_wgs.md)
+<p>&nbsp;</p>
 
-**Возраст ветки (TMRCA):** 2400 лет
-**Путь:**  > A0-T > A1 > A1b > BT > CT > CF > C > C-M217 > C-L1373 > C-F3447 > C-F1699 > C-M504 > C-Y4464 > C-Y11121 > C-BY154208
+<br>
 
-[Как читать YFull — экскурсия по интерфейсу](https://github.com/valalav/dna_guide/blob/main/02_Practical/01_YFull_Guide.md)
+[github_md path="00_General/00_wgs.md"]
+
+<p><strong>Возраст ветки (TMRCA):</strong> 2400 лет<br>
+<strong>Путь:</strong>  > A0-T > A1 > A1b > BT > CT > CF > C > C-M217 > C-L1373 > C-F3447 > C-F1699 > C-M504 > C-Y4464 > C-Y11121 > C-BY154208</p>
+
+<details class="dna-spoiler">
+<summary>⏱️ Путь с датировками TMRCA</summary>
+<div class="dna-spoiler-content">
+<div class="tmrca-timeline">
+
+<div class="tmrca-item" style="margin-left: 0px;">
+    <span class="tmrca-branch"></span>
+    
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 0px;">
+    <span class="tmrca-branch">A0-T</span>
+    <span class="tmrca-years">~161 300</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 0px;">
+    <span class="tmrca-branch">A1</span>
+    <span class="tmrca-years">~133 400</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 0px;">
+    <span class="tmrca-branch">A1b</span>
+    <span class="tmrca-years">~130 700</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 0px;">
+    <span class="tmrca-branch">BT</span>
+    <span class="tmrca-years">~88 000</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 0px;">
+    <span class="tmrca-branch">CT</span>
+    <span class="tmrca-years">~68 500</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 0px;">
+    <span class="tmrca-branch">CF</span>
+    <span class="tmrca-years">~65 900</span>
+    
+    
+</div>
+
+<div class="tmrca-item major" style="margin-left: 0px;">
+    <span class="tmrca-branch">C</span>
+    <span class="tmrca-years">~48 800</span>
+    <span class="tmrca-label">🟠 мажорная</span>
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 31px;">
+    <span class="tmrca-branch">C-M217</span>
+    <span class="tmrca-years">~34 000</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 70px;">
+    <span class="tmrca-branch">C-L1373</span>
+    <span class="tmrca-years">~16 100</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 70px;">
+    <span class="tmrca-branch">C-F3447</span>
+    <span class="tmrca-years">~16 100</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 74px;">
+    <span class="tmrca-branch">C-F1699</span>
+    <span class="tmrca-years">~14 200</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 90px;">
+    <span class="tmrca-branch">C-M504</span>
+    <span class="tmrca-years">~7 000</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 97px;">
+    <span class="tmrca-branch">C-Y4464</span>
+    <span class="tmrca-years">~3 400</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 98px;">
+    <span class="tmrca-branch">C-Y11121</span>
+    <span class="tmrca-years">~2 900</span>
+    
+    
+</div>
+
+<div class="tmrca-item current" style="margin-left: 100px;">
+    <span class="tmrca-branch">C-BY154208</span>
+    <span class="tmrca-years">~2 400</span>
+    
+    <span class="tmrca-label">🟢 ваша ветка</span>
+</div>
+
+</div>
+</div>
+</details>
+
+<p><a href="https://github.com/valalav/dna_guide/blob/main/02_Practical/01_YFull_Guide.md">Как читать YFull — экскурсия по интерфейсу</a></p>
+
+<p>&nbsp;</p>
+
+<h2>История</h2>
+
+<p></p>
+
+<p>&nbsp;</p>
+
+<h2>Справочная информация</h2>
+
+[github_md path="00_General/00_inf.md"]
+
+
+<h3>Y-ДНК (Ветки)</h3>
 
 
 
-## Справочная информация
-
-![Справочная информация](00_General/00_inf.md)
-
-
-### Y-ДНК (Ветки)
-
-- [00_C_Overview.md](10_Haplogroups\C\00_C_Overview.md) (Relates to C)
-
-- [01_C_M217.md](10_Haplogroups\C\01_C_M217.md) (Relates to C)
-
-- [02_C_BY154208.md](10_Haplogroups\C\02_C_BY154208.md) (Relates to C)
+<details class="dna-spoiler" open>
+<summary style="color: #0366d6;">📍 C-BY154208 (ваша ветка)</summary>
+<div class="dna-spoiler-content">
+[github_md path="10_Haplogroups/C/02_C_BY154208.md"]
+</div>
+</details>
 
 
 
-### Аутосомный портрет
-- [01_Autosomal_Guide.md](05_Autosomal/01_Autosomal_Guide.md) (Справочник по аутосомам)
-
-### Митохондриальная ДНК
-- [02_mtDNA_Guide.md](04_Women/02_mtDNA_Guide.md) (Справочник по mtDNA)
-
-
-\n## Соседние ветви (Context)\nВ смежных ветвях:\n\n- **C-F3796**: Нагъауи\n- **C-F3796**: Озроков\n- **C-F3796**: Вороков\n- **C-F3796**: Вороков\n- **C-F3796**: Вороков\n- **C-F3796**: 39626\n- **C-F3796**: Темирканов\n- **C-F3796**: Кишев\n- **C-F3796**: Khatukhov\n- **C-F3796**: Шибзухов\n- **C-F3796**: Афашагов\n- **C-F3796**: Хатухов\n
+<details class="dna-spoiler">
+<summary>📂 C-M217 (родительская ветка)</summary>
+<div class="dna-spoiler-content">
+[github_md path="10_Haplogroups/C/01_C_M217.md"]
+</div>
+</details>
 
 
-## Внешние ссылки
-- [YFull Tree](https://www.yfull.com/tree/C-BY154208/)
-- [Проект AADNA](https://aadna.ru/)
 
 
-## Список представителей
+<!-- Список представителей (Spoiler) -->
 
-| Фамилия | Имя | Kit | Субэтнос | Населенный пункт |
-|---|---|---|---|---|
+<details class="dna-spoiler">
+<summary>👥 Список представителей (1)</summary>
+<div class="dna-spoiler-content">
+<table>
+<thead>
+<tr><th>Фамилия</th><th>Имя</th><th>Kit</th><th>Субэтнос</th><th>Населенный пункт</th></tr>
+</thead>
+<tbody>
 
-| Керимов | Kerimov | YF143336 | Кабардинец* | Нижний Курп |
+<tr><td>Керимов</td><td>Kerimov</td><td>YF143336</td><td>Кабардинец*</td><td>Нижний Курп</td></tr>
 
+</tbody>
+</table>
+</div>
+</details>
+
+
+<!-- Соседние ветви (Spoiler) -->
+
+<details class="dna-spoiler">
+<summary>🌳 Соседние ветви</summary>
+<div class="dna-spoiler-content">
+
+<p>В смежных ветвях:</p>
+<ul>
+<li><strong>C-F3796</strong>: Нагъауи</li>
+<li><strong>C-F3796</strong>: Озроков</li>
+<li><strong>C-F3796</strong>: Вороков</li>
+<li><strong>C-F3796</strong>: Вороков</li>
+<li><strong>C-F3796</strong>: Вороков</li>
+<li><strong>C-F3796</strong>: 39626</li>
+<li><strong>C-F3796</strong>: Темирканов</li>
+<li><strong>C-F3796</strong>: Кишев</li>
+<li><strong>C-F3796</strong>: Khatukhov</li>
+<li><strong>C-F3796</strong>: Шибзухов</li>
+<li><strong>C-F3796</strong>: Афашагов</li>
+<li><strong>C-F3796</strong>: Хатухов</li>
+</ul>
+
+</div>
+</details>
+
+
+<!-- Митохондриальная ДНК (Spoiler) -->
+<details class="dna-spoiler">
+<summary>🧬 Митохондриальная ДНК</summary>
+<div class="dna-spoiler-content">
+<ul>
+<li><a href="https://github.com/valalav/dna_guide/blob/main/04_Women/02_mtDNA_Guide.md">02_mtDNA_Guide.md</a> (Справочник по mtDNA)</li>
+</ul>
+</div>
+</details>
+
+<!-- Аутосомный портрет (Spoiler) -->
+<details class="dna-spoiler">
+<summary>📊 Аутосомный портрет</summary>
+<div class="dna-spoiler-content">
+<ul>
+<li><a href="https://github.com/valalav/dna_guide/blob/main/05_Autosomal/01_Autosomal_Guide.md">01_Autosomal_Guide.md</a> (Справочник по аутосомам)</li>
+</ul>
+</div>
+</details>
+
+<h2>Внешние ссылки</h2>
+<ul>
+<li><a href="https://www.yfull.com/tree/C-BY154208/">YFull Tree</a></li>
+<li><a href="https://aadna.ru/">Проект AADNA</a></li>
+</ul>
