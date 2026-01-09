@@ -1,0 +1,66 @@
+---
+date: 2020-11-11 11:11:00
+title: Гаплогруппа {{ branch_name }}
+tags: dna, test, {{ branch_name }}
+---
+
+{{ ancestor_note }}
+# Гаплогруппа {{ branch_name }}
+
+**Фамилия:** {{ header.surname }}
+**Kit Number:** {{ header.kit }}
+**Субэтнос:** {{ header.subethnos }}
+**Населенный пункт:** {{ header.location }}
+
+## Краткое резюме
+<!-- Вставьте сюда краткое описание ветки и её значимости -->
+
+![Общая инфо по WGS](00_General/00_wgs.md)
+
+**Возраст ветки (TMRCA):** {{ tmrca }} лет
+**Путь:** {{ formatted_lineage }}
+
+[Как читать YFull — экскурсия по интерфейсу](https://github.com/valalav/dna_guide/blob/main/02_Practical/01_YFull_Guide.md)
+
+{% if history_section %}
+## История
+{{ history_section }}
+{% endif %}
+
+## Справочная информация
+
+![Справочная информация](00_General/00_inf.md)
+
+{% if y_dna_docs %}
+### Y-ДНК (Ветки)
+{% for doc in y_dna_docs %}
+- [{{ doc.filename }}]({{ doc.path }}) (Relates to {{ doc.id }})
+{% endfor %}
+{% endif %}
+
+### Аутосомный портрет
+- [01_Autosomal_Guide.md](05_Autosomal/01_Autosomal_Guide.md) (Справочник по аутосомам)
+
+### Митохондриальная ДНК
+- [02_mtDNA_Guide.md](04_Women/02_mtDNA_Guide.md) (Справочник по mtDNA)
+
+{% if neighbor_context %}
+{{ neighbor_context }}
+{% endif %}
+
+## Внешние ссылки
+- [YFull Tree](https://www.yfull.com/tree/{{ branch_id }}/)
+- [Проект AADNA](https://aadna.ru/)
+
+{% if records_count > 0 %}
+## Список представителей
+
+| Фамилия | Имя | Kit | Субэтнос | Населенный пункт |
+|---|---|---|---|---|
+{% for rec in records %}
+| {{ rec.surname }} | {{ rec.name }} | {{ rec.kit }} | {{ rec.subethnos }} | {{ rec.location }} |
+{% endfor %}
+{% else %}
+## Образцы
+В текущей базе данных образцов для этой ветки не найдено.
+{% endif %}
