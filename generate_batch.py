@@ -145,10 +145,14 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
     current_tmrca = 0
     total_items = len(lineage_path)
     
+    # Correct list of major haplogroups (NOT including F, K, P etc.)
+    MAJOR_HAPLOGROUPS = ['C', 'D', 'E', 'G', 'I', 'J', 'R', 'S', 'T', 'N', 'M', 'Q', 'L']
+    
     for i, branch_id in enumerate(lineage_path):
         branch_tmrca = int(tmrca_index.get(branch_id, 0))
         is_current = (i == total_items - 1)
-        is_major = len(branch_id) == 1 and branch_id.isalpha()
+        # Only mark as major if it's a single letter AND in our major list
+        is_major = len(branch_id) == 1 and branch_id.upper() in MAJOR_HAPLOGROUPS
         
         if is_major and major_index == -1:
             major_index = i
@@ -165,17 +169,51 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
             'index': i
         })
 
-    lineage_timeline = []
+    # Split into pre-major (horizontal table) and post-major (diagonal) sections
+    pre_major_timeline = []
+    post_major_timeline = []
+    
     tmrca_range = major_tmrca - current_tmrca if major_tmrca > current_tmrca else 1
+    
     for item in lineage_timeline_raw:
-        position = 0
-        if item['index'] >= major_index and major_index >= 0:
+        if major_index >= 0 and item['index'] >= major_index:
+            # Post-major: calculate diagonal position
             if tmrca_range > 0 and item['tmrca'] > 0:
                 time_from_major = major_tmrca - item['tmrca']
                 position = int((time_from_major / tmrca_range) * 100)
                 position = max(0, min(100, position))
-        item['position'] = position
-        lineage_timeline.append(item)
+            else:
+                position = 0
+            item['position'] = position
+            # Only show TMRCA for the deepest (current) branch
+            item['show_tmrca'] = item['is_current']
+            post_major_timeline.append(item)
+        else:
+            # Pre-major: horizontal table, no position needed
+            item['position'] = 0
+            item['show_tmrca'] = True  # Show TMRCA in table format
+            pre_major_timeline.append(item)
+    
+    # Generate age scale ticks for vertical axis (every 10k years)
+    age_scale_ticks = []
+    if major_tmrca > 0 and current_tmrca >= 0:
+        max_age = major_tmrca
+        min_age = current_tmrca
+        tick_interval = 10000  # 10k years
+        current_tick = (max_age // tick_interval) * tick_interval
+        while current_tick >= min_age:
+            if current_tick > 0:
+                tick_position = int(((major_tmrca - current_tick) / tmrca_range) * 100) if tmrca_range > 0 else 0
+                tick_position = max(0, min(100, tick_position))
+                age_scale_ticks.append({
+                    'age': current_tick,
+                    'label': f"{current_tick // 1000}k" if current_tick >= 1000 else str(current_tick),
+                    'position': tick_position
+                })
+            current_tick -= tick_interval
+    
+    # Combined lineage_timeline for backward compatibility (template uses this)
+    lineage_timeline = lineage_timeline_raw
 
     y_dna_docs = []
     for d in related_docs:
@@ -212,6 +250,9 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
         'tmrca': tmrca,
         'formatted_lineage': formatted_lineage,
         'lineage_timeline': lineage_timeline,
+        'pre_major_timeline': pre_major_timeline,
+        'post_major_timeline': post_major_timeline,
+        'age_scale_ticks': age_scale_ticks,
         'history_section': "", # Placeholder or extract from docs if needed
         'y_dna_docs': y_dna_docs,
         'neighbor_context': "", # Simplify for batch
@@ -275,11 +316,12 @@ def publish_to_wordpress(local_file, title, slug, tags="", post_date="", publish
         post_id = result.stdout.strip()
         print(f"    Created post ID: {post_id}")
         
-        # Step 4: Add tags if provided
+        # Step 4: Add tags if provided (using base64 to handle Cyrillic)
         if tags and post_id:
-            # Split tags and pass each separately
-            tags_list = ' '.join([f'"{t.strip()}"' for t in tags.split('|') if t.strip()])
-            tags_cmd = f'wp post term set {post_id} post_tag {tags_list} --path={WP_PATH} --allow-root'
+            # Encode tags in base64 for safe transfer
+            tags_clean = ','.join([t.strip() for t in tags.split('|') if t.strip()])
+            b64_tags = base64.b64encode(tags_clean.encode('utf-8')).decode('ascii')
+            tags_cmd = f'export LANG=en_US.UTF-8 && TAGS=$(echo "{b64_tags}" | base64 -d) && IFS="," read -ra TARR <<< "$TAGS" && for t in "${{TARR[@]}}"; do wp post term add {post_id} post_tag "$t" --path={WP_PATH} --allow-root 2>/dev/null; done'
             subprocess.run([PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", tags_cmd],
                           capture_output=True, timeout=30)
             print(f"    Added tags: {tags}")

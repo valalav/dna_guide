@@ -1,4 +1,4 @@
-<h1>Гаплогруппа R-BY127002</h1>
+<h1>Гаплогруппа R-FT409028</h1>
 
 <style>
 /* Стили для спойлеров */
@@ -141,11 +141,11 @@ details.dna-spoiler[open] summary {
 
 
 
-<p><strong>Фамилия:</strong> Мистер X<br>
-<strong>Kit Number:</strong> YF143341<br>
+<p><strong>Фамилия:</strong> Кушбоков<br>
+<strong>Kit Number:</strong> YF143329<br>
 <strong>Субэтнос:</strong> Кабардинец<br>
-<strong>Населенный пункт:</strong> Секрет<br>
-<strong>Тест:</strong> BigY</p>
+<strong>Населенный пункт:</strong> Нартан<br>
+<strong>Тест:</strong> WGS</p>
 
 <h2>Краткое резюме</h2>
 
@@ -154,11 +154,11 @@ details.dna-spoiler[open] summary {
 <br>
 
 
-[github_md path="00_General/00_BigY.md"]
+[github_md path="00_General/00_wgs.md"]
 
 
-<p><strong>Возраст ветки (TMRCA):</strong> 3800 лет<br>
-<strong>Путь:</strong>  > A0-T > A1 > A1b > BT > CT > CF > F > GHIJK > HIJK > IJK > K > K2 > K2b > P > P-V1651 > P-M1254 > P-P337 > P-P284 > P-P226 > R > R-Y482 > R1 > R1b > R-L754 > R-L761 > R-L389 > R-P297 > R-M269 > R-L23 > R-Z2103 > R-M12149 > R-Y13369 > R-L584 > R-FGC14590 > R-Y18687 > R-BY103576 > R-BY127002</p>
+<p><strong>Возраст ветки (TMRCA):</strong> 1900 лет<br>
+<strong>Путь:</strong>  > A0-T > A1 > A1b > BT > CT > CF > F > GHIJK > HIJK > IJK > K > K2 > K2b > P > P-V1651 > P-M1254 > P-P337 > P-P284 > P-P226 > R > R-Y482 > R1 > R1b > R-L754 > R-L761 > R-L389 > R-P297 > R-M269 > R-L23 > R-Z2103 > R-M12149 > R-Y13369 > R-L584 > R-FT145519 > R-FTA62508 > R-Y18781 > R-PH4150 > R-PH2731 > R-Y182162 > R-F1114 > R-Y166565 > R-BY135679 > R-BY35053 > R-Y183887 > R-Y225017 > R-FT405338 > R-FT409028</p>
 
 <details class="dna-spoiler">
 <summary>⏱️ Путь с датировками TMRCA</summary>
@@ -270,7 +270,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 7%;">
+<div class="tmrca-item" style="margin-left: 6%;">
     <span class="tmrca-branch">K2b</span>
     <span class="tmrca-years">~44 300</span>
     
@@ -278,7 +278,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item major" style="margin-left: 11%;">
+<div class="tmrca-item major" style="margin-left: 10%;">
     <span class="tmrca-branch">P</span>
     <span class="tmrca-years">~41 500</span>
     <span class="tmrca-label">🟠 мажорная</span>
@@ -286,7 +286,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 11%;">
+<div class="tmrca-item" style="margin-left: 10%;">
     <span class="tmrca-branch">P-V1651</span>
     <span class="tmrca-years">~41 500</span>
     
@@ -326,7 +326,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item major" style="margin-left: 31%;">
+<div class="tmrca-item major" style="margin-left: 30%;">
     <span class="tmrca-branch">R</span>
     <span class="tmrca-years">~28 200</span>
     <span class="tmrca-label">🟠 мажорная</span>
@@ -334,7 +334,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 31%;">
+<div class="tmrca-item" style="margin-left: 30%;">
     <span class="tmrca-branch">R-Y482</span>
     <span class="tmrca-years">~28 200</span>
     
@@ -342,7 +342,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 39%;">
+<div class="tmrca-item" style="margin-left: 38%;">
     <span class="tmrca-branch">R1</span>
     <span class="tmrca-years">~22 800</span>
     
@@ -350,7 +350,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 44%;">
+<div class="tmrca-item" style="margin-left: 42%;">
     <span class="tmrca-branch">R1b</span>
     <span class="tmrca-years">~20 400</span>
     
@@ -358,7 +358,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 49%;">
+<div class="tmrca-item" style="margin-left: 46%;">
     <span class="tmrca-branch">R-L754</span>
     <span class="tmrca-years">~17 100</span>
     
@@ -366,7 +366,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 50%;">
+<div class="tmrca-item" style="margin-left: 48%;">
     <span class="tmrca-branch">R-L761</span>
     <span class="tmrca-years">~16 000</span>
     
@@ -374,7 +374,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 51%;">
+<div class="tmrca-item" style="margin-left: 49%;">
     <span class="tmrca-branch">R-L389</span>
     <span class="tmrca-years">~15 600</span>
     
@@ -382,7 +382,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 54%;">
+<div class="tmrca-item" style="margin-left: 52%;">
     <span class="tmrca-branch">R-P297</span>
     <span class="tmrca-years">~13 300</span>
     
@@ -390,7 +390,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 65%;">
+<div class="tmrca-item" style="margin-left: 62%;">
     <span class="tmrca-branch">R-M269</span>
     <span class="tmrca-years">~6 400</span>
     
@@ -398,7 +398,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 65%;">
+<div class="tmrca-item" style="margin-left: 63%;">
     <span class="tmrca-branch">R-L23</span>
     <span class="tmrca-years">~6 100</span>
     
@@ -406,7 +406,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 66%;">
+<div class="tmrca-item" style="margin-left: 63%;">
     <span class="tmrca-branch">R-Z2103</span>
     <span class="tmrca-years">~5 900</span>
     
@@ -414,7 +414,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 67%;">
+<div class="tmrca-item" style="margin-left: 64%;">
     <span class="tmrca-branch">R-M12149</span>
     <span class="tmrca-years">~5 300</span>
     
@@ -422,7 +422,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 67%;">
+<div class="tmrca-item" style="margin-left: 64%;">
     <span class="tmrca-branch">R-Y13369</span>
     <span class="tmrca-years">~5 300</span>
     
@@ -430,7 +430,7 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 67%;">
+<div class="tmrca-item" style="margin-left: 64%;">
     <span class="tmrca-branch">R-L584</span>
     <span class="tmrca-years">~5 200</span>
     
@@ -438,33 +438,113 @@ details.dna-spoiler[open] summary {
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 68%;">
-    <span class="tmrca-branch">R-FGC14590</span>
-    <span class="tmrca-years">~4 600</span>
+<div class="tmrca-item" style="margin-left: 64%;">
+    <span class="tmrca-branch">R-FT145519</span>
+    <span class="tmrca-years">~5 200</span>
     
     
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 68%;">
-    <span class="tmrca-branch">R-Y18687</span>
-    <span class="tmrca-years">~4 500</span>
+<div class="tmrca-item" style="margin-left: 64%;">
+    <span class="tmrca-branch">R-FTA62508</span>
+    <span class="tmrca-years">~5 200</span>
     
     
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 70%;">
-    <span class="tmrca-branch">R-BY103576</span>
+<div class="tmrca-item" style="margin-left: 64%;">
+    <span class="tmrca-branch">R-Y18781</span>
+    <span class="tmrca-years">~5 200</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 64%;">
+    <span class="tmrca-branch">R-PH4150</span>
+    <span class="tmrca-years">~5 200</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 64%;">
+    <span class="tmrca-branch">R-PH2731</span>
+    <span class="tmrca-years">~5 200</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 64%;">
+    <span class="tmrca-branch">R-Y182162</span>
+    <span class="tmrca-years">~5 200</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 64%;">
+    <span class="tmrca-branch">R-F1114</span>
+    <span class="tmrca-years">~5 200</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 66%;">
+    <span class="tmrca-branch">R-Y166565</span>
     <span class="tmrca-years">~3 800</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 68%;">
+    <span class="tmrca-branch">R-BY135679</span>
+    <span class="tmrca-years">~2 800</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 69%;">
+    <span class="tmrca-branch">R-BY35053</span>
+    <span class="tmrca-years">~1 950</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 69%;">
+    <span class="tmrca-branch">R-Y183887</span>
+    <span class="tmrca-years">~1 950</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 69%;">
+    <span class="tmrca-branch">R-Y225017</span>
+    <span class="tmrca-years">~1 950</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 69%;">
+    <span class="tmrca-branch">R-FT405338</span>
+    <span class="tmrca-years">~1 950</span>
     
     
 </div>
 
 
 <div class="tmrca-item current" style="margin-left: 70%;">
-    <span class="tmrca-branch">R-BY127002</span>
-    <span class="tmrca-years">~3 800</span>
+    <span class="tmrca-branch">R-FT409028</span>
+    <span class="tmrca-years">~1 900</span>
     
     <span class="tmrca-label">🟢 ваша ветка</span>
 </div>
@@ -522,7 +602,7 @@ details.dna-spoiler[open] summary {
 </thead>
 <tbody>
 
-<tr><td>Мистер X</td><td></td><td>YF143341</td><td>Кабардинец</td><td>Секрет</td></tr>
+<tr><td>Кушбоков</td><td></td><td>YF143329</td><td>Кабардинец</td><td>Нартан</td></tr>
 
 </tbody>
 </table>
@@ -542,11 +622,31 @@ details.dna-spoiler[open] summary {
 </details>
 
 
+<!-- Митохондриальная ДНК (Spoiler) -->
+<details class="dna-spoiler">
+<summary>🧬 Митохондриальная ДНК</summary>
+<div class="dna-spoiler-content">
+<ul>
+<li><a href="https://github.com/valalav/dna_guide/blob/main/04_Women/02_mtDNA_Guide.md">02_mtDNA_Guide.md</a> (Справочник по mtDNA)</li>
+</ul>
+</div>
+</details>
+
+<!-- Аутосомный портрет (Spoiler) -->
+<details class="dna-spoiler">
+<summary>📊 Аутосомный портрет</summary>
+<div class="dna-spoiler-content">
+<ul>
+<li><a href="https://github.com/valalav/dna_guide/blob/main/05_Autosomal/01_Autosomal_Guide.md">01_Autosomal_Guide.md</a> (Справочник по аутосомам)</li>
+</ul>
+</div>
+</details>
+
 
 
 
 <h2>Внешние ссылки</h2>
 <ul>
-<li><a href="https://www.yfull.com/tree/R-BY127002/">YFull Tree</a></li>
+<li><a href="https://www.yfull.com/tree/R-FT409028/">YFull Tree</a></li>
 <li><a href="https://aadna.ru/">Проект AADNA</a></li>
 </ul>
