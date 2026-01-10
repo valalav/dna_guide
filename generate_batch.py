@@ -146,7 +146,7 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
     total_items = len(lineage_path)
     
     # Correct list of major haplogroups (NOT including F, K, P etc.)
-    MAJOR_HAPLOGROUPS = ['C', 'D', 'E', 'G', 'I', 'J', 'R', 'S', 'T', 'N', 'M', 'Q', 'L']
+    MAJOR_HAPLOGROUPS = ['C', 'D', 'E', 'G', 'I', 'J', 'R', 'S', 'T', 'N', 'M', 'Q', 'L', 'O']
     
     for i, branch_id in enumerate(lineage_path):
         branch_tmrca = int(tmrca_index.get(branch_id, 0))
@@ -444,25 +444,40 @@ def main():
     args = parser.parse_args()
     
     # Determine data source
+    csv_data = None
+    
+    # Priority 1: Explicit local file
     if args.local:
         if not os.path.exists(BATCH_FILE):
             print(f"Error: {BATCH_FILE} not found.")
             sys.exit(1)
-        print(f"Reading from local file: {BATCH_FILE}")
         with open(BATCH_FILE, 'r', encoding='utf-8') as f:
-            csv_content = f.read()
+            csv_data = f.read()
+            
+    # Priority 2: URL with fallback
     else:
-        url = args.url or GOOGLE_SHEETS_URL
-        print(f"Fetching from Google Sheets...")
+        url = args.url if args.url else GOOGLE_SHEETS_URL
+        print("Fetching from Google Sheets...")
         try:
             response = requests.get(url, timeout=30)
             response.raise_for_status()
             response.encoding = 'utf-8'  # Force UTF-8 encoding
-            csv_content = response.text
-            print(f"  Received {len(csv_content)} bytes")
+            csv_data = response.text
+            print(f"  Received {len(csv_data)} bytes")
+            
+            # Save backup
+            with open("aadna.ru.csv", "w", encoding="utf-8") as f:
+                f.write(csv_data)
+                
         except Exception as e:
-            print(f"Error fetching URL: {e}")
-            sys.exit(1)
+            print(f"  Warning: Network error ({e}).")
+            if os.path.exists("aadna.ru.csv"):
+                print("  Falling back to local cache: aadna.ru.csv")
+                with open("aadna.ru.csv", "r", encoding='utf-8') as f:
+                    csv_data = f.read()
+            else:
+                print("  Error: No local backup found.")
+                sys.exit(1)
 
     print(f"Loading tree...")
     tree = load_tree(TREE_JSON_PATH)
@@ -471,7 +486,7 @@ def main():
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     template = env.get_template('batch_post_template.j2')
 
-    reader = csv.DictReader(io.StringIO(csv_content))
+    reader = csv.DictReader(io.StringIO(csv_data))
     for row in reader:
         branch = row['Haplogroup'].strip()
         kit = row['Kit'].strip()
