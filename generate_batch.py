@@ -265,14 +265,30 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
         # Sort desc
         tick_values = sorted(list(set(tick_values)), reverse=True)
 
+        last_tick_pos = -100 # Initialize far away
+        
         for tick_age in tick_values:
-            # Filter ticks too close to current (avoid overlap with bottom label)
-            if tick_age - current_tmrca < 500 and tick_age != current_tmrca:
-                continue
-                
+            # Calculate position first
             tick_position = get_timeline_position(tick_age, major_tmrca, current_tmrca)
             
-            label = f"{tick_age // 1000}k" if tick_age >= 1000 else str(tick_age)
+            # Filter ticks too close to current (avoid overlap with bottom distinct label)
+            if tick_age - current_tmrca < 200 and tick_age != current_tmrca:
+                continue
+                
+            # Filter ticks too close to EACH OTHER (minimum 5% vertical spacing)
+            if abs(tick_position - last_tick_pos) < 5:
+                continue
+
+            # Smart labeling: 1.5k instead of 1k for 1500
+            if tick_age >= 1000:
+                val = tick_age / 1000.0
+                if val.is_integer():
+                    label = f"{int(val)}k"
+                else:
+                    label = f"{val}k"
+            else:
+                label = str(tick_age)
+
             if tick_age == 5000 and major_tmrca > 8000: label = "5k" # Force clear label at breakpoint
             
             age_scale_ticks.append({
@@ -280,6 +296,8 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
                 'label': label,
                 'position': tick_position
             })
+            
+            last_tick_pos = tick_position
     
     # Combined lineage_timeline for backward compatibility (template uses this)
     lineage_timeline = lineage_timeline_raw
