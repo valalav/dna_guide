@@ -214,8 +214,8 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
             else:
                 position = 0
             item['position'] = position
-            # Only show TMRCA for the deepest (current) branch
-            item['show_tmrca'] = item['is_current']
+            # Show TMRCA for ALL branches in post-major section (as requested)
+            item['show_tmrca'] = item['tmrca'] > 0
             post_major_timeline.append(item)
         else:
             # Pre-major: only include branches WITH TMRCA
