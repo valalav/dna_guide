@@ -206,11 +206,11 @@ details.dna-spoiler[open] summary {
     bottom: 0 !important;
     margin: 0 !important;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-.tmrca-deepest-age {
-    position: absolute;
-    bottom: 6px;
-    right: 140px; /* Positioned to the left of the branch label */
+.tmrca-deepest-age-inline {
     font-size: 14px;
     font-weight: 600;
     color: #22c55e;
@@ -338,116 +338,131 @@ details.dna-spoiler[open] summary {
 <div class="tmrca-post-major">
 <div class="tmrca-scale">
 
-<div class="tmrca-tick" style="top: 60%;">5k</div>
+<div class="tmrca-tick" style="top: 65%;">5k</div>
 
 </div>
 <div class="tmrca-timeline-diagonal">
 
 <div class="tmrca-item major" style="margin-left: 0%; margin-top: 0px;">
+    
     <span class="tmrca-branch">R</span>
     <span class="tmrca-label">🟠</span>
     
 </div>
 
 <div class="tmrca-item" style="margin-left: 0%; margin-top: 0px;">
+    
     <span class="tmrca-branch">R-Y482</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 7%; margin-top: 3px;">
+<div class="tmrca-item" style="margin-left: 9%; margin-top: 4px;">
+    
     <span class="tmrca-branch">R1</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 15%; margin-top: 7px;">
+<div class="tmrca-item" style="margin-left: 16%; margin-top: 8px;">
+    
     <span class="tmrca-branch">R1a</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 19%; margin-top: 9px;">
+<div class="tmrca-item" style="margin-left: 21%; margin-top: 10px;">
+    
     <span class="tmrca-branch">R-M459</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 21%; margin-top: 10px;">
+<div class="tmrca-item" style="margin-left: 24%; margin-top: 12px;">
+    
     <span class="tmrca-branch">R-M735</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 30%; margin-top: 15px;">
+<div class="tmrca-item" style="margin-left: 32%; margin-top: 16px;">
+    
     <span class="tmrca-branch">R-M198</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 35%; margin-top: 17px;">
+<div class="tmrca-item" style="margin-left: 38%; margin-top: 19px;">
+    
     <span class="tmrca-branch">R-M417</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 36%; margin-top: 18px;">
+<div class="tmrca-item" style="margin-left: 39%; margin-top: 19px;">
+    
     <span class="tmrca-branch">R-Z645</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 36%; margin-top: 18px;">
+<div class="tmrca-item" style="margin-left: 39%; margin-top: 19px;">
+    
     <span class="tmrca-branch">R-Z283</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 36%; margin-top: 18px;">
+<div class="tmrca-item" style="margin-left: 39%; margin-top: 19px;">
+    
     <span class="tmrca-branch">R-Z282</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 38%; margin-top: 19px;">
+<div class="tmrca-item" style="margin-left: 40%; margin-top: 20px;">
+    
     <span class="tmrca-branch">R-Z280</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 38%; margin-top: 19px;">
+<div class="tmrca-item" style="margin-left: 40%; margin-top: 20px;">
+    
     <span class="tmrca-branch">R-CTS1211</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 38%; margin-top: 19px;">
+<div class="tmrca-item" style="margin-left: 40%; margin-top: 20px;">
+    
     <span class="tmrca-branch">R-Y2205</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 38%; margin-top: 19px;">
+<div class="tmrca-item" style="margin-left: 40%; margin-top: 20px;">
+    
     <span class="tmrca-branch">R-Y35</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 38%; margin-top: 19px;">
+<div class="tmrca-item" style="margin-left: 40%; margin-top: 20px;">
+    
     <span class="tmrca-branch">R-CTS3402</span>
     
     
 </div>
 
 <div class="tmrca-item current" style="margin-left: 60%; margin-top: 30px;">
+    
+        <span class="tmrca-deepest-age-inline">~2 700 лет</span>
+    
     <span class="tmrca-branch">R-Y2613</span>
     
     <span class="tmrca-label">🟢</span>
 </div>
-
-
-
-<div class="tmrca-deepest-age">~2 700 лет</div>
 
 </div>
 </div>

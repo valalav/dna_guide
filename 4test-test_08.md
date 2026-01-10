@@ -206,11 +206,11 @@ details.dna-spoiler[open] summary {
     bottom: 0 !important;
     margin: 0 !important;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-.tmrca-deepest-age {
-    position: absolute;
-    bottom: 6px;
-    right: 140px; /* Positioned to the left of the branch label */
+.tmrca-deepest-age-inline {
     font-size: 14px;
     font-weight: 600;
     color: #22c55e;
@@ -323,94 +323,105 @@ details.dna-spoiler[open] summary {
 <div class="tmrca-post-major">
 <div class="tmrca-scale">
 
-<div class="tmrca-tick" style="top: 60%;">5k</div>
+<div class="tmrca-tick" style="top: 65%;">5k</div>
 
-<div class="tmrca-tick" style="top: 77%;">3k</div>
+<div class="tmrca-tick" style="top: 75%;">3k</div>
 
 </div>
 <div class="tmrca-timeline-diagonal">
 
 <div class="tmrca-item major" style="margin-left: 0%; margin-top: 0px;">
+    
     <span class="tmrca-branch">L</span>
     <span class="tmrca-label">🟠</span>
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 9%; margin-top: 4px;">
+<div class="tmrca-item" style="margin-left: 10%; margin-top: 5px;">
+    
     <span class="tmrca-branch">L-M22</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 20%; margin-top: 10px;">
+<div class="tmrca-item" style="margin-left: 22%; margin-top: 11px;">
+    
     <span class="tmrca-branch">L-M317</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 22%; margin-top: 11px;">
+<div class="tmrca-item" style="margin-left: 24%; margin-top: 12px;">
+    
     <span class="tmrca-branch">L-SK1412</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 23%; margin-top: 11px;">
+<div class="tmrca-item" style="margin-left: 25%; margin-top: 12px;">
+    
     <span class="tmrca-branch">L-Y16208</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 27%; margin-top: 13px;">
+<div class="tmrca-item" style="margin-left: 30%; margin-top: 15px;">
+    
     <span class="tmrca-branch">L-Y16366</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 37%; margin-top: 18px;">
+<div class="tmrca-item" style="margin-left: 40%; margin-top: 20px;">
+    
     <span class="tmrca-branch">L-Y16187</span>
     
     
 </div>
 
 <div class="tmrca-item" style="margin-left: 42%; margin-top: 21px;">
+    
     <span class="tmrca-branch">L-Y16368</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 46%; margin-top: 23px;">
+<div class="tmrca-item" style="margin-left: 45%; margin-top: 22px;">
+    
     <span class="tmrca-branch">L-Y16384</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 47%; margin-top: 23px;">
+<div class="tmrca-item" style="margin-left: 45%; margin-top: 22px;">
+    
     <span class="tmrca-branch">L-PH438</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 47%; margin-top: 23px;">
+<div class="tmrca-item" style="margin-left: 45%; margin-top: 22px;">
+    
     <span class="tmrca-branch">L-Y18413</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 48%; margin-top: 24px;">
+<div class="tmrca-item" style="margin-left: 46%; margin-top: 23px;">
+    
     <span class="tmrca-branch">L-Y18891</span>
     
     
 </div>
 
 <div class="tmrca-item current" style="margin-left: 60%; margin-top: 30px;">
+    
+        <span class="tmrca-deepest-age-inline">~2 100 лет</span>
+    
     <span class="tmrca-branch">L-Y234050</span>
     
     <span class="tmrca-label">🟢</span>
 </div>
-
-
-
-<div class="tmrca-deepest-age">~2 100 лет</div>
 
 </div>
 </div>

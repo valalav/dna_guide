@@ -206,11 +206,11 @@ details.dna-spoiler[open] summary {
     bottom: 0 !important;
     margin: 0 !important;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-.tmrca-deepest-age {
-    position: absolute;
-    bottom: 6px;
-    right: 140px; /* Positioned to the left of the branch label */
+.tmrca-deepest-age-inline {
     font-size: 14px;
     font-weight: 600;
     color: #22c55e;

@@ -206,11 +206,11 @@ details.dna-spoiler[open] summary {
     bottom: 0 !important;
     margin: 0 !important;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-.tmrca-deepest-age {
-    position: absolute;
-    bottom: 6px;
-    right: 140px; /* Positioned to the left of the branch label */
+.tmrca-deepest-age-inline {
     font-size: 14px;
     font-weight: 600;
     color: #22c55e;
@@ -303,72 +303,79 @@ details.dna-spoiler[open] summary {
 <div class="tmrca-post-major">
 <div class="tmrca-scale">
 
-<div class="tmrca-tick" style="top: 15%;">20k</div>
+<div class="tmrca-tick" style="top: 16%;">20k</div>
 
-<div class="tmrca-tick" style="top: 30%;">15k</div>
+<div class="tmrca-tick" style="top: 32%;">15k</div>
 
-<div class="tmrca-tick" style="top: 45%;">10k</div>
+<div class="tmrca-tick" style="top: 48%;">10k</div>
 
 </div>
 <div class="tmrca-timeline-diagonal">
 
 <div class="tmrca-item major" style="margin-left: 0%; margin-top: 0px;">
+    
     <span class="tmrca-branch">G</span>
     <span class="tmrca-label">🟠</span>
     
 </div>
 
 <div class="tmrca-item" style="margin-left: 0%; margin-top: 0px;">
+    
     <span class="tmrca-branch">G-P287</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 7%; margin-top: 3px;">
+<div class="tmrca-item" style="margin-left: 8%; margin-top: 4px;">
+    
     <span class="tmrca-branch">G-Y238</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 12%; margin-top: 6px;">
+<div class="tmrca-item" style="margin-left: 13%; margin-top: 6px;">
+    
     <span class="tmrca-branch">G-P15</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 14%; margin-top: 7px;">
+<div class="tmrca-item" style="margin-left: 15%; margin-top: 7px;">
+    
     <span class="tmrca-branch">G-L1259</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 18%; margin-top: 9px;">
+<div class="tmrca-item" style="margin-left: 20%; margin-top: 10px;">
+    
     <span class="tmrca-branch">G-L30</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 18%; margin-top: 9px;">
+<div class="tmrca-item" style="margin-left: 20%; margin-top: 10px;">
+    
     <span class="tmrca-branch">G-CTS574</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 22%; margin-top: 11px;">
+<div class="tmrca-item" style="margin-left: 24%; margin-top: 12px;">
+    
     <span class="tmrca-branch">G-M406</span>
     
     
 </div>
 
 <div class="tmrca-item current" style="margin-left: 60%; margin-top: 30px;">
+    
+        <span class="tmrca-deepest-age-inline">~5 200 лет</span>
+    
     <span class="tmrca-branch">G-Y173177</span>
     
     <span class="tmrca-label">🟢</span>
 </div>
-
-
-
-<div class="tmrca-deepest-age">~5 200 лет</div>
 
 </div>
 </div>

@@ -206,11 +206,11 @@ details.dna-spoiler[open] summary {
     bottom: 0 !important;
     margin: 0 !important;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-.tmrca-deepest-age {
-    position: absolute;
-    bottom: 6px;
-    right: 140px; /* Positioned to the left of the branch label */
+.tmrca-deepest-age-inline {
     font-size: 14px;
     font-weight: 600;
     color: #22c55e;
@@ -282,15 +282,14 @@ details.dna-spoiler[open] summary {
 <div class="tmrca-timeline-diagonal">
 {% for item in post_major_timeline %}
 <div class="tmrca-item{% if item.is_current %} current{% endif %}{% if item.is_major %} major{% endif %}" style="margin-left: {{ (item.position * 0.6) | int }}%; margin-top: {{ (item.position * 0.3) | int }}px;">
+    {% if item.is_current %}
+        <span class="tmrca-deepest-age-inline">~{{ item.tmrca_formatted }} лет</span>
+    {% endif %}
     <span class="tmrca-branch">{{ item.id }}</span>
     {% if item.is_major %}<span class="tmrca-label">🟠</span>{% endif %}
     {% if item.is_current %}<span class="tmrca-label">🟢</span>{% endif %}
 </div>
 {% endfor %}
-{% if post_major_timeline %}
-{% set deepest = post_major_timeline[-1] %}
-<div class="tmrca-deepest-age">~{{ deepest.tmrca_formatted }} лет</div>
-{% endif %}
 </div>
 </div>
 {% endif %}

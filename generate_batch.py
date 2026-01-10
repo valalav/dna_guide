@@ -179,8 +179,8 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
     def get_timeline_position(tmrca, major_tmrca, current_tmrca):
         # Constants
         FOCUS_AGE = 5000  # Years ago
-        SPLIT_POINT = 60  # % of height for ancient history boundary
-        MAX_USABLE_HEIGHT = 85 # Leave bottom 15% empty for the deepest branch explicitly
+        SPLIT_POINT = 65  # % of height for ancient history boundary
+        MAX_USABLE_HEIGHT = 80 # Leave bottom 20% empty for the deepest branch explicitly
         
         if tmrca == current_tmrca:
              return 100 # Deepest branch always at very bottom
