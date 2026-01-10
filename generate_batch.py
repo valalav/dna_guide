@@ -3,12 +3,15 @@ import csv
 import os
 import sys
 import re
+import io
+import requests
 from jinja2 import Environment, FileSystemLoader
 
 # Configuration
 TREE_JSON_PATH = "current_tree.json"
 DOCS_DIR = "10_Haplogroups"
 BATCH_FILE = "publications.csv"
+GOOGLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vReAnh5vjuv0DoamQN7ISaTrSZmh4FhhojxZdceKImRfFJ3LBSQaVMuw2f5hT3lvBVod2IXQSDmATAn/pub?gid=0&single=true&output=csv"
 
 def load_tree(path):
     """Load the phylogenetic tree from JSON."""
@@ -230,19 +233,29 @@ def publish_to_wordpress(local_file, title, slug, publish=True):
     PLINK_PATH = r"c:\_Data\Soft\Linux\PuTTY\plink.exe"
     
     try:
-        # Step 1: Upload file to server
+        import base64
+        
+        # Step 1: Read file content and encode as base64
         print(f"    Uploading {local_file}...")
-        upload_cmd = [PSCP_PATH, "-pw", SERVER_PASS, local_file, f"{SERVER_USER}@{SERVER_IP}:/tmp/"]
-        result = subprocess.run(upload_cmd, capture_output=True, text=True, timeout=30)
+        with open(local_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Base64 encode the content for safe transfer
+        b64_content = base64.b64encode(content.encode('utf-8')).decode('ascii')
+        
+        # Step 2: Upload via echo + base64 decode on server
+        remote_file = f"/tmp/{os.path.basename(local_file)}"
+        echo_cmd = f'echo "{b64_content}" | base64 -d > {remote_file}'
+        ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", echo_cmd]
+        result = subprocess.run(ssh_cmd, capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
             print(f"    Upload failed: {result.stderr}")
             return False
         
-        # Step 2: Create WordPress post via WP-CLI
+        # Step 3: Create WordPress post via WP-CLI
         post_status = "publish" if publish else "draft"
-        # Use ASCII-safe title to avoid SSH encoding issues. Use branch name only.
-        safe_title = f"Haplogroup {branch_name}" if 'branch_name' in dir() else title.encode('ascii', 'ignore').decode()
-        wp_cmd = f'cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="{slug}" --post_name="{slug}" --post_status={post_status} --post_type=post --path={WP_PATH} --allow-root --porcelain'
+        # Use LANG=en_US.UTF-8 to ensure proper UTF-8 handling
+        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="{slug}" --post_name="{slug}" --post_status={post_status} --post_type=post --path={WP_PATH} --allow-root --porcelain'
         
         print(f"    Creating WordPress post...")
         ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", wp_cmd]
@@ -274,11 +287,30 @@ def main():
     parser = argparse.ArgumentParser(description='Batch generate and optionally publish posts.')
     parser.add_argument('--publish', action='store_true', help='Publish to WordPress after generation')
     parser.add_argument('--draft', action='store_true', help='Create as draft (not published)')
+    parser.add_argument('--url', type=str, help='Google Sheets CSV URL (default: use built-in URL)')
+    parser.add_argument('--local', action='store_true', help='Use local publications.csv instead of URL')
     args = parser.parse_args()
     
-    if not os.path.exists(BATCH_FILE):
-        print(f"Error: {BATCH_FILE} not found.")
-        sys.exit(1)
+    # Determine data source
+    if args.local:
+        if not os.path.exists(BATCH_FILE):
+            print(f"Error: {BATCH_FILE} not found.")
+            sys.exit(1)
+        print(f"Reading from local file: {BATCH_FILE}")
+        with open(BATCH_FILE, 'r', encoding='utf-8') as f:
+            csv_content = f.read()
+    else:
+        url = args.url or GOOGLE_SHEETS_URL
+        print(f"Fetching from Google Sheets...")
+        try:
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            response.encoding = 'utf-8'  # Force UTF-8 encoding
+            csv_content = response.text
+            print(f"  Received {len(csv_content)} bytes")
+        except Exception as e:
+            print(f"Error fetching URL: {e}")
+            sys.exit(1)
 
     print(f"Loading tree...")
     tree = load_tree(TREE_JSON_PATH)
@@ -287,41 +319,46 @@ def main():
     env = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
     template = env.get_template('batch_post_template.j2')
 
-    with open(BATCH_FILE, 'r', encoding='utf-8') as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            branch = row['Haplogroup'].strip()
-            kit = row['Kit'].strip()
-            print(f"Processing Kit {kit} ({branch})...")
+    reader = csv.DictReader(io.StringIO(csv_content))
+    for row in reader:
+        branch = row['Haplogroup'].strip()
+        kit = row['Kit'].strip()
+        
+        # Skip description rows (non-haplogroup values like Russian text)
+        if not branch or not re.match(r'^[A-Z]', branch):
+            print(f"  Skipping non-data row: {branch[:30]}...")
+            continue
             
-            node, lineage, _ = find_node_data(tree, branch)
-            if not node:
-                print(f"  Warning: Branch {branch} not found in tree. Skipping.")
-                continue
+        print(f"Processing Kit {kit} ({branch})...")
+        
+        node, lineage, _ = find_node_data(tree, branch)
+        if not node:
+            print(f"  Warning: Branch {branch} not found in tree. Skipping.")
+            continue
 
-            clean_lineage = list(dict.fromkeys([l for l in lineage if l]))
-            related_docs = find_related_docs(branch, clean_lineage)
+        clean_lineage = list(dict.fromkeys([l for l in lineage if l]))
+        related_docs = find_related_docs(branch, clean_lineage)
 
-            context = generate_post_context(row, lineage, node, related_docs, tree)
+        context = generate_post_context(row, lineage, node, related_docs, tree)
+        
+        try:
+            output_content = template.render(context)
+            slug = row.get('Slug') or f"publication_{branch}_{kit}"
+            output_filename = f"{slug}.md"
             
-            try:
-                output_content = template.render(context)
-                slug = row.get('Slug') or f"publication_{branch}_{kit}"
-                output_filename = f"{slug}.md"
-                
-                with open(output_filename, 'w', encoding='utf-8') as out_f:
-                    out_f.write(output_content)
-                print(f"  Generated: {output_filename}")
-                
-                # Auto-publish if requested
-                if args.publish or args.draft:
-                    title = f"Гаплогруппа {branch}"
-                    post_id = publish_to_wordpress(output_filename, title, slug, publish=not args.draft)
-                    if post_id:
-                        print(f"  Published: https://aadna.ru/{slug}/")
-                
-            except Exception as e:
-                print(f"  Error rendering: {e}")
+            with open(output_filename, 'w', encoding='utf-8') as out_f:
+                out_f.write(output_content)
+            print(f"  Generated: {output_filename}")
+            
+            # Auto-publish if requested
+            if args.publish or args.draft:
+                title = f"Гаплогруппа {branch}"
+                post_id = publish_to_wordpress(output_filename, title, slug, publish=not args.draft)
+                if post_id:
+                    print(f"  Published: https://aadna.ru/{slug}/")
+            
+        except Exception as e:
+            print(f"  Error rendering: {e}")
 
 if __name__ == "__main__":
     main()
