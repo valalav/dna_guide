@@ -35,3 +35,9 @@
     - [ ] Create `scripts/visualize_pro.py` (Cyber-Genetics Style)
     - [ ] Generate Radial Phylogram, Sunburst, Ridgeline
     - [ ] Update Gallery
+- [/] Phase 8: Research Integration
+    - [ ] Update G-L1264 section (Maykop clarification)
+    - [ ] Update J2a-M67 section (Arslantepe connection)
+    - [ ] Update R1a-Z93 section (Tamby/Inal dating)
+    - [ ] Update R1b-Z2103 (Ankvab/Yamnaya link)
+    - [ ] Update J2b-L283 (KDC001 Kudachurt sample)
