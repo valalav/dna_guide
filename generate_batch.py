@@ -217,7 +217,65 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
         'test_type': row.get('TestType', 'WGS') # Pass TestType
     }
 
+def publish_to_wordpress(local_file, title, slug, publish=True):
+    """Upload file to server and create/update WordPress post."""
+    import subprocess
+    
+    # Configuration
+    SERVER_IP = "192.162.246.231"
+    SERVER_USER = "root"
+    SERVER_PASS = "4S7eBqQa55en"
+    WP_PATH = "/var/www/html"
+    PSCP_PATH = r"c:\_Data\Soft\Linux\PuTTY\pscp.exe"
+    PLINK_PATH = r"c:\_Data\Soft\Linux\PuTTY\plink.exe"
+    
+    try:
+        # Step 1: Upload file to server
+        print(f"    Uploading {local_file}...")
+        upload_cmd = [PSCP_PATH, "-pw", SERVER_PASS, local_file, f"{SERVER_USER}@{SERVER_IP}:/tmp/"]
+        result = subprocess.run(upload_cmd, capture_output=True, text=True, timeout=30)
+        if result.returncode != 0:
+            print(f"    Upload failed: {result.stderr}")
+            return False
+        
+        # Step 2: Create WordPress post via WP-CLI
+        post_status = "publish" if publish else "draft"
+        # Use ASCII-safe title to avoid SSH encoding issues. Use branch name only.
+        safe_title = f"Haplogroup {branch_name}" if 'branch_name' in dir() else title.encode('ascii', 'ignore').decode()
+        wp_cmd = f'cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="{slug}" --post_name="{slug}" --post_status={post_status} --post_type=post --path={WP_PATH} --allow-root --porcelain'
+        
+        print(f"    Creating WordPress post...")
+        ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", wp_cmd]
+        result = subprocess.run(ssh_cmd, capture_output=True, text=True, timeout=60)
+        
+        if result.returncode != 0:
+            print(f"    WP-CLI failed: {result.stderr}")
+            return False
+        
+        post_id = result.stdout.strip()
+        print(f"    Created post ID: {post_id}")
+        
+        # Step 3: Clear cache
+        cache_cmd = f'wp transient delete --all --path={WP_PATH} --allow-root'
+        subprocess.run([PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", cache_cmd], 
+                      capture_output=True, timeout=30)
+        
+        return post_id
+        
+    except subprocess.TimeoutExpired:
+        print(f"    Timeout during publishing")
+        return False
+    except Exception as e:
+        print(f"    Error: {e}")
+        return False
+
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description='Batch generate and optionally publish posts.')
+    parser.add_argument('--publish', action='store_true', help='Publish to WordPress after generation')
+    parser.add_argument('--draft', action='store_true', help='Create as draft (not published)')
+    args = parser.parse_args()
+    
     if not os.path.exists(BATCH_FILE):
         print(f"Error: {BATCH_FILE} not found.")
         sys.exit(1)
@@ -255,8 +313,16 @@ def main():
                     out_f.write(output_content)
                 print(f"  Generated: {output_filename}")
                 
+                # Auto-publish if requested
+                if args.publish or args.draft:
+                    title = f"Гаплогруппа {branch}"
+                    post_id = publish_to_wordpress(output_filename, title, slug, publish=not args.draft)
+                    if post_id:
+                        print(f"  Published: https://aadna.ru/{slug}/")
+                
             except Exception as e:
                 print(f"  Error rendering: {e}")
 
 if __name__ == "__main__":
     main()
+
