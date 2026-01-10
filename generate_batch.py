@@ -220,7 +220,7 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
         'test_type': row.get('TestType', 'WGS') # Pass TestType
     }
 
-def publish_to_wordpress(local_file, title, slug, publish=True):
+def publish_to_wordpress(local_file, title, slug, tags="", publish=True):
     """Upload file to server and create/update WordPress post."""
     import subprocess
     
@@ -259,7 +259,9 @@ def publish_to_wordpress(local_file, title, slug, publish=True):
         b64_title = base64.b64encode(title.encode('utf-8')).decode('ascii')
         
         # Use LANG=en_US.UTF-8 and decode title from base64 on server
-        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && TITLE=$(echo "{b64_title}" | base64 -d) && cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="$TITLE" --post_name="{slug}" --post_status={post_status} --post_type=post --path={WP_PATH} --allow-root --porcelain'
+        # Convert tags from pipe-separated to comma-separated for wp-cli
+        tags_param = f'--tags="{tags.replace("|", ",")}"' if tags else ''
+        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && TITLE=$(echo "{b64_title}" | base64 -d) && cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="$TITLE" --post_name="{slug}" --post_status={post_status} --post_type=post {tags_param} --path={WP_PATH} --allow-root --porcelain'
         
         print(f"    Creating WordPress post...")
         ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", wp_cmd]
@@ -272,7 +274,16 @@ def publish_to_wordpress(local_file, title, slug, publish=True):
         post_id = result.stdout.strip()
         print(f"    Created post ID: {post_id}")
         
-        # Step 3: Clear cache
+        # Step 4: Add tags if provided
+        if tags and post_id:
+            # Split tags and pass each separately
+            tags_list = ' '.join([f'"{t.strip()}"' for t in tags.split('|') if t.strip()])
+            tags_cmd = f'wp post term set {post_id} post_tag {tags_list} --path={WP_PATH} --allow-root'
+            subprocess.run([PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", tags_cmd],
+                          capture_output=True, timeout=30)
+            print(f"    Added tags: {tags}")
+        
+        # Step 5: Clear cache
         cache_cmd = f'wp transient delete --all --path={WP_PATH} --allow-root'
         subprocess.run([PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", cache_cmd], 
                       capture_output=True, timeout=30)
@@ -358,7 +369,8 @@ def main():
             if args.publish or args.draft:
                 # Use Title from CSV if available, otherwise generate from haplogroup
                 title = row.get('Title', '').strip() or f"Гаплогруппа {branch}"
-                post_id = publish_to_wordpress(output_filename, title, slug, publish=not args.draft)
+                tags = row.get('Tags', '').strip()
+                post_id = publish_to_wordpress(output_filename, title, slug, tags=tags, publish=not args.draft)
                 if post_id:
                     print(f"  Published: https://aadna.ru/{slug}/")
             
