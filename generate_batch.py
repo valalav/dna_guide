@@ -233,33 +233,12 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
         # Start ticks from rounded major
         start_tick = (major_tmrca // 1000) * 1000
         
-        # Add ticks for recent zooming
-        current_tick = start_tick
-        while current_tick >= current_tmrca:
-            # Decide step based on age
-            if current_tick > 20000: step = 10000
-            elif current_tick > 5000: step = 5000
-            elif current_tick > 2000: step = 1000
-            else: step = 500
-            
-            # Align tick to step
-            if current_tick % step == 0:
-                 if current_tick <= major_tmrca and current_tick >= current_tmrca:
-                      if current_tick not in tick_values:
-                           tick_values.append(current_tick)
-            
-            # Move to next tick
-            # Need to be smart about decrementing to find next grid line
-            # Simple approach: subtract small amount and re-align?
-            # Or just structured loops.
-            
-            # Let's just hardcode zones for simplicity and robustness
-            if current_tick > 20000: current_tick -= 5000 # check every 5k
-            elif current_tick > 5000: current_tick -= 2500
-            else: current_tick -= 500
-            
+        # SIMPLIFIED SCALE: Only show Major Start and 5k Inflection Point
+        # No intermediate ticks to avoid clutter/overlap
+        tick_values.append(start_tick)
+             
         # Ensure focus point tick exists if within range
-        if 5000 < major_tmrca and 5000 > current_tmrca and 5000 not in tick_values:
+        if 5000 < major_tmrca and 5000 > current_tmrca:
              tick_values.append(5000)
              
         # Sort desc
