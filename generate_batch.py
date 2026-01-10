@@ -175,13 +175,42 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
     
     tmrca_range = major_tmrca - current_tmrca if major_tmrca > current_tmrca else 1
     
+    # Scale helper function (Non-linear: Ancient history compressed, Recent expanded)
+    def get_timeline_position(tmrca, major_tmrca, current_tmrca):
+        # Constants
+        FOCUS_AGE = 5000  # Years ago
+        SPLIT_POINT = 60  # % of height for ancient history boundary
+        MAX_USABLE_HEIGHT = 85 # Leave bottom 15% empty for the deepest branch explicitly
+        
+        if tmrca == current_tmrca:
+             return 100 # Deepest branch always at very bottom
+             
+        if major_tmrca <= FOCUS_AGE:
+            # If everything is recent, use simple linear scale up to MAX_USABLE_HEIGHT
+            if tmrca_range == 0: return 0
+            rel_pos = (major_tmrca - tmrca) / tmrca_range
+            return int(rel_pos * MAX_USABLE_HEIGHT)
+            
+        # If we span across the FOCUS_AGE
+        if tmrca > FOCUS_AGE:
+            # Ancient Section (major -> 5000y) maps to 0 -> SPLIT_POINT
+            ancient_range = major_tmrca - FOCUS_AGE
+            time_from_major = major_tmrca - tmrca
+            return int((time_from_major / ancient_range) * SPLIT_POINT)
+        else:
+            # Recent Section (5000y -> current) maps to SPLIT_POINT -> MAX_USABLE_HEIGHT
+            recent_range = FOCUS_AGE - current_tmrca
+            if recent_range == 0: return SPLIT_POINT
+            time_from_focus = FOCUS_AGE - tmrca
+            rel_recent = time_from_focus / recent_range
+            # Map 0..1 to SPLIT..MAX
+            return int(SPLIT_POINT + (rel_recent * (MAX_USABLE_HEIGHT - SPLIT_POINT)))
+
     for item in lineage_timeline_raw:
         if major_index >= 0 and item['index'] >= major_index:
             # Post-major: calculate diagonal position
-            if tmrca_range > 0 and item['tmrca'] > 0:
-                time_from_major = major_tmrca - item['tmrca']
-                position = int((time_from_major / tmrca_range) * 100)
-                position = max(0, min(100, position))
+            if item['tmrca'] > 0:
+                position = get_timeline_position(item['tmrca'], major_tmrca, current_tmrca)
             else:
                 position = 0
             item['position'] = position
@@ -195,40 +224,62 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
                 item['show_tmrca'] = True
                 pre_major_timeline.append(item)
     
-    # Generate age scale ticks with logarithmic intervals (more detail near modern times)
+    # Generate age scale ticks with same non-linear logic
     age_scale_ticks = []
-    if major_tmrca > 0 and current_tmrca >= 0:
-        # Use varying intervals: 10k for ancient, 5k for recent, 1k for very recent
+    if major_tmrca > 0:
+        # Define ticks
         tick_values = []
-        # Add ticks from major down to current
         age = major_tmrca
-        while age >= current_tmrca:
-            tick_values.append(age)
-            if age > 20000:
-                age -= 10000
-            elif age > 5000:
-                age -= 5000
-            elif age > 1000:
-                age -= 1000
-            else:
-                age -= 500
-        # Also add the deepest branch age as final tick
-        if current_tmrca not in tick_values:
-            tick_values.append(current_tmrca)
+        # Start ticks from rounded major
+        start_tick = (major_tmrca // 1000) * 1000
         
+        # Add ticks for recent zooming
+        current_tick = start_tick
+        while current_tick >= current_tmrca:
+            # Decide step based on age
+            if current_tick > 20000: step = 10000
+            elif current_tick > 5000: step = 5000
+            elif current_tick > 2000: step = 1000
+            else: step = 500
+            
+            # Align tick to step
+            if current_tick % step == 0:
+                 if current_tick <= major_tmrca and current_tick >= current_tmrca:
+                      if current_tick not in tick_values:
+                           tick_values.append(current_tick)
+            
+            # Move to next tick
+            # Need to be smart about decrementing to find next grid line
+            # Simple approach: subtract small amount and re-align?
+            # Or just structured loops.
+            
+            # Let's just hardcode zones for simplicity and robustness
+            if current_tick > 20000: current_tick -= 5000 # check every 5k
+            elif current_tick > 5000: current_tick -= 2500
+            else: current_tick -= 500
+            
+        # Ensure focus point tick exists if within range
+        if 5000 < major_tmrca and 5000 > current_tmrca and 5000 not in tick_values:
+             tick_values.append(5000)
+             
+        # Sort desc
+        tick_values = sorted(list(set(tick_values)), reverse=True)
+
         for tick_age in tick_values:
-            if tick_age > 0:
-                tick_position = int(((major_tmrca - tick_age) / tmrca_range) * 100) if tmrca_range > 0 else 0
-                tick_position = max(0, min(100, tick_position))
-                if tick_age >= 1000:
-                    label = f"{tick_age // 1000}k"
-                else:
-                    label = str(tick_age)
-                age_scale_ticks.append({
-                    'age': tick_age,
-                    'label': label,
-                    'position': tick_position
-                })
+            # Filter ticks too close to current (avoid overlap with bottom label)
+            if tick_age - current_tmrca < 500 and tick_age != current_tmrca:
+                continue
+                
+            tick_position = get_timeline_position(tick_age, major_tmrca, current_tmrca)
+            
+            label = f"{tick_age // 1000}k" if tick_age >= 1000 else str(tick_age)
+            if tick_age == 5000 and major_tmrca > 8000: label = "5k" # Force clear label at breakpoint
+            
+            age_scale_ticks.append({
+                'age': tick_age,
+                'label': label,
+                'position': tick_position
+            })
     
     # Combined lineage_timeline for backward compatibility (template uses this)
     lineage_timeline = lineage_timeline_raw

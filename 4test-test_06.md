@@ -169,7 +169,7 @@ details.dna-spoiler[open] summary {
     position: relative;
     display: flex;
     margin-top: 20px;
-    min-height: 400px; /* Increased height for better spacing */
+    min-height: 450px; /* Increased height again for better spacing */
 }
 .tmrca-scale {
     width: 60px;
@@ -200,16 +200,17 @@ details.dna-spoiler[open] summary {
     padding: 10px 0;
 }
 .tmrca-item.current {
-    /* Flush right for the deepest branch */
+    /* Flush right for the deepest branch - strictly at bottom */
     position: absolute !important;
     right: 0 !important;
     bottom: 0 !important;
     margin: 0 !important;
+    white-space: nowrap;
 }
 .tmrca-deepest-age {
     position: absolute;
-    bottom: 5px;
-    right: 120px; /* Positioned to the left of the branch label */
+    bottom: 6px;
+    right: 140px; /* Positioned to the left of the branch label */
     font-size: 14px;
     font-weight: 600;
     color: #22c55e;
@@ -217,6 +218,7 @@ details.dna-spoiler[open] summary {
     padding: 2px 8px;
     border-radius: 4px;
     border: 1px solid #dcfce7;
+    white-space: nowrap;
 }
 </style>
 

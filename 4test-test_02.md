@@ -169,7 +169,7 @@ details.dna-spoiler[open] summary {
     position: relative;
     display: flex;
     margin-top: 20px;
-    min-height: 400px; /* Increased height for better spacing */
+    min-height: 450px; /* Increased height again for better spacing */
 }
 .tmrca-scale {
     width: 60px;
@@ -200,16 +200,17 @@ details.dna-spoiler[open] summary {
     padding: 10px 0;
 }
 .tmrca-item.current {
-    /* Flush right for the deepest branch */
+    /* Flush right for the deepest branch - strictly at bottom */
     position: absolute !important;
     right: 0 !important;
     bottom: 0 !important;
     margin: 0 !important;
+    white-space: nowrap;
 }
 .tmrca-deepest-age {
     position: absolute;
-    bottom: 5px;
-    right: 120px; /* Positioned to the left of the branch label */
+    bottom: 6px;
+    right: 140px; /* Positioned to the left of the branch label */
     font-size: 14px;
     font-weight: 600;
     color: #22c55e;
@@ -217,6 +218,7 @@ details.dna-spoiler[open] summary {
     padding: 2px 8px;
     border-radius: 4px;
     border: 1px solid #dcfce7;
+    white-space: nowrap;
 }
 </style>
 
@@ -301,13 +303,11 @@ details.dna-spoiler[open] summary {
 <div class="tmrca-post-major">
 <div class="tmrca-scale">
 
-<div class="tmrca-tick" style="top: 0%;">25k</div>
+<div class="tmrca-tick" style="top: 15%;">20k</div>
 
-<div class="tmrca-tick" style="top: 50%;">15k</div>
+<div class="tmrca-tick" style="top: 30%;">15k</div>
 
-<div class="tmrca-tick" style="top: 75%;">10k</div>
-
-<div class="tmrca-tick" style="top: 100%;">5k</div>
+<div class="tmrca-tick" style="top: 45%;">10k</div>
 
 </div>
 <div class="tmrca-timeline-diagonal">
@@ -318,43 +318,43 @@ details.dna-spoiler[open] summary {
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 1%; margin-top: 0px;">
+<div class="tmrca-item" style="margin-left: 0%; margin-top: 0px;">
     <span class="tmrca-branch">G-P287</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 13%; margin-top: 6px;">
+<div class="tmrca-item" style="margin-left: 7%; margin-top: 3px;">
     <span class="tmrca-branch">G-Y238</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 21%; margin-top: 10px;">
+<div class="tmrca-item" style="margin-left: 12%; margin-top: 6px;">
     <span class="tmrca-branch">G-P15</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 24%; margin-top: 12px;">
+<div class="tmrca-item" style="margin-left: 14%; margin-top: 7px;">
     <span class="tmrca-branch">G-L1259</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 31%; margin-top: 15px;">
+<div class="tmrca-item" style="margin-left: 18%; margin-top: 9px;">
     <span class="tmrca-branch">G-L30</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 31%; margin-top: 15px;">
+<div class="tmrca-item" style="margin-left: 18%; margin-top: 9px;">
     <span class="tmrca-branch">G-CTS574</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 37%; margin-top: 18px;">
+<div class="tmrca-item" style="margin-left: 22%; margin-top: 11px;">
     <span class="tmrca-branch">G-M406</span>
     
     

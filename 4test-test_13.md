@@ -169,7 +169,7 @@ details.dna-spoiler[open] summary {
     position: relative;
     display: flex;
     margin-top: 20px;
-    min-height: 400px; /* Increased height for better spacing */
+    min-height: 450px; /* Increased height again for better spacing */
 }
 .tmrca-scale {
     width: 60px;
@@ -200,16 +200,17 @@ details.dna-spoiler[open] summary {
     padding: 10px 0;
 }
 .tmrca-item.current {
-    /* Flush right for the deepest branch */
+    /* Flush right for the deepest branch - strictly at bottom */
     position: absolute !important;
     right: 0 !important;
     bottom: 0 !important;
     margin: 0 !important;
+    white-space: nowrap;
 }
 .tmrca-deepest-age {
     position: absolute;
-    bottom: 5px;
-    right: 120px; /* Positioned to the left of the branch label */
+    bottom: 6px;
+    right: 140px; /* Positioned to the left of the branch label */
     font-size: 14px;
     font-weight: 600;
     color: #22c55e;
@@ -217,6 +218,7 @@ details.dna-spoiler[open] summary {
     padding: 2px 8px;
     border-radius: 4px;
     border: 1px solid #dcfce7;
+    white-space: nowrap;
 }
 </style>
 
@@ -291,25 +293,15 @@ details.dna-spoiler[open] summary {
 <div class="tmrca-post-major">
 <div class="tmrca-scale">
 
-<div class="tmrca-tick" style="top: 0%;">56k</div>
+<div class="tmrca-tick" style="top: 60%;">5k</div>
 
-<div class="tmrca-tick" style="top: 17%;">46k</div>
+<div class="tmrca-tick" style="top: 70%;">3k</div>
 
-<div class="tmrca-tick" style="top: 35%;">36k</div>
+<div class="tmrca-tick" style="top: 75%;">2k</div>
 
-<div class="tmrca-tick" style="top: 53%;">26k</div>
+<div class="tmrca-tick" style="top: 78%;">1k</div>
 
-<div class="tmrca-tick" style="top: 71%;">16k</div>
-
-<div class="tmrca-tick" style="top: 80%;">11k</div>
-
-<div class="tmrca-tick" style="top: 88%;">6k</div>
-
-<div class="tmrca-tick" style="top: 97%;">1k</div>
-
-<div class="tmrca-tick" style="top: 99%;">500</div>
-
-<div class="tmrca-tick" style="top: 100%;">275</div>
+<div class="tmrca-tick" style="top: 81%;">1k</div>
 
 </div>
 <div class="tmrca-timeline-diagonal">
@@ -320,31 +312,31 @@ details.dna-spoiler[open] summary {
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 10%; margin-top: 5px;">
+<div class="tmrca-item" style="margin-left: 7%; margin-top: 3px;">
     <span class="tmrca-branch">D-M174</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 12%; margin-top: 6px;">
+<div class="tmrca-item" style="margin-left: 7%; margin-top: 3px;">
     <span class="tmrca-branch">D-CTS11577</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 12%; margin-top: 6px;">
+<div class="tmrca-item" style="margin-left: 7%; margin-top: 3px;">
     <span class="tmrca-branch">D-Z3660</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 55%; margin-top: 27px;">
+<div class="tmrca-item" style="margin-left: 38%; margin-top: 19px;">
     <span class="tmrca-branch">D-Y34637</span>
     
     
 </div>
 
-<div class="tmrca-item" style="margin-left: 58%; margin-top: 29px;">
+<div class="tmrca-item" style="margin-left: 48%; margin-top: 24px;">
     <span class="tmrca-branch">D-Y34670</span>
     
     
