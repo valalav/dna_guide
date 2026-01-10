@@ -119,6 +119,81 @@ def find_related_docs(target_id, lineage):
     final_docs.sort(key=lambda x: x['lineage_index'])
     return final_docs
 
+# --- STR Match Table Helpers ---
+def calculate_str_diff(q_val, m_val):
+    if q_val == m_val: return "-", "match"
+    if q_val.isdigit() and m_val.isdigit():
+        diff = int(m_val) - int(q_val)
+        return f"+{diff}" if diff > 0 else str(diff), "diff-minor" if abs(diff) == 1 else "diff-major"
+    return m_val, "diff-major"
+
+def generate_str_table_html(profile, matches):
+    MARKER_ORDER = [
+        "DYS393", "DYS390", "DYS19", "DYS391", "DYS385", "DYS426", "DYS388", 
+        "DYS439", "DYS389i", "DYS392", "DYS389ii", "DYS458", "DYS459", "DYS455", 
+        "DYS454", "DYS447", "DYS437", "DYS448", "DYS449", "DYS464", "DYS460", 
+        "Y-GATA-H4", "YCAII", "DYS456", "DYS607", "DYS576", "DYS570", "CDY", 
+        "DYS442", "DYS438"
+    ]
+    q_markers = profile.get('markers', {})
+    columns = [m for m in MARKER_ORDER if m in q_markers]
+    
+    style = """<style>
+.str-table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 11px; }
+.str-table th { background-color: #f1f5f9; padding: 4px; border: 1px solid #e2e8f0; text-align: center; }
+.str-table td { padding: 4px; border: 1px solid #e2e8f0; text-align: center; }
+.str-match { color: #d1d5db; }
+.str-diff-minor { color: #ea580c; font-weight: bold; background-color: #fff7ed; }
+.str-diff-major { color: #dc2626; font-weight: bold; background-color: #fef2f2; }
+.str-meta { text-align: left !important; white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
+.str-kit { font-weight: bold; color: #2563eb; }
+.str-gd { font-weight: bold; background-color: #f0fdf4; color: #166534; }
+</style>"""
+    html = [style, '<div style="overflow-x:auto;"><table class="str-table"><thead><tr>']
+    html.append('<th colspan="4" style="text-align:left">Match Info</th>')
+    for col in columns: html.append(f'<th>{col.replace("DYS","")}</th>')
+    html.append('</tr><tr style="background-color: #dbeafe;">')
+    html.append(f'<td class="str-meta str-kit">{profile.get("kitNumber")}</td><td class="str-meta">{profile.get("name")}</td><td class="str-meta">{profile.get("haplogroup")}</td><td class="str-gd">-</td>')
+    for col in columns: html.append(f'<th>{q_markers.get(col, "")}</th>')
+    html.append('</tr></thead><tbody>')
+    
+    for m in matches:
+        mp = m.get('profile', {})
+        mm = mp.get('markers', {})
+        html.append('<tr>')
+        html.append(f'<td class="str-meta str-kit">{mp.get("kitNumber")}</td><td class="str-meta" title="{mp.get("name")}">{mp.get("name")}</td><td class="str-meta">{mp.get("haplogroup")}</td><td class="str-gd">{m.get("distance")}</td>')
+        for col in columns:
+            q, val = str(q_markers.get(col, "")), str(mm.get(col, ""))
+            if not val: html.append('<td>?</td>')
+            else:
+                txt, cls = calculate_str_diff(q, val)
+                html.append(f'<td class="str-{cls}">{txt}</td>')
+        html.append('</tr>')
+    html.append('</tbody></table></div>')
+    return "".join(html)
+
+def fetch_str_match_table(kit_number):
+    try:
+        # Pystr API
+        API = "https://pystr.valalav.ru/api/profiles"
+        p_resp = requests.get(f"{API}/{kit_number}", timeout=10)
+        if p_resp.status_code != 200: return None
+        profile = p_resp.json().get('profile', {})
+        markers = profile.get('markers', {})
+        if not markers: return None
+
+        m_resp = requests.post(f"{API}/find-matches", json={
+            "kitNumber": kit_number, "panel": "Y-STR37", "maxDist": 10, "limit": 30,
+            "includeSubclades": True, "showEmptyHaplogroups": False, "markers": markers
+        }, timeout=15)
+        if m_resp.status_code != 200: return None
+        matches = m_resp.json().get('matches', [])
+        return generate_str_table_html(profile, matches)
+    except Exception as e:
+        print(f"  STR Match Error for {kit_number}: {e}")
+        return None
+# -----------------------------
+
 def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
     """Prepare context for Jinja2 template using row data."""
     branch_name = row['Haplogroup']
@@ -507,6 +582,13 @@ def main():
         related_docs = find_related_docs(branch, clean_lineage)
 
         context = generate_post_context(row, lineage, node, related_docs, tree)
+        
+        # New: Fetch STR Match Table
+        if kit:
+            print(f"  Fetching STR matches for {kit}...")
+            context['str_match_table'] = fetch_str_match_table(kit)
+        else:
+            context['str_match_table'] = None
         
         try:
             output_content = template.render(context)

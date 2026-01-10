@@ -373,6 +373,10 @@ details.dna-spoiler[open] summary {
 <details class="dna-spoiler">
 <summary>🔗 STR Совпадения</summary>
 <div class="dna-spoiler-content">
+{% if str_match_table %}
+{{ str_match_table | safe }}
+<p>&nbsp;</p>
+{% endif %}
 [github_md path="00_General/00_strmf.md"]
 </div>
 </details>
