@@ -233,13 +233,41 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
         # Start ticks from rounded major
         start_tick = (major_tmrca // 1000) * 1000
         
-        # SIMPLIFIED SCALE: Only show Major Start and 5k Inflection Point
-        # No intermediate ticks to avoid clutter/overlap
-        tick_values.append(start_tick)
-             
-        # Ensure focus point tick exists if within range
-        if 5000 < major_tmrca and 5000 > current_tmrca:
-             tick_values.append(5000)
+        # SMART SCALE: Pre-defined 'nice' values with collision detection
+        # This restores visual density while strictly preventing overlaps
+        candidates = [
+            50000, 45000, 40000, 35000, 30000, 25000, 20000, 
+            15000, 12000, 10000, 8000, 6000, 
+            5000, 4000, 3000, 2500, 2000, 1500, 1000, 500
+        ]
+        
+        # Filter candidates within range
+        tick_values = []
+        for c in candidates:
+            if c <= major_tmrca and c >= current_tmrca:
+                tick_values.append(c)
+        
+        # Always include the exact Major start point for context
+        if start_tick not in tick_values:
+            tick_values.append(start_tick)
+            
+        # Sort descending (top to bottom)
+        tick_values = sorted(list(set(tick_values)), reverse=True)
+        
+        # Collision detection loop
+        final_ticks = []
+        last_pos_pct = -100 # Initialize far above
+        
+        for val in tick_values:
+            pos_pct = get_timeline_position(val, major_tmrca, current_tmrca)
+            
+            # Check distance to previous tick (min 6% height difference)
+            if abs(pos_pct - last_pos_pct) >= 6:
+                final_ticks.append(val)
+                last_pos_pct = pos_pct
+                
+        # Use our collision-checked list
+        tick_values = final_ticks
              
         # Sort desc
         tick_values = sorted(list(set(tick_values)), reverse=True)
