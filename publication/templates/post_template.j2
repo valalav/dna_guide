@@ -273,6 +273,6 @@ details.dna-spoiler[open] summary {
 
 <h2>Внешние ссылки</h2>
 <ul>
-<li><a href="https://www.yfull.com/tree/{{ branch_id }}/">YFull Tree</a></li>
+<li><a href="https://www.yfull.com/tree/{{ canonical_id | default(branch_id) }}/">YFull Tree</a></li>
 <li><a href="https://aadna.ru/">Проект AADNA</a></li>
 </ul>

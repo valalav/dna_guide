@@ -45,6 +45,42 @@ dna_guide/
 
 ---
 
+
+---
+
+## SSH Connection Protocol
+
+When asking to "connect to server" or "connect to SSH":
+
+1. **Read credentials** from private/bystr/.env.md or request if missing.
+   - Line 1: IP address
+   - Line 2: Username
+   - Line 3: Password
+
+2. **Execute connection**:
+
+   **Windows (Desktop)**:
+   ```bash
+   ./plink.exe -ssh [username]@[IP] -pw "[password]"
+   ```
+
+   **Linux (Ubuntu/Mint)**:
+   ```bash
+   # Ensure sshpass is installed: sudo apt install sshpass
+   sshpass -p "[password]" ssh -o StrictHostKeyChecking=no [username]@[IP]
+   ```
+
+   - Set timeout to 300000ms
+   - After connection, check output with TaskOutput
+
+3. **Confirm connection** by showing server info from the output
+
+**Important**: 
+- On Windows: Use `plink.exe` from the current directory (`./plink.exe`).
+- On Linux: Use standard `sshpass` + `ssh`.
+
+---
+
 ## Common Commands
 
 ### Running the Validation Script

@@ -1,0 +1,1 @@
+https://www.reddit.com/r/Bard/comments/1p8qapf/best_nano_banana_pro_prompts_for_infographics_in/

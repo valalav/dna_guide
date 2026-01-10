@@ -1,4 +1,4 @@
-<h1>Гаплогруппа C-BY154208</h1>
+<h1>Гаплогруппа J-CTS1192</h1>
 
 <style>
 /* Стили для спойлеров */
@@ -65,6 +65,11 @@ details.dna-spoiler[open] summary {
 .tmrca-timeline {
     position: relative;
     padding: 20px 10px;
+    margin: 15px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 12px;
+    overflow: hidden;
+}
     margin: 15px 0;
     /* Clean background */
     background: transparent;
@@ -141,11 +146,10 @@ details.dna-spoiler[open] summary {
 
 
 
-<p><strong>Фамилия:</strong> Kerimov<br>
-<strong>Kit Number:</strong> 123456<br>
-<strong>Субэтнос:</strong> Kabardian<br>
-<strong>Населенный пункт:</strong> Nalchik<br>
-<strong>Тест:</strong> WGS</p>
+<p><strong>Фамилия:</strong> <br>
+<strong>Kit Number:</strong> <br>
+<strong>Субэтнос:</strong> <br>
+<strong>Населенный пункт:</strong> </p>
 
 <h2>Краткое резюме</h2>
 
@@ -153,12 +157,10 @@ details.dna-spoiler[open] summary {
 
 <br>
 
-
 [github_md path="00_General/00_wgs.md"]
 
-
-<p><strong>Возраст ветки (TMRCA):</strong> 2400 лет<br>
-<strong>Путь:</strong>  > A0-T > A1 > A1b > BT > CT > CF > C > C-M217 > C-L1373 > C-F3447 > C-F1699 > C-M504 > C-Y4464 > C-Y11121 > C-BY154208</p>
+<p><strong>Возраст ветки (TMRCA):</strong> 6600 лет<br>
+<strong>Путь:</strong>  > A0-T > A1 > A1b > BT > CT > CF > F > GHIJK > HIJK > IJK > IJ > J > J2 > J-M410 > J-PF4610 > J-L26 > J-PF5087 > J-PF5160 > J-L24 > J-Y22662 > J-L25 > J-Z438 > J-Z387</p>
 
 <details class="dna-spoiler">
 <summary>⏱️ Путь с датировками TMRCA</summary>
@@ -223,72 +225,136 @@ details.dna-spoiler[open] summary {
 
 
 <div class="tmrca-item major" style="margin-left: 0%;">
-    <span class="tmrca-branch">C</span>
+    <span class="tmrca-branch">F</span>
     <span class="tmrca-years">~48 800</span>
     <span class="tmrca-label">🟠 мажорная</span>
     
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 21%;">
-    <span class="tmrca-branch">C-M217</span>
-    <span class="tmrca-years">~34 000</span>
+<div class="tmrca-item" style="margin-left: 0%;">
+    <span class="tmrca-branch">GHIJK</span>
+    <span class="tmrca-years">~48 500</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 0%;">
+    <span class="tmrca-branch">HIJK</span>
+    <span class="tmrca-years">~48 500</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 2%;">
+    <span class="tmrca-branch">IJK</span>
+    <span class="tmrca-years">~47 200</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 9%;">
+    <span class="tmrca-branch">IJ</span>
+    <span class="tmrca-years">~42 900</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item major" style="margin-left: 28%;">
+    <span class="tmrca-branch">J</span>
+    <span class="tmrca-years">~31 600</span>
+    <span class="tmrca-label">🟠 мажорная</span>
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 35%;">
+    <span class="tmrca-branch">J2</span>
+    <span class="tmrca-years">~27 600</span>
     
     
 </div>
 
 
 <div class="tmrca-item" style="margin-left: 49%;">
-    <span class="tmrca-branch">C-L1373</span>
-    <span class="tmrca-years">~16 100</span>
-    
-    
-</div>
-
-
-<div class="tmrca-item" style="margin-left: 49%;">
-    <span class="tmrca-branch">C-F3447</span>
-    <span class="tmrca-years">~16 100</span>
+    <span class="tmrca-branch">J-M410</span>
+    <span class="tmrca-years">~19 000</span>
     
     
 </div>
 
 
 <div class="tmrca-item" style="margin-left: 51%;">
-    <span class="tmrca-branch">C-F1699</span>
-    <span class="tmrca-years">~14 200</span>
+    <span class="tmrca-branch">J-PF4610</span>
+    <span class="tmrca-years">~17 700</span>
     
     
 </div>
 
 
-<div class="tmrca-item" style="margin-left: 62%;">
-    <span class="tmrca-branch">C-M504</span>
-    <span class="tmrca-years">~7 000</span>
+<div class="tmrca-item" style="margin-left: 53%;">
+    <span class="tmrca-branch">J-L26</span>
+    <span class="tmrca-years">~16 000</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 54%;">
+    <span class="tmrca-branch">J-PF5087</span>
+    <span class="tmrca-years">~15 600</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 55%;">
+    <span class="tmrca-branch">J-PF5160</span>
+    <span class="tmrca-years">~15 300</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 57%;">
+    <span class="tmrca-branch">J-L24</span>
+    <span class="tmrca-years">~13 900</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 63%;">
+    <span class="tmrca-branch">J-Y22662</span>
+    <span class="tmrca-years">~10 000</span>
+    
+    
+</div>
+
+
+<div class="tmrca-item" style="margin-left: 65%;">
+    <span class="tmrca-branch">J-L25</span>
+    <span class="tmrca-years">~8 800</span>
     
     
 </div>
 
 
 <div class="tmrca-item" style="margin-left: 67%;">
-    <span class="tmrca-branch">C-Y4464</span>
-    <span class="tmrca-years">~3 400</span>
-    
-    
-</div>
-
-
-<div class="tmrca-item" style="margin-left: 68%;">
-    <span class="tmrca-branch">C-Y11121</span>
-    <span class="tmrca-years">~2 900</span>
+    <span class="tmrca-branch">J-Z438</span>
+    <span class="tmrca-years">~7 600</span>
     
     
 </div>
 
 
 <div class="tmrca-item current" style="margin-left: 70%;">
-    <span class="tmrca-branch">C-BY154208</span>
-    <span class="tmrca-years">~2 400</span>
+    <span class="tmrca-branch">J-Z387</span>
+    <span class="tmrca-years">~6 600</span>
     
     <span class="tmrca-label">🟢 ваша ветка</span>
 </div>
@@ -317,18 +383,9 @@ details.dna-spoiler[open] summary {
 
 
 <details class="dna-spoiler" open>
-<summary style="color: #0366d6;">📍 C-BY154208 (ваша ветка)</summary>
+<summary style="color: #0366d6;">📍 J (ваша ветка)</summary>
 <div class="dna-spoiler-content">
-[github_md path="10_Haplogroups/C/02_C_BY154208.md"]
-</div>
-</details>
-
-
-
-<details class="dna-spoiler">
-<summary>📂 C-M217 (родительская ветка)</summary>
-<div class="dna-spoiler-content">
-[github_md path="10_Haplogroups/C/01_C_M217.md"]
+[github_md path="10_Haplogroups/J/00_J_Overview.md"]
 </div>
 </details>
 
@@ -338,7 +395,7 @@ details.dna-spoiler[open] summary {
 <!-- Список представителей (Spoiler) -->
 
 <details class="dna-spoiler">
-<summary>👥 Список представителей (1)</summary>
+<summary>👥 Список представителей (18)</summary>
 <div class="dna-spoiler-content">
 <table>
 <thead>
@@ -346,7 +403,41 @@ details.dna-spoiler[open] summary {
 </thead>
 <tbody>
 
-<tr><td>Kerimov</td><td></td><td>123456</td><td>Kabardian</td><td>Nalchik</td></tr>
+<tr><td>Шамба</td><td>Shamba</td><td>55476</td><td>Абжуа (Абжьыуа)</td><td>Абгархук</td></tr>
+
+<tr><td>Шамба</td><td>Shamba</td><td>63859</td><td></td><td></td></tr>
+
+<tr><td>Капба</td><td>Kapba</td><td>63896</td><td>Бзып (Бзыԥ)</td><td>Бармыш</td></tr>
+
+<tr><td>Дуков</td><td>Dukov</td><td>65094</td><td>Кабардинец</td><td>Инаркой</td></tr>
+
+<tr><td>Тарба (Ҭарба)</td><td>Tarba</td><td>BP49920</td><td>Бзып (Бзыԥ)</td><td>Дурипш (Дәрыҧшь)</td></tr>
+
+<tr><td>Кодзоков</td><td>A. Kodzokov</td><td>487161</td><td>Кабардинец</td><td>Пятигорск</td></tr>
+
+<tr><td>Кодзоков</td><td>Quadzoqua Metin (Kodzoko)</td><td>IN59103</td><td>Кабардинец</td><td>Uzunyayla</td></tr>
+
+<tr><td>Догужоко</td><td>Doghjoka (Duguzhoko)</td><td>IN89752</td><td>Кабардинец</td><td>Аушигер</td></tr>
+
+<tr><td>Махов</td><td>Makhov</td><td>YF103370</td><td>Кабардинец</td><td>Сармаково</td></tr>
+
+<tr><td>Махов</td><td>Makhov Oleg</td><td>SI10449</td><td>Кабардинец</td><td>Сармаково</td></tr>
+
+<tr><td>Метов</td><td>Metov Oleg </td><td>IN82338</td><td>Кабардинец</td><td>Ходзь</td></tr>
+
+<tr><td>Метов</td><td>Metov Khasanbi</td><td>YF078230</td><td>Кабардинец</td><td>Нартан</td></tr>
+
+<tr><td>Метов</td><td>Valeri Metov</td><td>B503239</td><td>Кабардинец</td><td>Нартан</td></tr>
+
+<tr><td>Макуашев</td><td>Makuashev</td><td>YF143382</td><td>Кабардинец</td><td></td></tr>
+
+<tr><td>Бекшоков</td><td>Islam Bekshokov</td><td>IN55850</td><td>Кабардинец</td><td></td></tr>
+
+<tr><td>Шаков</td><td>Beslan Ch. Shakov</td><td>MI21122</td><td>Кабардинец</td><td>Малый Зеленчук</td></tr>
+
+<tr><td>Пижинов</td><td>Pizhinov</td><td>55520</td><td>Кабардинец</td><td>Верхний Курп</td></tr>
+
+<tr><td></td><td>Azouqah</td><td>MK87694</td><td>Кабардинец</td><td></td></tr>
 
 </tbody>
 </table>
@@ -355,7 +446,6 @@ details.dna-spoiler[open] summary {
 
 
 <!-- Соседние ветви (Spoiler) -->
-
 
 
 <!-- Митохондриальная ДНК (Spoiler) -->
@@ -378,11 +468,8 @@ details.dna-spoiler[open] summary {
 </div>
 </details>
 
-
-
-
 <h2>Внешние ссылки</h2>
 <ul>
-<li><a href="https://www.yfull.com/tree/C-BY154208/">YFull Tree</a></li>
+<li><a href="https://www.yfull.com/tree/J-Z387/">YFull Tree</a></li>
 <li><a href="https://aadna.ru/">Проект AADNA</a></li>
 </ul>

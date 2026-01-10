@@ -129,50 +129,132 @@ def calculate_str_diff(q_val, m_val):
 
 def generate_str_table_html(profile, matches):
     MARKER_ORDER = [
-        "DYS393", "DYS390", "DYS19", "DYS391", "DYS385", "DYS426", "DYS388", 
-        "DYS439", "DYS389i", "DYS392", "DYS389ii", "DYS458", "DYS459", "DYS455", 
-        "DYS454", "DYS447", "DYS437", "DYS448", "DYS449", "DYS464", "DYS460", 
-        "Y-GATA-H4", "YCAII", "DYS456", "DYS607", "DYS576", "DYS570", "CDY", 
-        "DYS442", "DYS438"
+        "DYS393", "DYS390", "DYS19", "DYS391", "DYS385", "426", "388", 
+        "439", "389i", "392", "389ii", "458", "459", "455", 
+        "454", "447", "437", "448", "449", "464", "460", 
+        "Y-GATA-H4", "YCAII", "456", "607", "576", "570", "CDY", 
+        "442", "438"
     ]
+    # Normalize marker names for display/lookup
+    def norm(m): return m.replace("DYS","")
+    
     q_markers = profile.get('markers', {})
     columns = [m for m in MARKER_ORDER if m in q_markers]
     
-    style = """<style>
-.str-table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 11px; }
-.str-table th { background-color: #f1f5f9; padding: 4px; border: 1px solid #e2e8f0; text-align: center; }
-.str-table td { padding: 4px; border: 1px solid #e2e8f0; text-align: center; }
-.str-match { color: #d1d5db; }
-.str-diff-minor { color: #ea580c; font-weight: bold; background-color: #fff7ed; }
-.str-diff-major { color: #dc2626; font-weight: bold; background-color: #fef2f2; }
-.str-meta { text-align: left !important; white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
-.str-kit { font-weight: bold; color: #2563eb; }
-.str-gd { font-weight: bold; background-color: #f0fdf4; color: #166534; }
-</style>"""
-    html = [style, '<div style="overflow-x:auto;"><table class="str-table"><thead><tr>']
-    html.append('<th colspan="4" style="text-align:left">Match Info</th>')
-    for col in columns: html.append(f'<th>{col.replace("DYS","")}</th>')
-    html.append('</tr><tr style="background-color: #dbeafe;">')
-    html.append(f'<td class="str-meta str-kit">{profile.get("kitNumber")}</td><td class="str-meta">{profile.get("name")}</td><td class="str-meta">{profile.get("haplogroup")}</td><td class="str-gd">-</td>')
-    for col in columns: html.append(f'<th>{q_markers.get(col, "")}</th>')
+    # Inline Styles (Minimal)
+    s_t = 'width:100%;border-collapse:collapse;font-size:11px'
+    css_cell = 'padding:4px;border:1px solid #ddd;text-align:center;'
+    css_head = 'background:#f4f4f4;' + css_cell
+    # Highlighting Styles
+    css_diff_min = 'background:#fff7ed;color:#ea580c;font-weight:bold;' + css_cell # Orange
+    css_diff_maj = 'background:#fef2f2;color:#dc2626;font-weight:bold;' + css_cell # Red
+    css_match = 'color:#9ca3af;' + css_cell # Grey
+
+    # Diff Logic Helper (Inlined)
+    def calc_diff(q_val, m_val):
+        search_v, match_v = str(q_val).strip(), str(m_val).strip()
+        if not search_v or not match_v or search_v == match_v: return None, "match"
+        
+        # Helper to parse "19-20" or "19,20" into sorted ints
+        import re
+        def parse_str(s):
+            parts = re.split(r'[-,]', s)
+            return sorted([int(p) for p in parts if p.strip().isdigit()])
+
+        try:
+            q_nums = parse_str(search_v)
+            m_nums = parse_str(match_v)
+        except:
+            return match_v, "major" # Fallback if parse fails
+
+        # If counts differ (e.g. null allele), show value
+        if len(q_nums) != len(m_nums):
+            return match_v, "major"
+
+        # Calculate element-wise diffs
+        diffs = []
+        total_dist = 0
+        consistent_dir = 0 # 0: init, 1: pos, -1: neg, 2: mixed
+
+        for q, m in zip(q_nums, m_nums):
+            d = m - q
+            if d == 0: continue
+            total_dist += abs(d)
+            diffs.append(d)
+        
+        if not diffs: return None, "match" # Values strictly equal after sort?
+
+        # Format output
+        # If all diffs are same direction, sum them? 
+        # E.g. 35-36 vs 36-37 (+1, +1) -> +2
+        # E.g. 36-37 vs 35-36 (-1, -1) -> -2
+        # E.g. 19-20 vs 19-22 (0, +2) -> +2
+        
+        # Check direction
+        is_pos = all(d >= 0 for d in diffs)
+        is_neg = all(d <= 0 for d in diffs)
+        
+        if is_pos:
+            s = sum(diffs)
+            return f"+{s}", "minor" if s <= 1 else "major"
+        elif is_neg:
+            s = sum(diffs)
+            return str(s), "minor" if abs(s) <= 1 else "major"
+        else:
+            # Mixed (e.g. +1, -1) - Rare but possible (RecLOH)
+            # Show individual diffs? "+1/-1"
+            txt = "/".join([f"+{d}" if d > 0 else str(d) for d in diffs])
+            return txt, "major" # Mixed is usually complex/major
+
+    html = [f'<div style="overflow-x:auto"><table style="{s_t}">']
+    html.append('<thead><tr>')
+    html.append(f'<th colspan="4" style="{css_head}text-align:left">Matches</th>')
+    for col in columns: 
+        html.append(f'<th style="{css_head}">{norm(col)}</th>')
     html.append('</tr></thead><tbody>')
+
+    # Profile Row
+    html.append(f'<tr style="background:#e0f2fe">')
+    html.append(f'<td colspan="3" style="{css_cell}text-align:left;font-weight:bold">{profile.get("kitNumber")}</td>')
+    html.append(f'<td style="{css_cell}">-</td>')
+    for col in columns:
+        html.append(f'<th style="{css_head}">{q_markers.get(col, "")}</th>')
+    html.append('</tr>')
     
-    for m in matches:
+    # Matches (Limit 30)
+    for m in matches[:30]:
         mp = m.get('profile', {})
         mm = mp.get('markers', {})
-        html.append('<tr>')
-        html.append(f'<td class="str-meta str-kit">{mp.get("kitNumber")}</td><td class="str-meta" title="{mp.get("name")}">{mp.get("name")}</td><td class="str-meta">{mp.get("haplogroup")}</td><td class="str-gd">{m.get("distance")}</td>')
+        
+        row_html = ['<tr>']
+        # Info
+        name = mp.get("name","").replace('"',"'")
+        row_html.append(f'<td style="{css_cell}text-align:left;max-width:100px;overflow:hidden;white-space:nowrap" title="{name}">{mp.get("kitNumber")}</td>')
+        row_html.append(f'<td style="{css_cell}text-align:left;max-width:100px;overflow:hidden;white-space:nowrap" title="{name}">{name[:15]}..</td>')
+        row_html.append(f'<td style="{css_cell}">{mp.get("haplogroup")}</td>')
+        row_html.append(f'<td style="{css_cell}background:#f0fdf4;color:#166534;font-weight:bold">{m.get("distance")}</td>')
+        
         for col in columns:
-            q, val = str(q_markers.get(col, "")), str(mm.get(col, ""))
-            if not val: html.append('<td>?</td>')
+            q_v = q_markers.get(col, "")
+            m_v = mm.get(col, "")
+            
+            txt, cls = calc_diff(q_v, m_v)
+            
+            if cls == "match":
+                row_html.append(f'<td style="{css_match}">-</td>') # Or just empty? User said "color highlighting". Str matchers often show value or dot. "-" is clear.
+            elif txt:
+                style = css_diff_min if cls == "minor" else css_diff_maj
+                row_html.append(f'<td style="{style}">{txt}</td>')
             else:
-                txt, cls = calculate_str_diff(q, val)
-                html.append(f'<td class="str-{cls}">{txt}</td>')
-        html.append('</tr>')
+                 row_html.append(f'<td style="{css_cell}">?</td>')
+                
+        row_html.append('</tr>')
+        html.append("".join(row_html))
+
     html.append('</tbody></table></div>')
     return "".join(html)
 
-def fetch_str_match_table(kit_number):
+def fetch_str_match_table(kit_number, limit=30):
     try:
         # Pystr API
         API = "https://pystr.valalav.ru/api/profiles"
@@ -183,7 +265,7 @@ def fetch_str_match_table(kit_number):
         if not markers: return None
 
         m_resp = requests.post(f"{API}/find-matches", json={
-            "kitNumber": kit_number, "panel": "Y-STR37", "maxDist": 10, "limit": 30,
+            "kitNumber": kit_number, "panel": "Y-STR37", "maxDist": 10, "limit": limit,
             "includeSubclades": True, "showEmptyHaplogroups": False, "markers": markers
         }, timeout=15)
         if m_resp.status_code != 200: return None
@@ -450,14 +532,11 @@ def publish_to_wordpress(local_file, title, slug, tags="", post_date="", publish
         with open(local_file, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Base64 encode the content for safe transfer
-        b64_content = base64.b64encode(content.encode('utf-8')).decode('ascii')
-        
-        # Step 2: Upload via echo + base64 decode on server
+        # Step 2: Upload via PSCP (avoids command line length limits)
         remote_file = f"/tmp/{os.path.basename(local_file)}"
-        echo_cmd = f'echo "{b64_content}" | base64 -d > {remote_file}'
-        ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", echo_cmd]
-        result = subprocess.run(ssh_cmd, capture_output=True, text=True, timeout=30)
+        pscp_cmd = [PSCP_PATH, "-pw", SERVER_PASS, "-batch", local_file, f"{SERVER_USER}@{SERVER_IP}:{remote_file}"]
+        result = subprocess.run(pscp_cmd, capture_output=True, text=True, timeout=60)
+        
         if result.returncode != 0:
             print(f"    Upload failed: {result.stderr}")
             return False
@@ -472,7 +551,8 @@ def publish_to_wordpress(local_file, title, slug, tags="", post_date="", publish
         # Convert tags from pipe-separated to comma-separated for wp-cli
         tags_param = f'--tags="{tags.replace("|", ",")}"' if tags else ''
         date_param = f'--post_date="{post_date}"' if post_date else ''
-        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && TITLE=$(echo "{b64_title}" | base64 -d) && cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="$TITLE" --post_name="{slug}" --post_status={post_status} --post_type=post {tags_param} {date_param} --path={WP_PATH} --allow-root --porcelain'
+        # Use filename argument instead of pipe to avoid buffer limits/truncation
+        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && TITLE=$(echo "{b64_title}" | base64 -d) && wp post create /tmp/{os.path.basename(local_file)} --post_title="$TITLE" --post_name="{slug}" --post_status={post_status} --post_type=post {tags_param} {date_param} --path={WP_PATH} --allow-root --porcelain'
         
         print(f"    Creating WordPress post...")
         ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", wp_cmd]

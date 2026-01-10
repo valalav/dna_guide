@@ -77,6 +77,60 @@ def find_node_data(tree, target_id):
         
     return found_node, lineage, descendants
 
+def find_node_by_synonym(tree, synonym):
+    """
+    Find a node where the 'snps' field contains the synonym.
+    Returns: (node_object, lineage_path_list, set_of_descendant_ids)
+    """
+    synonym_clean = synonym.strip().upper().replace('J-', '').replace('R-', '').replace('G-', '') # Simplistic prefix removal for search
+    
+    found_node = None
+    lineage = []
+    descendants = set()
+    
+    def traverse(current_node, current_path):
+        nonlocal found_node, lineage
+        node_id = current_node.get('id', '')
+        new_path = current_path + [node_id]
+        
+        # Check SNPs field
+        snps = current_node.get('snps', '').upper()
+        # Handle slash-separated synonyms (e.g. "Z2165/CTS1192/PF5413")
+        snp_list = []
+        for group in snps.split(','):
+            for alias in group.split('/'):
+                snp_list.append(alias.strip())
+        
+        # Check if synonym matches ID (case insensitive) or any SNP
+        if node_id.upper() == synonym.upper() or synonym_clean in snp_list:
+            found_node = current_node
+            lineage[:] = new_path
+            collect_descendants(current_node)
+            return True
+        
+        if 'children' in current_node:
+            for child in current_node['children']:
+                if traverse(child, new_path):
+                    return True
+        return False
+
+    def collect_descendants(node):
+        if 'children' in node:
+            for child in node['children']:
+                cid = child.get('id', '')
+                if cid:
+                    descendants.add(cid)
+                collect_descendants(child)
+                
+    if isinstance(tree, list):
+        for root in tree:
+            if traverse(root, []):
+                break
+    elif isinstance(tree, dict):
+        traverse(tree, [])
+        
+    return found_node, lineage, descendants
+
 def find_siblings(tree, parent_id, target_id):
     """Find sibling nodes of the target."""
     parent_node, _, _ = find_node_data(tree, parent_id)
@@ -296,9 +350,12 @@ def log_publication(branch, filename, status):
             writer.writerow(['Branch', 'Filename', 'Date', 'Status'])
         writer.writerow([branch, filename, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), status])
 
-def generate_post_context(branch_name, records, lineage_path, branch_node, related_docs, tree, neighbor_context="", ancestor_note=""):
+def generate_post_context(branch_name, records, lineage_path, branch_node, related_docs, tree, neighbor_context="", ancestor_note="", canonical_id=None):
     """Prepare context for Jinja2 template."""
     tmrca = branch_node.get('tmrca', 'N/A')
+    
+    # Use canonical_id if provided, otherwise fallback to branch_node id
+    clean_branch_id = canonical_id if canonical_id else branch_node.get('id', '')
     
     # Simple lineage path
     formatted_lineage = " > ".join(lineage_path)
@@ -423,7 +480,8 @@ def generate_post_context(branch_name, records, lineage_path, branch_node, relat
     return {
         'ancestor_note': ancestor_note,
         'branch_name': branch_name,
-        'branch_id': branch_node.get('id', ''),
+        'branch_id': clean_branch_id,
+        'canonical_id': clean_branch_id,
         'header': header,
         'tmrca': tmrca,
         'formatted_lineage': formatted_lineage,
@@ -439,11 +497,48 @@ def generate_post_context(branch_name, records, lineage_path, branch_node, relat
 def process_branch(branch, tree, csv_text, args, env):
     """Process a single branch and generate publication."""
     print(f"Processing branch: {branch}")
+    
+    # 1. Try finding by ID first
     node, lineage, descendants = find_node_data(tree, branch)
     
+    canonical_id = None
+    
+    # 2. If not found, try synonym lookup
     if not node:
-        print(f"Error: Branch {branch} not found.")
+        print(f"Direct match for '{branch}' not found. Checking synonyms...")
+        node, lineage, descendants = find_node_by_synonym(tree, branch)
+        if node:
+            canonical_id = node.get('id', '')
+            print(f"Found synonym! Resolved '{branch}' -> Canonical ID '{canonical_id}'")
+    else:
+        canonical_id = node.get('id', '')
+    
+    if not node:
+        print(f"Error: Branch {branch} not found (neither as ID nor synonym).")
         return False
+
+    # FIX: Collect all aliases (Canonical + Synonyms) to ensure we match records
+    # regardless of which name variance is used in the CSV.
+    all_aliases = set()
+    if node:
+        # 1. Add Canonical ID
+        cid = node.get('id', '')
+        if cid: all_aliases.add(cid)
+        
+        # 2. Add Synonyms from SNPs field
+        snps_str = node.get('snps', '')
+        if snps_str:
+            for group in snps_str.split(','):
+                for alias in group.split('/'):
+                    clean_alias = alias.strip()
+                    if clean_alias:
+                        all_aliases.add(clean_alias)
+                        
+    # 3. Add the requested branch name itself (just in case)
+    all_aliases.add(branch)
+    
+    # Update descendants set to include all aliases (parse_sheet_data checks {target} | descendants)
+    descendants.update(all_aliases)
 
     matches = parse_sheet_data(csv_text, branch, descendants)
     match_source_branch = branch
@@ -452,7 +547,7 @@ def process_branch(branch, tree, csv_text, args, env):
     # Neighbors logic (simplified for brevity, reuse of original logic flow)
     if len(lineage) >= 2:
         parent_id = lineage[-2]
-        siblings = find_siblings(tree, parent_id, branch)
+        siblings = find_siblings(tree, parent_id, canonical_id if canonical_id else branch)
         found_neighbors = []
         for sib_id in siblings:
             sib_node, _, sib_descendants = find_node_data(tree, sib_id)
@@ -469,7 +564,7 @@ def process_branch(branch, tree, csv_text, args, env):
                  s_branch = m.get('_BranchContext') or ''
                  neighbor_context += f"<li><strong>{s_branch}</strong>: {s_name}</li>\n"
              neighbor_context += "</ul>\n"
-
+ 
     # Fallback
     if not matches:
         print("Searching ancestry for fallback...")
@@ -489,19 +584,24 @@ def process_branch(branch, tree, csv_text, args, env):
         ancestor_note = f"<div class='note'><strong>Примечание:</strong> Прямых образцов для <strong>{branch}</strong> не найдено. Показаны образцы для ближайшей ветви <strong>{match_source_branch}</strong>.</div>\n"
 
     context = generate_post_context(
-        branch_name=branch,
+        branch_name=branch, # Keep requested name for display
         records=matches,
         lineage_path=lineage,
         branch_node=node,
         related_docs=related_docs,
         tree=tree,
         neighbor_context=neighbor_context,
-        ancestor_note=ancestor_note
+        ancestor_note=ancestor_note,
+        canonical_id=canonical_id # Pass canonical ID for URL
     )
+
 
     try:
         template = env.get_template('post_template.j2')
         output_content = template.render(context)
+    except Exception as e:
+        print(f"Template rendering failed: {e}")
+        return False
     except Exception as e:
         print(f"Template rendering failed: {e}")
         return False
