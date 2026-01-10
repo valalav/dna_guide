@@ -613,6 +613,14 @@ details.dna-spoiler[open] summary {
 <!-- Соседние ветви (Spoiler) -->
 
 
+<!-- STR Matches (для всех типов тестов) -->
+<details class="dna-spoiler">
+<summary>🔗 STR Совпадения</summary>
+<div class="dna-spoiler-content">
+[github_md path="00_General/00_strmf.md"]
+</div>
+</details>
+
 
 <!-- Митохондриальная ДНК (Spoiler) -->
 <details class="dna-spoiler">

@@ -155,6 +155,14 @@ details.dna-spoiler[open] summary {
 
 {% if test_type == 'WGS' %}
 [github_md path="00_General/00_wgs.md"]
+{% elif test_type == 'BigY' %}
+[github_md path="00_General/00_BigY.md"]
+{% elif test_type == 'y37_yseq' %}
+[github_md path="00_General/00_y37_yseq.md"]
+{% elif test_type == 'y37_ftdna' %}
+[github_md path="00_General/00_y37_ftdna.md"]
+{% elif test_type == 'genopoisk' %}
+[github_md path="00_General/00_genopoisk.md"]
 {% endif %}
 
 <p><strong>Возраст ветки (TMRCA):</strong> {{ tmrca }} лет<br>
@@ -242,6 +250,14 @@ details.dna-spoiler[open] summary {
 </details>
 {% endif %}
 
+<!-- STR Matches (для всех типов тестов) -->
+<details class="dna-spoiler">
+<summary>🔗 STR Совпадения</summary>
+<div class="dna-spoiler-content">
+[github_md path="00_General/00_strmf.md"]
+</div>
+</details>
+
 {% if test_type == 'WGS' %}
 <!-- Митохондриальная ДНК (Spoiler) -->
 <details class="dna-spoiler">
@@ -264,13 +280,12 @@ details.dna-spoiler[open] summary {
 </details>
 {% endif %}
 
-{% if test_type != 'WGS' %}
-<!-- Nevgen Prediction (Placeholder) -->
+{% if test_type not in ['WGS', 'BigY'] %}
+<!-- Nevgen Prediction -->
 <details class="dna-spoiler" open>
 <summary>🔮 Nevgen Prediction (Предсказание)</summary>
 <div class="dna-spoiler-content">
-<p>Сюда нужно добавить скриншот из Nevgen.</p>
-<!-- Плейсхолдер для скриншота -->
+[github_md path="00_General/00_nevgen.md"]
 </div>
 </details>
 {% endif %}
