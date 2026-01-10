@@ -254,8 +254,12 @@ def publish_to_wordpress(local_file, title, slug, publish=True):
         
         # Step 3: Create WordPress post via WP-CLI
         post_status = "publish" if publish else "draft"
-        # Use LANG=en_US.UTF-8 to ensure proper UTF-8 handling
-        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="{slug}" --post_name="{slug}" --post_status={post_status} --post_type=post --path={WP_PATH} --allow-root --porcelain'
+        
+        # Base64 encode the title to safely pass Cyrillic through SSH
+        b64_title = base64.b64encode(title.encode('utf-8')).decode('ascii')
+        
+        # Use LANG=en_US.UTF-8 and decode title from base64 on server
+        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && TITLE=$(echo "{b64_title}" | base64 -d) && cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="$TITLE" --post_name="{slug}" --post_status={post_status} --post_type=post --path={WP_PATH} --allow-root --porcelain'
         
         print(f"    Creating WordPress post...")
         ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", wp_cmd]
@@ -352,7 +356,8 @@ def main():
             
             # Auto-publish if requested
             if args.publish or args.draft:
-                title = f"Гаплогруппа {branch}"
+                # Use Title from CSV if available, otherwise generate from haplogroup
+                title = row.get('Title', '').strip() or f"Гаплогруппа {branch}"
                 post_id = publish_to_wordpress(output_filename, title, slug, publish=not args.draft)
                 if post_id:
                     print(f"  Published: https://aadna.ru/{slug}/")
