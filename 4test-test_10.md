@@ -1,4 +1,4 @@
-<h1>Гаплогруппа {{ branch_name }}</h1>
+<h1>Гаплогруппа I-Y60793</h1>
 
 <style>
 /* Стили для спойлеров */
@@ -220,13 +220,13 @@ details.dna-spoiler[open] summary {
 }
 </style>
 
-{{ ancestor_note }}
 
-<p><strong>Фамилия:</strong> {{ header.surname }}<br>
-<strong>Kit Number:</strong> {{ header.kit }}<br>
-<strong>Субэтнос:</strong> {{ header.subethnos }}<br>
-<strong>Населенный пункт:</strong> {{ header.location }}<br>
-<strong>Тест:</strong> {{ test_type }}</p>
+
+<p><strong>Фамилия:</strong> Кушбоков<br>
+<strong>Kit Number:</strong> YF143329<br>
+<strong>Субэтнос:</strong> Кабардинец<br>
+<strong>Населенный пункт:</strong> Нартан<br>
+<strong>Тест:</strong> WGS</p>
 
 <h2>Краткое резюме</h2>
 
@@ -234,64 +234,226 @@ details.dna-spoiler[open] summary {
 
 <br>
 
-{% if test_type == 'WGS' %}
-[github_md path="00_General/00_wgs.md"]
-{% elif test_type == 'BigY' %}
-[github_md path="00_General/00_BigY.md"]
-{% elif test_type == 'y37_yseq' %}
-[github_md path="00_General/00_y37_yseq.md"]
-{% elif test_type == 'y37_ftdna' %}
-[github_md path="00_General/00_y37_ftdna.md"]
-{% elif test_type == 'genopoisk' %}
-[github_md path="00_General/00_genopoisk.md"]
-{% endif %}
 
-<p><strong>Возраст ветки (TMRCA):</strong> {{ tmrca }} лет<br>
-<strong>Путь:</strong> {{ formatted_lineage }}</p>
+[github_md path="00_General/00_wgs.md"]
+
+
+<p><strong>Возраст ветки (TMRCA):</strong> 1150 лет<br>
+<strong>Путь:</strong>  > A0-T > A1 > A1b > BT > CT > CF > F > GHIJK > HIJK > IJK > IJ > I > I2 > I-CTS2257 > I-L460 > I-P37 > I-M423 > I-FGC41353 > I-Y7286 > I-Y3104 > I-L621 > I-CTS10936 > I-S19848 > I-CTS4002 > I-CTS10228 > I-Y3120 > I-Z17855 > I-FT386376 > I-Y75980 > I-Y60793</p>
 
 <details class="dna-spoiler">
 <summary>⏱️ Путь с датировками TMRCA</summary>
 <div class="dna-spoiler-content">
 
-{% if pre_major_timeline %}
+
 <!-- Pre-major: horizontal table -->
 <div class="tmrca-pre-major">
 <table class="tmrca-table">
 <tr>
-{% for item in pre_major_timeline %}
+
 <td class="tmrca-cell">
-    <div class="tmrca-branch-name">{{ item.id }}</div>
-    <div class="tmrca-age">{% if item.tmrca_formatted %}~{{ item.tmrca_formatted }}{% endif %}</div>
+    <div class="tmrca-branch-name">A0-T</div>
+    <div class="tmrca-age">~161 300</div>
 </td>
-{% endfor %}
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">A1</div>
+    <div class="tmrca-age">~133 400</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">A1b</div>
+    <div class="tmrca-age">~130 700</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">BT</div>
+    <div class="tmrca-age">~88 000</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">CT</div>
+    <div class="tmrca-age">~68 500</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">CF</div>
+    <div class="tmrca-age">~65 900</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">F</div>
+    <div class="tmrca-age">~48 800</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">GHIJK</div>
+    <div class="tmrca-age">~48 500</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">HIJK</div>
+    <div class="tmrca-age">~48 500</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">IJK</div>
+    <div class="tmrca-age">~47 200</div>
+</td>
+
+<td class="tmrca-cell">
+    <div class="tmrca-branch-name">IJ</div>
+    <div class="tmrca-age">~42 900</div>
+</td>
+
 </tr>
 </table>
 </div>
-{% endif %}
 
-{% if post_major_timeline %}
+
+
 <!-- Post-major: diagonal with vertical age scale -->
 <div class="tmrca-post-major">
 <div class="tmrca-scale">
-{% for tick in age_scale_ticks %}
-<div class="tmrca-tick" style="top: {{ tick.position }}%;">{{ tick.label }}</div>
-{% endfor %}
+
+<div class="tmrca-tick" style="top: 0%;">27k</div>
+
+<div class="tmrca-tick" style="top: 37%;">17k</div>
+
+<div class="tmrca-tick" style="top: 56%;">12k</div>
+
+<div class="tmrca-tick" style="top: 75%;">7k</div>
+
+<div class="tmrca-tick" style="top: 94%;">2k</div>
+
+<div class="tmrca-tick" style="top: 98%;">1k</div>
+
+<div class="tmrca-tick" style="top: 100%;">1k</div>
+
 </div>
 <div class="tmrca-timeline-diagonal">
-{% for item in post_major_timeline %}
-<div class="tmrca-item{% if item.is_current %} current{% endif %}{% if item.is_major %} major{% endif %}" style="margin-left: {{ (item.position * 0.6) | int }}%; margin-top: {{ (item.position * 0.3) | int }}px;">
-    <span class="tmrca-branch">{{ item.id }}</span>
-    {% if item.is_major %}<span class="tmrca-label">🟠</span>{% endif %}
-    {% if item.is_current %}<span class="tmrca-label">🟢</span>{% endif %}
+
+<div class="tmrca-item major" style="margin-left: 0%; margin-top: 0px;">
+    <span class="tmrca-branch">I</span>
+    <span class="tmrca-label">🟠</span>
+    
 </div>
-{% endfor %}
-{% if post_major_timeline %}
-{% set deepest = post_major_timeline[-1] %}
-<div class="tmrca-deepest-age">~{{ deepest.tmrca_formatted }} лет</div>
-{% endif %}
+
+<div class="tmrca-item" style="margin-left: 13%; margin-top: 6px;">
+    <span class="tmrca-branch">I2</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 13%; margin-top: 6px;">
+    <span class="tmrca-branch">I-CTS2257</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 15%; margin-top: 7px;">
+    <span class="tmrca-branch">I-L460</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 21%; margin-top: 10px;">
+    <span class="tmrca-branch">I-P37</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 30%; margin-top: 15px;">
+    <span class="tmrca-branch">I-M423</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 30%; margin-top: 15px;">
+    <span class="tmrca-branch">I-FGC41353</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 30%; margin-top: 15px;">
+    <span class="tmrca-branch">I-Y7286</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 36%; margin-top: 18px;">
+    <span class="tmrca-branch">I-Y3104</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 48%; margin-top: 24px;">
+    <span class="tmrca-branch">I-L621</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 49%; margin-top: 24px;">
+    <span class="tmrca-branch">I-CTS10936</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 49%; margin-top: 24px;">
+    <span class="tmrca-branch">I-S19848</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 51%; margin-top: 25px;">
+    <span class="tmrca-branch">I-CTS4002</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 54%; margin-top: 27px;">
+    <span class="tmrca-branch">I-CTS10228</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 57%; margin-top: 28px;">
+    <span class="tmrca-branch">I-Y3120</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 58%; margin-top: 29px;">
+    <span class="tmrca-branch">I-Z17855</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 58%; margin-top: 29px;">
+    <span class="tmrca-branch">I-FT386376</span>
+    
+    
+</div>
+
+<div class="tmrca-item" style="margin-left: 58%; margin-top: 29px;">
+    <span class="tmrca-branch">I-Y75980</span>
+    
+    
+</div>
+
+<div class="tmrca-item current" style="margin-left: 60%; margin-top: 30px;">
+    <span class="tmrca-branch">I-Y60793</span>
+    
+    <span class="tmrca-label">🟢</span>
+</div>
+
+
+
+<div class="tmrca-deepest-age">~1 150 лет</div>
+
 </div>
 </div>
-{% endif %}
+
 
 </div>
 </details>
@@ -302,7 +464,7 @@ details.dna-spoiler[open] summary {
 
 <h2>История</h2>
 
-<p>{{ history_section }}</p>
+<p></p>
 
 <p>&nbsp;</p>
 
@@ -310,56 +472,29 @@ details.dna-spoiler[open] summary {
 
 [github_md path="00_General/00_inf.md"]
 
-{% if y_dna_docs %}
-<h3>Y-ДНК (Ветки)</h3>
 
-{% for doc in y_dna_docs|reverse %}
-{% if loop.first %}
-<details class="dna-spoiler" open>
-<summary style="color: #0366d6;">📍 {{ doc.id }} (ваша ветка)</summary>
-<div class="dna-spoiler-content">
-[github_md path="{{ doc.path | replace('\\', '/') }}"]
-</div>
-</details>
-{% else %}
-<details class="dna-spoiler">
-<summary>📂 {{ doc.id }} (родительская ветка)</summary>
-<div class="dna-spoiler-content">
-[github_md path="{{ doc.path | replace('\\', '/') }}"]
-</div>
-</details>
-{% endif %}
-{% endfor %}
-{% endif %}
 
 <!-- Список представителей (Spoiler) -->
-{% if records_count > 0 %}
+
 <details class="dna-spoiler">
-<summary>👥 Список представителей ({{ records_count }})</summary>
+<summary>👥 Список представителей (1)</summary>
 <div class="dna-spoiler-content">
 <table>
 <thead>
 <tr><th>Фамилия</th><th>Имя</th><th>Kit</th><th>Субэтнос</th><th>Населенный пункт</th></tr>
 </thead>
 <tbody>
-{% for rec in records %}
-<tr><td>{{ rec.surname }}</td><td>{{ rec.name }}</td><td>{{ rec.kit }}</td><td>{{ rec.subethnos }}</td><td>{{ rec.location }}</td></tr>
-{% endfor %}
+
+<tr><td>Кушбоков</td><td></td><td>YF143329</td><td>Кабардинец</td><td>Нартан</td></tr>
+
 </tbody>
 </table>
 </div>
 </details>
-{% endif %}
+
 
 <!-- Соседние ветви (Spoiler) -->
-{% if neighbor_context %}
-<details class="dna-spoiler">
-<summary>🌳 Соседние ветви (из базы AADNA)</summary>
-<div class="dna-spoiler-content">
-{{ neighbor_context }}
-</div>
-</details>
-{% endif %}
+
 
 <!-- STR Matches (для всех типов тестов) -->
 <details class="dna-spoiler">
@@ -369,7 +504,7 @@ details.dna-spoiler[open] summary {
 </div>
 </details>
 
-{% if test_type == 'WGS' %}
+
 <!-- Митохондриальная ДНК (Spoiler) -->
 <details class="dna-spoiler">
 <summary>🧬 Митохондриальная ДНК</summary>
@@ -389,20 +524,12 @@ details.dna-spoiler[open] summary {
 </ul>
 </div>
 </details>
-{% endif %}
 
-{% if test_type not in ['WGS', 'BigY'] %}
-<!-- Nevgen Prediction -->
-<details class="dna-spoiler" open>
-<summary>🔮 Nevgen Prediction (Предсказание)</summary>
-<div class="dna-spoiler-content">
-[github_md path="00_General/00_nevgen.md"]
-</div>
-</details>
-{% endif %}
+
+
 
 <h2>Внешние ссылки</h2>
 <ul>
-<li><a href="https://www.yfull.com/tree/{{ branch_id }}/">YFull Tree</a></li>
+<li><a href="https://www.yfull.com/tree/I-Y60793/">YFull Tree</a></li>
 <li><a href="https://aadna.ru/">Проект AADNA</a></li>
 </ul>

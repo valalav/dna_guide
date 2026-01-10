@@ -189,28 +189,46 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
             item['show_tmrca'] = item['is_current']
             post_major_timeline.append(item)
         else:
-            # Pre-major: horizontal table, no position needed
-            item['position'] = 0
-            item['show_tmrca'] = True  # Show TMRCA in table format
-            pre_major_timeline.append(item)
+            # Pre-major: only include branches WITH TMRCA
+            if item['tmrca'] > 0:
+                item['position'] = 0
+                item['show_tmrca'] = True
+                pre_major_timeline.append(item)
     
-    # Generate age scale ticks for vertical axis (every 10k years)
+    # Generate age scale ticks with logarithmic intervals (more detail near modern times)
     age_scale_ticks = []
     if major_tmrca > 0 and current_tmrca >= 0:
-        max_age = major_tmrca
-        min_age = current_tmrca
-        tick_interval = 10000  # 10k years
-        current_tick = (max_age // tick_interval) * tick_interval
-        while current_tick >= min_age:
-            if current_tick > 0:
-                tick_position = int(((major_tmrca - current_tick) / tmrca_range) * 100) if tmrca_range > 0 else 0
+        # Use varying intervals: 10k for ancient, 5k for recent, 1k for very recent
+        tick_values = []
+        # Add ticks from major down to current
+        age = major_tmrca
+        while age >= current_tmrca:
+            tick_values.append(age)
+            if age > 20000:
+                age -= 10000
+            elif age > 5000:
+                age -= 5000
+            elif age > 1000:
+                age -= 1000
+            else:
+                age -= 500
+        # Also add the deepest branch age as final tick
+        if current_tmrca not in tick_values:
+            tick_values.append(current_tmrca)
+        
+        for tick_age in tick_values:
+            if tick_age > 0:
+                tick_position = int(((major_tmrca - tick_age) / tmrca_range) * 100) if tmrca_range > 0 else 0
                 tick_position = max(0, min(100, tick_position))
+                if tick_age >= 1000:
+                    label = f"{tick_age // 1000}k"
+                else:
+                    label = str(tick_age)
                 age_scale_ticks.append({
-                    'age': current_tick,
-                    'label': f"{current_tick // 1000}k" if current_tick >= 1000 else str(current_tick),
+                    'age': tick_age,
+                    'label': label,
                     'position': tick_position
                 })
-            current_tick -= tick_interval
     
     # Combined lineage_timeline for backward compatibility (template uses this)
     lineage_timeline = lineage_timeline_raw
