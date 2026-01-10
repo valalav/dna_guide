@@ -220,7 +220,7 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
         'test_type': row.get('TestType', 'WGS') # Pass TestType
     }
 
-def publish_to_wordpress(local_file, title, slug, tags="", publish=True):
+def publish_to_wordpress(local_file, title, slug, tags="", post_date="", publish=True):
     """Upload file to server and create/update WordPress post."""
     import subprocess
     
@@ -261,7 +261,8 @@ def publish_to_wordpress(local_file, title, slug, tags="", publish=True):
         # Use LANG=en_US.UTF-8 and decode title from base64 on server
         # Convert tags from pipe-separated to comma-separated for wp-cli
         tags_param = f'--tags="{tags.replace("|", ",")}"' if tags else ''
-        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && TITLE=$(echo "{b64_title}" | base64 -d) && cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="$TITLE" --post_name="{slug}" --post_status={post_status} --post_type=post {tags_param} --path={WP_PATH} --allow-root --porcelain'
+        date_param = f'--post_date="{post_date}"' if post_date else ''
+        wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && TITLE=$(echo "{b64_title}" | base64 -d) && cat /tmp/{os.path.basename(local_file)} | wp post create - --post_title="$TITLE" --post_name="{slug}" --post_status={post_status} --post_type=post {tags_param} {date_param} --path={WP_PATH} --allow-root --porcelain'
         
         print(f"    Creating WordPress post...")
         ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", wp_cmd]
@@ -370,7 +371,8 @@ def main():
                 # Use Title from CSV if available, otherwise generate from haplogroup
                 title = row.get('Title', '').strip() or f"Гаплогруппа {branch}"
                 tags = row.get('Tags', '').strip()
-                post_id = publish_to_wordpress(output_filename, title, slug, tags=tags, publish=not args.draft)
+                post_date = row.get('Date', '').strip()
+                post_id = publish_to_wordpress(output_filename, title, slug, tags=tags, post_date=post_date, publish=not args.draft)
                 if post_id:
                     print(f"  Published: https://aadna.ru/{slug}/")
             
