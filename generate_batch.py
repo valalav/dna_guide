@@ -280,9 +280,8 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
     """Prepare context for Jinja2 template using row data."""
     branch_name = row['Haplogroup']
     tmrca = branch_node.get('tmrca', 'N/A')
-    formatted_lineage = " > ".join(lineage_path)
     
-    # TMRCA Indexing
+    # TMRCA Indexing (build first so we can use it for formatted_lineage)
     def build_tmrca_index(node, idx=None):
         if idx is None: idx = {}
         nid = node.get('id', '')
@@ -295,6 +294,19 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
     if isinstance(tree, list):
         for root in tree: build_tmrca_index(root, tmrca_index)
     else: build_tmrca_index(tree, tmrca_index)
+    
+    # Build formatted_lineage with YFull links for recent branches (TMRCA <= 5000)
+    YFULL_THRESHOLD = 5000  # Add links for branches younger than this
+    formatted_parts = []
+    for branch_id in lineage_path:
+        branch_tmrca = int(tmrca_index.get(branch_id, 0))
+        if branch_tmrca <= YFULL_THRESHOLD and branch_tmrca > 0:
+            # Add YFull link for recent branches
+            yfull_url = f"https://www.yfull.com/tree/{branch_id}/"
+            formatted_parts.append(f'<a href="{yfull_url}" target="_blank">{branch_id}</a>')
+        else:
+            formatted_parts.append(branch_id)
+    formatted_lineage = " > ".join(formatted_parts)
     
     lineage_timeline_raw = []
     major_index = -1
@@ -332,36 +344,14 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
     
     tmrca_range = major_tmrca - current_tmrca if major_tmrca > current_tmrca else 1
     
-    # Scale helper function (Non-linear: Ancient history compressed, Recent expanded)
+    # Simple LINEAR scale: position = percentage of range from major to current
     def get_timeline_position(tmrca, major_tmrca, current_tmrca):
-        # Constants
-        FOCUS_AGE = 5000  # Years ago
-        SPLIT_POINT = 65  # % of height for ancient history boundary
-        MAX_USABLE_HEIGHT = 80 # Leave bottom 20% empty for the deepest branch explicitly
-        
-        if tmrca == current_tmrca:
-             return 100 # Deepest branch always at very bottom
-             
-        if major_tmrca <= FOCUS_AGE:
-            # If everything is recent, use simple linear scale up to MAX_USABLE_HEIGHT
-            if tmrca_range == 0: return 0
-            rel_pos = (major_tmrca - tmrca) / tmrca_range
-            return int(rel_pos * MAX_USABLE_HEIGHT)
-            
-        # If we span across the FOCUS_AGE
-        if tmrca > FOCUS_AGE:
-            # Ancient Section (major -> 5000y) maps to 0 -> SPLIT_POINT
-            ancient_range = major_tmrca - FOCUS_AGE
-            time_from_major = major_tmrca - tmrca
-            return int((time_from_major / ancient_range) * SPLIT_POINT)
-        else:
-            # Recent Section (5000y -> current) maps to SPLIT_POINT -> MAX_USABLE_HEIGHT
-            recent_range = FOCUS_AGE - current_tmrca
-            if recent_range == 0: return SPLIT_POINT
-            time_from_focus = FOCUS_AGE - tmrca
-            rel_recent = time_from_focus / recent_range
-            # Map 0..1 to SPLIT..MAX
-            return int(SPLIT_POINT + (rel_recent * (MAX_USABLE_HEIGHT - SPLIT_POINT)))
+        """Calculate vertical position as percentage (0% = top/oldest, 100% = bottom/youngest)"""
+        if major_tmrca == current_tmrca:
+            return 0
+        # Linear interpolation: how far down from major to current?
+        position = (major_tmrca - tmrca) / (major_tmrca - current_tmrca) * 100
+        return max(0, min(100, position))
 
     for item in lineage_timeline_raw:
         if major_index >= 0 and item['index'] >= major_index:
@@ -380,6 +370,97 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
                 item['position'] = 0
                 item['show_tmrca'] = True
                 pre_major_timeline.append(item)
+    # Generate HTML for TWO-ZONE TMRCA timeline
+    # Zone 1: Ancient branches (TMRCA > 5000) - compact horizontal list
+    # Zone 2: Recent branches (TMRCA <= 5000) - diagonal spread with chronological Y
+    tmrca_html = ""
+    if post_major_timeline and major_tmrca > 0 and current_tmrca >= 0:
+        # Separate branches into ancient (>5000) and recent (<=5000)
+        threshold = 5000
+        ancient_branches = []
+        recent_branches = []
+        
+        for item in post_major_timeline:
+            tmrca = item.get('tmrca', 0)
+            if tmrca > threshold:
+                ancient_branches.append(item)
+            else:
+                recent_branches.append(item)
+        
+        # Build Zone 1: Ancient branches as compact list
+        ancient_items = []
+        for item in ancient_branches:
+            name = item['id']
+            tmrca = item.get('tmrca', 0)
+            tmrca_str = f"{tmrca // 1000}k" if tmrca >= 1000 else str(tmrca)
+            if item.get('is_major'):
+                ancient_items.append(f'<span style="font-weight:600;color:#ea580c;">{name}</span> <span style="color:#888;font-family:monospace;font-size:10px;">{tmrca_str}</span>')
+            else:
+                ancient_items.append(f'<span style="font-weight:600;color:#333;">{name}</span> <span style="color:#888;font-family:monospace;font-size:10px;">{tmrca_str}</span>')
+        
+        ancient_html = ' &nbsp;→&nbsp; '.join(ancient_items) if ancient_items else ''
+        
+        # Build Zone 2: Recent branches with diagonal spread
+        recent_elements = []
+        if recent_branches:
+            # Get TMRCA range for recent branches
+            recent_tmrcas = [b.get('tmrca', 0) for b in recent_branches]
+            max_recent = max(recent_tmrcas) if recent_tmrcas else threshold
+            min_recent = min(recent_tmrcas) if recent_tmrcas else current_tmrca
+            range_recent = max_recent - min_recent if max_recent != min_recent else 1
+            
+            height = 400
+            num_recent = len(recent_branches)
+            
+            # Time scale for Zone 2 (bold, 13px)
+            scale_ticks = 5
+            for i in range(scale_ticks):
+                tick_progress = i / (scale_ticks - 1)
+                tick_value = int(max_recent - tick_progress * range_recent)
+                y = tick_progress * (height - 40)
+                if tick_value >= 1000:
+                    label = f"~{tick_value // 1000}k"
+                else:
+                    label = f"~{tick_value}"
+                recent_elements.append(f'<span style="position:absolute;left:0;top:{y:.0f}px;font-size:13px;font-weight:600;color:#6b7280;font-family:monospace;">{label}</span>')
+            
+            # Diagonal guide line
+            recent_elements.append('<span style="position:absolute;left:50px;top:0;width:calc(100% - 50px);height:100%;background:linear-gradient(135deg,transparent 49.5%,#e5e7eb 49.5%,#e5e7eb 50.5%,transparent 50.5%);pointer-events:none;"></span>')
+            
+            # Position each recent branch
+            for idx, item in enumerate(recent_branches):
+                tmrca = item.get('tmrca', 0)
+                name = item['id']
+                
+                # Y from TMRCA (chronological)
+                y_progress = (max_recent - tmrca) / range_recent
+                y = y_progress * (height - 40)
+                
+                # X from index (even spread)
+                x_percent = (idx / max(1, num_recent - 1)) * 75 + 10 if num_recent > 1 else 10
+                
+                if item.get('is_current'):
+                    # Deepest: pin to bottom-right
+                    recent_elements.append(f'<span style="position:absolute;right:0;bottom:0;font-size:14px;font-weight:600;color:#16a34a;white-space:nowrap;">{name} 🟢 {tmrca}</span>')
+                else:
+                    recent_elements.append(f'<span style="position:absolute;left:{x_percent:.0f}%;top:{y:.0f}px;font-size:13px;color:#374151;white-space:nowrap;">{name} <span style="color:#888;font-size:11px;">{tmrca}</span></span>')
+        
+        # Combine zones into final HTML
+        tmrca_html = f'''
+<div style="font-family:system-ui,sans-serif;margin:20px 0;">
+    <!-- Zone 1: Ancient branches -->
+    <div style="padding:12px 15px;background:#fafafa;border-radius:6px;margin-bottom:15px;border-left:3px solid #ea580c;font-size:12px;line-height:1.8;">
+        <div style="font-size:12px;font-weight:600;color:#ea580c;margin-bottom:8px;">🟠 Древние ветки (&gt; 5000 лет)</div>
+        {ancient_html}
+    </div>
+    <!-- Zone 2: Recent branches -->
+    <div style="border-left:3px solid #16a34a;padding-left:15px;background:linear-gradient(135deg,#f0fdf4 0%,#fefefe 100%);border-radius:0 6px 6px 0;">
+        <div style="font-size:12px;font-weight:600;color:#16a34a;margin-bottom:10px;padding-top:10px;">🟢 Недавняя эволюция (≤ 5000 лет)</div>
+        <div style="position:relative;height:{height}px;">
+            {chr(10).join(recent_elements)}
+        </div>
+    </div>
+</div>'''
     
     # Generate age scale ticks with same non-linear logic
     age_scale_ticks = []
@@ -503,6 +584,7 @@ def generate_post_context(row, lineage_path, branch_node, related_docs, tree):
         'lineage_timeline': lineage_timeline,
         'pre_major_timeline': pre_major_timeline,
         'post_major_timeline': post_major_timeline,
+        'tmrca_html': tmrca_html,
         'age_scale_ticks': age_scale_ticks,
         'history_section': "", # Placeholder or extract from docs if needed
         'y_dna_docs': y_dna_docs,
@@ -521,8 +603,19 @@ def publish_to_wordpress(local_file, title, slug, tags="", post_date="", publish
     SERVER_USER = "root"
     SERVER_PASS = "4S7eBqQa55en"
     WP_PATH = "/var/www/html"
-    PSCP_PATH = r"c:\_Data\Soft\Linux\PuTTY\pscp.exe"
-    PLINK_PATH = r"c:\_Data\Soft\Linux\PuTTY\plink.exe"
+    
+    # Cross-platform: detect Linux vs Windows
+    import platform
+    is_linux = platform.system().lower() == 'linux'
+    
+    if is_linux:
+        # Linux: use sshpass + scp/ssh
+        SCP_CMD = ['sshpass', '-p', SERVER_PASS, 'scp', '-o', 'StrictHostKeyChecking=no']
+        SSH_CMD = ['sshpass', '-p', SERVER_PASS, 'ssh', '-o', 'StrictHostKeyChecking=no', f'{SERVER_USER}@{SERVER_IP}']
+    else:
+        # Windows: use pscp/plink
+        PSCP_PATH = r"c:\_Data\Soft\Linux\PuTTY\pscp.exe"
+        PLINK_PATH = r"c:\_Data\Soft\Linux\PuTTY\plink.exe"
     
     try:
         import base64
@@ -532,10 +625,15 @@ def publish_to_wordpress(local_file, title, slug, tags="", post_date="", publish
         with open(local_file, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Step 2: Upload via PSCP (avoids command line length limits)
+        # Step 2: Upload file to server
         remote_file = f"/tmp/{os.path.basename(local_file)}"
-        pscp_cmd = [PSCP_PATH, "-pw", SERVER_PASS, "-batch", local_file, f"{SERVER_USER}@{SERVER_IP}:{remote_file}"]
-        result = subprocess.run(pscp_cmd, capture_output=True, text=True, timeout=60)
+        
+        if is_linux:
+            upload_cmd = SCP_CMD + [local_file, f"{SERVER_USER}@{SERVER_IP}:{remote_file}"]
+        else:
+            upload_cmd = [PSCP_PATH, "-pw", SERVER_PASS, "-batch", local_file, f"{SERVER_USER}@{SERVER_IP}:{remote_file}"]
+        
+        result = subprocess.run(upload_cmd, capture_output=True, text=True, timeout=60)
         
         if result.returncode != 0:
             print(f"    Upload failed: {result.stderr}")
@@ -555,7 +653,12 @@ def publish_to_wordpress(local_file, title, slug, tags="", post_date="", publish
         wp_cmd = f'export LANG=en_US.UTF-8 && export LC_ALL=en_US.UTF-8 && TITLE=$(echo "{b64_title}" | base64 -d) && wp post create /tmp/{os.path.basename(local_file)} --post_title="$TITLE" --post_name="{slug}" --post_status={post_status} --post_type=post {tags_param} {date_param} --path={WP_PATH} --allow-root --porcelain'
         
         print(f"    Creating WordPress post...")
-        ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", wp_cmd]
+        
+        if is_linux:
+            ssh_cmd = SSH_CMD + [wp_cmd]
+        else:
+            ssh_cmd = [PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", wp_cmd]
+        
         result = subprocess.run(ssh_cmd, capture_output=True, text=True, timeout=60)
         
         if result.returncode != 0:
@@ -571,14 +674,22 @@ def publish_to_wordpress(local_file, title, slug, tags="", post_date="", publish
             tags_clean = ','.join([t.strip() for t in tags.split('|') if t.strip()])
             b64_tags = base64.b64encode(tags_clean.encode('utf-8')).decode('ascii')
             tags_cmd = f'export LANG=en_US.UTF-8 && TAGS=$(echo "{b64_tags}" | base64 -d) && IFS="," read -ra TARR <<< "$TAGS" && for t in "${{TARR[@]}}"; do wp post term add {post_id} post_tag "$t" --path={WP_PATH} --allow-root 2>/dev/null; done'
-            subprocess.run([PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", tags_cmd],
-                          capture_output=True, timeout=30)
+            
+            if is_linux:
+                subprocess.run(SSH_CMD + [tags_cmd], capture_output=True, timeout=30)
+            else:
+                subprocess.run([PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", tags_cmd],
+                              capture_output=True, timeout=30)
             print(f"    Added tags: {tags}")
         
         # Step 5: Clear cache
         cache_cmd = f'wp transient delete --all --path={WP_PATH} --allow-root'
-        subprocess.run([PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", cache_cmd], 
-                      capture_output=True, timeout=30)
+        
+        if is_linux:
+            subprocess.run(SSH_CMD + [cache_cmd], capture_output=True, timeout=30)
+        else:
+            subprocess.run([PLINK_PATH, "-ssh", f"{SERVER_USER}@{SERVER_IP}", "-pw", SERVER_PASS, "-batch", cache_cmd], 
+                          capture_output=True, timeout=30)
         
         return post_id
         

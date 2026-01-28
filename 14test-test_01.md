@@ -1,4 +1,4 @@
-<h1>Гаплогруппа J-Y94477</h1>
+<h1>Гаплогруппа G-FTC55326</h1>
 
 <style>
 /* Стили для спойлеров */
@@ -229,10 +229,10 @@ details.dna-spoiler[open] summary {
 
 
 
-<p><strong>Фамилия:</strong> Pizhinov<br>
+<p><strong>Фамилия:</strong> Паштов<br>
 <strong>Kit Number:</strong> 55520<br>
-<strong>Субэтнос:</strong> Circassian<br>
-<strong>Населенный пункт:</strong> Circassia<br>
+<strong>Субэтнос:</strong> Кабардинец<br>
+<strong>Населенный пункт:</strong> Нартан<br>
 <strong>Тест:</strong> WGS</p>
 
 <h2>Краткое резюме</h2>
@@ -245,8 +245,8 @@ details.dna-spoiler[open] summary {
 [github_md path="00_General/00_wgs.md"]
 
 
-<p><strong>Возраст ветки (TMRCA):</strong> 900 лет<br>
-<strong>Путь:</strong>  > A0-T > A1 > A1b > BT > CT > CF > F > GHIJK > HIJK > IJK > IJ > J > J2 > J-M410 > J-PF4610 > J-L26 > J-PF5087 > J-PF5160 > J-L24 > J-Y22662 > J-L25 > J-Z438 > J-Z387 > J-Y17949 > J-FGC35461 > J-FGC34168 > J-FGC35489 > J-Y126071 > J-Z39975 > J-Z39973 > J-Z39976 > J-Y94477</p>
+<p><strong>Возраст ветки (TMRCA):</strong> 950 лет<br>
+<strong>Путь:</strong>  > A0-T > A1 > A1b > BT > CT > CF > F > GHIJK > G > G-P287 > G-Y238 > G-P15 > G-L1259 > G-L30 > G-CTS574 > G-CTS2488 > G-P303 > G-CTS796 > G-L140 > G-PF3346 > G-Z3065 > G-PF3345 > G-Y507487 > G-U1 > G-L1266 > <a href="https://www.yfull.com/tree/G-Y12277/" target="_blank">G-Y12277</a> > <a href="https://www.yfull.com/tree/G-L1264/" target="_blank">G-L1264</a> > <a href="https://www.yfull.com/tree/G-FGC21495/" target="_blank">G-FGC21495</a> > <a href="https://www.yfull.com/tree/G-S9409/" target="_blank">G-S9409</a> > <a href="https://www.yfull.com/tree/G-FTC55326/" target="_blank">G-FTC55326</a></p>
 
 <details class="dna-spoiler">
 <summary>⏱️ Путь с датировками TMRCA</summary>
@@ -298,21 +298,6 @@ details.dna-spoiler[open] summary {
     <div class="tmrca-age">~48 500</div>
 </td>
 
-<td class="tmrca-cell">
-    <div class="tmrca-branch-name">HIJK</div>
-    <div class="tmrca-age">~48 500</div>
-</td>
-
-<td class="tmrca-cell">
-    <div class="tmrca-branch-name">IJK</div>
-    <div class="tmrca-age">~47 200</div>
-</td>
-
-<td class="tmrca-cell">
-    <div class="tmrca-branch-name">IJ</div>
-    <div class="tmrca-age">~42 900</div>
-</td>
-
 </tr>
 </table>
 </div>
@@ -325,7 +310,7 @@ details.dna-spoiler[open] summary {
     <!-- Zone 1: Ancient branches -->
     <div style="padding:12px 15px;background:#fafafa;border-radius:6px;margin-bottom:15px;border-left:3px solid #ea580c;font-size:12px;line-height:1.8;">
         <div style="font-size:12px;font-weight:600;color:#ea580c;margin-bottom:8px;">🟠 Древние ветки (&gt; 5000 лет)</div>
-        <span style="font-weight:600;color:#ea580c;">J</span> <span style="color:#888;font-family:monospace;font-size:10px;">31k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J2</span> <span style="color:#888;font-family:monospace;font-size:10px;">27k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-M410</span> <span style="color:#888;font-family:monospace;font-size:10px;">19k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-PF4610</span> <span style="color:#888;font-family:monospace;font-size:10px;">17k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-L26</span> <span style="color:#888;font-family:monospace;font-size:10px;">16k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-PF5087</span> <span style="color:#888;font-family:monospace;font-size:10px;">15k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-PF5160</span> <span style="color:#888;font-family:monospace;font-size:10px;">15k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-L24</span> <span style="color:#888;font-family:monospace;font-size:10px;">13k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-Y22662</span> <span style="color:#888;font-family:monospace;font-size:10px;">10k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-L25</span> <span style="color:#888;font-family:monospace;font-size:10px;">8k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-Z438</span> <span style="color:#888;font-family:monospace;font-size:10px;">7k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">J-Z387</span> <span style="color:#888;font-family:monospace;font-size:10px;">6k</span>
+        <span style="font-weight:600;color:#ea580c;">G</span> <span style="color:#888;font-family:monospace;font-size:10px;">25k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-P287</span> <span style="color:#888;font-family:monospace;font-size:10px;">24k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-Y238</span> <span style="color:#888;font-family:monospace;font-size:10px;">20k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-P15</span> <span style="color:#888;font-family:monospace;font-size:10px;">18k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-L1259</span> <span style="color:#888;font-family:monospace;font-size:10px;">17k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-L30</span> <span style="color:#888;font-family:monospace;font-size:10px;">14k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-CTS574</span> <span style="color:#888;font-family:monospace;font-size:10px;">14k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-CTS2488</span> <span style="color:#888;font-family:monospace;font-size:10px;">14k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-P303</span> <span style="color:#888;font-family:monospace;font-size:10px;">11k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-CTS796</span> <span style="color:#888;font-family:monospace;font-size:10px;">11k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-L140</span> <span style="color:#888;font-family:monospace;font-size:10px;">10k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-PF3346</span> <span style="color:#888;font-family:monospace;font-size:10px;">10k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-Z3065</span> <span style="color:#888;font-family:monospace;font-size:10px;">10k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-PF3345</span> <span style="color:#888;font-family:monospace;font-size:10px;">10k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-Y507487</span> <span style="color:#888;font-family:monospace;font-size:10px;">10k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-U1</span> <span style="color:#888;font-family:monospace;font-size:10px;">10k</span> &nbsp;→&nbsp; <span style="font-weight:600;color:#333;">G-L1266</span> <span style="color:#888;font-family:monospace;font-size:10px;">7k</span>
     </div>
     <!-- Zone 2: Recent branches -->
     <div style="border-left:3px solid #16a34a;padding-left:15px;background:linear-gradient(135deg,#f0fdf4 0%,#fefefe 100%);border-radius:0 6px 6px 0;">
@@ -335,17 +320,13 @@ details.dna-spoiler[open] summary {
 <span style="position:absolute;left:0;top:90px;font-size:13px;font-weight:600;color:#6b7280;font-family:monospace;">~3k</span>
 <span style="position:absolute;left:0;top:180px;font-size:13px;font-weight:600;color:#6b7280;font-family:monospace;">~2k</span>
 <span style="position:absolute;left:0;top:270px;font-size:13px;font-weight:600;color:#6b7280;font-family:monospace;">~1k</span>
-<span style="position:absolute;left:0;top:360px;font-size:13px;font-weight:600;color:#6b7280;font-family:monospace;">~900</span>
+<span style="position:absolute;left:0;top:360px;font-size:13px;font-weight:600;color:#6b7280;font-family:monospace;">~950</span>
 <span style="position:absolute;left:50px;top:0;width:calc(100% - 50px);height:100%;background:linear-gradient(135deg,transparent 49.5%,#e5e7eb 49.5%,#e5e7eb 50.5%,transparent 50.5%);pointer-events:none;"></span>
-<span style="position:absolute;left:10%;top:0px;font-size:13px;color:#374151;white-space:nowrap;">J-Y17949 <span style="color:#888;font-size:11px;">4800</span></span>
-<span style="position:absolute;left:19%;top:0px;font-size:13px;color:#374151;white-space:nowrap;">J-FGC35461 <span style="color:#888;font-size:11px;">4800</span></span>
-<span style="position:absolute;left:29%;top:65px;font-size:13px;color:#374151;white-space:nowrap;">J-FGC34168 <span style="color:#888;font-size:11px;">4100</span></span>
-<span style="position:absolute;left:38%;top:65px;font-size:13px;color:#374151;white-space:nowrap;">J-FGC35489 <span style="color:#888;font-size:11px;">4100</span></span>
-<span style="position:absolute;left:48%;top:129px;font-size:13px;color:#374151;white-space:nowrap;">J-Y126071 <span style="color:#888;font-size:11px;">3400</span></span>
-<span style="position:absolute;left:57%;top:129px;font-size:13px;color:#374151;white-space:nowrap;">J-Z39975 <span style="color:#888;font-size:11px;">3400</span></span>
-<span style="position:absolute;left:66%;top:231px;font-size:13px;color:#374151;white-space:nowrap;">J-Z39973 <span style="color:#888;font-size:11px;">2300</span></span>
-<span style="position:absolute;left:76%;top:231px;font-size:13px;color:#374151;white-space:nowrap;">J-Z39976 <span style="color:#888;font-size:11px;">2300</span></span>
-<span style="position:absolute;right:0;bottom:0;font-size:14px;font-weight:600;color:#16a34a;white-space:nowrap;">J-Y94477 🟢 900</span>
+<span style="position:absolute;left:10%;top:0px;font-size:13px;color:#374151;white-space:nowrap;">G-Y12277 <span style="color:#888;font-size:11px;">4900</span></span>
+<span style="position:absolute;left:29%;top:46px;font-size:13px;color:#374151;white-space:nowrap;">G-L1264 <span style="color:#888;font-size:11px;">4400</span></span>
+<span style="position:absolute;left:48%;top:91px;font-size:13px;color:#374151;white-space:nowrap;">G-FGC21495 <span style="color:#888;font-size:11px;">3900</span></span>
+<span style="position:absolute;left:66%;top:100px;font-size:13px;color:#374151;white-space:nowrap;">G-S9409 <span style="color:#888;font-size:11px;">3800</span></span>
+<span style="position:absolute;right:0;bottom:0;font-size:14px;font-weight:600;color:#16a34a;white-space:nowrap;">G-FTC55326 🟢 950</span>
         </div>
     </div>
 </div>
@@ -370,19 +351,6 @@ details.dna-spoiler[open] summary {
 
 
 
-<h3>Y-ДНК (Ветки)</h3>
-
-
-
-<details class="dna-spoiler" open>
-<summary style="color: #0366d6;">📍 J (ваша ветка)</summary>
-<div class="dna-spoiler-content">
-[github_md path="10_Haplogroups/J/00_J_Overview.md"]
-</div>
-</details>
-
-
-
 
 
 <!-- Список представителей (Spoiler) -->
@@ -396,7 +364,7 @@ details.dna-spoiler[open] summary {
 </thead>
 <tbody>
 
-<tr><td>Pizhinov</td><td></td><td>55520</td><td>Circassian</td><td>Circassia</td></tr>
+<tr><td>Паштов</td><td></td><td>55520</td><td>Кабардинец</td><td>Нартан</td></tr>
 
 </tbody>
 </table>
@@ -442,6 +410,6 @@ details.dna-spoiler[open] summary {
 
 <h2>Внешние ссылки</h2>
 <ul>
-<li><a href="https://www.yfull.com/tree/J-Y94477/">YFull Tree</a></li>
+<li><a href="https://www.yfull.com/tree/G-FTC55326/">YFull Tree</a></li>
 <li><a href="https://aadna.ru/">Проект AADNA</a></li>
 </ul>

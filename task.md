@@ -41,3 +41,8 @@
     - [ ] Update R1a-Z93 section (Tamby/Inal dating)
     - [ ] Update R1b-Z2103 (Ankvab/Yamnaya link)
     - [ ] Update J2b-L283 (KDC001 Kudachurt sample)
+- [x] Phase 9: Maintenance & Infrastructure
+    - [x] Fix Synonym Filtration Logic in `generate_publication.py`
+    - [x] Setup Python 3.13 Environment
+    - [x] Document Cross-Platform SSH Protocols (Windows/Linux)
+    - [x] Create Reproducibility Tests (`reproduce_issue.py`)

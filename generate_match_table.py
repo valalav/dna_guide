@@ -71,75 +71,103 @@ def calculate_diff(q_val, m_val):
 def generate_html_table(profile, matches):
     q_markers = profile.get('markers', {})
     
-    # Filter markers to only those present in the Query or Standard List
-    # We use MARKER_ORDER as the base column definition
-    columns = [m for m in MARKER_ORDER if m in q_markers]
+    # 1. Identify "Variable" markers
+    # A marker is interesting if at least one match has a value different from the query
+    interesting_markers = set()
     
-    # CSS Styles (Inline for portability)
+    # Check all potential markers (from Query)
+    # We prioritize the Standard Order for sorting, but scan all query markers
+    potential_markers = [m for m in MARKER_ORDER if m in q_markers]
+    
+    # If a marker is in Query but not in Standard Order, should we show it? 
+    # Usually only standard panel matters for STR matching, but let's stick to MARKER_ORDER intersection for now to be safe,
+    # OR scan all keys in q_markers. Let's start with MARKER_ORDER intersection to avoid noise like "DYS_EXTRA_999".
+    
+    for col in potential_markers:
+        q_val = str(q_markers.get(col, ""))
+        is_variable = False
+        
+        for m in matches:
+            m_prof = m.get('profile', {})
+            m_markers = m_prof.get('markers', {})
+            m_val = str(m_markers.get(col, ""))
+            
+            if not m_val: continue # Skip comparison if match misses data
+            
+            # Simple diff check
+            if q_val != m_val:
+                is_variable = True
+                break
+        
+        if is_variable:
+            interesting_markers.add(col)
+            
+    # Always include markers if the list ends up empty (edge case: perfect match)
+    # But usually there are differences.
+    
+    # Sort columns by Standard Order
+    columns = [m for m in MARKER_ORDER if m in interesting_markers]
+    
+    # Use standard styles
     style = """
 <style>
-.str-table { width: 100%; border-collapse: collapse; font-family: monospace; font-size: 11px; }
-.str-table th { background-color: #f1f5f9; padding: 4px; border: 1px solid #e2e8f0; text-align: center; }
-.str-table td { padding: 4px; border: 1px solid #e2e8f0; text-align: center; }
-.str-match { color: #d1d5db; } /* Light gray for dash */
-.str-diff-minor { color: #ea580c; font-weight: bold; background-color: #fff7ed; } /* Orange */
-.str-diff-major { color: #dc2626; font-weight: bold; background-color: #fef2f2; } /* Red */
+.str-table { width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 11px; }
+.str-table th { background-color: #f8f9fa; padding: 6px 4px; border: 1px solid #dee2e6; text-align: center; }
+.str-table td { padding: 4px; border: 1px solid #dee2e6; text-align: center; }
+.str-match { color: #adb5bd; } /* Muted gray for match */
+.str-diff-minor { color: #c05621; font-weight: bold; background-color: #fffaf0; } /* Orange tint */
+.str-diff-major { color: #c53030; font-weight: bold; background-color: #fff5f5; } /* Red tint */
 .str-meta { text-align: left !important; white-space: nowrap; max-width: 150px; overflow: hidden; text-overflow: ellipsis; }
-.str-kit { font-weight: bold; color: #2563eb; }
-.str-gd { font-weight: bold; background-color: #f0fdf4; color: #166534; }
+.str-kit { font-weight: bold; color: #3182ce; }
+.str-gd { font-weight: bold; background-color: #f0fff4; color: #276749; }
 </style>
 """
 
-    html = [style, '<table class="str-table">']
+    html = [style, '<div style="overflow-x:auto"><table class="str-table">']
     
-    # Header 1: Marker Names
+    # Header
     html.append('<thead><tr>')
-    html.append('<th colspan="4" style="text-align:left">Match Info</th>') # Kit, Name, HG, GD
+    html.append('<th colspan="4" style="text-align:left">Matches</th>') 
     for col in columns:
-        html.append(f'<th>{col.replace("DYS","")}</th>') # Shorten names for compactness
-    html.append('</tr>')
-    
-    # Header 2: Query Values (Reference)
-    html.append('<tr style="background-color: #dbeafe;">') # Light blue for Query
-    html.append(f'<td class="str-meta str-kit">{profile.get("kitNumber")}</td>')
-    html.append(f'<td class="str-meta">{profile.get("name")}</td>')
-    html.append(f'<td class="str-meta">{profile.get("haplogroup")}</td>')
-    html.append('<td class="str-gd">-</td>')
-    for col in columns:
-        html.append(f'<th>{q_markers.get(col, "")}</th>')
+        html.append(f'<th>{col.replace("DYS","")}</th>')
     html.append('</tr></thead>')
     
     html.append('<tbody>')
     
+    # Query Row
+    html.append('<tr style="background-color: #e0f2fe;">')
+    html.append(f'<td colspan="3" style="text-align:left;font-weight:bold;padding:4px;border:1px solid #dee2e6;">{profile.get("kitNumber")}</td>')
+    html.append('<td class="str-gd">-</td>')
+    for col in columns:
+        html.append(f'<th>{q_markers.get(col, "")}</th>')
+    html.append('</tr>')
+    
+    # Matches
     for m in matches:
         m_prof = m.get('profile', {})
         m_markers = m_prof.get('markers', {})
         
         html.append('<tr>')
-        # Meta columns
-        html.append(f'<td class="str-meta str-kit">{m_prof.get("kitNumber")}</td>')
+        html.append(f'<td class="str-meta str-kit" title="{m_prof.get("name")}">{m_prof.get("kitNumber")}</td>')
         html.append(f'<td class="str-meta" title="{m_prof.get("name")}">{m_prof.get("name")}</td>')
         html.append(f'<td class="str-meta">{m_prof.get("haplogroup")}</td>')
         html.append(f'<td class="str-gd">{m.get("distance")}</td>')
         
-        # Marker columns
         for col in columns:
             q_val = str(q_markers.get(col, ""))
             m_val = str(m_markers.get(col, ""))
             
-            # Logic: If query has value but match missing -> ?
             if not m_val:
-                html.append('<td>?</td>')
+                html.append('<td class="str-match">-</td>') # Missing treated as match/dash visually for cleaner table
                 continue
                 
             text, style_class = calculate_diff(q_val, m_val)
             css_class = f"str-{style_class}"
-            
             html.append(f'<td class="{css_class}">{text}</td>')
             
         html.append('</tr>')
         
-    html.append('</tbody></table>')
+    html.append('</tbody></table></div>')
     
     return "\n".join(html)
 

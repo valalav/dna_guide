@@ -395,7 +395,7 @@ details.dna-spoiler[open] summary {
 <!-- Список представителей (Spoiler) -->
 
 <details class="dna-spoiler">
-<summary>👥 Список представителей (18)</summary>
+<summary>👥 Список представителей (19)</summary>
 <div class="dna-spoiler-content">
 <table>
 <thead>
@@ -438,6 +438,8 @@ details.dna-spoiler[open] summary {
 <tr><td>Пижинов</td><td>Pizhinov</td><td>55520</td><td>Кабардинец</td><td>Верхний Курп</td></tr>
 
 <tr><td></td><td>Azouqah</td><td>MK87694</td><td>Кабардинец</td><td></td></tr>
+
+<tr><td></td><td></td><td>xxsar1</td><td></td><td></td></tr>
 
 </tbody>
 </table>

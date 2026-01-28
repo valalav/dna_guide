@@ -30,3 +30,6 @@ Thumbs.db
 # === IMPORT (raw PDFs, not needed in repo) ===
 import/*.pdf
 import/*.png
+
+# Ralph Agent Workspace
+ralph/
