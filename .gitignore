@@ -33,3 +33,26 @@ import/*.png
 
 # Ralph Agent Workspace
 ralph/
+
+# === SECURITY & SCRIPTS (Passwords, Keys, Logic) ===
+generate*.py
+regenerate*.py
+scripts/
+monitoring/
+tmp/
+logs/
+drafts/
+previews/
+analysis/
+ai_docs/
+assets/
+data/
+Public/
+
+# === DATA & LOGS ===
+current_tree.json
+*.json
+*.txt
+task.md
+IMPLEMENTATION_SUMMARY.md
+DEEPY_CLI_README.md
