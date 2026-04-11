@@ -5,7 +5,6 @@ R-Y6 not found in local tree. Searching YFull.com:
 
 > **Формация:** 4100 лет назад  
 > **TMRCA:** 4100 лет назад  
-> **Статус:** ✅ Данные из YFull
 
 ## Общая информация
 

@@ -5,7 +5,6 @@ Now I'll create the markdown description for R-KMS67 in Russian:
 ```markdown
 # R-KMS67
 
-> **Статус:** ✅ Проверено | **Возраст:** 5300 лет назад
 
 ## Общая информация
 

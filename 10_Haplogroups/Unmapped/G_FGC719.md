@@ -8,8 +8,6 @@ Now let me create the markdown analysis in Russian:
 ```markdown
 # G-FGC719: Анализ субклада
 
-> **Статус:** ✅ В базе данных проекта AADNA
-> **Последнее обновление:** 2026-01-26
 
 ## Общая информация
 
